@@ -15,3 +15,25 @@ test("does not have visible class when isVisible is false", () => {
 
   expect(characterPicker).not.toHaveClass("visible");
 });
+
+test("Properly renders character names as divs", () => {
+  const { container } = render(
+    <CharacterPicker characterNames={["Jane", "Bob", "Doe"]} />
+  );
+  const characterPicker = container.firstChild;
+  const characterDivs = characterPicker.querySelectorAll(":scope > *");
+
+  expect(characterDivs).toMatchInlineSnapshot(`
+    NodeList [
+      <div>
+        Jane
+      </div>,
+      <div>
+        Bob
+      </div>,
+      <div>
+        Doe
+      </div>,
+    ]
+  `);
+});

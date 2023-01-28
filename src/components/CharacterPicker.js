@@ -1,5 +1,5 @@
 function CharacterPicker(props) {
-  const { isVisible, location = { x: 0, y: 0 } } = props;
+  const { isVisible, location = { x: 0, y: 0 }, characterNames = [] } = props;
 
   const visibleClass = isVisible ? " visible" : "";
   return (
@@ -8,9 +8,13 @@ function CharacterPicker(props) {
       data-x={location.x}
       data-y={location.y}
     >
-      Hello World
+      {divsFromCharacterNames(characterNames)}
     </div>
   );
+
+  function divsFromCharacterNames(characterNames) {
+    return characterNames.map((name) => <div key={name}>{name}</div>);
+  }
 }
 
 export default CharacterPicker;
