@@ -1,6 +1,7 @@
 import { render, screen } from "@testing-library/react";
 import { toHaveClass } from "@testing-library/jest-dom/extend-expect";
 import CharacterPicker from "../CharacterPicker";
+import userEvent from "@testing-library/user-event";
 
 test("Has visible class when isVisible is true", () => {
   const { container } = render(<CharacterPicker isVisible={true} />);
@@ -42,4 +43,21 @@ test("Properly renders character names as divs", () => {
       </button>,
     ]
   `);
+});
+
+test("Calls function with character name when character name is clicked", () => {
+  const onCharacterClickFunc = jest.fn();
+
+  render(
+    <CharacterPicker
+      characterNames={["Jane", "Bob", "Doe"]}
+      onCharacterClickFunc={onCharacterClickFunc}
+    />
+  );
+
+  const bob = screen.getByText("Bob");
+
+  userEvent.click(bob);
+
+  expect(onCharacterClickFunc).toBeCalledWith("Bob");
 });

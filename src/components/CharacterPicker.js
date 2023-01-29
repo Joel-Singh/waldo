@@ -1,5 +1,10 @@
 function CharacterPicker(props) {
-  const { isVisible, location = { x: 0, y: 0 }, characterNames = [] } = props;
+  const {
+    isVisible,
+    location = { x: 0, y: 0 },
+    characterNames = [],
+    onCharacterClickFunc = () => {},
+  } = props;
 
   const visibleClass = isVisible ? " visible" : "";
   return (
@@ -13,11 +18,17 @@ function CharacterPicker(props) {
   );
 
   function buttonsFromCharacterNames(characterNames) {
-    return characterNames.map((name) => (
-      <button type="button" key={name}>
-        {name}
-      </button>
-    ));
+    return characterNames.map((name) => {
+      return (
+        <button
+          onClick={() => onCharacterClickFunc(name)}
+          type="button"
+          key={name}
+        >
+          {name}
+        </button>
+      );
+    });
   }
 }
 
