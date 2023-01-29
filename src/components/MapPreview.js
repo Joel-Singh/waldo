@@ -1,11 +1,14 @@
 function MapPreview(props) {
-  const { previewCharacterInformation } = props;
+  const { previewCharacterInformation, mapImage } = props;
 
   return (
-    <div data-testid="previewCharactersContainer">
-      {previewCharacterInformation.map((previewCharacter) =>
-        createPreviewCharacterHTML(previewCharacter)
-      )}
+    <div>
+      <img src={mapImage} />
+      <div data-testid="previewCharactersContainer">
+        {previewCharacterInformation.map((previewCharacter) =>
+          createPreviewCharacterHTML(previewCharacter)
+        )}
+      </div>
     </div>
   );
   function createPreviewCharacterHTML(previewCharacter) {
