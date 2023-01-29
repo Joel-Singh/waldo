@@ -3,21 +3,21 @@ import { toHaveClass } from "@testing-library/jest-dom/extend-expect";
 import CharacterPicker from "../CharacterPicker";
 import userEvent from "@testing-library/user-event";
 
-test("Has visible class when isVisible is true", () => {
+it("has visible class when isVisible is true", () => {
   const { container } = render(<CharacterPicker isVisible={true} />);
   const characterPicker = container.firstChild;
 
   expect(characterPicker).toHaveClass("visible");
 });
 
-test("does not have visible class when isVisible is false", () => {
+it("does not have visible class when isVisible is false", () => {
   const { container } = render(<CharacterPicker isVisible={false} />);
   const characterPicker = container.firstChild;
 
   expect(characterPicker).not.toHaveClass("visible");
 });
 
-test("Properly renders character names as divs", () => {
+it("properly renders character names as divs", () => {
   const { container } = render(
     <CharacterPicker characterNames={["Jane", "Bob", "Doe"]} />
   );
@@ -45,7 +45,7 @@ test("Properly renders character names as divs", () => {
   `);
 });
 
-test("Calls function with character name when character name is clicked", () => {
+it("calls function with character name when character name is clicked", () => {
   const onCharacterClickFunc = jest.fn();
 
   render(
