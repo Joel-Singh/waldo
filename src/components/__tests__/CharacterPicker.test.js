@@ -25,15 +25,21 @@ test("Properly renders character names as divs", () => {
 
   expect(characterDivs).toMatchInlineSnapshot(`
     NodeList [
-      <div>
+      <button
+        type="button"
+      >
         Jane
-      </div>,
-      <div>
+      </button>,
+      <button
+        type="button"
+      >
         Bob
-      </div>,
-      <div>
+      </button>,
+      <button
+        type="button"
+      >
         Doe
-      </div>,
+      </button>,
     ]
   `);
 });

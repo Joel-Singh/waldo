@@ -8,12 +8,16 @@ function CharacterPicker(props) {
       data-x={location.x}
       data-y={location.y}
     >
-      {divsFromCharacterNames(characterNames)}
+      {buttonsFromCharacterNames(characterNames)}
     </div>
   );
 
-  function divsFromCharacterNames(characterNames) {
-    return characterNames.map((name) => <div key={name}>{name}</div>);
+  function buttonsFromCharacterNames(characterNames) {
+    return characterNames.map((name) => (
+      <button type="button" key={name}>
+        {name}
+      </button>
+    ));
   }
 }
 
