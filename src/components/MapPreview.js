@@ -5,7 +5,7 @@ function MapPreview(props) {
 
   return (
     <div>
-      <div>{mapName}</div>
+      <div aria-label="title">{mapName}</div>
       <img src={mapImage} />
       <div data-testid="previewCharactersContainer">
         {previewCharacterInformation.map((previewCharacter) =>
