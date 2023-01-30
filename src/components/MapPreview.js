@@ -1,10 +1,11 @@
 import { Link } from "react-router-dom";
 import PropTypes from "prop-types";
 function MapPreview(props) {
-  const { previewCharacterInformation, mapImage, mapPath } = props;
+  const { mapName, previewCharacterInformation, mapImage, mapPath } = props;
 
   return (
     <div>
+      <div>{mapName}</div>
       <img src={mapImage} />
       <div data-testid="previewCharactersContainer">
         {previewCharacterInformation.map((previewCharacter) =>
