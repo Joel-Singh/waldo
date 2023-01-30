@@ -9,7 +9,7 @@ it("properly renders preview characters", () => {
   ];
 
   render(
-    <MapPreview previewCharacterInformation={previewCharacterInformation} />
+    <MapPreview {...{previewCharacterInformation}} />
   );
 
   const previewCharactersContainer = screen.getByTestId('previewCharactersContainer')
