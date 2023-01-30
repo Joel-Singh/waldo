@@ -1,5 +1,6 @@
 import { render, screen } from "@testing-library/react";
 import MapPreview from "../MapPreview";
+import { BrowserRouter } from "react-router-dom";
 
 it("properly renders preview characters", () => {
   const previewCharacterInformation = [
@@ -9,7 +10,9 @@ it("properly renders preview characters", () => {
   ];
 
   render(
-    <MapPreview {...{previewCharacterInformation}} />
+    <BrowserRouter>
+      <MapPreview {...{previewCharacterInformation}} />
+    </BrowserRouter>
   );
 
   const previewCharactersContainer = screen.getByTestId('previewCharactersContainer')

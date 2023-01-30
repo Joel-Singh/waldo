@@ -1,5 +1,7 @@
+import { Link } from "react-router-dom";
+import PropTypes from "prop-types";
 function MapPreview(props) {
-  const { previewCharacterInformation, mapImage } = props;
+  const { previewCharacterInformation, mapImage, mapPath } = props;
 
   return (
     <div>
@@ -9,6 +11,9 @@ function MapPreview(props) {
           createPreviewCharacterHTML(previewCharacter)
         )}
       </div>
+      <Link to={"/" + mapPath}>
+        <button type="buton">START</button>
+      </Link>
     </div>
   );
   function createPreviewCharacterHTML(previewCharacter) {
@@ -21,5 +26,10 @@ function MapPreview(props) {
     );
   }
 }
+
+const possibleMapPaths = ["placeholder1", "placeholder2"];
+MapPreview.propTypes = {
+  mapURL: PropTypes.oneOf(possibleMapPaths),
+};
 
 export default MapPreview;
