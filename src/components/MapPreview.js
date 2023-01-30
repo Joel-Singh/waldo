@@ -17,6 +17,7 @@ function MapPreview(props) {
       </Link>
     </div>
   );
+
   function createPreviewCharacterHTML(previewCharacter) {
     const { name, image } = previewCharacter;
     return (
