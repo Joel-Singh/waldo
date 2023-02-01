@@ -31,7 +31,7 @@ function MapPreview(props) {
 
 const possibleMapPaths = ["placeholder1", "placeholder2"];
 MapPreview.propTypes = {
-  mapURL: PropTypes.oneOf(possibleMapPaths),
+  mapPath: PropTypes.oneOf(possibleMapPaths),
 };
 
 export default MapPreview;
