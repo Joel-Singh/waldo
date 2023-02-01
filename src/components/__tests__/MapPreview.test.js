@@ -11,7 +11,12 @@ it("properly renders preview characters", () => {
 
   render(
     <BrowserRouter>
-      <MapPreview {...{previewCharacterInformation}} />
+      <MapPreview
+        mapPath="placeholder1"
+        mapName="placeholder"
+        mapImage="placeholder"
+        {...{previewCharacterInformation}}
+      />
     </BrowserRouter>
   );
 
