@@ -12,6 +12,7 @@ function CharacterPicker(props) {
       className={"character-picker" + visibleClass}
       data-x={location.x}
       data-y={location.y}
+      data-testid='character-picker'
     >
       {buttonsFromCharacterNames(characterNames)}
     </div>
