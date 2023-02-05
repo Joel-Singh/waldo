@@ -14,4 +14,7 @@ export default function initializeFirebase() {
 
   const app = initializeApp(firebaseConfig);;
   const database = getDatabase(app);
+  if (location.hostname === "localhost") {
+    connectDatabaseEmulator(db, "localhost", 9000);
+  }
 }
