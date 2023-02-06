@@ -29,7 +29,7 @@ function MapPreview(props) {
   }
 }
 
-const possibleMapPaths = ["placeholder1", "placeholder2"];
+const possibleMapPaths = ["placeholder1", "maze", "snow", "beach"];
 MapPreview.propTypes = {
   mapPath: PropTypes.oneOf(possibleMapPaths).isRequired,
   mapName: PropTypes.string.isRequired,
