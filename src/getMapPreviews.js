@@ -16,7 +16,7 @@ import mazeMap from "./assets/maps/maze.jpg";
 import beachMap from "./assets/maps/beach.jpg";
 import snowMap from "./assets/maps/snow.jpg";
 
-export default getMapPreviews = () => ({
+const getMapPreviews = () => ({
   mazeMapPreview: (
     <MapPreview
       mapName="Maze"
@@ -81,3 +81,5 @@ export default getMapPreviews = () => ({
     />
   ),
 });
+
+export default getMapPreviews
