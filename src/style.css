@@ -1,3 +1,5 @@
+/* TODO: Add some fonts */
+
 body {
   margin: 0px;
 }
@@ -29,6 +31,8 @@ body {
 .map-preview__character-container {
   display: flex;
   justify-content: center;
+  gap: 50px;
+  margin-top: 15px;
 }
 
 .map-preview__map-image  {
@@ -39,6 +43,11 @@ body {
   display: flex;
   flex-direction: column;
   align-items: center;
+  width: 100px;
+}
+
+.preview-character__name {
+  text-align: center;
 }
 
 .preview-character > img {
