@@ -1,10 +1,22 @@
+body {
+  margin: 0px;
+}
+
+.App {
+  height: 100vh;
+  outline-color: red;
+  outline-style: solid;
+}
+
 .map-preview__map-image  {
-  height: 180px;
+  height: 50vh;
 }
 
 .selection-screen {
   display: grid;
-  grid-template-columns: 1fr 1fr 1fr;
+  grid-template-columns: 1fr 4fr 1fr;
+  align-items: center;
+  height: 100%;
 }
 
 .map-preview__character-container {
@@ -26,4 +38,9 @@
   display: flex;
   flex-direction: column;
   align-items: center;
+}
+
+.selection-screen > button {
+  height: 50px;
+  margin: 15px;
 }
