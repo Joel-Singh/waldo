@@ -21,8 +21,6 @@ function App() {
             />
           }
         />
-      </Routes>
-      <Routes>
         <Route path="/maze" element={mazeGamescreen} />
         <Route path="/beach" element={beachGamescreen} />
         <Route path="/snow" element={snowGamescreen} />
