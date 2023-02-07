@@ -1,18 +1,19 @@
 import { Route, Routes } from "react-router-dom";
 import Gamescreen from "./components/Gamescreen";
 import SelectionScreen from "./components/SelectionScreen";
-
+import getMapPreviews from "./getMapPreviews.js";
 
 function App() {
   const mazeGamescreen = <Gamescreen />;
   const beachGamescreen = <Gamescreen />;
   const snowGamescreen = <Gamescreen />;
+
+  const { mazeMapPreview, beachMapPreview, snowMapPreview } = getMapPreviews();
   return (
     <div className="App">
       <Routes>
         <Route path="*" element={null}/>
-        {/* Add map previews to this selection screen */}
-        <Route path="/" element={<SelectionScreen />}/>
+        <Route path="/" element={<SelectionScreen mapPreviews={[mazeMapPreview, beachMapPreview, snowMapPreview]} />}/>
       </ Routes>
       <Routes>
         <Route path="/maze" element={mazeGamescreen}/>
