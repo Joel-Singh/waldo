@@ -8,10 +8,6 @@ body {
   outline-style: solid;
 }
 
-.map-preview__map-image  {
-  height: 50vh;
-}
-
 .selection-screen {
   display: grid;
   grid-template-columns: 1fr 4fr 1fr;
@@ -19,9 +15,9 @@ body {
   height: 100%;
 }
 
-.map-preview__character-container {
-  display: flex;
-  justify-content: center;
+.selection-screen > button {
+  height: 50px;
+  margin: 15px;
 }
 
 .map-preview {
@@ -30,8 +26,13 @@ body {
   align-items: center;
 }
 
-.preview-character > img {
-  height: 50px;
+.map-preview__character-container {
+  display: flex;
+  justify-content: center;
+}
+
+.map-preview__map-image  {
+  height: 50vh;
 }
 
 .preview-character {
@@ -40,7 +41,6 @@ body {
   align-items: center;
 }
 
-.selection-screen > button {
+.preview-character > img {
   height: 50px;
-  margin: 15px;
 }
