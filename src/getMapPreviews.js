@@ -9,7 +9,7 @@ import shovelBoy from "./assets/characters/beach/shovel_boy.jpg";
 import dog from "./assets/characters/beach/dog.jpg";
 
 import snowWaldo from "./assets/characters/snow/waldo.jpg";
-import ouch from "./assets/characters/snow/ouch!.jpg";
+import ouch from "./assets/characters/snow/ouch.jpg";
 import monster from "./assets/characters/snow/monster.jpg";
 
 import mazeMap from "./assets/maps/maze.jpg";
