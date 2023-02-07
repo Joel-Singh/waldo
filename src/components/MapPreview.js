@@ -4,16 +4,16 @@ function MapPreview(props) {
   const { mapName, previewCharacterInformation, mapImage, mapPath } = props;
 
   return (
-    <div>
-      <div aria-label="title">{mapName}</div>
+    <div className="map-preview">
+      <div aria-label="title" className="map-preview__title">{mapName}</div>
       <img src={mapImage} />
-      <div data-testid="previewCharactersContainer">
+      <div data-testid="previewCharactersContainer" className="map-preview__character-container">
         {previewCharacterInformation.map((previewCharacter) =>
           createPreviewCharacterHTML(previewCharacter)
         )}
       </div>
       <Link to={"/" + mapPath}>
-        <button type="buton">START</button>
+        <button type="buton" className="map-preview__start-btn">START</button>
       </Link>
     </div>
   );
@@ -21,9 +21,9 @@ function MapPreview(props) {
   function createPreviewCharacterHTML(previewCharacter) {
     const { name, image } = previewCharacter;
     return (
-      <div key={name}>
+      <div key={name} className="preview-character">
         <img src={image} />
-        <div>{name}</div>
+        <div className="preview-character__name">{name}</div>
       </div>
     );
   }

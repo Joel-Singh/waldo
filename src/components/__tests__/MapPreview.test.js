@@ -26,29 +26,42 @@ it("properly renders preview characters", () => {
 
   expect(previewCharactersContainer).toMatchInlineSnapshot(`
 <div
+  class="map-preview__character-container"
   data-testid="previewCharactersContainer"
 >
-  <div>
+  <div
+    class="preview-character"
+  >
     <img
       src="JoelPlaceholder"
     />
-    <div>
+    <div
+      class="preview-character__name"
+    >
       Joel
     </div>
   </div>
-  <div>
+  <div
+    class="preview-character"
+  >
     <img
       src="JanePlaceholder"
     />
-    <div>
+    <div
+      class="preview-character__name"
+    >
       Jane
     </div>
   </div>
-  <div>
+  <div
+    class="preview-character"
+  >
     <img
       src="BobPlaceholder"
     />
-    <div>
+    <div
+      class="preview-character__name"
+    >
       Bob
     </div>
   </div>
