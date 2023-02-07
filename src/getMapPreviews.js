@@ -40,7 +40,7 @@ const getMapPreviews = () => ({
   ),
   beachMapPreview: (
     <MapPreview
-      mapName="beach"
+      mapName="Beach"
       mapImage={beachMap}
       mapPath="beach"
       previewCharacterInformation={[
