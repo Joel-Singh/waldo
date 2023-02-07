@@ -2,6 +2,7 @@ import { Route, Routes } from "react-router-dom";
 import Gamescreen from "./components/Gamescreen";
 import SelectionScreen from "./components/SelectionScreen";
 import getMapPreviews from "./getMapPreviews.js";
+import css from "./style.css"
 
 function App() {
   const mazeGamescreen = <Gamescreen />;
