@@ -2,11 +2,11 @@ import { Route, Routes } from "react-router-dom";
 import Gamescreen from "./components/Gamescreen";
 import SelectionScreen from "./components/SelectionScreen";
 
-const mazeGamescreen = <Gamescreen />;
-const beachGamescreen = <Gamescreen />;
-const snowGamescreen = <Gamescreen />;
 
 function App() {
+  const mazeGamescreen = <Gamescreen />;
+  const beachGamescreen = <Gamescreen />;
+  const snowGamescreen = <Gamescreen />;
   return (
     <div className="App">
       <Routes>
