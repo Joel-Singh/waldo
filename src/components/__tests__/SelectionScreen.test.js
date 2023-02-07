@@ -109,7 +109,7 @@ test("next button wraps to first map", () => {
   userEvent.click(nextButton);
 
   const mapDisplayed = screen.getByLabelText("title").textContent;
-  expect(mapDisplayed).toBe('space');
+  expect(mapDisplayed).toBe("space");
 });
 
 test("previous button switches map", () => {
@@ -168,5 +168,5 @@ test("previous button wraps around", () => {
   userEvent.click(previousButton);
 
   const mapDisplayed = screen.getByLabelText("title").textContent;
-  expect(mapDisplayed).toBe('space');
+  expect(mapDisplayed).toBe("space");
 });

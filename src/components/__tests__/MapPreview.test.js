@@ -15,12 +15,14 @@ it("properly renders preview characters", () => {
         mapPath="placeholder1"
         mapName="placeholder"
         mapImage="placeholder"
-        {...{previewCharacterInformation}}
+        {...{ previewCharacterInformation }}
       />
     </BrowserRouter>
   );
 
-  const previewCharactersContainer = screen.getByTestId('previewCharactersContainer')
+  const previewCharactersContainer = screen.getByTestId(
+    "previewCharactersContainer"
+  );
 
   expect(previewCharactersContainer).toMatchInlineSnapshot(`
 <div

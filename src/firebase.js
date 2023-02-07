@@ -1,4 +1,9 @@
-import { getDatabase, ref, set, connectDatabaseEmulator } from "firebase/database";
+import {
+  getDatabase,
+  ref,
+  set,
+  connectDatabaseEmulator,
+} from "firebase/database";
 import { initializeApp } from "firebase/app";
 
 let db;
@@ -19,11 +24,11 @@ export default function initializeFirebase() {
 }
 
 export function testDatabaseSetting() {
-  set(ref(db, 'users/37'), {
-    username: 'Joel',
-    email: 'joelsingh788@gmail.com',
-    profile_picture: 'penisman',
-  })
+  set(ref(db, "users/37"), {
+    username: "Joel",
+    email: "joelsingh788@gmail.com",
+    profile_picture: "penisman",
+  });
 }
 
 //TODO: Final app won't have this function
@@ -32,24 +37,25 @@ export function addCharacterCoordsToDatabase() {
   const characterCoords = [
     {
       name: "name1",
-      coords: {x: 28, y: 10}
+      coords: { x: 28, y: 10 },
     },
     {
       name: "name2",
-      coords: {x: 86, y: 30}
+      coords: { x: 86, y: 30 },
     },
     {
       name: "name3",
-      coords: {x: 21, y: 90}
+      coords: { x: 21, y: 90 },
     },
-  ]
+  ];
 
-  characterCoords.forEach(({name, coords}) => {
-    addSingleCharacterCoordToDatabase(name, coords)
-  })
+  characterCoords.forEach(({ name, coords }) => {
+    addSingleCharacterCoordToDatabase(name, coords);
+  });
 
   function addSingleCharacterCoordToDatabase(name, coords) {
-    set(ref(db, `characterCoordinates/${name}`), coords)
-      .catch(() => console.error("Couldn't add single character coordinate"))
+    set(ref(db, `characterCoordinates/${name}`), coords).catch(() =>
+      console.error("Couldn't add single character coordinate")
+    );
   }
 }

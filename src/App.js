@@ -12,14 +12,21 @@ function App() {
   return (
     <div className="App">
       <Routes>
-        <Route path="*" element={null}/>
-        <Route path="/" element={<SelectionScreen mapPreviews={[mazeMapPreview, beachMapPreview, snowMapPreview]} />}/>
-      </ Routes>
+        <Route path="*" element={null} />
+        <Route
+          path="/"
+          element={
+            <SelectionScreen
+              mapPreviews={[mazeMapPreview, beachMapPreview, snowMapPreview]}
+            />
+          }
+        />
+      </Routes>
       <Routes>
-        <Route path="/maze" element={mazeGamescreen}/>
-        <Route path="/beach" element={beachGamescreen}/>
-        <Route path="/snow" element={snowGamescreen}/>
-      </ Routes>
+        <Route path="/maze" element={mazeGamescreen} />
+        <Route path="/beach" element={beachGamescreen} />
+        <Route path="/snow" element={snowGamescreen} />
+      </Routes>
     </div>
   );
 }
