@@ -6,8 +6,6 @@ body {
 
 .App {
   height: 100vh;
-  outline-color: red;
-  outline-style: solid;
 }
 
 .selection-screen {
