@@ -20,16 +20,17 @@ function SelectionScreen({ mapPreviews }) {
   }
 
   return (
-    <div>
+    <div className="selection-screen">
       <button
         aria-label="previous map"
+        className="selection-screen__prev-btn"
         type="button"
         onClick={selectPreviousMap}
       >
         {"<"}-
       </button>
       {mapPreviews[selectedMapIndex]}
-      <button aria-label="next map" type="button" onClick={selectNextMap}>
+      <button className="selection-screen__next-btn" aria-label="next map" type="button" onClick={selectNextMap}>
         -{">"}
       </button>
     </div>
