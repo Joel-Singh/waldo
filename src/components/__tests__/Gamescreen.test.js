@@ -3,50 +3,56 @@ import { render, screen, pointer } from "@testing-library/react";
 import { toHaveClass } from "@testing-library/jest-dom";
 import Gamescreen from "../Gamescreen.js";
 
-test("Character picker is not initially visible", () => {
-  render(<Gamescreen />);
+describe("Character picker", () => {
+  test("is not initially visible", () => {
+    render(<Gamescreen />);
 
-  const characterPicker = screen.getByTestId("character-picker");
+    const characterPicker = screen.getByTestId("character-picker");
 
-  expect(characterPicker).not.toHaveClass("visible");
-});
+    expect(characterPicker).not.toHaveClass("visible");
+  });
 
-test("Character picker is visible after clicking on the Gamescreen", () => {
-  render(<Gamescreen />);
+  test("is visible after clicking on the Gamescreen", () => {
+    render(<Gamescreen />);
 
-  const characterPicker = screen.getByTestId("character-picker");
-  const gamescreen = screen.getByTestId("gamescreen");
+    const characterPicker = screen.getByTestId("character-picker");
+    const gamescreen = screen.getByTestId("gamescreen");
 
-  userEvent.click(gamescreen);
-  expect(characterPicker).toHaveClass("visible");
-});
+    userEvent.click(gamescreen);
+    expect(characterPicker).toHaveClass("visible");
+  });
 
-test("Character picker appears on Gamescreen after click and disappears with another click.", () => {
-  render(<Gamescreen />);
+  test("appears on Gamescreen after click and disappears with another click.", () => {
+    render(<Gamescreen />);
 
-  const characterPicker = screen.getByTestId("character-picker");
-  const gamescreen = screen.getByTestId("gamescreen");
+    const characterPicker = screen.getByTestId("character-picker");
+    const gamescreen = screen.getByTestId("gamescreen");
 
-  userEvent.click(gamescreen);
-  expect(characterPicker).toHaveClass("visible");
-  userEvent.click(gamescreen);
-  expect(characterPicker).not.toHaveClass("visible");
-});
+    userEvent.click(gamescreen);
+    expect(characterPicker).toHaveClass("visible");
+    userEvent.click(gamescreen);
+    expect(characterPicker).not.toHaveClass("visible");
+  });
 
-test("Character picker appears on clicked position", () => {
-  render(<Gamescreen />);
+  test("appears on clicked position", () => {
+    render(<Gamescreen />);
 
-  const characterPicker = screen.getByTestId("character-picker");
-  const gamescreen = screen.getByTestId("gamescreen");
+    const characterPicker = screen.getByTestId("character-picker");
+    const gamescreen = screen.getByTestId("gamescreen");
 
-  const xClickPos = 103;
-  const yClickPos = 56;
+    const xClickPos = 103;
+    const yClickPos = 56;
 
-  userEvent.click(gamescreen, { screenX: xClickPos, screenY: yClickPos });
+    userEvent.click(gamescreen, { screenX: xClickPos, screenY: yClickPos });
 
-  const characterPickerXPos = parseInt(characterPicker.getAttribute("data-x"));
-  expect(characterPickerXPos).toBe(xClickPos);
+    const characterPickerXPos = parseInt(
+      characterPicker.getAttribute("data-x")
+    );
+    expect(characterPickerXPos).toBe(xClickPos);
 
-  const characterPickerYPos = parseInt(characterPicker.getAttribute("data-y"));
-  expect(characterPickerYPos).toBe(yClickPos);
+    const characterPickerYPos = parseInt(
+      characterPicker.getAttribute("data-y")
+    );
+    expect(characterPickerYPos).toBe(yClickPos);
+  });
 });
