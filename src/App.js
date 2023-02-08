@@ -4,10 +4,14 @@ import SelectionScreen from "./components/SelectionScreen";
 import getMapPreviews from "./getMapPreviews.js";
 import css from "./style.css"
 
+import mazeMap from "./assets/maps/maze.jpg"
+import beachMap from "./assets/maps/beach.jpg"
+import snowMap from "./assets/maps/snow.jpg"
+
 function App() {
-  const mazeGamescreen = <Gamescreen />;
-  const beachGamescreen = <Gamescreen />;
-  const snowGamescreen = <Gamescreen />;
+  const mazeGamescreen = <Gamescreen img={mazeMap} />;
+  const beachGamescreen = <Gamescreen img={beachMap} />;
+  const snowGamescreen = <Gamescreen img={snowMap} />;
 
   const { mazeMapPreview, beachMapPreview, snowMapPreview } = getMapPreviews();
   return (
