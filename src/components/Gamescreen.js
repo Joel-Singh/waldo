@@ -7,10 +7,10 @@ export default function Gamescreen({ img }) {
   const [characterPickerXPos, setCharacterPickerXPos] = useState(0);
   const [characterPickerYPos, setCharacterPickerYPos] = useState(0);
 
-  function onClick(event) {
+  function onClick({ screenX, screenY}) {
     setCharacterPickerVisibility((prev) => !prev);
-    setCharacterPickerXPos(event.screenX);
-    setCharacterPickerYPos(event.screenY);
+    setCharacterPickerXPos(screenX);
+    setCharacterPickerYPos(screenY);
   }
 
   return (
