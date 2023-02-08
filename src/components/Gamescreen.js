@@ -1,7 +1,7 @@
 import CharacterPicker from "./CharacterPicker.js";
 import { useState } from "react";
 
-export default function Gamescreen() {
+export default function Gamescreen({ img }) {
   const [characterPickerVisibility, setCharacterPickerVisibility] =
     useState(false);
 
@@ -17,11 +17,12 @@ export default function Gamescreen() {
   }
 
   return (
-    <div data-testid="gamescreen" onClick={onClick}>
+    <div className="gamescreen" data-testid="gamescreen" onClick={onClick}>
       <CharacterPicker
         isVisible={characterPickerVisibility}
         location={{ x: characterPickerXPos, y: characterPickerYPos }}
       />
+      <img className="gamescreen__map" src={img} />
     </div>
   );
 }
