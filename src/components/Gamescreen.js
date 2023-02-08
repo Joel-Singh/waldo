@@ -4,9 +4,7 @@ import { useState } from "react";
 export default function Gamescreen({ img }) {
   const [characterPickerVisibility, setCharacterPickerVisibility] =
     useState(false);
-
   const [characterPickerXPos, setCharacterPickerXPos] = useState(0);
-
   const [characterPickerYPos, setCharacterPickerYPos] = useState(0);
 
   function onClick(event) {
