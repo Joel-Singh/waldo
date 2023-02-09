@@ -1,7 +1,8 @@
 import CharacterPicker from "./CharacterPicker.js";
+import CharactersOverlay from "./CharactersOverlay.js";
 import { useState } from "react";
 
-export default function Gamescreen({ img }) {
+export default function Gamescreen({ img, characters }) {
   const [characterPickerVisibility, setCharacterPickerVisibility] =
     useState(false);
   const [characterPickerXPos, setCharacterPickerXPos] = useState(0);
@@ -15,6 +16,7 @@ export default function Gamescreen({ img }) {
 
   return (
     <div className="gamescreen" data-testid="gamescreen" onClick={onClick}>
+      <CharactersOverlay characters={characters} />
       <CharacterPicker
         isVisible={characterPickerVisibility}
         location={{ x: characterPickerXPos, y: characterPickerYPos }}

@@ -3,6 +3,39 @@ import { render, screen, pointer } from "@testing-library/react";
 import { toHaveClass } from "@testing-library/jest-dom";
 import Gamescreen from "../Gamescreen.js";
 
+describe("Character Overlay", () => {
+  it("renders a single character", () => {
+    const characters = [
+      {
+        img: 'placeholder img',
+        isFound: true
+      },
+    ]
+    const { container }  = render(<Gamescreen characters={characters} />)
+    const character = container.querySelector("img[src='placeholder img']")
+    expect(character).not.toBeNull();
+  })
+
+  it("renders multiple characters", () => {
+    const characters = [
+      {
+        img: 'placeholder img 1',
+        isFound: true
+      },
+      {
+        img: 'placeholder img 2',
+        isFound: true
+      },
+    ]
+    const { container }  = render(<Gamescreen characters={characters} />)
+    const character1 = container.querySelectorAll("img[src='placeholder img 1']")
+    const character2 = container.querySelectorAll("img[src='placeholder img 2']")
+
+    expect(character1).not.toBeNull();
+    expect(character2).not.toBeNull();
+  })
+})
+
 describe("Character picker", () => {
   test("is not initially visible", () => {
     render(<Gamescreen />);
