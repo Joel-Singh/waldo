@@ -1,5 +1,4 @@
 export default function charactersOverlay({ characters }) {
-  const { img, isFound } = characters[0];
 
   return (
     <div>
