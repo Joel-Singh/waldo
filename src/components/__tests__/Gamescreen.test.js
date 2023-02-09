@@ -1,5 +1,5 @@
 import userEvent from "@testing-library/user-event";
-import { render, screen, pointer } from "@testing-library/react";
+import { render, screen } from "@testing-library/react";
 import { toHaveClass } from "@testing-library/jest-dom";
 import Gamescreen from "../Gamescreen.js";
 
