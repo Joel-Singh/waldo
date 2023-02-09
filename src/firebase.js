@@ -32,7 +32,7 @@ export function testDatabaseSetting() {
 }
 
 export function clearDatabase() {
-  set(ref(db), null)
+  return set(ref(db), null)
 }
 
 //TODO: Final app won't have this function
@@ -77,12 +77,12 @@ export function addCharacterCoordsToDatabase() {
     },
   ];
 
-  characterCoords.forEach(({ name, coords }) => {
-    addSingleCharacterCoordToDatabase(name, coords);
-  });
+  return Promise.all(characterCoords.map(({ name, coords }) =>
+    addSingleCharacterCoordToDatabase(name, coords)
+  ));
 
   function addSingleCharacterCoordToDatabase(name, coords) {
-    set(ref(db, `characterCoordinates/${name}`), coords).catch(() =>
+    return set(ref(db, `characterCoordinates/${name}`), coords).catch(() =>
       console.error("Couldn't add single character coordinate")
     );
   }
