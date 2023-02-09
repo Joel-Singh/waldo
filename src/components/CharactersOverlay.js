@@ -1,4 +1,4 @@
-export default function charactersOverlay({ characters }) {
+export default function CharactersOverlay({ characters = [] }) {
 
   return (
     <div>
