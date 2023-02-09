@@ -31,6 +31,10 @@ export function testDatabaseSetting() {
   });
 }
 
+export function clearDatabase() {
+  set(ref(db), null)
+}
+
 //TODO: Final app won't have this function
 //The character coords will already be in the database
 export function addCharacterCoordsToDatabase() {
