@@ -1,7 +1,35 @@
 import userEvent from "@testing-library/user-event";
 import { render, screen } from "@testing-library/react";
 import { toHaveClass } from "@testing-library/jest-dom";
-import Gamescreen from "../Gamescreen.js";
+import Gamescreen, { createCharacter } from "../Gamescreen.js";
+
+test("Character creator utility function", () => {
+  const characters = [
+    createCharacter("Jeff", "placeholder image 1", false),
+    createCharacter("Jane", "placeholder image 2", true),
+    createCharacter("Jeffrey", "placeholder image 3", true),
+  ]
+
+  expect(characters).toMatchInlineSnapshot(`
+Array [
+  Object {
+    "img": "placeholder image 1",
+    "isFound": false,
+    "name": "Jeff",
+  },
+  Object {
+    "img": "placeholder image 2",
+    "isFound": true,
+    "name": "Jane",
+  },
+  Object {
+    "img": "placeholder image 3",
+    "isFound": true,
+    "name": "Jeffrey",
+  },
+]
+`)
+})
 
 describe("Character Overlay", () => {
   it("renders a single character", () => {

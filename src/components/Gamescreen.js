@@ -28,6 +28,10 @@ export default function Gamescreen({ img, characters = [] }) {
   );
 }
 
+export function createCharacter(name, img, isFound) {
+  return { name, img, isFound }
+}
+
 Gamescreen.propTypes = {
   characters: PropTypes.arrayOf(
     PropTypes.shape({
