@@ -8,7 +8,8 @@ describe("Character Overlay", () => {
     const characters = [
       {
         img: 'placeholder img',
-        isFound: true
+        isFound: true,
+        name: "placeholder",
       },
     ]
     const { container }  = render(<Gamescreen characters={characters} />)
@@ -20,11 +21,13 @@ describe("Character Overlay", () => {
     const characters = [
       {
         img: 'placeholder img 1',
-        isFound: true
+        isFound: true,
+        name: "placeholder 1",
       },
       {
         img: 'placeholder img 2',
-        isFound: true
+        isFound: true,
+        name: "placeholder 2",
       },
     ]
     const { container }  = render(<Gamescreen characters={characters} />)

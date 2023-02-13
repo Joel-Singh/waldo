@@ -1,5 +1,6 @@
 import CharacterPicker from "./CharacterPicker.js";
 import CharactersOverlay from "./CharactersOverlay.js";
+import PropTypes from 'prop-types'
 import { useState } from "react";
 
 export default function Gamescreen({ img, characters }) {
@@ -25,3 +26,13 @@ export default function Gamescreen({ img, characters }) {
     </div>
   );
 }
+
+Gamescreen.propTypes = {
+  characters: PropTypes.arrayOf(
+    PropTypes.shape({
+      img: PropTypes.string.isRequired,
+      isFound: PropTypes.bool.isRequired,
+      name: PropTypes.string.isRequired,
+    })
+  ),
+};
