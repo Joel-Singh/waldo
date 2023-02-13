@@ -3,7 +3,7 @@ import CharactersOverlay from "./CharactersOverlay.js";
 import PropTypes from 'prop-types'
 import { useState } from "react";
 
-export default function Gamescreen({ img, characters }) {
+export default function Gamescreen({ img, characters = [] }) {
   const [characterPickerVisibility, setCharacterPickerVisibility] =
     useState(false);
   const [characterPickerXPos, setCharacterPickerXPos] = useState(0);
@@ -21,6 +21,7 @@ export default function Gamescreen({ img, characters }) {
       <CharacterPicker
         isVisible={characterPickerVisibility}
         location={{ x: characterPickerXPos, y: characterPickerYPos }}
+        characterNames={characters.map((character) => character.name)}
       />
       <img className="gamescreen__map" src={img} />
     </div>

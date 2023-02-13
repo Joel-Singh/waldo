@@ -91,4 +91,53 @@ describe("Character picker", () => {
     );
     expect(characterPickerYPos).toBe(yClickPos);
   });
+
+  test("is rendered in Gamescreen", () => {
+    const characters = [
+      {
+        img: "placeholder1",
+        isFound: false,
+        name: "Jane",
+      },
+      {
+        img: "placeholder2",
+        isFound: false,
+        name: "Doe",
+      },
+      {
+        img: "placeholder3",
+        isFound: false,
+        name: "Jeff",
+      },
+    ]
+
+    render(<Gamescreen characters={characters} />);
+    const characterPicker = screen.getByTestId('character-picker')
+
+    expect(characterPicker).toMatchInlineSnapshot
+      (`
+<div
+  class="character-picker"
+  data-testid="character-picker"
+  data-x="0"
+  data-y="0"
+>
+  <button
+    type="button"
+  >
+    Jane
+  </button>
+  <button
+    type="button"
+  >
+    Doe
+  </button>
+  <button
+    type="button"
+  >
+    Jeff
+  </button>
+</div>
+`)
+  });
 });
