@@ -1,17 +1,16 @@
 import { Route, Routes } from "react-router-dom";
+import { getGamescreens } from "./componentInstantiations";
 import Gamescreen from "./components/Gamescreen";
 import SelectionScreen from "./components/SelectionScreen";
 import { getMapPreviews } from "./componentInstantiations";
 import css from "./style.css";
 
-import mazeMap from "./assets/maps/maze.jpg";
-import beachMap from "./assets/maps/beach.jpg";
-import snowMap from "./assets/maps/snow.jpg";
-
 function App() {
-  const mazeGamescreen = <Gamescreen img={mazeMap} />;
-  const beachGamescreen = <Gamescreen img={beachMap} />;
-  const snowGamescreen = <Gamescreen img={snowMap} />;
+  const {
+    maze: mazeGamescreen,
+    beach: beachGamescreen,
+    snow: snowGamescreen,
+  } = getGamescreens();
 
   const { mazeMapPreview, beachMapPreview, snowMapPreview } = getMapPreviews();
   return (

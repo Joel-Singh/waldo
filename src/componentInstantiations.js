@@ -1,4 +1,5 @@
 import MapPreview from "./components/MapPreview";
+import Gamescreen from "./components/Gamescreen";
 
 import mazeWaldo from "./assets/characters/maze/waldo.jpg";
 import birdPerson from "./assets/characters/maze/bird_person.jpg";
@@ -82,4 +83,11 @@ const getMapPreviews = () => ({
   ),
 });
 
-export { getMapPreviews }
+const getGamescreens = () => ({
+  maze: (<Gamescreen img={mazeMap} />),
+  beach: (<Gamescreen img={beachMap} />),
+  snow: (<Gamescreen img={snowMap} />),
+});
+
+
+export { getMapPreviews, getGamescreens }
