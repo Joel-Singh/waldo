@@ -82,4 +82,4 @@ const getMapPreviews = () => ({
   ),
 });
 
-export default getMapPreviews
+export default getMapPreviews;

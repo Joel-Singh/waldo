@@ -5,15 +5,22 @@ function MapPreview(props) {
 
   return (
     <div className="map-preview">
-      <div aria-label="title" className="map-preview__title">{mapName}</div>
-      <img src={mapImage} className="map-preview__map-image"/>
-      <div data-testid="previewCharactersContainer" className="map-preview__character-container">
+      <div aria-label="title" className="map-preview__title">
+        {mapName}
+      </div>
+      <img src={mapImage} className="map-preview__map-image" />
+      <div
+        data-testid="previewCharactersContainer"
+        className="map-preview__character-container"
+      >
         {previewCharacterInformation.map((previewCharacter) =>
           createPreviewCharacterHTML(previewCharacter)
         )}
       </div>
       <Link to={"/" + mapPath}>
-        <button type="buton" className="map-preview__start-btn">START</button>
+        <button type="buton" className="map-preview__start-btn">
+          START
+        </button>
       </Link>
     </div>
   );

@@ -1,5 +1,4 @@
 export default function CharactersOverlay({ characters = [] }) {
-
   return (
     <div>
       {characters.map(({ img, isFound }) => {

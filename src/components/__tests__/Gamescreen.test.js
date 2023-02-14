@@ -8,7 +8,7 @@ test("Character creator utility function", () => {
     createCharacter("Jeff", "placeholder image 1", false),
     createCharacter("Jane", "placeholder image 2", true),
     createCharacter("Jeffrey", "placeholder image 3", true),
-  ]
+  ];
 
   expect(characters).toMatchInlineSnapshot(`
 Array [
@@ -28,44 +28,48 @@ Array [
     "name": "Jeffrey",
   },
 ]
-`)
-})
+`);
+});
 
 describe("Character Overlay", () => {
   it("renders a single character", () => {
     const characters = [
       {
-        img: 'placeholder img',
+        img: "placeholder img",
         isFound: true,
         name: "placeholder",
       },
-    ]
-    const { container }  = render(<Gamescreen characters={characters} />)
-    const character = container.querySelector("img[src='placeholder img']")
+    ];
+    const { container } = render(<Gamescreen characters={characters} />);
+    const character = container.querySelector("img[src='placeholder img']");
     expect(character).not.toBeNull();
-  })
+  });
 
   it("renders multiple characters", () => {
     const characters = [
       {
-        img: 'placeholder img 1',
+        img: "placeholder img 1",
         isFound: true,
         name: "placeholder 1",
       },
       {
-        img: 'placeholder img 2',
+        img: "placeholder img 2",
         isFound: true,
         name: "placeholder 2",
       },
-    ]
-    const { container }  = render(<Gamescreen characters={characters} />)
-    const character1 = container.querySelectorAll("img[src='placeholder img 1']")
-    const character2 = container.querySelectorAll("img[src='placeholder img 2']")
+    ];
+    const { container } = render(<Gamescreen characters={characters} />);
+    const character1 = container.querySelectorAll(
+      "img[src='placeholder img 1']"
+    );
+    const character2 = container.querySelectorAll(
+      "img[src='placeholder img 2']"
+    );
 
     expect(character1).not.toBeNull();
     expect(character2).not.toBeNull();
-  })
-})
+  });
+});
 
 describe("Character picker", () => {
   test("is not initially visible", () => {
@@ -137,13 +141,12 @@ describe("Character picker", () => {
         isFound: false,
         name: "Jeff",
       },
-    ]
+    ];
 
     render(<Gamescreen characters={characters} />);
-    const characterPicker = screen.getByTestId('character-picker')
+    const characterPicker = screen.getByTestId("character-picker");
 
-    expect(characterPicker).toMatchInlineSnapshot
-      (`
+    expect(characterPicker).toMatchInlineSnapshot(`
 <div
   class="character-picker"
   data-testid="character-picker"
@@ -166,6 +169,6 @@ describe("Character picker", () => {
     Jeff
   </button>
 </div>
-`)
+`);
   });
 });

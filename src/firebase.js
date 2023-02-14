@@ -32,7 +32,7 @@ export function testDatabaseSetting() {
 }
 
 export function clearDatabase() {
-  return set(ref(db), null)
+  return set(ref(db), null);
 }
 
 //TODO: Final app won't have this function
@@ -61,7 +61,7 @@ export function addCharacterCoordsToDatabase() {
     },
     {
       name: "yellowHairPerson",
-      coords: { x: 1929, y: 209 }
+      coords: { x: 1929, y: 209 },
     },
     {
       name: "snowWaldo",
@@ -77,9 +77,11 @@ export function addCharacterCoordsToDatabase() {
     },
   ];
 
-  return Promise.all(characterCoords.map(({ name, coords }) =>
-    addSingleCharacterCoordToDatabase(name, coords)
-  ));
+  return Promise.all(
+    characterCoords.map(({ name, coords }) =>
+      addSingleCharacterCoordToDatabase(name, coords)
+    )
+  );
 
   function addSingleCharacterCoordToDatabase(name, coords) {
     return set(ref(db, `characterCoordinates/${name}`), coords).catch(() =>

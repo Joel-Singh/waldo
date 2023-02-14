@@ -2,11 +2,11 @@ import { Route, Routes } from "react-router-dom";
 import Gamescreen from "./components/Gamescreen";
 import SelectionScreen from "./components/SelectionScreen";
 import getMapPreviews from "./getMapPreviews.js";
-import css from "./style.css"
+import css from "./style.css";
 
-import mazeMap from "./assets/maps/maze.jpg"
-import beachMap from "./assets/maps/beach.jpg"
-import snowMap from "./assets/maps/snow.jpg"
+import mazeMap from "./assets/maps/maze.jpg";
+import beachMap from "./assets/maps/beach.jpg";
+import snowMap from "./assets/maps/snow.jpg";
 
 function App() {
   const mazeGamescreen = <Gamescreen img={mazeMap} />;

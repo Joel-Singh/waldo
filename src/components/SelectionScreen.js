@@ -30,7 +30,12 @@ function SelectionScreen({ mapPreviews }) {
         {"<"}-
       </button>
       {mapPreviews[selectedMapIndex]}
-      <button className="selection-screen__next-btn" aria-label="next map" type="button" onClick={selectNextMap}>
+      <button
+        className="selection-screen__next-btn"
+        aria-label="next map"
+        type="button"
+        onClick={selectNextMap}
+      >
         -{">"}
       </button>
     </div>

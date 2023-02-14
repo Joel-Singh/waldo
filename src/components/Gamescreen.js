@@ -1,6 +1,6 @@
 import CharacterPicker from "./CharacterPicker.js";
 import CharactersOverlay from "./CharactersOverlay.js";
-import PropTypes from 'prop-types'
+import PropTypes from "prop-types";
 import { useState } from "react";
 
 export default function Gamescreen({ img, characters = [] }) {
@@ -9,7 +9,7 @@ export default function Gamescreen({ img, characters = [] }) {
   const [characterPickerXPos, setCharacterPickerXPos] = useState(0);
   const [characterPickerYPos, setCharacterPickerYPos] = useState(0);
 
-  function onClick({ screenX, screenY}) {
+  function onClick({ screenX, screenY }) {
     setCharacterPickerVisibility((prev) => !prev);
     setCharacterPickerXPos(screenX);
     setCharacterPickerYPos(screenY);
@@ -29,7 +29,7 @@ export default function Gamescreen({ img, characters = [] }) {
 }
 
 export function createCharacter(name, img, isFound) {
-  return { name, img, isFound }
+  return { name, img, isFound };
 }
 
 Gamescreen.propTypes = {

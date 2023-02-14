@@ -82,25 +82,31 @@ it("assigns found class to characters who's isFound is true", () => {
   const characters = [
     {
       img: "image placeholder 1",
-      isFound: true
+      isFound: true,
     },
     {
       img: "image placeholder 2",
-      isFound: false
+      isFound: false,
     },
     {
       img: "image placeholder 3",
-      isFound: true
+      isFound: true,
     },
   ];
   const { container } = render(<CharactersOverly characters={characters} />);
   const charactersOverlay = container.firstChild;
 
-  const firstCharacter = charactersOverlay.querySelector("img[src='image placeholder 1']")
-  const secondCharacter = charactersOverlay.querySelector("img[src='image placeholder 2']")
-  const thirdCharacter = charactersOverlay.querySelector("img[src='image placeholder 3']")
+  const firstCharacter = charactersOverlay.querySelector(
+    "img[src='image placeholder 1']"
+  );
+  const secondCharacter = charactersOverlay.querySelector(
+    "img[src='image placeholder 2']"
+  );
+  const thirdCharacter = charactersOverlay.querySelector(
+    "img[src='image placeholder 3']"
+  );
 
-  expect(firstCharacter).toHaveClass('found')
-  expect(secondCharacter).not.toHaveClass('found')
-  expect(thirdCharacter).toHaveClass('found')
+  expect(firstCharacter).toHaveClass("found");
+  expect(secondCharacter).not.toHaveClass("found");
+  expect(thirdCharacter).toHaveClass("found");
 });
