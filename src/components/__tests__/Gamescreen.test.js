@@ -34,11 +34,7 @@ Array [
 describe("Character Overlay", () => {
   it("renders a single character", () => {
     const characters = [
-      {
-        img: "placeholder img",
-        isFound: true,
-        name: "placeholder",
-      },
+      createCharacter("placeholder", "placeholder img", true)
     ];
     const { container } = render(<Gamescreen characters={characters} />);
     const character = container.querySelector("img[src='placeholder img']");
@@ -47,17 +43,10 @@ describe("Character Overlay", () => {
 
   it("renders multiple characters", () => {
     const characters = [
-      {
-        img: "placeholder img 1",
-        isFound: true,
-        name: "placeholder 1",
-      },
-      {
-        img: "placeholder img 2",
-        isFound: true,
-        name: "placeholder 2",
-      },
+      createCharacter("placeholder 1", "placeholder img 1", true),
+      createCharacter("placeholder 2", "placeholder img 2", true),
     ];
+
     const { container } = render(<Gamescreen characters={characters} />);
     const character1 = container.querySelectorAll(
       "img[src='placeholder img 1']"
@@ -126,21 +115,9 @@ describe("Character picker", () => {
 
   test("is rendered in Gamescreen", () => {
     const characters = [
-      {
-        img: "placeholder1",
-        isFound: false,
-        name: "Jane",
-      },
-      {
-        img: "placeholder2",
-        isFound: false,
-        name: "Doe",
-      },
-      {
-        img: "placeholder3",
-        isFound: false,
-        name: "Jeff",
-      },
+      createCharacter("Jane", "placeholder1", false),
+      createCharacter("Doe", "placeholder2", false),
+      createCharacter("Jeff", "placeholder3", false),
     ];
 
     render(<Gamescreen characters={characters} />);
