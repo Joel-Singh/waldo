@@ -1,5 +1,5 @@
 import MapPreview from "./components/MapPreview";
-import Gamescreen from "./components/Gamescreen";
+import Gamescreen, { createCharacter } from "./components/Gamescreen";
 
 import mazeWaldo from "./assets/characters/maze/waldo.jpg";
 import birdPerson from "./assets/characters/maze/bird_person.jpg";
@@ -84,10 +84,36 @@ const getMapPreviews = () => ({
 });
 
 const getGamescreens = () => ({
-  maze: (<Gamescreen img={mazeMap} />),
-  beach: (<Gamescreen img={beachMap} />),
-  snow: (<Gamescreen img={snowMap} />),
+  maze: (
+    <Gamescreen
+      img={mazeMap}
+      characters={[
+        createCharacter("Waldo", mazeWaldo, false),
+        createCharacter("Bird Person", birdPerson, false),
+        createCharacter("Yellow Hair Person", yellowHairPerson, false)
+      ]}
+    />
+  ),
+  beach: (
+    <Gamescreen
+      img={beachMap}
+      characters={[
+        createCharacter("Waldo", beachWaldo, false),
+        createCharacter("Shovel Boy", shovelBoy, false),
+        createCharacter("Dog", dog, false)
+      ]}
+    />
+  ),
+  snow: (
+    <Gamescreen
+      img={snowMap}
+      characters={[
+        createCharacter("Waldo", snowWaldo, false),
+        createCharacter("Ouch!", shovelBoy, false),
+        createCharacter("Monster", dog, false)
+      ]}
+    />
+  ),
 });
 
-
-export { getMapPreviews, getGamescreens }
+export { getMapPreviews, getGamescreens };
