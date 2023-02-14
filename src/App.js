@@ -1,7 +1,7 @@
 import { Route, Routes } from "react-router-dom";
 import Gamescreen from "./components/Gamescreen";
 import SelectionScreen from "./components/SelectionScreen";
-import getMapPreviews from "./getMapPreviews.js";
+import { getMapPreviews } from "./componentInstantiations";
 import css from "./style.css";
 
 import mazeMap from "./assets/maps/maze.jpg";
