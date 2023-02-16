@@ -22,34 +22,36 @@ export default function initializeFirebase() {
   const app = initializeApp(firebaseConfig);
   db = getDatabase(app);
   connectDatabaseEmulator(db, "127.0.0.1", 9000);
-}
 
-export function testDatabaseSetting() {
-  set(ref(db, "users/37"), {
-    username: "Joel",
-    email: "joelsingh788@gmail.com",
-    profile_picture: "penisman",
-  });
-}
-
-export function clearDatabase() {
-  return set(ref(db), null);
-}
-
-//TODO: Final app won't have this function
-//The character coords will already be in the database
-export function addCharacterCoordsToDatabase() {
-  const characterCoords = characterCoords
-
-  return Promise.all(
-    characterCoords.map(({ name, coords }) =>
-      addSingleCharacterCoordToDatabase(name, coords)
-    )
-  );
-
-  function addSingleCharacterCoordToDatabase(name, coords) {
-    return set(ref(db, `characterCoordinates/${name}`), coords).catch(() =>
-      console.error("Couldn't add single character coordinate")
-    );
+  function testDatabaseSetting() {
+    set(ref(db, "users/37"), {
+      username: "Joel",
+      email: "joelsingh788@gmail.com",
+      profile_picture: "penisman",
+    });
   }
+
+  function clearDatabase() {
+    return set(ref(db), null);
+  }
+
+  //TODO: Final app won't have this function
+  //The character coords will already be in the database
+  function addCharacterCoordsToDatabase() {
+    const characterCoords = characterCoords;
+
+    return Promise.all(
+      characterCoords.map(({ name, coords }) =>
+        addSingleCharacterCoordToDatabase(name, coords)
+      )
+    );
+
+    function addSingleCharacterCoordToDatabase(name, coords) {
+      return set(ref(db, `characterCoordinates/${name}`), coords).catch(() =>
+        console.error("Couldn't add single character coordinate")
+      );
+    }
+  }
+
+  return { testDatabaseSetting, clearDatabase, addCharacterCoordsToDatabase };
 }
