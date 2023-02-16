@@ -21,7 +21,7 @@ export default function initializeFirebase() {
 
   const app = initializeApp(firebaseConfig);
   db = getDatabase(app);
-  connectDatabaseEmulator(db, "localhost", 9000);
+  connectDatabaseEmulator(db, "127.0.0.1", 9000);
 }
 
 export function testDatabaseSetting() {
