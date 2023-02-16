@@ -5,6 +5,7 @@ import {
   connectDatabaseEmulator,
 } from "firebase/database";
 import { initializeApp } from "firebase/app";
+import { characterCoords } from "./constants";
 
 let db;
 export default function initializeFirebase() {
@@ -38,44 +39,7 @@ export function clearDatabase() {
 //TODO: Final app won't have this function
 //The character coords will already be in the database
 export function addCharacterCoordsToDatabase() {
-  const characterCoords = [
-    {
-      name: "beachWaldo",
-      coords: { x: 1286, y: 1637 },
-    },
-    {
-      name: "shovelBoy",
-      coords: { x: 2725, y: 1090 },
-    },
-    {
-      name: "dog",
-      coords: { x: 2153, y: 576 },
-    },
-    {
-      name: "mazeWaldo",
-      coords: { x: 1377, y: 653 },
-    },
-    {
-      name: "birdPerson",
-      coords: { x: 1435, y: 687 },
-    },
-    {
-      name: "yellowHairPerson",
-      coords: { x: 1929, y: 209 },
-    },
-    {
-      name: "snowWaldo",
-      coords: { x: 2561, y: 1419 },
-    },
-    {
-      name: "ouch",
-      coords: { x: 2313, y: 1087 },
-    },
-    {
-      name: "monster",
-      coords: { x: 2798, y: 224 },
-    },
-  ];
+  const characterCoords = characterCoords
 
   return Promise.all(
     characterCoords.map(({ name, coords }) =>
