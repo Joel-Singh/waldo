@@ -3,6 +3,43 @@ import { render, screen } from "@testing-library/react";
 import { toHaveClass } from "@testing-library/jest-dom";
 import Gamescreen, { createCharacter } from "../Gamescreen.js";
 
+import initializeFirebase, {
+  addCharacterCoordsToDatabase,
+  clearDatabase,
+} from "../../firebase.js";
+import { getGamescreens } from "../../componentInstantiations.js";
+
+describe("Choosing a character", () => {
+  //TODO: A test for clicking in the radius of a character
+  // Have a firebase function isCharacterAtPositionWithinRadius({x: 123, y: 903}, 90)
+  beforeAll(async () => {
+    const { clearDatabase } = initializeFirebase();
+    await clearDatabase();
+  });
+
+  function chooseCharacter(name, xPos, yPos) {
+    const gamescreen = screen.getByTestId("gamescreen");
+    userEvent.click(gamescreen, { screenX: xPos, screenY: yPos });
+
+    const charBtn = screen.getByText(name);
+    userEvent.click(charBtn);
+  }
+
+  function isCharacterFound(name) {
+    const characterOverlay = screen.getByAltText(name);
+    return characterOverlay.classList.contains("found");
+  }
+
+  test("at the wrong position doesn't mark them as found", () => {
+    const { maze } = getGamescreens();
+    render(maze);
+
+    chooseCharacter("Waldo", 89, 36);
+
+    expect(isCharacterFound("Waldo")).toBe(false);
+  });
+});
+
 test("Character creator utility function", () => {
   const characters = [
     createCharacter("Jeff", "placeholder image 1", false),
