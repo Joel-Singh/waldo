@@ -38,8 +38,6 @@ export default function initializeFirebase() {
   //TODO: Final app won't have this function
   //The character coords will already be in the database
   function addCharacterCoordsToDatabase() {
-    const characterCoords = characterCoords;
-
     return Promise.all(
       characterCoords.map(({ name, coords }) =>
         addSingleCharacterCoordToDatabase(name, coords)
