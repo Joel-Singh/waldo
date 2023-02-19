@@ -17,7 +17,9 @@ export default function Gamescreen({ img, characters = [] }) {
 
   return (
     <div className="gamescreen" data-testid="gamescreen" onClick={onClick}>
-      <CharactersOverlay characters={characters} />
+      <CharactersOverlay
+        characters={characters.map((char) => ({ ...char, isFound: false }))}
+      />
       <CharacterPicker
         isVisible={characterPickerVisibility}
         location={{ x: characterPickerXPos, y: characterPickerYPos }}
@@ -28,15 +30,18 @@ export default function Gamescreen({ img, characters = [] }) {
   );
 }
 
-export function createCharacter(name, img, isFound) {
-  return { name, img, isFound };
+export function createCharacter(name, img) {
+  return { name, img };
+}
+
+function cloneObjArr(obj) {
+  return JSON.parse(JSON.stringify(obj));
 }
 
 Gamescreen.propTypes = {
   characters: PropTypes.arrayOf(
     PropTypes.shape({
       img: PropTypes.string.isRequired,
-      isFound: PropTypes.bool.isRequired,
       name: PropTypes.string.isRequired,
     })
   ),

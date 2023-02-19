@@ -88,9 +88,9 @@ const getGamescreens = () => ({
     <Gamescreen
       img={mazeMap}
       characters={[
-        createCharacter("Waldo", mazeWaldo, false),
-        createCharacter("Bird Person", birdPerson, false),
-        createCharacter("Yellow Hair Person", yellowHairPerson, false)
+        createCharacter("Waldo", mazeWaldo),
+        createCharacter("Bird Person", birdPerson),
+        createCharacter("Yellow Hair Person", yellowHairPerson)
       ]}
     />
   ),
@@ -98,9 +98,9 @@ const getGamescreens = () => ({
     <Gamescreen
       img={beachMap}
       characters={[
-        createCharacter("Waldo", beachWaldo, false),
-        createCharacter("Shovel Boy", shovelBoy, false),
-        createCharacter("Dog", dog, false)
+        createCharacter("Waldo", beachWaldo),
+        createCharacter("Shovel Boy", shovelBoy),
+        createCharacter("Dog", dog)
       ]}
     />
   ),
@@ -108,9 +108,9 @@ const getGamescreens = () => ({
     <Gamescreen
       img={snowMap}
       characters={[
-        createCharacter("Waldo", snowWaldo, false),
-        createCharacter("Ouch!", shovelBoy, false),
-        createCharacter("Monster", dog, false)
+        createCharacter("Waldo", snowWaldo),
+        createCharacter("Ouch!", shovelBoy),
+        createCharacter("Monster", dog)
       ]}
     />
   ),
