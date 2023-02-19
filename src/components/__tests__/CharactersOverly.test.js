@@ -1,12 +1,11 @@
 import { render, screen } from "@testing-library/react";
 import { toHaveClass } from "@testing-library/jest-dom/extend-expect";
+import { createCharacter } from "../Gamescreen.js";
 import CharactersOverly from "../CharactersOverlay";
 
 it("renders the image of a single character", () => {
   const characters = [
-    {
-      img: "image placeholder",
-    },
+    createCharacter("name placeholder", "image placeholder"),
   ];
   const { container } = render(<CharactersOverly characters={characters} />);
   const charactersOverlay = container.firstChild;
@@ -14,6 +13,7 @@ it("renders the image of a single character", () => {
   expect(charactersOverlay).toMatchInlineSnapshot(`
 <div>
   <img
+    alt="name placeholder"
     src="image placeholder"
   />
 </div>
@@ -22,11 +22,10 @@ it("renders the image of a single character", () => {
 
 test("single character DOESN'T have found class when isFound is false", () => {
   const characters = [
-    {
-      img: "image placeholder",
-      isFound: false,
-    },
+    createCharacter("name placeholder", "image placeholder")
   ];
+  characters[0].isFound = false;
+
   const { container } = render(<CharactersOverly characters={characters} />);
   const charactersOverlay = container.firstChild;
   const character = charactersOverlay.firstChild;
@@ -36,11 +35,11 @@ test("single character DOESN'T have found class when isFound is false", () => {
 
 test("single character DOES have found class when isFound is true", () => {
   const characters = [
-    {
-      img: "image placeholder",
-      isFound: true,
-    },
+    createCharacter("name placeholder", "image placeholder"),
   ];
+
+  characters[0].isFound = true
+
   const { container } = render(<CharactersOverly characters={characters} />);
   const charactersOverlay = container.firstChild;
   const character = charactersOverlay.firstChild;
@@ -50,15 +49,9 @@ test("single character DOES have found class when isFound is true", () => {
 
 it("renders the image of multiple characters", () => {
   const characters = [
-    {
-      img: "image placeholder 1",
-    },
-    {
-      img: "image placeholder 2",
-    },
-    {
-      img: "image placeholder 3",
-    },
+    createCharacter("name placeholder 1", "image placeholder 1"),
+    createCharacter("name placeholder 2", "image placeholder 2"),
+    createCharacter("name placeholder 3", "image placeholder 3")
   ];
   const { container } = render(<CharactersOverly characters={characters} />);
   const charactersOverlay = container.firstChild;
@@ -66,12 +59,15 @@ it("renders the image of multiple characters", () => {
   expect(charactersOverlay).toMatchInlineSnapshot(`
 <div>
   <img
+    alt="name placeholder 1"
     src="image placeholder 1"
   />
   <img
+    alt="name placeholder 2"
     src="image placeholder 2"
   />
   <img
+    alt="name placeholder 3"
     src="image placeholder 3"
   />
 </div>
@@ -80,19 +76,15 @@ it("renders the image of multiple characters", () => {
 
 it("assigns found class to characters who's isFound is true", () => {
   const characters = [
-    {
-      img: "image placeholder 1",
-      isFound: true,
-    },
-    {
-      img: "image placeholder 2",
-      isFound: false,
-    },
-    {
-      img: "image placeholder 3",
-      isFound: true,
-    },
+    createCharacter("name placeholder 1", "image placeholder 1"),
+    createCharacter("name placeholder 2", "image placeholder 2"),
+    createCharacter("name placeholder 3", "image placeholder 3"),
   ];
+
+  characters[0].isFound = true;
+  characters[1].isFound = false;
+  characters[2].isFound = true;
+
   const { container } = render(<CharactersOverly characters={characters} />);
   const charactersOverlay = container.firstChild;
 
