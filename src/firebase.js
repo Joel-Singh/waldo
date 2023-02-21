@@ -44,8 +44,8 @@ export default function initializeFirebase() {
       )
     );
 
-    function addSingleCharacterCoordToDatabase(name, coords) {
-      return set(ref(db, `characterCoordinates/${name}`), coords).catch(() =>
+    async function addSingleCharacterCoordToDatabase(name, coords) {
+      await set(ref(db, `characterCoordinates/${name}`), coords).catch(() =>
         console.error("Couldn't add single character coordinate")
       );
     }
