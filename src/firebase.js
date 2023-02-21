@@ -1,6 +1,8 @@
 import {
   getDatabase,
   ref,
+  get,
+  child,
   set,
   connectDatabaseEmulator,
 } from "firebase/database";
@@ -51,5 +53,14 @@ export default function initializeFirebase() {
     }
   }
 
-  return { testDatabaseSetting, clearDatabase, addCharacterCoordsToDatabase };
+  async function isCharacterAtPosition(name, pos) {
+    const databasePos = await getCharPosInDb()
+    return pos.x === databasePos.x && pos.y === databasePos.y
+
+    async function getCharPosInDb() {
+      return (await get(child(db), `characterCoordinates/${name}`)).val
+    }
+  }
+
+  return { testDatabaseSetting, clearDatabase, addCharacterCoordsToDatabase, isCharacterAtPosition };
 }
