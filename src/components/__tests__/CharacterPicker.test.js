@@ -4,22 +4,37 @@ import CharacterPicker from "../CharacterPicker";
 import userEvent from "@testing-library/user-event";
 
 it("has visible class when isVisible is true", () => {
-  const { container } = render(<CharacterPicker isVisible={true} />);
+  const { container } = render(<CharacterPicker characterNames={[]} isVisible={true} />);
   const characterPicker = container.firstChild;
 
   expect(characterPicker).toHaveClass("visible");
 });
 
 it("does not have visible class when isVisible is false", () => {
-  const { container } = render(<CharacterPicker isVisible={false} />);
+  const { container } = render(<CharacterPicker characterNames={[]} isVisible={false} />);
   const characterPicker = container.firstChild;
 
   expect(characterPicker).not.toHaveClass("visible");
 });
 
 it("properly renders character names as divs", () => {
+  const characterNames = [
+    {
+      displayName: "Jane",
+      databaseName: "Jane databaseName"
+    },
+    {
+      displayName: "Bob",
+      databaseName: "Bob databaseName"
+    },
+    {
+      displayName: "Doe",
+      databaseName: "Doe databaseName"
+    },
+  ]
+
   const { container } = render(
-    <CharacterPicker characterNames={["Jane", "Bob", "Doe"]} />
+    <CharacterPicker characterNames={characterNames} />
   );
   const characterPicker = container.firstChild;
   const characterDivs = characterPicker.querySelectorAll(":scope > *");
@@ -45,19 +60,34 @@ it("properly renders character names as divs", () => {
   `);
 });
 
-it("calls function with character name when character name is clicked", () => {
+it("calls function with database name when character name is clicked", () => {
   const onCharacterClickFunc = jest.fn();
+
+  const characterNames = [
+    {
+      displayName: "Jane displayName",
+      databaseName: "Jane databaseName"
+    },
+    {
+      displayName: "Bob displayName",
+      databaseName: "Bob databaseName"
+    },
+    {
+      displayName: "Doe displayName",
+      databaseName: "Doe databaseName"
+    },
+  ]
 
   render(
     <CharacterPicker
-      characterNames={["Jane", "Bob", "Doe"]}
+      characterNames={characterNames}
       onCharacterClickFunc={onCharacterClickFunc}
     />
   );
 
-  const bob = screen.getByText("Bob");
+  const bob = screen.getByText("Bob displayName");
 
   userEvent.click(bob);
 
-  expect(onCharacterClickFunc).toBeCalledWith("Bob");
+  expect(onCharacterClickFunc).toBeCalledWith("Bob databaseName");
 });

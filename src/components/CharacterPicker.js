@@ -1,3 +1,5 @@
+import PropTypes from "prop-types"
+
 function CharacterPicker(props) {
   const {
     isVisible,
@@ -19,18 +21,27 @@ function CharacterPicker(props) {
   );
 
   function buttonsFromCharacterNames(characterNames) {
-    return characterNames.map((name) => {
+    return characterNames.map(({ displayName, databaseName }) => {
       return (
         <button
-          onClick={() => onCharacterClickFunc(name)}
+          onClick={() => onCharacterClickFunc(databaseName)}
           type="button"
-          key={name}
+          key={databaseName}
         >
-          {name}
+          {displayName}
         </button>
       );
     });
   }
 }
+
+CharacterPicker.propTypes = {
+  characterNames: PropTypes.arrayOf(
+    PropTypes.shape({
+      displayName: PropTypes.string.isRequired,
+      databaseName: PropTypes.string.isRequired,
+    })
+  ).isRequired,
+};
 
 export default CharacterPicker;
