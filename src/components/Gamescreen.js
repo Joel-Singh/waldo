@@ -3,9 +3,11 @@ import CharactersOverlay from "./CharactersOverlay.js";
 import PropTypes from "prop-types";
 import { useState } from "react";
 
-export default function Gamescreen({ img, characters = [] }) {
+export default function Gamescreen({ img, characters : initialCharactersState = [] }) {
   const [characterPickerInfo, setCharacterPickerInfo] =
     useState({ visibility: false, xPos: 0, yPos: 0});
+
+  const [characters, setCharacters] = useState(initialCharactersState.map((char) => ({ ...char, isFound: false })))
 
   function onClick({ screenX, screenY }) {
     setCharacterPickerInfo(({ visibility }) =>
@@ -20,7 +22,7 @@ export default function Gamescreen({ img, characters = [] }) {
   return (
     <div className="gamescreen" data-testid="gamescreen" onClick={onClick}>
       <CharactersOverlay
-        characters={characters.map((char) => ({ ...char, isFound: false }))}
+        characters={characters}
       />
       <CharacterPicker
         isVisible={characterPickerInfo.visibility}
