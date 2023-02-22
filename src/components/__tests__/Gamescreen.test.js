@@ -42,24 +42,27 @@ describe("Choosing a character", () => {
 
 test("Character creator utility function", () => {
   const characters = [
-    createCharacter("Jeff", "placeholder image 1"),
-    createCharacter("Jane", "placeholder image 2"),
-    createCharacter("Jeffrey", "placeholder image 3"),
+    createCharacter("Jeff displayName", "Jeff databaseName", "placeholder image 1"),
+    createCharacter("Jane displayName","Jane databaseName", "placeholder image 2"),
+    createCharacter("Jeffrey displayName","Jeffrey databaseName", "placeholder image 3"),
   ];
 
   expect(characters).toMatchInlineSnapshot(`
 Array [
   Object {
+    "databaseName": "Jeff databaseName",
+    "displayName": "Jeff displayName",
     "img": "placeholder image 1",
-    "name": "Jeff",
   },
   Object {
+    "databaseName": "Jane databaseName",
+    "displayName": "Jane displayName",
     "img": "placeholder image 2",
-    "name": "Jane",
   },
   Object {
+    "databaseName": "Jeffrey databaseName",
+    "displayName": "Jeffrey displayName",
     "img": "placeholder image 3",
-    "name": "Jeffrey",
   },
 ]
 `);
@@ -68,7 +71,7 @@ Array [
 describe("Character Overlay", () => {
   it("renders a single character", () => {
     const characters = [
-      createCharacter("placeholder", "placeholder img")
+      createCharacter("placeholder displayName","placeholder databaseName", "placeholder img")
     ];
     const { container } = render(<Gamescreen characters={characters} />);
     const character = container.querySelector("img[src='placeholder img']");
@@ -77,8 +80,8 @@ describe("Character Overlay", () => {
 
   it("renders multiple characters", () => {
     const characters = [
-      createCharacter("placeholder 1", "placeholder img 1"),
-      createCharacter("placeholder 2", "placeholder img 2"),
+      createCharacter("placeholder 1 displayName", "placeholder 1 databaseName", "placeholder img 1"),
+      createCharacter("placeholder 2 displayName", "placeholder 2 databaseName", "placeholder img 2"),
     ];
 
     const { container } = render(<Gamescreen characters={characters} />);
@@ -149,9 +152,9 @@ describe("Character picker", () => {
 
   test("is rendered in Gamescreen", () => {
     const characters = [
-      createCharacter("Jane", "placeholder1"),
-      createCharacter("Doe", "placeholder2"),
-      createCharacter("Jeff", "placeholder3"),
+      createCharacter("Jane displayName","Jane databaseName", "placeholder1"),
+      createCharacter("Doe displayName","Doe databaseName", "placeholder2"),
+      createCharacter("Jeff displayName","Jeff databaseName", "placeholder3"),
     ];
 
     render(<Gamescreen characters={characters} />);
@@ -167,17 +170,17 @@ describe("Character picker", () => {
   <button
     type="button"
   >
-    Jane
+    Jane displayName
   </button>
   <button
     type="button"
   >
-    Doe
+    Doe displayName
   </button>
   <button
     type="button"
   >
-    Jeff
+    Jeff displayName
   </button>
 </div>
 `);

@@ -27,15 +27,15 @@ export default function Gamescreen({ img, characters : initialCharactersState = 
       <CharacterPicker
         isVisible={characterPickerInfo.visibility}
         location={{ x: characterPickerInfo.xPos, y: characterPickerInfo.yPos }}
-        characterNames={characters.map((character) => character.name)}
+        characterNames={characters.map(({ displayName, databaseName}) => ({displayName, databaseName}))}
       />
       <img className="gamescreen__map" src={img} />
     </div>
   );
 }
 
-export function createCharacter(name, img) {
-  return { name, img };
+export function createCharacter(displayName, databaseName, img) {
+  return { displayName, databaseName, img };
 }
 
 function cloneObjArr(obj) {
@@ -46,7 +46,8 @@ Gamescreen.propTypes = {
   characters: PropTypes.arrayOf(
     PropTypes.shape({
       img: PropTypes.string.isRequired,
-      name: PropTypes.string.isRequired,
+      displayName: PropTypes.string.isRequired,
+      databaseName: PropTypes.string.isRequired,
     })
   ),
 };
