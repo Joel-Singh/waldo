@@ -54,10 +54,11 @@ export default function initializeFirebase() {
   }
 
   async function isCharacterAtPosition(name, pos) {
-    const databasePos = await getCharPosInDb();
+    const databasePos = await getCharPosInDb(name);
+
     return pos.x === databasePos.x && pos.y === databasePos.y;
 
-    async function getCharPosInDb() {
+    async function getCharPosInDb(name) {
       return (await get(ref(db), `characterCoordinates/${name}`)).val;
     }
   }
