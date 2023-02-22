@@ -110,7 +110,7 @@ const getGamescreens = () => ({
       characters={[
         createCharacter("Waldo", snowWaldo),
         createCharacter("Ouch!", shovelBoy),
-        createCharacter("Monster", dog)
+        createCharacter("Monster", monster)
       ]}
     />
   ),
