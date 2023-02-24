@@ -3,12 +3,12 @@ import { render, screen } from "@testing-library/react";
 import { toHaveClass } from "@testing-library/jest-dom";
 import Gamescreen, { createCharacter } from "../Gamescreen.js";
 
-import getFirebase from "../../firebase.js";
+import getFirebaseFunctions from "../../firebase.js";
 import { getGamescreens } from "../../componentInstantiations.js";
 
 describe("Choosing a character", () => {
   beforeAll(async () => {
-    const { clearDatabase } = getFirebase();
+    const { clearDatabase } = getFirebaseFunctions();
     await clearDatabase();
   });
 

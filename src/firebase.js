@@ -11,7 +11,7 @@ import { initializeApp, getApps } from "firebase/app";
 import { characterCoords } from "./constants";
 
 let db;
-export default function getFirebase() {
+export default function getFirebaseFunctions() {
   if (getApps().length === 0)
     initializeFirebase()
 

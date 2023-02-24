@@ -1,9 +1,9 @@
-import getFirebase from "../../firebase";
+import getFirebaseFunctions from "../../firebase";
 
 describe("isCharacterAtPosition", () => {
   let isCharacterAtPosition;
   beforeAll(async () => {
-    const firebase = getFirebase();
+    const firebase = getFirebaseFunctions();
     const { clearDatabase, addCharacterCoordsToDatabase } = firebase
 
     isCharacterAtPosition = firebase.isCharacterAtPosition;
