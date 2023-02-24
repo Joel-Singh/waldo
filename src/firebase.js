@@ -7,24 +7,20 @@ import {
   connectDatabaseEmulator,
 } from "firebase/database";
 import { distance } from "mathjs"
-import { initializeApp } from "firebase/app";
+import { initializeApp, getApps } from "firebase/app";
 import { characterCoords } from "./constants";
 
 let db;
-export default function initializeFirebase() {
-  const firebaseConfig = {
-    apiKey: "AIzaSyBi3Vk9CTvjIUA3SzS94tlSpxwVKd38qWM",
-    authDomain: "waldo-a317d.firebaseapp.com",
-    projectId: "waldo-a317d",
-    storageBucket: "waldo-a317d.appspot.com",
-    messagingSenderId: "356577803449",
-    appId: "1:356577803449:web:9e7be0752c53b8aab42f68",
-    databaseURL: "https://waldo-a317d-default-rtdb.firebaseio.com/",
-  };
+export default function getFirebase() {
+  if (getApps().length === 0)
+    initializeFirebase()
 
-  const app = initializeApp(firebaseConfig);
-  db = getDatabase(app);
-  connectDatabaseEmulator(db, "127.0.0.1", 9000);
+  return {
+    testDatabaseSetting,
+    clearDatabase,
+    addCharacterCoordsToDatabase,
+    isCharacterAtPosition,
+  };
 
   function testDatabaseSetting() {
     set(ref(db, "users/37"), {
@@ -64,11 +60,20 @@ export default function initializeFirebase() {
       return characterCoordinates[`${name}`];
     }
   }
+}
 
-  return {
-    testDatabaseSetting,
-    clearDatabase,
-    addCharacterCoordsToDatabase,
-    isCharacterAtPosition,
+function initializeFirebase() {
+  const firebaseConfig = {
+    apiKey: "AIzaSyBi3Vk9CTvjIUA3SzS94tlSpxwVKd38qWM",
+    authDomain: "waldo-a317d.firebaseapp.com",
+    projectId: "waldo-a317d",
+    storageBucket: "waldo-a317d.appspot.com",
+    messagingSenderId: "356577803449",
+    appId: "1:356577803449:web:9e7be0752c53b8aab42f68",
+    databaseURL: "https://waldo-a317d-default-rtdb.firebaseio.com/",
   };
+
+  const app = initializeApp(firebaseConfig);
+  db = getDatabase(app);
+  connectDatabaseEmulator(db, "127.0.0.1", 9000);
 }

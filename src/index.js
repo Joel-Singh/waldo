@@ -2,7 +2,7 @@ import React from "react";
 import ReactDOM from "react-dom/client";
 import App from "./App.js";
 import { BrowserRouter } from "react-router-dom";
-import initializeFirebase from "./firebase.js";
+import getFirebase from "./firebase.js";
 
 const root = ReactDOM.createRoot(document.getElementById("root"));
 root.render(
@@ -13,5 +13,5 @@ root.render(
   </React.StrictMode>
 );
 
-const { addCharacterCoordsToDatabase } = initializeFirebase();
+const { addCharacterCoordsToDatabase } = getFirebase();
 addCharacterCoordsToDatabase();
