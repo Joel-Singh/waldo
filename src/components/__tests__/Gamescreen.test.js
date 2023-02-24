@@ -32,9 +32,12 @@ describe("Choosing a character", () => {
     const { maze } = getGamescreens();
     render(maze);
 
-    chooseCharacter("Waldo", 89, 36);
+    const mazeWaldoDisplayName = "Waldo"
+    const mazeWaldoPos = { x: 1377, y: 653 }
 
-    expect(isCharacterFound("Waldo")).toBe(false);
+    chooseCharacter(mazeWaldoDisplayName, 89, 36);
+
+    expect(isCharacterFound(mazeWaldoDisplayName)).toBe(false);
   });
 });
 
