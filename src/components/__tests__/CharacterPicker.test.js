@@ -91,3 +91,21 @@ it("calls function with database name when character name is clicked", () => {
 
   expect(onCharacterClickFunc).toBeCalledWith("Bob databaseName", expect.anything());
 });
+
+it("calls function with correct position when character name is clicked", () => {
+  const onCharacterClickFunc = jest.fn();
+  const pos = {x: 8, y: 9}
+
+  render(
+    <CharacterPicker
+      onCharacterClickFunc={onCharacterClickFunc}
+      location={{x: pos.x, y: pos.y}}
+      characterNames={[ { displayName: "displayName", databaseName: "databaseName" } ]}
+    />
+  );
+
+  const character = screen.getByText("displayName");
+  userEvent.click(character);
+
+  expect(onCharacterClickFunc).toBeCalledWith(expect.anything(), {x: pos.x, y: pos.y});
+});

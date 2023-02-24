@@ -24,7 +24,7 @@ function CharacterPicker(props) {
     return characterNames.map(({ displayName, databaseName }) => {
       return (
         <button
-          onClick={() => onCharacterClickFunc(databaseName)}
+          onClick={() => onCharacterClickFunc(databaseName, {x: location.x, y: location.y})}
           type="button"
           key={databaseName}
         >
