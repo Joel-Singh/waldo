@@ -89,5 +89,5 @@ it("calls function with database name when character name is clicked", () => {
 
   userEvent.click(bob);
 
-  expect(onCharacterClickFunc).toBeCalledWith("Bob databaseName");
+  expect(onCharacterClickFunc).toBeCalledWith("Bob databaseName", expect.anything());
 });
