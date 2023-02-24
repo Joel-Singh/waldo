@@ -10,8 +10,6 @@ import initializeFirebase, {
 import { getGamescreens } from "../../componentInstantiations.js";
 
 describe("Choosing a character", () => {
-  //TODO: A test for clicking in the radius of a character
-  // Have a firebase function isCharacterAtPositionWithinRadius({x: 123, y: 903}, 90)
   beforeAll(async () => {
     const { clearDatabase } = initializeFirebase();
     await clearDatabase();
