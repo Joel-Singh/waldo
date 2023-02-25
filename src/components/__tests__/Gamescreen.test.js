@@ -5,19 +5,22 @@ import Gamescreen, { createCharacter } from "../Gamescreen.js";
 
 import getFirebaseFunctions from "../../firebase.js";
 import { getGamescreens } from "../../componentInstantiations.js";
+import { act } from "react-dom/test-utils";
 
-describe("Choosing a character", () => {
+describe.only("Choosing a character", () => {
   beforeAll(async () => {
     const { clearDatabase } = getFirebaseFunctions();
     await clearDatabase();
   });
 
-  function chooseCharacter(name, xPos, yPos) {
+  async function chooseCharacter(name, xPos, yPos) {
     const gamescreen = screen.getByTestId("gamescreen");
     userEvent.click(gamescreen, { screenX: xPos, screenY: yPos });
 
     const charBtn = screen.getByText(name);
-    userEvent.click(charBtn);
+    await act(async () => {
+      userEvent.click(charBtn);
+    })
   }
 
   function isCharacterFound(name) {
@@ -25,14 +28,14 @@ describe("Choosing a character", () => {
     return characterOverlay.classList.contains("found");
   }
 
-  test("at the wrong position doesn't mark them as found", () => {
+  test("at the wrong position doesn't mark them as found", async () => {
     const { maze } = getGamescreens();
     render(maze);
 
     const mazeWaldoDisplayName = "Waldo"
     const mazeWaldoPos = { x: 1377, y: 653 }
 
-    chooseCharacter(mazeWaldoDisplayName, 89, 36);
+    await chooseCharacter(mazeWaldoDisplayName, 89, 36);
 
     expect(isCharacterFound(mazeWaldoDisplayName)).toBe(false);
   });
