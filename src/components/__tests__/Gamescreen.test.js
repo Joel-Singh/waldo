@@ -9,8 +9,9 @@ import { act } from "react-dom/test-utils";
 
 describe.only("Choosing a character", () => {
   beforeAll(async () => {
-    const { clearDatabase } = getFirebaseFunctions();
+    const { clearDatabase, addCharacterCoordsToDatabase } = getFirebaseFunctions();
     await clearDatabase();
+    await addCharacterCoordsToDatabase();
   });
 
   async function chooseCharacter(name, xPos, yPos) {
