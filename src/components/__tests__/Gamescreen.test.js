@@ -25,8 +25,8 @@ describe.only("Choosing a character", () => {
   }
 
   function isCharacterFound(name) {
-    const characterOverlay = screen.getByAltText(name);
-    return characterOverlay.classList.contains("found");
+    const characterFromCharacterOverlay = screen.getByAltText(name);
+    return characterFromCharacterOverlay.classList.contains("found");
   }
 
   test("at the wrong position doesn't mark them as found", async () => {
