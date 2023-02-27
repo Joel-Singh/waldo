@@ -1,6 +1,5 @@
 import { Route, Routes } from "react-router-dom";
 import { getGamescreens } from "./componentInstantiations";
-import Gamescreen from "./components/Gamescreen";
 import SelectionScreen from "./components/SelectionScreen";
 import { getMapPreviews } from "./componentInstantiations";
 import css from "./style.css";
