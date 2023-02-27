@@ -2,7 +2,6 @@ import {
   getDatabase,
   ref,
   get,
-  child,
   set,
   connectDatabaseEmulator,
 } from "firebase/database";
