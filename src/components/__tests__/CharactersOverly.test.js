@@ -1,6 +1,6 @@
 import { render, screen } from "@testing-library/react";
 import { toHaveClass } from "@testing-library/jest-dom/extend-expect";
-import { createCharacter } from "../Gamescreen.js";
+import createCharacter from "../../util/createCharacter";
 import CharactersOverlay from "../CharactersOverlay";
 
 it("renders the image of a single character", () => {

@@ -1,5 +1,6 @@
 import MapPreview from "./components/MapPreview";
-import Gamescreen, { createCharacter } from "./components/Gamescreen";
+import Gamescreen from "./components/Gamescreen";
+import createCharacter from "./util/createCharacter";
 
 import mazeWaldo from "./assets/characters/maze/waldo.jpg";
 import birdPerson from "./assets/characters/maze/bird_person.jpg";

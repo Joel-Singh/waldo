@@ -66,10 +66,6 @@ export default function Gamescreen(props) {
   }
 }
 
-export function createCharacter(displayName, databaseName, img) {
-  return { displayName, databaseName, img };
-}
-
 Gamescreen.propTypes = {
   characters: PropTypes.arrayOf(
     PropTypes.shape({
