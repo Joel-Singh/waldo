@@ -55,10 +55,6 @@ export function createCharacter(displayName, databaseName, img) {
   return { displayName, databaseName, img };
 }
 
-function cloneObjArr(obj) {
-  return JSON.parse(JSON.stringify(obj));
-}
-
 Gamescreen.propTypes = {
   characters: PropTypes.arrayOf(
     PropTypes.shape({
