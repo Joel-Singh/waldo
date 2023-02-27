@@ -4,14 +4,18 @@ import CharacterPicker from "../CharacterPicker";
 import userEvent from "@testing-library/user-event";
 
 it("has visible class when isVisible is true", () => {
-  const { container } = render(<CharacterPicker characterNames={[]} isVisible={true} />);
+  const { container } = render(
+    <CharacterPicker characterNames={[]} isVisible={true} />
+  );
   const characterPicker = container.firstChild;
 
   expect(characterPicker).toHaveClass("visible");
 });
 
 it("does not have visible class when isVisible is false", () => {
-  const { container } = render(<CharacterPicker characterNames={[]} isVisible={false} />);
+  const { container } = render(
+    <CharacterPicker characterNames={[]} isVisible={false} />
+  );
   const characterPicker = container.firstChild;
 
   expect(characterPicker).not.toHaveClass("visible");
@@ -21,17 +25,17 @@ it("properly renders character names as divs", () => {
   const characterNames = [
     {
       displayName: "Jane",
-      databaseName: "Jane databaseName"
+      databaseName: "Jane databaseName",
     },
     {
       displayName: "Bob",
-      databaseName: "Bob databaseName"
+      databaseName: "Bob databaseName",
     },
     {
       displayName: "Doe",
-      databaseName: "Doe databaseName"
+      databaseName: "Doe databaseName",
     },
-  ]
+  ];
 
   const { container } = render(
     <CharacterPicker characterNames={characterNames} />
@@ -66,17 +70,17 @@ it("calls function with database name when character name is clicked", () => {
   const characterNames = [
     {
       displayName: "Jane displayName",
-      databaseName: "Jane databaseName"
+      databaseName: "Jane databaseName",
     },
     {
       displayName: "Bob displayName",
-      databaseName: "Bob databaseName"
+      databaseName: "Bob databaseName",
     },
     {
       displayName: "Doe displayName",
-      databaseName: "Doe databaseName"
+      databaseName: "Doe databaseName",
     },
-  ]
+  ];
 
   render(
     <CharacterPicker
@@ -89,23 +93,31 @@ it("calls function with database name when character name is clicked", () => {
 
   userEvent.click(bob);
 
-  expect(onCharacterClickFunc).toBeCalledWith("Bob databaseName", expect.anything());
+  expect(onCharacterClickFunc).toBeCalledWith(
+    "Bob databaseName",
+    expect.anything()
+  );
 });
 
 it("calls function with correct position when character name is clicked", () => {
   const onCharacterClickFunc = jest.fn();
-  const pos = {x: 8, y: 9}
+  const pos = { x: 8, y: 9 };
 
   render(
     <CharacterPicker
       onCharacterClickFunc={onCharacterClickFunc}
-      location={{x: pos.x, y: pos.y}}
-      characterNames={[ { displayName: "displayName", databaseName: "databaseName" } ]}
+      location={{ x: pos.x, y: pos.y }}
+      characterNames={[
+        { displayName: "displayName", databaseName: "databaseName" },
+      ]}
     />
   );
 
   const character = screen.getByText("displayName");
   userEvent.click(character);
 
-  expect(onCharacterClickFunc).toBeCalledWith(expect.anything(), {x: pos.x, y: pos.y});
+  expect(onCharacterClickFunc).toBeCalledWith(expect.anything(), {
+    x: pos.x,
+    y: pos.y,
+  });
 });

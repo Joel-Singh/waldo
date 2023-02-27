@@ -6,14 +6,13 @@ import {
   set,
   connectDatabaseEmulator,
 } from "firebase/database";
-import { distance } from "mathjs"
+import { distance } from "mathjs";
 import { initializeApp, getApps } from "firebase/app";
 import { characterCoords } from "./constants";
 
 let db;
 export default function getFirebaseFunctions() {
-  if (getApps().length === 0)
-    initializeFirebase()
+  if (getApps().length === 0) initializeFirebase();
 
   return {
     testDatabaseSetting,
@@ -56,7 +55,7 @@ export default function getFirebaseFunctions() {
     return distance([pos.x, pos.y], [dbPos.x, dbPos.y]) <= withinDistance;
 
     async function getCharPosInDb(name) {
-      const { characterCoordinates } = (await get(ref(db))).val()
+      const { characterCoordinates } = (await get(ref(db))).val();
       return characterCoordinates[`${name}`];
     }
   }

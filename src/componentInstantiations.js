@@ -90,7 +90,11 @@ const getGamescreens = () => ({
       characters={[
         createCharacter("Waldo", "mazeWaldo", mazeWaldo),
         createCharacter("Bird Person", "birdPerson", birdPerson),
-        createCharacter("Yellow Hair Person", "yellowHairPerson", yellowHairPerson)
+        createCharacter(
+          "Yellow Hair Person",
+          "yellowHairPerson",
+          yellowHairPerson
+        ),
       ]}
     />
   ),
@@ -100,7 +104,7 @@ const getGamescreens = () => ({
       characters={[
         createCharacter("Waldo", "beachWaldo", beachWaldo),
         createCharacter("Shovel Boy", "shovelBoy", shovelBoy),
-        createCharacter("Dog", "dog", dog)
+        createCharacter("Dog", "dog", dog),
       ]}
     />
   ),
@@ -110,7 +114,7 @@ const getGamescreens = () => ({
       characters={[
         createCharacter("Waldo", "snowWaldo", snowWaldo),
         createCharacter("Ouch!", "ouch", shovelBoy),
-        createCharacter("Monster", "monster", monster)
+        createCharacter("Monster", "monster", monster),
       ]}
     />
   ),

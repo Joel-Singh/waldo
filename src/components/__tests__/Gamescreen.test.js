@@ -9,7 +9,8 @@ import { act } from "react-dom/test-utils";
 
 describe("Choosing a character", () => {
   beforeAll(async () => {
-    const { clearDatabase, addCharacterCoordsToDatabase } = getFirebaseFunctions();
+    const { clearDatabase, addCharacterCoordsToDatabase } =
+      getFirebaseFunctions();
     await clearDatabase();
     await addCharacterCoordsToDatabase();
   });
@@ -26,8 +27,8 @@ describe("Choosing a character", () => {
       // This is due to the click causing a
       // database request.
       // Weird js event loop black magic
-      await new Promise(resolve => setTimeout(resolve, 0))
-    })
+      await new Promise((resolve) => setTimeout(resolve, 0));
+    });
   }
 
   function isCharacterFound(name) {
@@ -39,8 +40,8 @@ describe("Choosing a character", () => {
     const { maze } = getGamescreens();
     render(maze);
 
-    const mazeWaldoDisplayName = "Waldo"
-    const mazeWaldoPos = { x: 1377, y: 653 }
+    const mazeWaldoDisplayName = "Waldo";
+    const mazeWaldoPos = { x: 1377, y: 653 };
 
     await chooseCharacter(mazeWaldoDisplayName, 89, 36);
 
@@ -51,8 +52,8 @@ describe("Choosing a character", () => {
     const { maze } = getGamescreens();
     render(maze);
 
-    const mazeWaldoDisplayName = "Waldo"
-    const mazeWaldoPos = { x: 1377, y: 653 }
+    const mazeWaldoDisplayName = "Waldo";
+    const mazeWaldoPos = { x: 1377, y: 653 };
 
     await chooseCharacter(mazeWaldoDisplayName, mazeWaldoPos.x, mazeWaldoPos.y);
 
@@ -62,9 +63,21 @@ describe("Choosing a character", () => {
 
 test("Character creator utility function", () => {
   const characters = [
-    createCharacter("Jeff displayName", "Jeff databaseName", "placeholder image 1"),
-    createCharacter("Jane displayName","Jane databaseName", "placeholder image 2"),
-    createCharacter("Jeffrey displayName","Jeffrey databaseName", "placeholder image 3"),
+    createCharacter(
+      "Jeff displayName",
+      "Jeff databaseName",
+      "placeholder image 1"
+    ),
+    createCharacter(
+      "Jane displayName",
+      "Jane databaseName",
+      "placeholder image 2"
+    ),
+    createCharacter(
+      "Jeffrey displayName",
+      "Jeffrey databaseName",
+      "placeholder image 3"
+    ),
   ];
 
   expect(characters).toMatchInlineSnapshot(`
@@ -91,7 +104,11 @@ Array [
 describe("Character Overlay", () => {
   it("renders a single character", () => {
     const characters = [
-      createCharacter("placeholder displayName","placeholder databaseName", "placeholder img")
+      createCharacter(
+        "placeholder displayName",
+        "placeholder databaseName",
+        "placeholder img"
+      ),
     ];
     const { container } = render(<Gamescreen characters={characters} />);
     const character = container.querySelector("img[src='placeholder img']");
@@ -100,8 +117,16 @@ describe("Character Overlay", () => {
 
   it("renders multiple characters", () => {
     const characters = [
-      createCharacter("placeholder 1 displayName", "placeholder 1 databaseName", "placeholder img 1"),
-      createCharacter("placeholder 2 displayName", "placeholder 2 databaseName", "placeholder img 2"),
+      createCharacter(
+        "placeholder 1 displayName",
+        "placeholder 1 databaseName",
+        "placeholder img 1"
+      ),
+      createCharacter(
+        "placeholder 2 displayName",
+        "placeholder 2 databaseName",
+        "placeholder img 2"
+      ),
     ];
 
     const { container } = render(<Gamescreen characters={characters} />);
@@ -172,9 +197,9 @@ describe("Character picker", () => {
 
   test("is rendered in Gamescreen", () => {
     const characters = [
-      createCharacter("Jane displayName","Jane databaseName", "placeholder1"),
-      createCharacter("Doe displayName","Doe databaseName", "placeholder2"),
-      createCharacter("Jeff displayName","Jeff databaseName", "placeholder3"),
+      createCharacter("Jane displayName", "Jane databaseName", "placeholder1"),
+      createCharacter("Doe displayName", "Doe databaseName", "placeholder2"),
+      createCharacter("Jeff displayName", "Jeff databaseName", "placeholder3"),
     ];
 
     render(<Gamescreen characters={characters} />);

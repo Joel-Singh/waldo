@@ -8,7 +8,11 @@ function MapPreview(props) {
       <div aria-label="title" className="map-preview__title">
         {mapName}
       </div>
-      <img src={mapImage} alt={`${mapName} map`} className="map-preview__map-image" />
+      <img
+        src={mapImage}
+        alt={`${mapName} map`}
+        className="map-preview__map-image"
+      />
       <div
         data-testid="previewCharactersContainer"
         className="map-preview__character-container"

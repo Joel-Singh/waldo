@@ -1,4 +1,4 @@
-import PropTypes from "prop-types"
+import PropTypes from "prop-types";
 
 function CharacterPicker(props) {
   const {
@@ -24,7 +24,9 @@ function CharacterPicker(props) {
     return characterNames.map(({ displayName, databaseName }) => {
       return (
         <button
-          onClick={() => onCharacterClickFunc(databaseName, {x: location.x, y: location.y})}
+          onClick={() =>
+            onCharacterClickFunc(databaseName, { x: location.x, y: location.y })
+          }
           type="button"
           key={databaseName}
         >
