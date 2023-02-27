@@ -186,12 +186,12 @@ describe("Character picker", () => {
     userEvent.click(gamescreen, { screenX: xClickPos, screenY: yClickPos });
 
     const characterPickerXPos = parseInt(
-      characterPicker.getAttribute("data-x")
+      getComputedStyle(characterPicker).getPropertyValue("--x")
     );
     expect(characterPickerXPos).toBe(xClickPos);
 
     const characterPickerYPos = parseInt(
-      characterPicker.getAttribute("data-y")
+      getComputedStyle(characterPicker).getPropertyValue("--y")
     );
     expect(characterPickerYPos).toBe(yClickPos);
   });
@@ -210,8 +210,7 @@ describe("Character picker", () => {
 <div
   class="character-picker"
   data-testid="character-picker"
-  data-x="0"
-  data-y="0"
+  style="--x: 0; --y: 0;"
 >
   <button
     type="button"

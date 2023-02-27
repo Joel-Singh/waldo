@@ -121,3 +121,23 @@ it("calls function with correct position when character name is clicked", () => 
     y: pos.y,
   });
 });
+
+it("has correct css variables depending on location", () => {
+  const pos = { x: 8, y: 9 };
+
+  render(
+    <CharacterPicker
+      location={{ x: pos.x, y: pos.y }}
+      characterNames={[]}
+    />
+  );
+
+  const characterPicker = screen.getByTestId("character-picker")
+  const style = getComputedStyle(characterPicker)
+
+  const styleXValue = style.getPropertyValue('--x')
+  const styleYValue = style.getPropertyValue('--y')
+
+  expect(parseInt(styleXValue)).toBe(8)
+  expect(parseInt(styleYValue)).toBe(9)
+});
