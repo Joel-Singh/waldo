@@ -5,7 +5,7 @@ import Gamescreen from "../Gamescreen.js";
 import createCharacter from "../../util/createCharacter.js";
 
 import getFirebaseFunctions from "../../firebase.js";
-import { getGamescreens } from "../../componentInstantiations.js";
+import { getGamescreens } from "../../util/componentInstantiations"
 import { act } from "react-dom/test-utils";
 
 describe("Choosing a character", () => {

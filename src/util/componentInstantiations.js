@@ -1,22 +1,22 @@
-import MapPreview from "./components/MapPreview";
-import Gamescreen from "./components/Gamescreen";
-import createCharacter from "./util/createCharacter";
+import MapPreview from "../components/MapPreview";
+import Gamescreen from "../components/Gamescreen";
+import createCharacter from "./createCharacter";
 
-import mazeWaldo from "./assets/characters/maze/waldo.jpg";
-import birdPerson from "./assets/characters/maze/bird_person.jpg";
-import yellowHairPerson from "./assets/characters/maze/yellowed_hair_person.jpg";
+import mazeWaldo from "../assets/characters/maze/waldo.jpg";
+import birdPerson from "../assets/characters/maze/bird_person.jpg";
+import yellowHairPerson from "../assets/characters/maze/yellowed_hair_person.jpg";
 
-import beachWaldo from "./assets/characters/beach/waldo.jpg";
-import shovelBoy from "./assets/characters/beach/shovel_boy.jpg";
-import dog from "./assets/characters/beach/dog.jpg";
+import beachWaldo from "../assets/characters/beach/waldo.jpg";
+import shovelBoy from "../assets/characters/beach/shovel_boy.jpg";
+import dog from "../assets/characters/beach/dog.jpg";
 
-import snowWaldo from "./assets/characters/snow/waldo.jpg";
-import ouch from "./assets/characters/snow/ouch.jpg";
-import monster from "./assets/characters/snow/monster.jpg";
+import snowWaldo from "../assets/characters/snow/waldo.jpg";
+import ouch from "../assets/characters/snow/ouch.jpg";
+import monster from "../assets/characters/snow/monster.jpg";
 
-import mazeMap from "./assets/maps/maze.jpg";
-import beachMap from "./assets/maps/beach.jpg";
-import snowMap from "./assets/maps/snow.jpg";
+import mazeMap from "../assets/maps/maze.jpg";
+import beachMap from "../assets/maps/beach.jpg";
+import snowMap from "../assets/maps/snow.jpg";
 
 const getMapPreviews = () => ({
   mazeMapPreview: (
