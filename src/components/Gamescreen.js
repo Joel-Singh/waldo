@@ -4,10 +4,8 @@ import PropTypes from "prop-types";
 import { useState } from "react";
 import getFirebaseFunctions from "../firebase.js";
 
-export default function Gamescreen({
-  img,
-  characters: initialCharactersState = [],
-}) {
+export default function Gamescreen(props) {
+  const { img, characters: initialCharactersState = [] } = props;
   const [characterPickerInfo, setCharacterPickerInfo] = useState({
     visibility: false,
     xPos: 0,
@@ -18,7 +16,35 @@ export default function Gamescreen({
     initialCharactersState.map((char) => ({ ...char, isFound: false }))
   );
 
-  function onClick({ screenX, screenY }) {
+  return (
+    <div
+      className="gamescreen"
+      data-testid="gamescreen"
+      onClick={updateCharPickerInfo}
+    >
+      <img className="gamescreen__map" src={img} />
+
+      <CharactersOverlay
+        characters={characters.map(({ img, isFound, displayName }) => ({
+          img,
+          isFound,
+          displayName,
+        }))}
+      />
+
+      <CharacterPicker
+        isVisible={characterPickerInfo.visibility}
+        location={{ x: characterPickerInfo.xPos, y: characterPickerInfo.yPos }}
+        characterNames={characters.map(({ displayName, databaseName }) => ({
+          displayName,
+          databaseName,
+        }))}
+        onCharacterClickFunc={updateCharacterIsFound}
+      />
+    </div>
+  );
+
+  function updateCharPickerInfo({ screenX, screenY }) {
     setCharacterPickerInfo(({ visibility }) => ({
       visibility: !visibility,
       xPos: screenX,
@@ -26,7 +52,7 @@ export default function Gamescreen({
     }));
   }
 
-  async function onCharacterClick(databaseName, pos) {
+  async function updateCharacterIsFound(databaseName, pos) {
     const { isCharacterAtPosition } = getFirebaseFunctions();
     const isAtPosition = await isCharacterAtPosition(databaseName, pos, 30);
 
@@ -38,22 +64,6 @@ export default function Gamescreen({
       });
     });
   }
-
-  return (
-    <div className="gamescreen" data-testid="gamescreen" onClick={onClick}>
-      <CharactersOverlay characters={characters} />
-      <CharacterPicker
-        isVisible={characterPickerInfo.visibility}
-        location={{ x: characterPickerInfo.xPos, y: characterPickerInfo.yPos }}
-        characterNames={characters.map(({ displayName, databaseName }) => ({
-          displayName,
-          databaseName,
-        }))}
-        onCharacterClickFunc={onCharacterClick}
-      />
-      <img className="gamescreen__map" src={img} />
-    </div>
-  );
 }
 
 export function createCharacter(displayName, databaseName, img) {
