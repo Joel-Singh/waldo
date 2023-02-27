@@ -1,13 +1,13 @@
 import { render, screen } from "@testing-library/react";
 import { toHaveClass } from "@testing-library/jest-dom/extend-expect";
 import { createCharacter } from "../Gamescreen.js";
-import CharactersOverly from "../CharactersOverlay";
+import CharactersOverlay from "../CharactersOverlay";
 
 it("renders the image of a single character", () => {
   const characters = [
     createCharacter("displayName placeholder", "databaseName placeholder","image placeholder"),
   ];
-  const { container } = render(<CharactersOverly characters={characters} />);
+  const { container } = render(<CharactersOverlay characters={characters} />);
   const charactersOverlay = container.firstChild;
 
   expect(charactersOverlay).toMatchInlineSnapshot(`
@@ -26,7 +26,7 @@ test("single character DOESN'T have found class when isFound is false", () => {
   ];
   characters[0].isFound = false;
 
-  const { container } = render(<CharactersOverly characters={characters} />);
+  const { container } = render(<CharactersOverlay characters={characters} />);
   const charactersOverlay = container.firstChild;
   const character = charactersOverlay.firstChild;
 
@@ -40,7 +40,7 @@ test("single character DOES have found class when isFound is true", () => {
 
   characters[0].isFound = true
 
-  const { container } = render(<CharactersOverly characters={characters} />);
+  const { container } = render(<CharactersOverlay characters={characters} />);
   const charactersOverlay = container.firstChild;
   const character = charactersOverlay.firstChild;
 
@@ -53,7 +53,7 @@ it("renders the image of multiple characters", () => {
     createCharacter("displayName placeholder 2", "databaseName placeholder 2","image placeholder 2"),
     createCharacter("displayName placeholder 3", "databaseName placeholder 3","image placeholder 3"),
   ];
-  const { container } = render(<CharactersOverly characters={characters} />);
+  const { container } = render(<CharactersOverlay characters={characters} />);
   const charactersOverlay = container.firstChild;
 
   expect(charactersOverlay).toMatchInlineSnapshot(`
@@ -85,7 +85,7 @@ it("assigns found class to characters who's isFound is true", () => {
   characters[1].isFound = false;
   characters[2].isFound = true;
 
-  const { container } = render(<CharactersOverly characters={characters} />);
+  const { container } = render(<CharactersOverlay characters={characters} />);
   const charactersOverlay = container.firstChild;
 
   const firstCharacter = charactersOverlay.querySelector(
