@@ -2,8 +2,8 @@ import { Route, Routes } from "react-router-dom";
 import SelectionScreen from "./components/SelectionScreen";
 import { getGamescreens, getMapPreviews } from "./util/componentInstantiations";
 
-import css from "./style.css";
 // eslint-disable-next-line
+import css from "./styles/style.css";
 
 function App() {
   const {
