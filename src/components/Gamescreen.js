@@ -31,7 +31,6 @@ export default function Gamescreen({
     const isAtPosition = await isCharacterAtPosition(databaseName, pos, 30);
 
     setCharacters((characters) => {
-      debugger;
       return characters.map((character) => {
         if (character.databaseName === databaseName && isAtPosition)
           return { ...character, isFound: true };
