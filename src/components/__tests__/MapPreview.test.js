@@ -33,6 +33,7 @@ it("properly renders preview characters", () => {
     class="preview-character"
   >
     <img
+      alt="Joel"
       src="JoelPlaceholder"
     />
     <div
@@ -45,6 +46,7 @@ it("properly renders preview characters", () => {
     class="preview-character"
   >
     <img
+      alt="Jane"
       src="JanePlaceholder"
     />
     <div
@@ -57,6 +59,7 @@ it("properly renders preview characters", () => {
     class="preview-character"
   >
     <img
+      alt="Bob"
       src="BobPlaceholder"
     />
     <div
