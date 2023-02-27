@@ -15,7 +15,9 @@ it("renders the image of a single character", () => {
   const charactersOverlay = container.firstChild;
 
   expect(charactersOverlay).toMatchInlineSnapshot(`
-<div>
+<div
+  class="characters-overlay"
+>
   <img
     alt="displayName placeholder"
     src="image placeholder"
@@ -81,7 +83,9 @@ it("renders the image of multiple characters", () => {
   const charactersOverlay = container.firstChild;
 
   expect(charactersOverlay).toMatchInlineSnapshot(`
-<div>
+<div
+  class="characters-overlay"
+>
   <img
     alt="displayName placeholder 1"
     src="image placeholder 1"
