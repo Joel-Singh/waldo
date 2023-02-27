@@ -22,7 +22,7 @@ export default function Gamescreen(props) {
       data-testid="gamescreen"
       onClick={updateCharPickerInfo}
     >
-      <img className="gamescreen__map" src={img} />
+      <img className="gamescreen__map" src={img} alt={"Map"} />
 
       <CharactersOverlay
         characters={characters.map(({ img, isFound, displayName }) => ({
