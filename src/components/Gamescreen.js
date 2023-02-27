@@ -22,7 +22,7 @@ export default function Gamescreen({ img, characters : initialCharactersState = 
 
   async function onCharacterClick(databaseName, pos) {
     const { isCharacterAtPosition } = getFirebaseFunctions();
-    const isAtPosition = await isCharacterAtPosition(databaseName, pos);
+    const isAtPosition = await isCharacterAtPosition(databaseName, pos, 30);
 
     setCharacters(characters => {
       debugger;
