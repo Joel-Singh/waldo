@@ -2,6 +2,7 @@ import { Route, Routes } from "react-router-dom";
 import { getGamescreens } from "./componentInstantiations";
 import SelectionScreen from "./components/SelectionScreen";
 import { getMapPreviews } from "./componentInstantiations";
+// eslinst-disable-next-line
 import css from "./style.css";
 
 function App() {
