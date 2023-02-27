@@ -2,7 +2,7 @@ import CharacterPicker from "./CharacterPicker.js";
 import CharactersOverlay from "./CharactersOverlay.js";
 import PropTypes from "prop-types";
 import { useState } from "react";
-import getFirebaseFunctions from "../firebase.js";
+import getFirebaseFunctions from "../util/firebase.js";
 
 export default function Gamescreen(props) {
   const { img, characters: initialCharactersState = [] } = props;

@@ -1,4 +1,4 @@
-import getFirebaseFunctions from "../../firebase";
+import getFirebaseFunctions from "../../util/firebase";
 
 describe("isCharacterAtPosition", () => {
   let isCharacterAtPosition;

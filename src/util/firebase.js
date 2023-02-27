@@ -8,7 +8,7 @@ import {
 } from "firebase/database";
 import { distance } from "mathjs";
 import { initializeApp, getApps } from "firebase/app";
-import { characterCoords } from "./util/constants";
+import { characterCoords } from "./constants";
 
 let db;
 export default function getFirebaseFunctions() {
