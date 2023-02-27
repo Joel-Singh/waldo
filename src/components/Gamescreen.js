@@ -2,6 +2,7 @@ import CharacterPicker from "./CharacterPicker.js";
 import CharactersOverlay from "./CharactersOverlay.js";
 import PropTypes from "prop-types";
 import { useState } from "react";
+import getFirebaseFunctions from "../firebase.js";
 
 export default function Gamescreen({ img, characters : initialCharactersState = [] }) {
   const [characterPickerInfo, setCharacterPickerInfo] =
@@ -19,6 +20,21 @@ export default function Gamescreen({ img, characters : initialCharactersState = 
     );
   }
 
+  async function onCharacterClick(databaseName, pos) {
+    const { isCharacterAtPosition } = getFirebaseFunctions();
+    const isAtPosition = await isCharacterAtPosition(databaseName, pos);
+
+    setCharacters(characters => {
+      debugger;
+      return characters.map(character => {
+        if (character.databaseName === databaseName && isAtPosition)
+          return {...character, isFound: true }
+        else
+          return {...character}
+      })
+    })
+  }
+
   return (
     <div className="gamescreen" data-testid="gamescreen" onClick={onClick}>
       <CharactersOverlay
@@ -28,6 +44,7 @@ export default function Gamescreen({ img, characters : initialCharactersState = 
         isVisible={characterPickerInfo.visibility}
         location={{ x: characterPickerInfo.xPos, y: characterPickerInfo.yPos }}
         characterNames={characters.map(({ displayName, databaseName}) => ({displayName, databaseName}))}
+        onCharacterClickFunc={onCharacterClick}
       />
       <img className="gamescreen__map" src={img} />
     </div>

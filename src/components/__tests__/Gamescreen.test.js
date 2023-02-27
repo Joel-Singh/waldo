@@ -7,7 +7,7 @@ import getFirebaseFunctions from "../../firebase.js";
 import { getGamescreens } from "../../componentInstantiations.js";
 import { act } from "react-dom/test-utils";
 
-describe.only("Choosing a character", () => {
+describe("Choosing a character", () => {
   beforeAll(async () => {
     const { clearDatabase, addCharacterCoordsToDatabase } = getFirebaseFunctions();
     await clearDatabase();
@@ -21,6 +21,12 @@ describe.only("Choosing a character", () => {
     const charBtn = screen.getByText(name);
     await act(async () => {
       userEvent.click(charBtn);
+      // This promise that resolves immediately
+      // Makes an act error go away.
+      // This is due to the click causing a
+      // database request.
+      // Weird js event loop black magic
+      await new Promise(resolve => setTimeout(resolve, 0))
     })
   }
 
@@ -39,6 +45,18 @@ describe.only("Choosing a character", () => {
     await chooseCharacter(mazeWaldoDisplayName, 89, 36);
 
     expect(isCharacterFound(mazeWaldoDisplayName)).toBe(false);
+  });
+
+  test("at the right position marks them as found", async () => {
+    const { maze } = getGamescreens();
+    render(maze);
+
+    const mazeWaldoDisplayName = "Waldo"
+    const mazeWaldoPos = { x: 1377, y: 653 }
+
+    await chooseCharacter(mazeWaldoDisplayName, mazeWaldoPos.x, mazeWaldoPos.y);
+
+    expect(isCharacterFound(mazeWaldoDisplayName)).toBe(true);
   });
 });
 
