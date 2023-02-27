@@ -3,7 +3,8 @@ import SelectionScreen from "./components/SelectionScreen";
 import { getGamescreens, getMapPreviews } from "./util/componentInstantiations";
 
 // eslint-disable-next-line
-import css from "./styles/style.css";
+import all from "./styles/all.css";
+import selectionScreenCss from "./styles/selectionScreen.css";
 
 function App() {
   const {

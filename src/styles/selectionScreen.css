@@ -1,13 +1,5 @@
 /* TODO: Add some fonts */
 
-body {
-  margin: 0px;
-}
-
-.App {
-  height: 100vh;
-}
-
 .selection-screen {
   display: grid;
   grid-template-columns: 1fr 4fr 1fr;
