@@ -60,7 +60,7 @@ export default function Gamescreen(props) {
       }
       let pageX;
       let pageY;
-      // Necessary because testing doesn't support pageX and pageY
+      // Necessary because test environment doesn't support pageX and pageY
       if (inJestTest()) {
         pageX = event.screenX
         pageY = event.screenY
