@@ -75,7 +75,8 @@ export default function Gamescreen(props) {
 
   async function updateCharacterIsFound(databaseName, pos) {
     const { isCharacterAtPosition } = getFirebaseFunctions();
-    const isAtPosition = await isCharacterAtPosition(databaseName, pos, 30);
+    const POSITION_TOLERANCE = 80;
+    const isAtPosition = await isCharacterAtPosition(databaseName, pos, POSITION_TOLERANCE);
 
     setCharacters((characters) => {
       return characters.map((character) => {
