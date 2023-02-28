@@ -5,7 +5,7 @@ import userEvent from "@testing-library/user-event";
 
 it("has visible class when isVisible is true", () => {
   const { container } = render(
-    <CharacterPicker characterNames={[]} isVisible={true} />
+    <CharacterPicker characterInformation={[]} isVisible={true} />
   );
   const characterPicker = container.firstChild;
 
@@ -14,7 +14,7 @@ it("has visible class when isVisible is true", () => {
 
 it("does not have visible class when isVisible is false", () => {
   const { container } = render(
-    <CharacterPicker characterNames={[]} isVisible={false} />
+    <CharacterPicker characterInformation={[]} isVisible={false} />
   );
   const characterPicker = container.firstChild;
 
@@ -22,23 +22,26 @@ it("does not have visible class when isVisible is false", () => {
 });
 
 it("properly renders character names as divs", () => {
-  const characterNames = [
+  const characterInformation = [
     {
       displayName: "Jane",
       databaseName: "Jane databaseName",
+      isFound: false,
     },
     {
       displayName: "Bob",
       databaseName: "Bob databaseName",
+      isFound: false,
     },
     {
       displayName: "Doe",
       databaseName: "Doe databaseName",
+      isFound: false,
     },
   ];
 
   const { container } = render(
-    <CharacterPicker characterNames={characterNames} />
+    <CharacterPicker characterInformation={characterInformation} />
   );
   const characterPicker = container.firstChild;
   const characterDivs = characterPicker.querySelectorAll(":scope > *");
@@ -64,27 +67,56 @@ it("properly renders character names as divs", () => {
   `);
 });
 
+it("doesn't render character names which have been found", () => {
+  const characterInformation = [
+    {
+      displayName: "Jane",
+      databaseName: "Jane databaseName",
+      isFound: true,
+    },
+    {
+      displayName: "Bob",
+      databaseName: "Bob databaseName",
+      isFound: false,
+    },
+    {
+      displayName: "Doe",
+      databaseName: "Doe databaseName",
+      isFound: false,
+    },
+  ];
+
+  render(
+    <CharacterPicker characterInformation={characterInformation} />
+  );
+
+  expect(screen.queryByText('Jane')).toBeNull()
+});
+
 it("calls function with database name when character name is clicked", () => {
   const onCharacterClickFunc = jest.fn();
 
-  const characterNames = [
+  const characterInformation = [
     {
       displayName: "Jane displayName",
       databaseName: "Jane databaseName",
+      isFound: false,
     },
     {
       displayName: "Bob displayName",
       databaseName: "Bob databaseName",
+      isFound: false,
     },
     {
       displayName: "Doe displayName",
       databaseName: "Doe databaseName",
+      isFound: false
     },
   ];
 
   render(
     <CharacterPicker
-      characterNames={characterNames}
+      characterInformation={characterInformation}
       onCharacterClickFunc={onCharacterClickFunc}
     />
   );
@@ -107,8 +139,12 @@ it("calls function with correct position when character name is clicked", () => 
     <CharacterPicker
       onCharacterClickFunc={onCharacterClickFunc}
       location={{ x: pos.x, y: pos.y }}
-      characterNames={[
-        { displayName: "displayName", databaseName: "databaseName" },
+      characterInformation={[
+        {
+          displayName: "displayName",
+          databaseName: "databaseName",
+          isFound: false
+        },
       ]}
     />
   );
@@ -128,7 +164,7 @@ it("has correct css variables depending on location", () => {
   render(
     <CharacterPicker
       location={{ x: pos.x, y: pos.y }}
-      characterNames={[]}
+      characterInformation={[]}
     />
   );
 

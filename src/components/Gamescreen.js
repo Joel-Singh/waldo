@@ -35,9 +35,10 @@ export default function Gamescreen(props) {
       <CharacterPicker
         isVisible={characterPickerInfo.visibility}
         location={{ x: characterPickerInfo.xPos, y: characterPickerInfo.yPos }}
-        characterNames={characters.map(({ displayName, databaseName }) => ({
+        characterInformation={characters.map(({ displayName, databaseName, isFound }) => ({
           displayName,
           databaseName,
+          isFound
         }))}
         onCharacterClickFunc={updateCharacterIsFound}
       />

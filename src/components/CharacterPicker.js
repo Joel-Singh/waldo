@@ -4,7 +4,7 @@ function CharacterPicker(props) {
   const {
     isVisible,
     location = { x: 0, y: 0 },
-    characterNames = [],
+    characterInformation = [],
     onCharacterClickFunc = () => {},
   } = props;
 
@@ -20,12 +20,15 @@ function CharacterPicker(props) {
       }
     }
     >
-      {buttonsFromCharacterNames(characterNames)}
+      {buttonsFromCharacterInformation(characterInformation)}
     </div>
   );
 
-  function buttonsFromCharacterNames(characterNames) {
-    return characterNames.map(({ displayName, databaseName }) => {
+  function buttonsFromCharacterInformation(characterInformation) {
+    return characterInformation.map(({ displayName, databaseName, isFound }) => {
+      if (isFound)
+        return null
+
       return (
         <button
           onClick={() =>
@@ -42,10 +45,11 @@ function CharacterPicker(props) {
 }
 
 CharacterPicker.propTypes = {
-  characterNames: PropTypes.arrayOf(
+  characterInformation: PropTypes.arrayOf(
     PropTypes.shape({
       displayName: PropTypes.string.isRequired,
       databaseName: PropTypes.string.isRequired,
+      isFound: PropTypes.bool.isRequired,
     })
   ).isRequired,
 };
