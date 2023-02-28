@@ -4,7 +4,10 @@ import { getGamescreens, getMapPreviews } from "./util/componentInstantiations";
 
 // eslint-disable-next-line
 import all from "./styles/all.css";
+// eslint-disable-next-line
 import selectionScreenCss from "./styles/selectionScreen.css";
+// eslint-disable-next-line
+import gamescreenCss from "./styles/gamescreen.css"
 
 function App() {
   const {

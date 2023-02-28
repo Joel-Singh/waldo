@@ -1,0 +1,17 @@
+.gamescreen {
+  position: relative;
+}
+
+.character-picker.visible {
+  display: block;
+}
+
+.character-picker:not(.visible) {
+  display: none;
+}
+
+.character-picker {
+  position: absolute;
+  top: calc(var(--y) * 1px);
+  left: calc(var(--x) * 1px);
+}
