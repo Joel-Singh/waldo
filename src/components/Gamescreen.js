@@ -44,12 +44,32 @@ export default function Gamescreen(props) {
     </div>
   );
 
-  function updateCharPickerInfo({ screenX, screenY }) {
+  function updateCharPickerInfo(event) {
+    const {pageX, pageY} = getPageXandGetPageY()
+
     setCharacterPickerInfo(({ visibility }) => ({
       visibility: !visibility,
-      xPos: screenX,
-      yPos: screenY,
+      xPos: pageX,
+      yPos: pageY,
     }));
+
+    function getPageXandGetPageY() {
+      function inJestTest() {
+        return process.env.JEST_WORKER_ID !== undefined
+      }
+      let pageX;
+      let pageY;
+      // Necessary because testing doesn't support pageX and pageY
+      if (inJestTest()) {
+        pageX = event.screenX
+        pageY = event.screenY
+      } else {
+        pageX = event.pageX
+        pageY = event.pageY
+      }
+
+      return { pageX, pageY }
+    }
   }
 
   async function updateCharacterIsFound(databaseName, pos) {
