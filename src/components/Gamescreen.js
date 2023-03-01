@@ -46,7 +46,7 @@ export default function Gamescreen(props) {
   );
 
   function updateCharPickerInfo(event) {
-    const {pageX, pageY} = getPageXandGetPageY()
+    const {pageX, pageY} = getPageXandGetPageY(event)
 
     setCharacterPickerInfo(({ visibility }) => ({
       visibility: !visibility,
@@ -54,7 +54,7 @@ export default function Gamescreen(props) {
       yPos: pageY,
     }));
 
-    function getPageXandGetPageY() {
+    function getPageXandGetPageY(event) {
       function inJestTest() {
         return process.env.JEST_WORKER_ID !== undefined
       }
