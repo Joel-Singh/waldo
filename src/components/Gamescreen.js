@@ -2,6 +2,7 @@ import CharacterPicker from "./CharacterPicker.js";
 import CharactersOverlay from "./CharactersOverlay.js";
 import PropTypes from "prop-types";
 import { useState } from "react";
+import getPageXandGetPageY from "../util/getPageXandGetPageY.js"
 import getFirebaseFunctions from "../util/firebase.js";
 
 export default function Gamescreen(props) {
@@ -53,24 +54,6 @@ export default function Gamescreen(props) {
       xPos: pageX,
       yPos: pageY,
     }));
-
-    function getPageXandGetPageY(event) {
-      function inJestTest() {
-        return process.env.JEST_WORKER_ID !== undefined
-      }
-      let pageX;
-      let pageY;
-      // Necessary because test environment doesn't support pageX and pageY
-      if (inJestTest()) {
-        pageX = event.screenX
-        pageY = event.screenY
-      } else {
-        pageX = event.pageX
-        pageY = event.pageY
-      }
-
-      return { pageX, pageY }
-    }
   }
 
   async function updateCharacterIsFound(databaseName, pos) {
