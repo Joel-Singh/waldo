@@ -18,6 +18,7 @@ export default function CursorOverlay() {
         "--x": pos.x,
         "--y": pos.y,
       }}
+      className="cursor-overlay"
     ></div>
   );
 
