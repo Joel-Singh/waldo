@@ -5,6 +5,7 @@ import { useState } from "react";
 import getPageXandGetPageY from "../util/getPageXandGetPageY.js"
 import getFirebaseFunctions from "../util/firebase.js";
 import CursorOverlay from "./CursorOverlay.js";
+import { CHOOSING_CHARACTER_TOLERANCE } from "../util/constants.js";
 
 export default function Gamescreen(props) {
   const { img, characters: initialCharactersState = [] } = props;
@@ -61,8 +62,7 @@ export default function Gamescreen(props) {
 
   async function updateCharacterIsFound(databaseName, pos) {
     const { isCharacterAtPosition } = getFirebaseFunctions();
-    const POSITION_TOLERANCE = 80;
-    const isAtPosition = await isCharacterAtPosition(databaseName, pos, POSITION_TOLERANCE);
+    const isAtPosition = await isCharacterAtPosition(databaseName, pos, CHOOSING_CHARACTER_TOLERANCE);
 
     setCharacters((characters) => {
       return characters.map((character) => {

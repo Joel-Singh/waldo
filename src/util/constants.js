@@ -36,3 +36,5 @@ export const characterCoords = [
     coords: { x: 2798, y: 224 },
   },
 ];
+
+export const CHOOSING_CHARACTER_TOLERANCE = 80
