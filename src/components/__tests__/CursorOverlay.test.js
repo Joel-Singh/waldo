@@ -6,10 +6,11 @@ import CursorOverlay from "../CursorOverlay";
 it("is where the mouse is hovered", () => {
   const { container } = render(<CursorOverlay />);
   const cursorOverlay = container.firstChild;
+  const body = document.querySelector('body')
 
   const hoverPos = { x: 32, y: 87 };
 
-  userEvent.hover(cursorOverlay, {
+  userEvent.hover(body, {
     screenX: hoverPos.x,
     screenY: hoverPos.y,
   });
@@ -26,10 +27,11 @@ it("is where the mouse is hovered", () => {
 it("follows the mouse", () => {
   const { container } = render(<CursorOverlay />);
   const cursorOverlay = container.firstChild;
+  const body = document.querySelector('body')
 
   const firstHoverPos = { x: 35, y: 81 };
 
-  userEvent.hover(cursorOverlay, {
+  userEvent.hover(body, {
     screenX: firstHoverPos.x,
     screenY: firstHoverPos.y,
   });
