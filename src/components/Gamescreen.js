@@ -4,6 +4,7 @@ import PropTypes from "prop-types";
 import { useState } from "react";
 import getPageXandGetPageY from "../util/getPageXandGetPageY.js"
 import getFirebaseFunctions from "../util/firebase.js";
+import CursorOverlay from "./CursorOverlay.js";
 
 export default function Gamescreen(props) {
   const { img, characters: initialCharactersState = [] } = props;
@@ -43,6 +44,8 @@ export default function Gamescreen(props) {
         }))}
         onCharacterClickFunc={updateCharacterIsFound}
       />
+
+      <CursorOverlay />
     </div>
   );
 
