@@ -11,7 +11,7 @@ function CharacterPicker(props) {
   const visibleClass = isVisible ? " visible" : "";
   return (
     <div
-      className={"character-picker" + visibleClass}
+      className={"character-picker --positioned-with-x-y" + visibleClass}
       data-testid="character-picker"
       style={
       {

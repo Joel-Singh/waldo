@@ -208,7 +208,7 @@ describe("Character picker", () => {
 
     expect(characterPicker).toMatchInlineSnapshot(`
 <div
-  class="character-picker"
+  class="character-picker --positioned-with-x-y"
   data-testid="character-picker"
   style="--x: 0; --y: 0;"
 >

@@ -10,7 +10,7 @@
   display: none;
 }
 
-.character-picker {
+.--positioned-with-x-y {
   position: absolute;
   top: calc(var(--y) * 1px);
   left: calc(var(--x) * 1px);
