@@ -25,6 +25,9 @@
   width: 50px;
   height: 50px;
   background-color: black;
+  position: absolute;
+  top: calc((var(--y) - var(--choosing-character-tolerance) / 2) * 1px);
+  left: calc((var(--x) - var(--choosing-character-tolerance) / 2) * 1px);
 }
 
 .characters-overlay {
