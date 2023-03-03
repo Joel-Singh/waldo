@@ -24,7 +24,9 @@
   box-sizing: border-box;
   width: calc(var(--choosing-character-tolerance) * 1px);
   height: calc(var(--choosing-character-tolerance) * 1px);
-  background-color: black;
+  background-color: rgba(255, 255, 255, 0.5);
+  border: 3px solid red;
+  border-radius: 999px;
 
   position: absolute;
   top: calc((var(--y) - var(--choosing-character-tolerance) / 2) * 1px);
