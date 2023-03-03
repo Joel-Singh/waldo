@@ -1,5 +1,6 @@
 import { fireEvent, render } from "@testing-library/react";
 import userEvent from "@testing-library/user-event";
+import { toHaveClass } from "@testing-library/jest-dom/extend-expect";
 import { act } from "react-dom/test-utils";
 import CursorOverlay from "../CursorOverlay";
 
@@ -54,4 +55,18 @@ it("follows the mouse", () => {
     const propertyValue = style.getPropertyValue(property)
     return parseInt(propertyValue)
   }
+});
+
+it("is not visible when isVisible is false", () => {
+  const { container } = render(<CursorOverlay isVisible={false}  />);
+  const cursorOverlay = container.firstChild
+
+  expect(cursorOverlay).not.toHaveClass( 'cursor-overlay--visible')
+});
+
+it("is visible when isVisible is true", () => {
+  const { container } = render(<CursorOverlay isVisible={true}  />);
+  const cursorOverlay = container.firstChild
+
+  expect(cursorOverlay).toHaveClass( 'cursor-overlay--visible')
 });

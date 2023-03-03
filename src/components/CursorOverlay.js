@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 import getPageXandGetPageY from "../util/getPageXandGetPageY";
 
-export default function CursorOverlay() {
+export default function CursorOverlay({ isVisible = true }) {
   const [pos, setPos] = useState({x: 0, y: 0})
 
   useEffect(() => {
@@ -12,13 +12,16 @@ export default function CursorOverlay() {
       body.removeEventListener('mousemove', updatePos)
     }
   }, [])
+
+  const isVisibleClass = isVisible ? " cursor-overlay--visible" : ""
   return (
     <div
       style={{
         "--x": pos.x,
         "--y": pos.y,
       }}
-      className="cursor-overlay"
+      className={"cursor-overlay" + isVisibleClass}
+      data-testid="cursor-overlay"
     ></div>
   );
 
