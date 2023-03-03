@@ -7,6 +7,9 @@ import getFirebaseFunctions from "../util/firebase.js";
 import CursorOverlay from "./CursorOverlay.js";
 import { CHOOSING_CHARACTER_TOLERANCE } from "../util/constants.js";
 
+// eslint-disable-next-line
+import gamescreenCss from "../styles/gamescreen.css"
+
 export default function Gamescreen(props) {
   const { img, characters: initialCharactersState = [] } = props;
   const [characterPickerInfo, setCharacterPickerInfo] = useState({

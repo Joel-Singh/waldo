@@ -1,6 +1,9 @@
 import { useState } from "react";
 import PropTypes from "prop-types";
 
+// eslint-disable-next-line
+import selectionScreenCss from "../styles/selectionScreen.css";
+
 function SelectionScreen({ mapPreviews }) {
   const [selectedMapIndex, setSelectedMapIndex] = useState(0);
 
