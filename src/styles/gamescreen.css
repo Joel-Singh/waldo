@@ -1,3 +1,7 @@
+* {
+  cursor: none;
+}
+
 .gamescreen {
   position: relative;
 }
