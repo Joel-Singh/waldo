@@ -1,9 +1,6 @@
-* {
-  cursor: cell;
-}
-
 .gamescreen {
   position: relative;
+  cursor: cell;
 }
 
 .character-picker.visible {
