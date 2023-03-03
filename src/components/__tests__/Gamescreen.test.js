@@ -149,7 +149,7 @@ describe("Character picker", () => {
 
     const characterPicker = screen.getByTestId("character-picker");
 
-    expect(characterPicker).not.toHaveClass("visible");
+    expect(characterPicker).not.toHaveClass("character-picker--visible");
   });
 
   test("is visible after clicking on the Gamescreen", () => {
@@ -159,7 +159,7 @@ describe("Character picker", () => {
     const gamescreen = screen.getByTestId("gamescreen");
 
     userEvent.click(gamescreen);
-    expect(characterPicker).toHaveClass("visible");
+    expect(characterPicker).toHaveClass("character-picker--visible");
   });
 
   test("appears on Gamescreen after click and disappears with another click.", () => {
@@ -169,9 +169,9 @@ describe("Character picker", () => {
     const gamescreen = screen.getByTestId("gamescreen");
 
     userEvent.click(gamescreen);
-    expect(characterPicker).toHaveClass("visible");
+    expect(characterPicker).toHaveClass("character-picker--visible");
     userEvent.click(gamescreen);
-    expect(characterPicker).not.toHaveClass("visible");
+    expect(characterPicker).not.toHaveClass("character-picker--visible");
   });
 
   test("appears on clicked position", () => {

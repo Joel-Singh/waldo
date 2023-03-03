@@ -8,7 +8,7 @@ function CharacterPicker(props) {
     onCharacterClickFunc = () => {},
   } = props;
 
-  const visibleClass = isVisible ? " visible" : "";
+  const visibleClass = isVisible ? " character-picker--visible" : "";
   return (
     <div
       className={"character-picker --positioned-with-x-y" + visibleClass}

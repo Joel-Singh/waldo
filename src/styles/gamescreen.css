@@ -3,11 +3,11 @@
   cursor: cell;
 }
 
-.character-picker.visible {
+.character-picker--visible {
   display: block;
 }
 
-.character-picker:not(.visible) {
+.character-picker:not(.character-picker--visible) {
   display: none;
 }
 

@@ -9,7 +9,7 @@ it("has visible class when isVisible is true", () => {
   );
   const characterPicker = container.firstChild;
 
-  expect(characterPicker).toHaveClass("visible");
+  expect(characterPicker).toHaveClass("character-picker--visible");
 });
 
 it("does not have visible class when isVisible is false", () => {
@@ -18,7 +18,7 @@ it("does not have visible class when isVisible is false", () => {
   );
   const characterPicker = container.firstChild;
 
-  expect(characterPicker).not.toHaveClass("visible");
+  expect(characterPicker).not.toHaveClass("character-picker--visible");
 });
 
 it("properly renders character names as divs", () => {
