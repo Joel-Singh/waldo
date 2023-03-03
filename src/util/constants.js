@@ -37,4 +37,9 @@ export const characterCoords = [
   },
 ];
 
-export const CHOOSING_CHARACTER_TOLERANCE = 80
+export const CHOOSING_CHARACTER_TOLERANCE = 80;
+
+export function exposeCharacterToleranceAsCssVariable() {
+  const root = document.documentElement
+  root.style.setProperty('--choosing-character-tolerance', CHOOSING_CHARACTER_TOLERANCE)
+}
