@@ -8,11 +8,11 @@ import getFirebaseFunctions from "../../util/firebase.js";
 import { getGamescreens } from "../../util/componentInstantiations"
 import { act } from "react-dom/test-utils";
 
-async function chooseCharacter(name, xPos, yPos) {
+async function chooseCharacter(displayName, xPos, yPos) {
   const gamescreen = screen.getByTestId("gamescreen");
   userEvent.click(gamescreen, { screenX: xPos, screenY: yPos });
 
-  const charBtn = screen.getByText(name);
+  const charBtn = screen.getByText(displayName);
   await act(async () => {
     userEvent.click(charBtn);
     // This promise that resolves immediately
