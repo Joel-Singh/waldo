@@ -67,6 +67,54 @@ describe("Choosing a character", () => {
   });
 });
 
+
+describe("onAllCharactersFound", () => {
+  it("is not called when choosing one character", async () => {
+    const onAllCharactersFound = jest.fn()
+
+    const { maze } = getGamescreens(onAllCharactersFound);
+    render(maze);
+
+    const waldo = {
+      displayName: "Waldo",
+      coords: { x: 1377, y: 653 },
+    }
+    const { displayName, coords: {x, y}} = waldo;
+
+    await chooseCharacter(displayName, x, y)
+
+    expect(onAllCharactersFound).not.toBeCalled()
+  })
+
+  it("is called when choosing all characters", async () => {
+    const onAllCharactersFound = jest.fn()
+
+    const { maze } = getGamescreens(onAllCharactersFound);
+    render(maze);
+
+    const characters = [
+      {
+        displayName: "Yellow Hair Person",
+        coords: { x: 1929, y: 209 },
+      },
+      {
+        displayName: "Waldo",
+        coords: { x: 1377, y: 653 },
+      },
+      {
+        displayName: "Bird Person",
+        coords: { x: 1435, y: 687 },
+      },
+    ]
+
+    for (const { displayName, coords: {x, y}} of characters) {
+      await chooseCharacter(displayName, x, y)
+    }
+
+    expect(onAllCharactersFound).toBeCalled()
+  })
+})
+
 test("Character creator utility function", () => {
   const characters = [
     createCharacter(

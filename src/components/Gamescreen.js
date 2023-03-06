@@ -1,7 +1,7 @@
 import CharacterPicker from "./CharacterPicker.js";
 import CharactersOverlay from "./CharactersOverlay.js";
 import PropTypes from "prop-types";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import getPageXandGetPageY from "../util/getPageXandGetPageY.js"
 import getFirebaseFunctions from "../util/firebase.js";
 import CursorOverlay from "./CursorOverlay.js";
@@ -11,7 +11,7 @@ import { CHOOSING_CHARACTER_TOLERANCE } from "../util/constants.js";
 import gamescreenCss from "../styles/gamescreen.css"
 
 export default function Gamescreen(props) {
-  const { img, characters: initialCharactersState = [] } = props;
+  const { img, characters: initialCharactersState = [], onAllCharactersFound = () => {} } = props;
   const [characterPickerInfo, setCharacterPickerInfo] = useState({
     visibility: false,
     xPos: 0,
@@ -21,6 +21,13 @@ export default function Gamescreen(props) {
   const [characters, setCharacters] = useState(
     initialCharactersState.map((char) => ({ ...char, isFound: false }))
   );
+
+  useEffect(() => {
+    const allCharactersFound = characters.every(({ isFound }) => isFound);
+    if (allCharactersFound)
+      onAllCharactersFound()
+
+  }, [characters])
 
   return (
     <div

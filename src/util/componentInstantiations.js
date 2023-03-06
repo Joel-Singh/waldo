@@ -84,10 +84,11 @@ const getMapPreviews = () => ({
   ),
 });
 
-const getGamescreens = () => ({
+const getGamescreens = (onAllCharactersFound) => ({
   maze: (
     <Gamescreen
       img={mazeMap}
+      onAllCharactersFound={onAllCharactersFound}
       characters={[
         createCharacter("Waldo", "mazeWaldo", mazeWaldo),
         createCharacter("Bird Person", "birdPerson", birdPerson),
@@ -102,6 +103,7 @@ const getGamescreens = () => ({
   beach: (
     <Gamescreen
       img={beachMap}
+      onAllCharactersFound={onAllCharactersFound}
       characters={[
         createCharacter("Waldo", "beachWaldo", beachWaldo),
         createCharacter("Shovel Boy", "shovelBoy", shovelBoy),
@@ -112,6 +114,7 @@ const getGamescreens = () => ({
   snow: (
     <Gamescreen
       img={snowMap}
+      onAllCharactersFound={onAllCharactersFound}
       characters={[
         createCharacter("Waldo", "snowWaldo", snowWaldo),
         createCharacter("Ouch!", "ouch", shovelBoy),
