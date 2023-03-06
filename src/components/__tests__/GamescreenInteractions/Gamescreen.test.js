@@ -1,8 +1,8 @@
 import userEvent from "@testing-library/user-event";
 import { render, screen } from "@testing-library/react";
 import { toHaveClass } from "@testing-library/jest-dom";
-import Gamescreen from "../Gamescreen.js";
-import createCharacter from "../../util/createCharacter.js";
+import Gamescreen from "../../Gamescreen.js";
+import createCharacter from "../../../util/createCharacter.js";
 
 import getFirebaseFunctions from "../../util/firebase.js";
 import { getGamescreens } from "../../util/componentInstantiations";
