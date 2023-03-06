@@ -37,6 +37,11 @@ describe("Choosing a character", () => {
     await addCharacterCoordsToDatabase();
   });
 
+  afterAll(async () => {
+    const { clearDatabase } = getFirebaseFunctions()
+    await clearDatabase()
+  })
+
   test("at the wrong position doesn't mark them as found", async () => {
     const { maze } = getGamescreens();
     render(maze);
