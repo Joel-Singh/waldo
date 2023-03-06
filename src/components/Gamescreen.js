@@ -2,16 +2,21 @@ import CharacterPicker from "./CharacterPicker.js";
 import CharactersOverlay from "./CharactersOverlay.js";
 import PropTypes from "prop-types";
 import { useEffect, useState } from "react";
-import getPageXandGetPageY from "../util/getPageXandGetPageY.js"
+import getPageXandGetPageY from "../util/getPageXandGetPageY.js";
 import getFirebaseFunctions from "../util/firebase.js";
 import CursorOverlay from "./CursorOverlay.js";
 import { CHOOSING_CHARACTER_TOLERANCE } from "../util/constants.js";
 
 // eslint-disable-next-line
-import gamescreenCss from "../styles/gamescreen.css"
+import gamescreenCss from "../styles/gamescreen.css";
 
 export default function Gamescreen(props) {
-  const { img, characters: initialCharactersState = [], onAllCharactersFound = () => {} } = props;
+  const {
+    img,
+    characters: initialCharactersState = [],
+    onAllCharactersFound = () => {},
+  } = props;
+
   const [characterPickerInfo, setCharacterPickerInfo] = useState({
     visibility: false,
     xPos: 0,
@@ -24,10 +29,8 @@ export default function Gamescreen(props) {
 
   useEffect(() => {
     const allCharactersFound = characters.every(({ isFound }) => isFound);
-    if (allCharactersFound)
-      onAllCharactersFound()
-
-  }, [characters])
+    if (allCharactersFound) onAllCharactersFound();
+  }, [characters]);
 
   return (
     <div
@@ -48,11 +51,13 @@ export default function Gamescreen(props) {
       <CharacterPicker
         isVisible={characterPickerInfo.visibility}
         location={{ x: characterPickerInfo.xPos, y: characterPickerInfo.yPos }}
-        characterInformation={characters.map(({ displayName, databaseName, isFound }) => ({
-          displayName,
-          databaseName,
-          isFound
-        }))}
+        characterInformation={characters.map(
+          ({ displayName, databaseName, isFound }) => ({
+            displayName,
+            databaseName,
+            isFound,
+          })
+        )}
         onCharacterClickFunc={updateCharacterIsFound}
       />
 
@@ -61,7 +66,7 @@ export default function Gamescreen(props) {
   );
 
   function updateCharPickerInfo(event) {
-    const {pageX, pageY} = getPageXandGetPageY(event)
+    const { pageX, pageY } = getPageXandGetPageY(event);
 
     setCharacterPickerInfo(({ visibility }) => ({
       visibility: !visibility,
@@ -72,7 +77,11 @@ export default function Gamescreen(props) {
 
   async function updateCharacterIsFound(databaseName, pos) {
     const { isCharacterAtPosition } = getFirebaseFunctions();
-    const isAtPosition = await isCharacterAtPosition(databaseName, pos, CHOOSING_CHARACTER_TOLERANCE);
+    const isAtPosition = await isCharacterAtPosition(
+      databaseName,
+      pos,
+      CHOOSING_CHARACTER_TOLERANCE
+    );
 
     setCharacters((characters) => {
       return characters.map((character) => {

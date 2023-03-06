@@ -13,34 +13,36 @@ function CharacterPicker(props) {
     <div
       className={"character-picker --positioned-with-x-y" + visibleClass}
       data-testid="character-picker"
-      style={
-      {
-        '--x': location.x,
-        '--y': location.y,
-      }
-    }
+      style={{
+        "--x": location.x,
+        "--y": location.y,
+      }}
     >
       {buttonsFromCharacterInformation(characterInformation)}
     </div>
   );
 
   function buttonsFromCharacterInformation(characterInformation) {
-    return characterInformation.map(({ displayName, databaseName, isFound }) => {
-      if (isFound)
-        return null
+    return characterInformation.map(
+      ({ displayName, databaseName, isFound }) => {
+        if (isFound) return null;
 
-      return (
-        <button
-          onClick={() =>
-            onCharacterClickFunc(databaseName, { x: location.x, y: location.y })
-          }
-          type="button"
-          key={databaseName}
-        >
-          {displayName}
-        </button>
-      );
-    });
+        return (
+          <button
+            onClick={() =>
+              onCharacterClickFunc(databaseName, {
+                x: location.x,
+                y: location.y,
+              })
+            }
+            type="button"
+            key={databaseName}
+          >
+            {displayName}
+          </button>
+        );
+      }
+    );
   }
 }
 

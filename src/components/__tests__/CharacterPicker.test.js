@@ -86,11 +86,9 @@ it("doesn't render character names which have been found", () => {
     },
   ];
 
-  render(
-    <CharacterPicker characterInformation={characterInformation} />
-  );
+  render(<CharacterPicker characterInformation={characterInformation} />);
 
-  expect(screen.queryByText('Jane')).toBeNull()
+  expect(screen.queryByText("Jane")).toBeNull();
 });
 
 it("calls function with database name when character name is clicked", () => {
@@ -110,7 +108,7 @@ it("calls function with database name when character name is clicked", () => {
     {
       displayName: "Doe displayName",
       databaseName: "Doe databaseName",
-      isFound: false
+      isFound: false,
     },
   ];
 
@@ -143,7 +141,7 @@ it("calls function with correct position when character name is clicked", () => 
         {
           displayName: "displayName",
           databaseName: "databaseName",
-          isFound: false
+          isFound: false,
         },
       ]}
     />
@@ -168,12 +166,12 @@ it("has correct css variables depending on location", () => {
     />
   );
 
-  const characterPicker = screen.getByTestId("character-picker")
-  const style = getComputedStyle(characterPicker)
+  const characterPicker = screen.getByTestId("character-picker");
+  const style = getComputedStyle(characterPicker);
 
-  const styleXValue = style.getPropertyValue('--x')
-  const styleYValue = style.getPropertyValue('--y')
+  const styleXValue = style.getPropertyValue("--x");
+  const styleYValue = style.getPropertyValue("--y");
 
-  expect(parseInt(styleXValue)).toBe(8)
-  expect(parseInt(styleYValue)).toBe(9)
+  expect(parseInt(styleXValue)).toBe(8);
+  expect(parseInt(styleYValue)).toBe(9);
 });

@@ -5,7 +5,7 @@ import Gamescreen from "../Gamescreen.js";
 import createCharacter from "../../util/createCharacter.js";
 
 import getFirebaseFunctions from "../../util/firebase.js";
-import { getGamescreens } from "../../util/componentInstantiations"
+import { getGamescreens } from "../../util/componentInstantiations";
 import { act } from "react-dom/test-utils";
 
 async function chooseCharacter(displayName, xPos, yPos) {
@@ -37,9 +37,9 @@ beforeAll(async () => {
 });
 
 afterAll(async () => {
-  const { clearDatabase } = getFirebaseFunctions()
-  await clearDatabase()
-})
+  const { clearDatabase } = getFirebaseFunctions();
+  await clearDatabase();
+});
 
 describe("Choosing a character", () => {
   test("at the wrong position doesn't mark them as found", async () => {
@@ -67,10 +67,9 @@ describe("Choosing a character", () => {
   });
 });
 
-
 describe("onAllCharactersFound", () => {
   it("is not called when choosing one character", async () => {
-    const onAllCharactersFound = jest.fn()
+    const onAllCharactersFound = jest.fn();
 
     const { maze } = getGamescreens(onAllCharactersFound);
     render(maze);
@@ -78,16 +77,19 @@ describe("onAllCharactersFound", () => {
     const waldo = {
       displayName: "Waldo",
       coords: { x: 1377, y: 653 },
-    }
-    const { displayName, coords: {x, y}} = waldo;
+    };
+    const {
+      displayName,
+      coords: { x, y },
+    } = waldo;
 
-    await chooseCharacter(displayName, x, y)
+    await chooseCharacter(displayName, x, y);
 
-    expect(onAllCharactersFound).not.toBeCalled()
-  })
+    expect(onAllCharactersFound).not.toBeCalled();
+  });
 
   it("is called when choosing all characters", async () => {
-    const onAllCharactersFound = jest.fn()
+    const onAllCharactersFound = jest.fn();
 
     const { maze } = getGamescreens(onAllCharactersFound);
     render(maze);
@@ -105,15 +107,18 @@ describe("onAllCharactersFound", () => {
         displayName: "Bird Person",
         coords: { x: 1435, y: 687 },
       },
-    ]
+    ];
 
-    for (const { displayName, coords: {x, y}} of characters) {
-      await chooseCharacter(displayName, x, y)
+    for (const {
+      displayName,
+      coords: { x, y },
+    } of characters) {
+      await chooseCharacter(displayName, x, y);
     }
 
-    expect(onAllCharactersFound).toBeCalled()
-  })
-})
+    expect(onAllCharactersFound).toBeCalled();
+  });
+});
 
 test("Character creator utility function", () => {
   const characters = [
@@ -290,7 +295,7 @@ test("Cursor overlay is hidden when character picker is visible", () => {
 
   const gamescreen = screen.getByTestId("gamescreen");
   const characterPicker = screen.getByTestId("character-picker");
-  const cursorOverlay = screen.getByTestId('cursor-overlay')
+  const cursorOverlay = screen.getByTestId("cursor-overlay");
 
   userEvent.click(gamescreen);
   expect(characterPicker).toHaveClass("character-picker--visible");
@@ -299,4 +304,4 @@ test("Cursor overlay is hidden when character picker is visible", () => {
   userEvent.click(gamescreen);
   expect(characterPicker).not.toHaveClass("character-picker--visible");
   expect(cursorOverlay).toHaveClass("cursor-overlay--visible");
-})
+});

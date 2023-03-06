@@ -7,7 +7,7 @@ import CursorOverlay from "../CursorOverlay";
 it("is where the mouse is hovered", () => {
   const { container } = render(<CursorOverlay />);
   const cursorOverlay = container.firstChild;
-  const body = document.querySelector('body')
+  const body = document.querySelector("body");
 
   const hoverPos = { x: 32, y: 87 };
 
@@ -28,7 +28,7 @@ it("is where the mouse is hovered", () => {
 it("follows the mouse", () => {
   const { container } = render(<CursorOverlay />);
   const cursorOverlay = container.firstChild;
-  const body = document.querySelector('body')
+  const body = document.querySelector("body");
 
   const firstHoverPos = { x: 35, y: 81 };
 
@@ -37,8 +37,8 @@ it("follows the mouse", () => {
     screenY: firstHoverPos.y,
   });
 
-  expect(getStylePropAsNumber(cursorOverlay, '--x')).toBe(firstHoverPos.x);
-  expect(getStylePropAsNumber(cursorOverlay, '--y')).toBe(firstHoverPos.y);
+  expect(getStylePropAsNumber(cursorOverlay, "--x")).toBe(firstHoverPos.x);
+  expect(getStylePropAsNumber(cursorOverlay, "--y")).toBe(firstHoverPos.y);
 
   const secondHoverPos = { x: 90, y: 10 };
 
@@ -47,26 +47,26 @@ it("follows the mouse", () => {
     screenY: secondHoverPos.y,
   });
 
-  expect(getStylePropAsNumber(cursorOverlay, '--x')).toBe(secondHoverPos.x);
-  expect(getStylePropAsNumber(cursorOverlay, '--y')).toBe(secondHoverPos.y);
+  expect(getStylePropAsNumber(cursorOverlay, "--x")).toBe(secondHoverPos.x);
+  expect(getStylePropAsNumber(cursorOverlay, "--y")).toBe(secondHoverPos.y);
 
   function getStylePropAsNumber(element, property) {
-    const style = getComputedStyle(element)
-    const propertyValue = style.getPropertyValue(property)
-    return parseInt(propertyValue)
+    const style = getComputedStyle(element);
+    const propertyValue = style.getPropertyValue(property);
+    return parseInt(propertyValue);
   }
 });
 
 it("is not visible when isVisible is false", () => {
-  const { container } = render(<CursorOverlay isVisible={false}  />);
-  const cursorOverlay = container.firstChild
+  const { container } = render(<CursorOverlay isVisible={false} />);
+  const cursorOverlay = container.firstChild;
 
-  expect(cursorOverlay).not.toHaveClass( 'cursor-overlay--visible')
+  expect(cursorOverlay).not.toHaveClass("cursor-overlay--visible");
 });
 
 it("is visible when isVisible is true", () => {
-  const { container } = render(<CursorOverlay isVisible={true}  />);
-  const cursorOverlay = container.firstChild
+  const { container } = render(<CursorOverlay isVisible={true} />);
+  const cursorOverlay = container.firstChild;
 
-  expect(cursorOverlay).toHaveClass( 'cursor-overlay--visible')
+  expect(cursorOverlay).toHaveClass("cursor-overlay--visible");
 });

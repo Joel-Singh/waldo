@@ -2,18 +2,18 @@ import { useEffect, useState } from "react";
 import getPageXandGetPageY from "../util/getPageXandGetPageY";
 
 export default function CursorOverlay({ isVisible = true }) {
-  const [pos, setPos] = useState({x: 0, y: 0})
+  const [pos, setPos] = useState({ x: 0, y: 0 });
 
   useEffect(() => {
-    const body = document.querySelector('body')
-    body.addEventListener('mousemove', updatePos)
+    const body = document.querySelector("body");
+    body.addEventListener("mousemove", updatePos);
 
     return () => {
-      body.removeEventListener('mousemove', updatePos)
-    }
-  }, [])
+      body.removeEventListener("mousemove", updatePos);
+    };
+  }, []);
 
-  const isVisibleClass = isVisible ? " cursor-overlay--visible" : ""
+  const isVisibleClass = isVisible ? " cursor-overlay--visible" : "";
   return (
     <div
       style={{
@@ -26,7 +26,7 @@ export default function CursorOverlay({ isVisible = true }) {
   );
 
   function updatePos(e) {
-    const { pageX, pageY } = getPageXandGetPageY(e)
-    setPos({x: pageX, y: pageY})
+    const { pageX, pageY } = getPageXandGetPageY(e);
+    setPos({ x: pageX, y: pageY });
   }
 }
