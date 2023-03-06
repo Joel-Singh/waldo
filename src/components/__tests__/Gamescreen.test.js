@@ -8,6 +8,27 @@ import getFirebaseFunctions from "../../util/firebase.js";
 import { getGamescreens } from "../../util/componentInstantiations"
 import { act } from "react-dom/test-utils";
 
+async function chooseCharacter(name, xPos, yPos) {
+  const gamescreen = screen.getByTestId("gamescreen");
+  userEvent.click(gamescreen, { screenX: xPos, screenY: yPos });
+
+  const charBtn = screen.getByText(name);
+  await act(async () => {
+    userEvent.click(charBtn);
+    // This promise that resolves immediately
+    // Makes an act error go away.
+    // This is due to the click causing a
+    // database request.
+    // Weird js event loop black magic
+    await new Promise((resolve) => setTimeout(resolve, 0));
+  });
+}
+
+function isCharacterFound(name) {
+  const characterFromCharacterOverlay = screen.getByAltText(name);
+  return characterFromCharacterOverlay.classList.contains("found");
+}
+
 describe("Choosing a character", () => {
   beforeAll(async () => {
     const { clearDatabase, addCharacterCoordsToDatabase } =
@@ -15,27 +36,6 @@ describe("Choosing a character", () => {
     await clearDatabase();
     await addCharacterCoordsToDatabase();
   });
-
-  async function chooseCharacter(name, xPos, yPos) {
-    const gamescreen = screen.getByTestId("gamescreen");
-    userEvent.click(gamescreen, { screenX: xPos, screenY: yPos });
-
-    const charBtn = screen.getByText(name);
-    await act(async () => {
-      userEvent.click(charBtn);
-      // This promise that resolves immediately
-      // Makes an act error go away.
-      // This is due to the click causing a
-      // database request.
-      // Weird js event loop black magic
-      await new Promise((resolve) => setTimeout(resolve, 0));
-    });
-  }
-
-  function isCharacterFound(name) {
-    const characterFromCharacterOverlay = screen.getByAltText(name);
-    return characterFromCharacterOverlay.classList.contains("found");
-  }
 
   test("at the wrong position doesn't mark them as found", async () => {
     const { maze } = getGamescreens();
