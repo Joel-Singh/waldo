@@ -29,19 +29,19 @@ function isCharacterFound(name) {
   return characterFromCharacterOverlay.classList.contains("found");
 }
 
+beforeAll(async () => {
+  const { clearDatabase, addCharacterCoordsToDatabase } =
+    getFirebaseFunctions();
+  await clearDatabase();
+  await addCharacterCoordsToDatabase();
+});
+
+afterAll(async () => {
+  const { clearDatabase } = getFirebaseFunctions()
+  await clearDatabase()
+})
+
 describe("Choosing a character", () => {
-  beforeAll(async () => {
-    const { clearDatabase, addCharacterCoordsToDatabase } =
-      getFirebaseFunctions();
-    await clearDatabase();
-    await addCharacterCoordsToDatabase();
-  });
-
-  afterAll(async () => {
-    const { clearDatabase } = getFirebaseFunctions()
-    await clearDatabase()
-  })
-
   test("at the wrong position doesn't mark them as found", async () => {
     const { maze } = getGamescreens();
     render(maze);
