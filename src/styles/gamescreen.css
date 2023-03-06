@@ -11,6 +11,10 @@
   display: none;
 }
 
+.cursor-overlay:not(.cursor-overlay--visible) {
+  display: none;
+}
+
 .--positioned-with-x-y {
   position: absolute;
   top: calc(var(--y) * 1px);

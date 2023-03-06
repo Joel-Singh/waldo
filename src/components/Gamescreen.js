@@ -49,7 +49,7 @@ export default function Gamescreen(props) {
         onCharacterClickFunc={updateCharacterIsFound}
       />
 
-      <CursorOverlay />
+      <CursorOverlay isVisible={!characterPickerInfo.visibility} />
     </div>
   );
 
