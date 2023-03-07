@@ -4,6 +4,7 @@ import PropTypes from "prop-types";
 import CharacterPicker from "./CharacterPicker.js";
 import CharactersOverlay from "./CharactersOverlay.js";
 import CursorOverlay from "./CursorOverlay.js";
+import Stopwatch from "./Stopwatch.js";
 
 import getPageXandGetPageY from "../util/getPageXandGetPageY.js";
 import getFirebaseFunctions from "../util/firebase.js";
@@ -28,6 +29,8 @@ export default function Gamescreen(props) {
   const [characters, setCharacters] = useState(
     initialCharactersState.map((char) => ({ ...char, isFound: false }))
   );
+
+  const [secondsElapsed, setSecondsElapsed] = useState(0);
 
   useEffect(() => {
     const allCharactersFound = characters.every(({ isFound }) => isFound);
@@ -64,6 +67,8 @@ export default function Gamescreen(props) {
       />
 
       <CursorOverlay isVisible={!characterPickerInfo.visibility} />
+
+      <Stopwatch secondsElapsed={secondsElapsed} incrementDecisecond={() => setSecondsElapsed(prev => prev + 0.1)}/>
     </div>
   );
 

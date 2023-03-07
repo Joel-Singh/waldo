@@ -4,6 +4,7 @@ import PropTypes from "prop-types"
 
 export default function Stopwatch({ secondsElapsed, incrementDecisecond }) {
   useEffect(() => {
+    debugger;
     const intervalID = setInterval(incrementDecisecond, decisecondToMs);
 
     return () => {
