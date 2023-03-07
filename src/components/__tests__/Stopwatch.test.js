@@ -7,6 +7,7 @@ it("Renders seconds elapsed", () => {
   render(
     <Stopwatch
       secondsElapsed={secondsElapsed}
+      incrementDecisecond={() => {}}
     />
   )
 
@@ -21,6 +22,7 @@ it("calls incrementDecisecond after a decisecond", () => {
   render(
     <Stopwatch
       incrementDecisecond={incrementDecisecond}
+      secondsElapsed={0}
     />
   )
 
@@ -37,6 +39,7 @@ it("continually calls incrementDecisecond", () => {
   render(
     <Stopwatch
       incrementDecisecond={incrementDecisecond}
+      secondsElapsed={0}
     />
   )
 
