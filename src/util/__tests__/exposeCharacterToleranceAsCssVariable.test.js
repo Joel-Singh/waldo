@@ -1,7 +1,7 @@
 import {
   CHOOSING_CHARACTER_TOLERANCE,
   exposeCharacterToleranceAsCssVariable,
-} from "../../util/constants";
+} from "../constants";
 
 it("exposes character tolerance as a css variable", async () => {
   exposeCharacterToleranceAsCssVariable();
