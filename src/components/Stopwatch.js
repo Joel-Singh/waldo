@@ -10,7 +10,7 @@ export default function Stopwatch({ secondsElapsed, incrementDecisecond }) {
       clearInterval(intervalID);
     };
   }, []);
-  return <div className="stopwatch">{secondsElapsed}</div>;
+  return <div className="stopwatch">{(secondsElapsed).toFixed(1)}</div>;
 }
 
 Stopwatch.propTypes = {

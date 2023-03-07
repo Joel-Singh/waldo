@@ -14,6 +14,26 @@ it("renders seconds elapsed", () => {
   expect(screen.queryByText('32.5')).not.toBeNull()
 })
 
+it("renders with a trailing zero", () => {
+  const { rerender } = render(
+    <Stopwatch
+      secondsElapsed={0}
+      incrementDecisecond={() => {}}
+    />
+  )
+
+  expect(screen.queryByText('0.0')).not.toBeNull()
+
+  rerender(
+    <Stopwatch
+      secondsElapsed={1}
+      incrementDecisecond={() => {}}
+    />
+  )
+
+  expect(screen.queryByText('1.0')).not.toBeNull()
+})
+
 it("calls incrementDecisecond after a decisecond", () => {
   jest.useFakeTimers()
 
@@ -46,3 +66,4 @@ it("continually calls incrementDecisecond", () => {
   jest.advanceTimersByTime(decisecondToMs * 5)
   expect(incrementDecisecond).toBeCalledTimes(5)
 })
+
