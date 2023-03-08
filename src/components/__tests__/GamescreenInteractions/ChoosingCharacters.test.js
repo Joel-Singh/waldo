@@ -21,6 +21,30 @@ async function chooseCharacter(displayName, xPos, yPos) {
   });
 }
 
+async function chooseAllCharactersInMaze() {
+    const characters = [
+      {
+        displayName: "Yellow Hair Person",
+        coords: { x: 1929, y: 209 },
+      },
+      {
+        displayName: "Waldo",
+        coords: { x: 1377, y: 653 },
+      },
+      {
+        displayName: "Bird Person",
+        coords: { x: 1435, y: 687 },
+      },
+    ];
+
+    for (const {
+      displayName,
+      coords: { x, y },
+    } of characters) {
+      await chooseCharacter(displayName, x, y);
+    }
+}
+
 function isCharacterFound(name) {
   const characterFromCharacterOverlay = screen.getByAltText(name);
   return characterFromCharacterOverlay.classList.contains("found");
@@ -91,27 +115,7 @@ describe("onAllCharactersFound", () => {
     const { maze } = getGamescreens(onAllCharactersFound);
     render(maze);
 
-    const characters = [
-      {
-        displayName: "Yellow Hair Person",
-        coords: { x: 1929, y: 209 },
-      },
-      {
-        displayName: "Waldo",
-        coords: { x: 1377, y: 653 },
-      },
-      {
-        displayName: "Bird Person",
-        coords: { x: 1435, y: 687 },
-      },
-    ];
-
-    for (const {
-      displayName,
-      coords: { x, y },
-    } of characters) {
-      await chooseCharacter(displayName, x, y);
-    }
+    await chooseAllCharactersInMaze()
 
     expect(onAllCharactersFound).toBeCalled();
   });
