@@ -34,7 +34,7 @@ export default function Gamescreen(props) {
 
   useEffect(() => {
     const allCharactersFound = characters.every(({ isFound }) => isFound);
-    if (allCharactersFound) onAllCharactersFound();
+    if (allCharactersFound) onAllCharactersFound(secondsElapsed);
   }, [characters]);
 
   return (

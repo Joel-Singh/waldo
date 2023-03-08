@@ -119,4 +119,23 @@ describe("onAllCharactersFound", () => {
 
     expect(onAllCharactersFound).toBeCalled();
   });
+
+  it.only("is called with time elapsed", async () => {
+    const onAllCharactersFound = jest.fn();
+
+    const { maze } = getGamescreens(onAllCharactersFound);
+    render(maze);
+
+    const SECONDS_ELAPSED = 0.3;
+    await act( async () => {
+      await new Promise(resolve => setTimeout(resolve, SECONDS_ELAPSED * 1000))
+    })
+    await chooseAllCharactersInMaze()
+
+    const firstArgumentOfFirstCall = onAllCharactersFound.mock.calls[0][0];
+    const TOLERANCE = 0.2
+    const withinTolerance = Math.abs(firstArgumentOfFirstCall - SECONDS_ELAPSED) < TOLERANCE
+
+    expect(withinTolerance).toBe(true)
+  })
 });
