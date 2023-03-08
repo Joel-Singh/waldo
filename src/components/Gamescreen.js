@@ -53,24 +53,45 @@ export default function Gamescreen(props) {
         }))}
       />
 
-      <CharacterPicker
-        isVisible={characterPickerInfo.visibility}
-        location={{ x: characterPickerInfo.xPos, y: characterPickerInfo.yPos }}
-        characterInformation={characters.map(
-          ({ displayName, databaseName, isFound }) => ({
-            displayName,
-            databaseName,
-            isFound,
-          })
-        )}
-        onCharacterClickFunc={updateCharacterIsFound}
-      />
+      {instantiateCharacterPicker()}
 
       <CursorOverlay isVisible={!characterPickerInfo.visibility} />
 
       <Stopwatch secondsElapsed={secondsElapsed} incrementDecisecond={() => setSecondsElapsed(prev => prev + 0.1)}/>
     </div>
   );
+
+  function instantiateCharacterPicker() {
+    return (<CharacterPicker
+      isVisible={characterPickerInfo.visibility}
+      location={{ x: characterPickerInfo.xPos, y: characterPickerInfo.yPos }}
+      characterInformation={characters.map(
+        ({ displayName, databaseName, isFound }) => ({
+          displayName,
+          databaseName,
+          isFound,
+        })
+      )}
+      onCharacterClickFunc={updateCharacterIsFound}
+    />);
+
+    async function updateCharacterIsFound(databaseName, pos) {
+      const { isCharacterAtPosition } = getFirebaseFunctions();
+      const isAtPosition = await isCharacterAtPosition(
+        databaseName,
+        pos,
+        CHOOSING_CHARACTER_TOLERANCE
+      );
+
+      setCharacters((characters) => {
+        return characters.map((character) => {
+          if (character.databaseName === databaseName && isAtPosition)
+            return { ...character, isFound: true };
+          else return { ...character };
+        });
+      });
+    }
+  }
 
   function updateCharPickerInfo(event) {
     const { pageX, pageY } = getPageXandGetPageY(event);
@@ -80,23 +101,6 @@ export default function Gamescreen(props) {
       xPos: pageX,
       yPos: pageY,
     }));
-  }
-
-  async function updateCharacterIsFound(databaseName, pos) {
-    const { isCharacterAtPosition } = getFirebaseFunctions();
-    const isAtPosition = await isCharacterAtPosition(
-      databaseName,
-      pos,
-      CHOOSING_CHARACTER_TOLERANCE
-    );
-
-    setCharacters((characters) => {
-      return characters.map((character) => {
-        if (character.databaseName === databaseName && isAtPosition)
-          return { ...character, isFound: true };
-        else return { ...character };
-      });
-    });
   }
 }
 
