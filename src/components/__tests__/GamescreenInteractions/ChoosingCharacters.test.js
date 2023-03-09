@@ -120,7 +120,7 @@ describe("onAllCharactersFound", () => {
     expect(onAllCharactersFound).toBeCalled();
   });
 
-  it.only("is called with time elapsed", async () => {
+  it("is called with time elapsed", async () => {
     const onAllCharactersFound = jest.fn();
 
     const { maze } = getGamescreens(onAllCharactersFound);
