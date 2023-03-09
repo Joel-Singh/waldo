@@ -14,19 +14,10 @@ export default function getFirebaseFunctions() {
   if (getApps().length === 0) initializeFirebase();
 
   return {
-    testDatabaseSetting,
     clearDatabase,
     addCharacterCoordsToDatabase,
     isCharacterAtPosition,
   };
-
-  function testDatabaseSetting() {
-    set(ref(db, "users/37"), {
-      username: "Joel",
-      email: "joelsingh788@gmail.com",
-      profile_picture: "penisman",
-    });
-  }
 
   function clearDatabase() {
     return set(ref(db), null);
