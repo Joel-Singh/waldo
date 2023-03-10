@@ -17,7 +17,7 @@ export default function getFirebaseFunctions() {
     clearDatabase,
     addCharacterCoordsToDatabase,
     isCharacterAtPosition,
-    clearCharacterCoordsInDatabase
+    clearCharacterCoordsInDatabase,
   };
 
   function clearDatabase() {
@@ -25,7 +25,7 @@ export default function getFirebaseFunctions() {
   }
 
   async function clearCharacterCoordsInDatabase() {
-    await set(ref(db, `characterCoordinates/`), null)
+    await set(ref(db, `characterCoordinates/`), null);
   }
 
   //TODO: Final app won't have this function
