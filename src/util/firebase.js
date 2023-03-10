@@ -15,7 +15,10 @@ export default function getFirebaseFunctions() {
 
   return {
     clearDatabase,
+    clearHighscores,
     addCharacterCoordsToDatabase,
+    addHighscore,
+    getTopTenHighscores,
     isCharacterAtPosition,
     clearCharacterCoordsInDatabase,
   };
@@ -26,6 +29,33 @@ export default function getFirebaseFunctions() {
 
   async function clearCharacterCoordsInDatabase() {
     await set(ref(db, `characterCoordinates/`), null);
+  }
+
+  async function clearHighscores() {
+    await set(ref(db, `highscores/`), null);
+  }
+
+  async function addHighscore(map, initials, scoreAsSecondsElapsed) {
+    await set(
+      ref(db, `highscores/${map}/${initials}`),
+      scoreAsSecondsElapsed
+    ).catch(() => console.error("Couldn't add highscore"));
+  }
+
+  async function getTopTenHighscores(map) {
+    const highscores = (await get(ref(db))).val().highscores[`${map}`];
+
+    const sortedHighscores = Object.entries(highscores).sort(
+      (x, y) => x[1] - y[1]
+    );
+
+    const sortedTopTen = sortedHighscores.slice(0, 10);
+    const sortedTopTenAsObjects = sortedTopTen.map((highscore) => ({
+      initials: highscore[0],
+      timeTaken: highscore[1],
+    }));
+
+    return sortedTopTenAsObjects;
   }
 
   //TODO: Final app won't have this function
