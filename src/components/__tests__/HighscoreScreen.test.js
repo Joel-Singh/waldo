@@ -5,6 +5,7 @@ import HighscoreScreen from "../HighscoreScreen";
 async function renderHighscoreScreen(map) {
   const {container : {firstChild : highscoreScreen }} = render(<HighscoreScreen map={map} />);
 
+  // need to wait for the initial fetch of the scores
   await act(async () => {
     await new Promise(resolve => setTimeout(resolve, 100))
   })
