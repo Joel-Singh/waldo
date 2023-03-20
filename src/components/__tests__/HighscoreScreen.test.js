@@ -2,19 +2,19 @@ import { act, getByTestId, render, screen, waitFor } from "@testing-library/reac
 import getFirebaseFunctions from "../../util/firebase";
 import HighscoreScreen from "../HighscoreScreen";
 
-async function renderHighscoreScreen(map) {
-  const {container : {firstChild : highscoreScreen }} = render(<HighscoreScreen map={map} />);
+async function renderHighscoreScreen(highscoreScreen) {
+  render(highscoreScreen);
 
   // need to wait for the initial fetch of the scores
   await act(async () => {
     await new Promise(resolve => setTimeout(resolve, 100))
   })
 
-  return highscoreScreen
+  return screen.getByTestId("HighscoreScreen")
 }
 
 test("Highscore screen renders", async () => {
-  const highscoreScreen = await renderHighscoreScreen("maze");
+  const highscoreScreen = await renderHighscoreScreen(<HighscoreScreen map="maze" />);
   expect(highscoreScreen).toBeDefined();
 });
 
@@ -42,7 +42,7 @@ test("Highscore screen renders highscores", async () => {
     )
   );
 
-  const highscoreScreen = await renderHighscoreScreen("maze");
+  const highscoreScreen = await renderHighscoreScreen(<HighscoreScreen map="maze" />);
 
   expect(highscoreScreen).toMatchSnapshot()
 });
