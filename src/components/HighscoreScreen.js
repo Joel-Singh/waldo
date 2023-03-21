@@ -2,6 +2,12 @@ import { useEffect, useState } from "react";
 import PropTypes from "prop-types";
 import getFirebaseFunctions from "../util/firebase";
 
+/*
+TODO:
+- Show the option to add the players score if over the last top ten
+- Don't show the option to add the players score
+
+*/
 export default function HighscoreScreen({ map, currentPlayerScore = 99 }) {
   const [highscores, setHighscores] = useState([]);
 
