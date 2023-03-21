@@ -21,7 +21,7 @@ test("Highscore screen renders", async () => {
 test("Highscore screen renders highscores", async () => {
   const { addHighscore, clearHighscores } = getFirebaseFunctions();
 
-  const createHighscoreEntry = (initials, score) => ({ initials, score });
+  const createHighscoreEntry = (initials, timeTaken) => ({ initials, timeTaken });
   const initialsAndScores = [
     createHighscoreEntry("AB", 1),
     createHighscoreEntry("CD", 2),
@@ -37,8 +37,8 @@ test("Highscore screen renders highscores", async () => {
 
   await clearHighscores()
   await Promise.all(
-    initialsAndScores.map(({ initials, score }) =>
-      addHighscore("maze", initials, score)
+    initialsAndScores.map(({ initials, timeTaken }) =>
+      addHighscore("maze", initials, timeTaken)
     )
   );
 
