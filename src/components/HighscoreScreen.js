@@ -10,22 +10,7 @@ TODO:
 
 */
 export default function HighscoreScreen({ map, currentPlayerScore = 99 }) {
-  const [topTenHighscores, setTopTenHighscores] = useState([]);
-
-  useEffect(() => {
-    setTopTenHighscores([]);
-    const { getTopTenHighscores } = getFirebaseFunctions();
-
-    let ignore = false;
-
-    getTopTenHighscores(map).then((topTenHighscores) => {
-      if (!ignore) setTopTenHighscores(topTenHighscores);
-    });
-
-    return () => {
-      ignore = true;
-    };
-  }, [map]);
+  const topTenHighscores = useTopTenHighscoresFromDatabase();
 
   let currentPlayerScoreIsInTopTen;
 
@@ -58,6 +43,27 @@ export default function HighscoreScreen({ map, currentPlayerScore = 99 }) {
       </Link>
     </div>
   );
+
+  function useTopTenHighscoresFromDatabase() {
+    const [topTenHighscores, setTopTenHighscores] = useState([]);
+
+    useEffect(() => {
+      setTopTenHighscores([]);
+      const { getTopTenHighscores } = getFirebaseFunctions();
+
+      let ignore = false;
+
+      getTopTenHighscores(map).then((topTenHighscores) => {
+        if (!ignore) setTopTenHighscores(topTenHighscores);
+      });
+
+      return () => {
+        ignore = true;
+      };
+    }, [map]);
+
+    return topTenHighscores;
+  }
 }
 
 HighscoreScreen.propTypes = {
