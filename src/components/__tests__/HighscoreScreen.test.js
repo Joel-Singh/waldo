@@ -1,9 +1,14 @@
 import { act, getByTestId, render, screen, waitFor } from "@testing-library/react";
 import getFirebaseFunctions from "../../util/firebase";
+import { BrowserRouter } from "react-router-dom"
 import HighscoreScreen from "../HighscoreScreen";
 
 async function renderHighscoreScreen(highscoreScreen) {
-  render(highscoreScreen);
+  render(
+    <BrowserRouter>
+      {highscoreScreen}
+    </BrowserRouter>
+  );
 
   // need to wait for the initial fetch of the scores
   await act(async () => {

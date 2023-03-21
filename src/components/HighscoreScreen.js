@@ -1,5 +1,6 @@
 import { useEffect, useState } from "react";
 import PropTypes from "prop-types";
+import { Link } from "react-router-dom";
 import getFirebaseFunctions from "../util/firebase";
 
 /*
@@ -50,6 +51,11 @@ export default function HighscoreScreen({ map, currentPlayerScore = 99 }) {
           <button type="button">Upload score</button>
         </div>
       ) : null}
+      <Link to={"/"}>
+        <button type="button">
+          Go Back to selection screen
+        </button>
+      </Link>
     </div>
   );
 }

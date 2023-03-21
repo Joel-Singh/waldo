@@ -88,5 +88,14 @@ exports[`Highscore screen renders highscores 1`] = `
     Your score is: 
     99.0
   </div>
+  <a
+    href="/"
+  >
+    <button
+      type="button"
+    >
+      Go Back to selection screen
+    </button>
+  </a>
 </div>
 `;
