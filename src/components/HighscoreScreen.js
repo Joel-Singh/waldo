@@ -26,6 +26,14 @@ export default function HighscoreScreen({ map, currentPlayerScore = 99 }) {
     };
   }, [map]);
 
+  let currentPlayerScoreIsInTopTen;
+
+  if (topTenHighscores[9] !== undefined) {
+    currentPlayerScoreIsInTopTen = currentPlayerScore < topTenHighscores[9].timeTaken;
+  } else {
+    currentPlayerScoreIsInTopTen = false;
+  }
+
   return (
     <div data-testid="HighscoreScreen">
       {topTenHighscores.map(({ initials, timeTaken }) => (
@@ -35,6 +43,13 @@ export default function HighscoreScreen({ map, currentPlayerScore = 99 }) {
         </div>
       ))}
       <div>Your score is: {currentPlayerScore.toFixed(1)}</div>
+      {currentPlayerScoreIsInTopTen ? (
+        <div>
+          <label htmlFor="initials">Enter Initials for score</label>
+          <input id="initials" type="text" />
+          <button type="button">Upload score</button>
+        </div>
+      ) : null}
     </div>
   );
 }

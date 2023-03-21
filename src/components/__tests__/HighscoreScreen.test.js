@@ -79,3 +79,31 @@ it("doesn't offer the option to upload score when score isn't in top ten", async
   await renderHighscoreScreen(<HighscoreScreen map="maze" currentPlayerScore={11.0} />);
   expect(screen.queryByRole('textbox')).toBeNull()
 })
+
+it("does offer the option to upload score when score is in top ten", async () => {
+  const { addHighscore, clearHighscores } = getFirebaseFunctions();
+  const createHighscoreEntry = (initials, timeTaken) => ({ initials, timeTaken });
+
+  await clearHighscores()
+  const initialsAndScores = [
+    createHighscoreEntry("AB", 1),
+    createHighscoreEntry("CD", 2),
+    createHighscoreEntry("EF", 3),
+    createHighscoreEntry("GH", 4),
+    createHighscoreEntry("IJ", 5),
+    createHighscoreEntry("KL", 6),
+    createHighscoreEntry("MN", 7),
+    createHighscoreEntry("OP", 8),
+    createHighscoreEntry("QR", 9),
+    createHighscoreEntry("ST", 10),
+  ];
+
+  await Promise.all(
+    initialsAndScores.map(({ initials, timeTaken }) =>
+      addHighscore("maze", initials, timeTaken)
+    )
+  );
+
+  await renderHighscoreScreen(<HighscoreScreen map="maze" currentPlayerScore={0.5} />);
+  expect(screen.queryByRole('textbox')).not.toBeNull()
+})
