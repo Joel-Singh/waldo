@@ -84,5 +84,9 @@ exports[`Highscore screen renders highscores 1`] = `
       10
     </span>
   </div>
+  <div>
+    Your score is: 
+    99.0
+  </div>
 </div>
 `;

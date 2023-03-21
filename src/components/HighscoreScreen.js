@@ -2,7 +2,7 @@ import { useEffect, useState } from "react";
 import PropTypes from "prop-types";
 import getFirebaseFunctions from "../util/firebase";
 
-export default function HighscoreScreen({ map }) {
+export default function HighscoreScreen({ map, currentPlayerScore = 99 }) {
   const [highscores, setHighscores] = useState([]);
 
   useEffect(() => {
@@ -28,6 +28,7 @@ export default function HighscoreScreen({ map }) {
           <span>{timeTaken}</span>
         </div>
       ))}
+      <div>Your score is: {currentPlayerScore.toFixed(1)}</div>
     </div>
   );
 }

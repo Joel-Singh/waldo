@@ -7,7 +7,7 @@ async function renderHighscoreScreen(highscoreScreen) {
 
   // need to wait for the initial fetch of the scores
   await act(async () => {
-    await new Promise(resolve => setTimeout(resolve, 100))
+    await new Promise(resolve => setTimeout(resolve, 50))
   })
 
   return screen.getByTestId("HighscoreScreen")
@@ -46,3 +46,8 @@ test("Highscore screen renders highscores", async () => {
 
   expect(highscoreScreen).toMatchSnapshot()
 });
+
+test("Highscore screen renders current score", async () => {
+  await renderHighscoreScreen(<HighscoreScreen map="maze" currentPlayerScore={11.0} />)
+  expect(screen.getByText('11.0', {exact: false})).toBeDefined()
+})
