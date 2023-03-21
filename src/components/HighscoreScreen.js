@@ -9,16 +9,16 @@ TODO:
 
 */
 export default function HighscoreScreen({ map, currentPlayerScore = 99 }) {
-  const [highscores, setHighscores] = useState([]);
+  const [topTenHighscores, setTopTenHighscores] = useState([]);
 
   useEffect(() => {
-    setHighscores([]);
+    setTopTenHighscores([]);
     const { getTopTenHighscores } = getFirebaseFunctions();
 
     let ignore = false;
 
     getTopTenHighscores(map).then((topTenHighscores) => {
-      if (!ignore) setHighscores(topTenHighscores);
+      if (!ignore) setTopTenHighscores(topTenHighscores);
     });
 
     return () => {
@@ -28,7 +28,7 @@ export default function HighscoreScreen({ map, currentPlayerScore = 99 }) {
 
   return (
     <div data-testid="HighscoreScreen">
-      {highscores.map(({ initials, timeTaken }) => (
+      {topTenHighscores.map(({ initials, timeTaken }) => (
         <div key={initials}>
           <span>{initials}</span>
           <span>{timeTaken}</span>
