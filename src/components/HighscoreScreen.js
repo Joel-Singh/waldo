@@ -13,7 +13,6 @@ export default function HighscoreScreen({ map, currentPlayerScore = 99 }) {
   const topTenHighscores = useTopTenHighscoresFromDatabase();
 
   let currentPlayerScoreIsInTopTen;
-
   if (topTenHighscores[9] !== undefined) {
     currentPlayerScoreIsInTopTen = currentPlayerScore < topTenHighscores[9].timeTaken;
   } else {
