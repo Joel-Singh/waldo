@@ -76,6 +76,6 @@ it("doesn't offer the option to upload score when score isn't in top ten", async
     )
   );
 
-  renderHighscoreScreen(<HighscoreScreen map="maze" currentPlayerScore={11.0} />);
+  await renderHighscoreScreen(<HighscoreScreen map="maze" currentPlayerScore={11.0} />);
   expect(screen.queryByRole('textbox')).toBeNull()
 })
