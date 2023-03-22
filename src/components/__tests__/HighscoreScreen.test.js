@@ -183,7 +183,9 @@ test('Score is added to database after uploading', async () => {
 
   const initialsTextBox = screen.getByRole('textbox')
   userEvent.type(initialsTextBox, 'JS')
-  userEvent.click(screen.getByText('Upload score'))
+  await act( async () => {
+    userEvent.click(screen.getByText('Upload score'))
+  })
 
   const { getTopTenHighscores } = getFirebaseFunctions()
   const topTenHighscores = await getTopTenHighscores('maze')
