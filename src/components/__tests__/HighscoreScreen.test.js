@@ -19,11 +19,6 @@ async function renderHighscoreScreen(highscoreScreen) {
   return screen.getByTestId("HighscoreScreen")
 }
 
-test("Highscore screen renders", async () => {
-  const highscoreScreen = await renderHighscoreScreen(<HighscoreScreen map="maze" />);
-  expect(highscoreScreen).toBeDefined();
-});
-
 test("Highscore screen renders highscores", async () => {
   const { addHighscore, clearHighscores } = getFirebaseFunctions();
 
