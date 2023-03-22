@@ -3,12 +3,6 @@ import PropTypes from "prop-types";
 import { Link } from "react-router-dom";
 import getFirebaseFunctions from "../util/firebase";
 
-/*
-TODO:
-- Show the option to add the players score if over the last top ten
-- Don't show the option to add the players score
-
-*/
 export default function HighscoreScreen({ map, currentPlayerScore = 99 }) {
   const topTenHighscores = useTopTenHighscoresFromDatabase();
 
@@ -37,13 +31,10 @@ export default function HighscoreScreen({ map, currentPlayerScore = 99 }) {
   );
 
   function isCurrentPlayerScoreInTopTen() {
-    let currentPlayerScoreIsInTopTen;
-    if (topTenHighscores[9] !== undefined) {
+    let currentPlayerScoreIsInTopTen = false
+    if (topTenHighscores[9] !== undefined)
       currentPlayerScoreIsInTopTen =
         currentPlayerScore < topTenHighscores[9].timeTaken;
-    } else {
-      currentPlayerScoreIsInTopTen = false;
-    }
 
     return currentPlayerScoreIsInTopTen;
   }
