@@ -28,8 +28,12 @@ export default function HighscoreScreen({ map, currentPlayerScore = 99 }) {
     const [isHidden, setIsHidden] = useState(false);
 
     const onUploadScoreClick = () => {
-      if (document.getElementById('initials').value !== '')
+      const initials = document.getElementById('initials').value
+      if (initials !== '') {
         setIsHidden(true);
+        const { addHighscore } = getFirebaseFunctions()
+        addHighscore(map, initials, currentPlayerScore)
+      }
     };
 
     return (isCurrentPlayerScoreInTopTen() && !isHidden) ? (

@@ -155,3 +155,44 @@ describe('hiding score input', () => {
   })
 })
 
+test('Score is added to database after uploading', async () => {
+  const { addHighscore, clearHighscores } = getFirebaseFunctions();
+  const createHighscoreEntry = (initials, timeTaken) => ({ initials, timeTaken });
+
+  await clearHighscores()
+  const initialsAndScores = [
+    createHighscoreEntry("AB", 1),
+    createHighscoreEntry("CD", 2),
+    createHighscoreEntry("EF", 3),
+    createHighscoreEntry("GH", 4),
+    createHighscoreEntry("IJ", 5),
+    createHighscoreEntry("KL", 6),
+    createHighscoreEntry("MN", 7),
+    createHighscoreEntry("OP", 8),
+    createHighscoreEntry("QR", 9),
+    createHighscoreEntry("ST", 10),
+  ];
+
+  await Promise.all(
+    initialsAndScores.map(({ initials, timeTaken }) =>
+      addHighscore("maze", initials, timeTaken)
+    )
+  );
+
+  await renderHighscoreScreen(<HighscoreScreen map="maze" currentPlayerScore={0.5} />);
+
+  const initialsTextBox = screen.getByRole('textbox')
+  userEvent.type(initialsTextBox, 'JS')
+  userEvent.click(screen.getByText('Upload score'))
+
+  const { getTopTenHighscores } = getFirebaseFunctions()
+  const topTenHighscores = await getTopTenHighscores('maze')
+
+  expect(topTenHighscores[0]).toMatchInlineSnapshot(`
+Object {
+  "initials": "JS",
+  "timeTaken": 0.5,
+}
+`)
+})
+
