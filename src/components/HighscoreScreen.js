@@ -34,7 +34,7 @@ export default function HighscoreScreen({ map, currentPlayerScore = 99 }) {
     ) : null;
 
     function isCurrentPlayerScoreInTopTen() {
-      let currentPlayerScoreIsInTopTen = false
+      let currentPlayerScoreIsInTopTen = false;
       if (topTenHighscores[9] !== undefined)
         currentPlayerScoreIsInTopTen =
           currentPlayerScore < topTenHighscores[9].timeTaken;
@@ -42,7 +42,6 @@ export default function HighscoreScreen({ map, currentPlayerScore = 99 }) {
       return currentPlayerScoreIsInTopTen;
     }
   }
-
 
   function useTopTenHighscoresFromDatabase() {
     const [topTenHighscores, setTopTenHighscores] = useState([]);
