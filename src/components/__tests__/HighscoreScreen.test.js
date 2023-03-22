@@ -2,6 +2,7 @@ import { act, getByTestId, render, screen, waitFor } from "@testing-library/reac
 import getFirebaseFunctions from "../../util/firebase";
 import { BrowserRouter } from "react-router-dom"
 import HighscoreScreen from "../HighscoreScreen";
+import userEvent from "@testing-library/user-event";
 
 async function renderHighscoreScreen(highscoreScreen) {
   render(
@@ -112,3 +113,45 @@ it("does offer the option to upload score when score is in top ten", async () =>
   await renderHighscoreScreen(<HighscoreScreen map="maze" currentPlayerScore={0.5} />);
   expect(screen.queryByRole('textbox')).not.toBeNull()
 })
+
+describe('hiding score input', () => {
+  beforeEach(async () => {
+    const { addHighscore, clearHighscores } = getFirebaseFunctions();
+    const createHighscoreEntry = (initials, timeTaken) => ({ initials, timeTaken });
+
+    await clearHighscores()
+    const initialsAndScores = [
+      createHighscoreEntry("AB", 1),
+      createHighscoreEntry("CD", 2),
+      createHighscoreEntry("EF", 3),
+      createHighscoreEntry("GH", 4),
+      createHighscoreEntry("IJ", 5),
+      createHighscoreEntry("KL", 6),
+      createHighscoreEntry("MN", 7),
+      createHighscoreEntry("OP", 8),
+      createHighscoreEntry("QR", 9),
+      createHighscoreEntry("ST", 10),
+    ];
+
+    await Promise.all(
+      initialsAndScores.map(({ initials, timeTaken }) =>
+        addHighscore("maze", initials, timeTaken)
+      )
+    );
+
+    await renderHighscoreScreen(<HighscoreScreen map="maze" currentPlayerScore={0.5} />);
+  })
+
+  it("doesn't hide score input after clicking upload score if nothing is in initials", async () => {
+    userEvent.click(screen.getByText('Upload score'))
+    expect(screen.queryByRole('textbox')).not.toBeNull()
+  })
+
+
+  it("does hide score input after clicking upload score if there is something in initials", async () => {
+    userEvent.type(screen.getByRole('textbox'), 'JS')
+    userEvent.click(screen.getByText('Upload score'))
+    expect(screen.queryByRole('textbox')).toBeNull()
+  })
+})
+

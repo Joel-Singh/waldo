@@ -25,11 +25,18 @@ export default function HighscoreScreen({ map, currentPlayerScore = 99 }) {
   );
 
   function renderScoreInput() {
-    return isCurrentPlayerScoreInTopTen() ? (
+    const [isHidden, setIsHidden] = useState(false);
+
+    const onUploadScoreClick = () => {
+      if (document.getElementById('initials').value !== '')
+        setIsHidden(true);
+    };
+
+    return (isCurrentPlayerScoreInTopTen() && !isHidden) ? (
       <div>
         <label htmlFor="initials">Enter Initials for score</label>
         <input id="initials" type="text" />
-        <button type="button">Upload score</button>
+        <button type="button" onClick={onUploadScoreClick}>Upload score</button>
       </div>
     ) : null;
 
