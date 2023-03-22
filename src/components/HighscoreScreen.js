@@ -16,13 +16,7 @@ export default function HighscoreScreen({ map, currentPlayerScore = 99 }) {
       ))}
       <div>Your score is: {currentPlayerScore.toFixed(1)}</div>
 
-      {isCurrentPlayerScoreInTopTen() ? (
-        <div>
-          <label htmlFor="initials">Enter Initials for score</label>
-          <input id="initials" type="text" />
-          <button type="button">Upload score</button>
-        </div>
-      ) : null}
+      {renderScoreInput()}
 
       <Link to={"/"}>
         <button type="button">Go Back to selection screen</button>
@@ -30,14 +24,25 @@ export default function HighscoreScreen({ map, currentPlayerScore = 99 }) {
     </div>
   );
 
-  function isCurrentPlayerScoreInTopTen() {
-    let currentPlayerScoreIsInTopTen = false
-    if (topTenHighscores[9] !== undefined)
-      currentPlayerScoreIsInTopTen =
-        currentPlayerScore < topTenHighscores[9].timeTaken;
+  function renderScoreInput() {
+    return isCurrentPlayerScoreInTopTen() ? (
+      <div>
+        <label htmlFor="initials">Enter Initials for score</label>
+        <input id="initials" type="text" />
+        <button type="button">Upload score</button>
+      </div>
+    ) : null;
 
-    return currentPlayerScoreIsInTopTen;
+    function isCurrentPlayerScoreInTopTen() {
+      let currentPlayerScoreIsInTopTen = false
+      if (topTenHighscores[9] !== undefined)
+        currentPlayerScoreIsInTopTen =
+          currentPlayerScore < topTenHighscores[9].timeTaken;
+
+      return currentPlayerScoreIsInTopTen;
+    }
   }
+
 
   function useTopTenHighscoresFromDatabase() {
     const [topTenHighscores, setTopTenHighscores] = useState([]);
