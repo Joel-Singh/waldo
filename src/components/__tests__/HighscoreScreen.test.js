@@ -19,22 +19,13 @@ async function renderHighscoreScreen(highscoreScreen) {
   return screen.getByTestId("HighscoreScreen")
 }
 
-test("Highscore screen renders highscores", async () => {
+async function clearAndInitializeMazeDatabase(initialsAndScores) {
   const { addHighscore, clearHighscores } = getFirebaseFunctions();
 
-  const createHighscoreEntry = (initials, timeTaken) => ({ initials, timeTaken });
-  const initialsAndScores = [
-    createHighscoreEntry("AB", 1),
-    createHighscoreEntry("CD", 2),
-    createHighscoreEntry("EF", 3),
-    createHighscoreEntry("GH", 4),
-    createHighscoreEntry("IJ", 5),
-    createHighscoreEntry("KL", 6),
-    createHighscoreEntry("MN", 7),
-    createHighscoreEntry("OP", 8),
-    createHighscoreEntry("QR", 9),
-    createHighscoreEntry("ST", 10),
-  ];
+  initialsAndScores = initialsAndScores.map(array => ({
+    initials: array[0],
+    timeTaken: array[1]
+  }))
 
   await clearHighscores()
   await Promise.all(
@@ -42,6 +33,23 @@ test("Highscore screen renders highscores", async () => {
       addHighscore("maze", initials, timeTaken)
     )
   );
+}
+
+test("Highscore screen renders highscores", async () => {
+  await clearAndInitializeMazeDatabase(
+    [
+      ["AB", 1],
+      ["CD", 2],
+      ["EF", 3],
+      ["GH", 4],
+      ["IJ", 5],
+      ["KL", 6],
+      ["MN", 7],
+      ["OP", 8],
+      ["QR", 9],
+      ["ST", 10]
+    ]
+  )
 
   const highscoreScreen = await renderHighscoreScreen(<HighscoreScreen map="maze" />);
 
@@ -54,56 +62,40 @@ test("Highscore screen renders current score", async () => {
 })
 
 it("doesn't offer the option to upload score when score isn't in top ten", async () => {
-  const { addHighscore, clearHighscores } = getFirebaseFunctions();
-  const createHighscoreEntry = (initials, timeTaken) => ({ initials, timeTaken });
-
-  await clearHighscores()
-  const initialsAndScores = [
-    createHighscoreEntry("AB", 1),
-    createHighscoreEntry("CD", 2),
-    createHighscoreEntry("EF", 3),
-    createHighscoreEntry("GH", 4),
-    createHighscoreEntry("IJ", 5),
-    createHighscoreEntry("KL", 6),
-    createHighscoreEntry("MN", 7),
-    createHighscoreEntry("OP", 8),
-    createHighscoreEntry("QR", 9),
-    createHighscoreEntry("ST", 10),
-  ];
-
-  await Promise.all(
-    initialsAndScores.map(({ initials, timeTaken }) =>
-      addHighscore("maze", initials, timeTaken)
-    )
-  );
+  await clearAndInitializeMazeDatabase(
+    [
+      ["AB", 1],
+      ["CD", 2],
+      ["EF", 3],
+      ["GH", 4],
+      ["IJ", 5],
+      ["KL", 6],
+      ["MN", 7],
+      ["OP", 8],
+      ["QR", 9],
+      ["ST", 10]
+    ]
+  )
 
   await renderHighscoreScreen(<HighscoreScreen map="maze" currentPlayerScore={11.0} />);
   expect(screen.queryByRole('textbox')).toBeNull()
 })
 
 it("does offer the option to upload score when score is in top ten", async () => {
-  const { addHighscore, clearHighscores } = getFirebaseFunctions();
-  const createHighscoreEntry = (initials, timeTaken) => ({ initials, timeTaken });
-
-  await clearHighscores()
-  const initialsAndScores = [
-    createHighscoreEntry("AB", 1),
-    createHighscoreEntry("CD", 2),
-    createHighscoreEntry("EF", 3),
-    createHighscoreEntry("GH", 4),
-    createHighscoreEntry("IJ", 5),
-    createHighscoreEntry("KL", 6),
-    createHighscoreEntry("MN", 7),
-    createHighscoreEntry("OP", 8),
-    createHighscoreEntry("QR", 9),
-    createHighscoreEntry("ST", 10),
-  ];
-
-  await Promise.all(
-    initialsAndScores.map(({ initials, timeTaken }) =>
-      addHighscore("maze", initials, timeTaken)
-    )
-  );
+  await clearAndInitializeMazeDatabase(
+    [
+      ["AB", 1],
+      ["CD", 2],
+      ["EF", 3],
+      ["GH", 4],
+      ["IJ", 5],
+      ["KL", 6],
+      ["MN", 7],
+      ["OP", 8],
+      ["QR", 9],
+      ["ST", 10]
+    ]
+  )
 
   await renderHighscoreScreen(<HighscoreScreen map="maze" currentPlayerScore={0.5} />);
   expect(screen.queryByRole('textbox')).not.toBeNull()
@@ -111,28 +103,20 @@ it("does offer the option to upload score when score is in top ten", async () =>
 
 describe('hiding score input', () => {
   beforeEach(async () => {
-    const { addHighscore, clearHighscores } = getFirebaseFunctions();
-    const createHighscoreEntry = (initials, timeTaken) => ({ initials, timeTaken });
-
-    await clearHighscores()
-    const initialsAndScores = [
-      createHighscoreEntry("AB", 1),
-      createHighscoreEntry("CD", 2),
-      createHighscoreEntry("EF", 3),
-      createHighscoreEntry("GH", 4),
-      createHighscoreEntry("IJ", 5),
-      createHighscoreEntry("KL", 6),
-      createHighscoreEntry("MN", 7),
-      createHighscoreEntry("OP", 8),
-      createHighscoreEntry("QR", 9),
-      createHighscoreEntry("ST", 10),
-    ];
-
-    await Promise.all(
-      initialsAndScores.map(({ initials, timeTaken }) =>
-        addHighscore("maze", initials, timeTaken)
-      )
-    );
+    await clearAndInitializeMazeDatabase(
+      [
+        ["AB", 1],
+        ["CD", 2],
+        ["EF", 3],
+        ["GH", 4],
+        ["IJ", 5],
+        ["KL", 6],
+        ["MN", 7],
+        ["OP", 8],
+        ["QR", 9],
+        ["ST", 10]
+      ]
+    )
 
     await renderHighscoreScreen(<HighscoreScreen map="maze" currentPlayerScore={0.5} />);
   })
@@ -150,28 +134,20 @@ describe('hiding score input', () => {
 })
 
 test('Score is added to database after uploading', async () => {
-  const { addHighscore, clearHighscores } = getFirebaseFunctions();
-  const createHighscoreEntry = (initials, timeTaken) => ({ initials, timeTaken });
-
-  await clearHighscores()
-  const initialsAndScores = [
-    createHighscoreEntry("AB", 1),
-    createHighscoreEntry("CD", 2),
-    createHighscoreEntry("EF", 3),
-    createHighscoreEntry("GH", 4),
-    createHighscoreEntry("IJ", 5),
-    createHighscoreEntry("KL", 6),
-    createHighscoreEntry("MN", 7),
-    createHighscoreEntry("OP", 8),
-    createHighscoreEntry("QR", 9),
-    createHighscoreEntry("ST", 10),
-  ];
-
-  await Promise.all(
-    initialsAndScores.map(({ initials, timeTaken }) =>
-      addHighscore("maze", initials, timeTaken)
-    )
-  );
+  await clearAndInitializeMazeDatabase(
+    [
+      ["AB", 1],
+      ["CD", 2],
+      ["EF", 3],
+      ["GH", 4],
+      ["IJ", 5],
+      ["KL", 6],
+      ["MN", 7],
+      ["OP", 8],
+      ["QR", 9],
+      ["ST", 10]
+    ]
+  )
 
   await renderHighscoreScreen(<HighscoreScreen map="maze" currentPlayerScore={0.5} />);
 
@@ -194,28 +170,20 @@ Object {
 })
 
 test("Scores are refreshed visually after current player's score is added to database", async () => {
-  const { addHighscore, clearHighscores } = getFirebaseFunctions();
-  const createHighscoreEntry = (initials, timeTaken) => ({ initials, timeTaken });
-
-  await clearHighscores()
-  const initialsAndScores = [
-    createHighscoreEntry("AB", 1),
-    createHighscoreEntry("CD", 2),
-    createHighscoreEntry("EF", 3),
-    createHighscoreEntry("GH", 4),
-    createHighscoreEntry("IJ", 5),
-    createHighscoreEntry("KL", 6),
-    createHighscoreEntry("MN", 7),
-    createHighscoreEntry("OP", 8),
-    createHighscoreEntry("QR", 9),
-    createHighscoreEntry("ST", 10),
-  ];
-
-  await Promise.all(
-    initialsAndScores.map(({ initials, timeTaken }) =>
-      addHighscore("maze", initials, timeTaken)
-    )
-  );
+  await clearAndInitializeMazeDatabase(
+    [
+      ["AB", 1],
+      ["CD", 2],
+      ["EF", 3],
+      ["GH", 4],
+      ["IJ", 5],
+      ["KL", 6],
+      ["MN", 7],
+      ["OP", 8],
+      ["QR", 9],
+      ["ST", 10]
+    ]
+  )
 
   await renderHighscoreScreen(<HighscoreScreen map="maze" currentPlayerScore={0.5} />);
 
