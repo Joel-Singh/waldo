@@ -142,7 +142,6 @@ describe('hiding score input', () => {
     expect(screen.queryByRole('textbox')).not.toBeNull()
   })
 
-
   it("does hide score input after clicking upload score if there is something in initials", async () => {
     userEvent.type(screen.getByRole('textbox'), 'JS')
     userEvent.click(screen.getByText('Upload score'))
@@ -178,6 +177,7 @@ test('Score is added to database after uploading', async () => {
 
   const initialsTextBox = screen.getByRole('textbox')
   userEvent.type(initialsTextBox, 'JS')
+
   await act( async () => {
     userEvent.click(screen.getByText('Upload score'))
   })
