@@ -4,7 +4,7 @@ import { Link } from "react-router-dom";
 import getFirebaseFunctions from "../util/firebase";
 
 export default function HighscoreScreen({ map, currentPlayerScore = 99 }) {
-  const topTenHighscores = useTopTenHighscoresFromDatabase();
+  const { topTenHighscores, updateTopTenHighscores } = useTopTenHighscoresFromDatabase();
 
   return (
     <div data-testid="HighscoreScreen">
@@ -29,12 +29,13 @@ export default function HighscoreScreen({ map, currentPlayerScore = 99 }) {
   function renderScoreInput() {
     const [isHidden, setIsHidden] = useState(false);
 
-    const onUploadScoreClick = () => {
+    const onUploadScoreClick = async () => {
       const initials = document.getElementById('initials').value
       if (initials !== '') {
         setIsHidden(true);
         const { addHighscore } = getFirebaseFunctions()
-        addHighscore(map, initials, currentPlayerScore)
+        await addHighscore(map, initials, currentPlayerScore)
+        updateTopTenHighscores()
       }
     };
 
@@ -58,6 +59,7 @@ export default function HighscoreScreen({ map, currentPlayerScore = 99 }) {
 
   function useTopTenHighscoresFromDatabase() {
     const [topTenHighscores, setTopTenHighscores] = useState([]);
+    const [updateTopTenHighscoresState, setUpdateTopTenHighscoresState] = useState(0);
 
     useEffect(() => {
       setTopTenHighscores([]);
@@ -72,9 +74,10 @@ export default function HighscoreScreen({ map, currentPlayerScore = 99 }) {
       return () => {
         ignore = true;
       };
-    }, [map]);
+    }, [map, updateTopTenHighscoresState]);
 
-    return topTenHighscores;
+    const updateTopTenHighscores = () => setUpdateTopTenHighscoresState(prev => prev + 1)
+    return {topTenHighscores, updateTopTenHighscores};
   }
 }
 
