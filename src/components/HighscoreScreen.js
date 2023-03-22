@@ -8,12 +8,14 @@ export default function HighscoreScreen({ map, currentPlayerScore = 99 }) {
 
   return (
     <div data-testid="HighscoreScreen">
-      {topTenHighscores.map(({ initials, timeTaken }) => (
-        <div key={initials}>
-          <span>{initials}</span>
-          <span>{timeTaken}</span>
-        </div>
-      ))}
+      <div data-testid="HighscoreScreen__scores-container">
+        {topTenHighscores.map(({ initials, timeTaken }) => (
+          <div key={initials}>
+            <span>{initials}</span>
+            <span>{timeTaken}</span>
+          </div>
+        ))}
+      </div>
       <div>Your score is: {currentPlayerScore.toFixed(1)}</div>
 
       {renderScoreInput()}
