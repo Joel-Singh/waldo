@@ -1,0 +1,8 @@
+- When the user uploads score
+  - It has to upload the score to the database
+  - Do nothing if the initials field is empty
+    - Show a user error message
+  - Whether initials already exist
+    - Could just have multiple initials
+    - Could tell the user to choose a different initials
+  - Update the scoreboard to the left (rerun the effect?)
