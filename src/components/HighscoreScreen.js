@@ -34,7 +34,7 @@ export default function HighscoreScreen({ map, currentPlayerScore = 99 }) {
 
     return (isCurrentPlayerScoreInTopTen() && !isHidden) ? (
       <div>
-        <label htmlFor="initials">Enter Initials for score</label>
+        <label htmlFor="initials">Enter Initials to upload score</label>
         <input id="initials" type="text" />
         <button type="button" onClick={onUploadScoreClick}>Upload score</button>
       </div>
