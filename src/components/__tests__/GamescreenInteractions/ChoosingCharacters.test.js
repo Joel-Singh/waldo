@@ -133,3 +133,5 @@ describe("onAllCharactersFound", () => {
     expect(withinTolerance).toBe(true)
   })
 });
+
+export { chooseAllCharactersInMaze }
