@@ -192,7 +192,7 @@ test("Scores are refreshed visually after current player's score is added to dat
   await act(async () => {
     userEvent.click(screen.getByText('Upload score'))
 
-    await new Promise(resolve => setTimeout(resolve, 50))
+    await new Promise(resolve => setTimeout(resolve, 100))
   })
 
   expect(screen.getByTestId('HighscoreScreen__scores-container').firstElementChild).toMatchInlineSnapshot(`
