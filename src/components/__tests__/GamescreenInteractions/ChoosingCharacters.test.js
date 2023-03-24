@@ -12,12 +12,6 @@ async function chooseCharacter(displayName, xPos, yPos) {
   const charBtn = screen.getByText(displayName);
   await act(async () => {
     userEvent.click(charBtn);
-    // This promise that resolves immediately
-    // Makes an act error go away.
-    // This is due to the click causing a
-    // database request.
-    // Weird js event loop black magic
-    await new Promise((resolve) => setTimeout(resolve, 0));
   });
 }
 
