@@ -16,7 +16,8 @@ export default function getFirebaseFunctions() {
   return {
     clearDatabase,
     clearHighscores,
-    addCharacterCoordsToDatabase,
+    addFakeCharacterCoordsToDatabase: () => addCharacterCoordsToDatabase(true),
+    addRealCharacterCoordsToDatabase: () => addCharacterCoordsToDatabase(false),
     addHighscore,
     getTopTenHighscores,
     isCharacterAtPosition,
@@ -60,11 +61,15 @@ export default function getFirebaseFunctions() {
 
   //TODO: Final app won't have this function
   //The character coords will already be in the database
-  function addCharacterCoordsToDatabase() {
+  function addCharacterCoordsToDatabase(useDummyCoords) {
+    const mapActualCoords =
+      ({ name, coords }) => addSingleCharacterCoordToDatabase(name, coords)
+
+    const mapFakeCoords =
+      ({ name }) => addSingleCharacterCoordToDatabase(name, {x: 0, y: 0})
+
     return Promise.all(
-      characterCoords.map(({ name, coords }) =>
-        addSingleCharacterCoordToDatabase(name, coords)
-      )
+      characterCoords.map(useDummyCoords ? mapFakeCoords : mapActualCoords)
     );
 
     async function addSingleCharacterCoordToDatabase(name, coords) {

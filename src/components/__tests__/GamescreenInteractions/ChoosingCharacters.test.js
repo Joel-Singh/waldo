@@ -51,9 +51,9 @@ function isCharacterFound(name) {
 }
 
 beforeAll(async () => {
-  const { addCharacterCoordsToDatabase } =
+  const { addRealCharacterCoordsToDatabase } =
     getFirebaseFunctions();
-  await addCharacterCoordsToDatabase();
+  await addRealCharacterCoordsToDatabase();
 });
 
 describe("Choosing a character", () => {

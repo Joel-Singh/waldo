@@ -14,7 +14,7 @@ root.render(
   </React.StrictMode>
 );
 
-const { addCharacterCoordsToDatabase } = getFirebaseFunctions();
-addCharacterCoordsToDatabase();
+const { addRealCharacterCoordsToDatabase } = getFirebaseFunctions();
+addRealCharacterCoordsToDatabase();
 
 exposeCharacterToleranceAsCssVariable()

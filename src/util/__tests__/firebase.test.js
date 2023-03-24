@@ -4,10 +4,10 @@ describe("isCharacterAtPosition", () => {
   let isCharacterAtPosition;
   beforeAll(async () => {
     const firebase = getFirebaseFunctions();
-    const { addCharacterCoordsToDatabase } = firebase;
+    const { addRealCharacterCoordsToDatabase } = firebase;
 
     isCharacterAtPosition = firebase.isCharacterAtPosition;
-    await addCharacterCoordsToDatabase();
+    await addRealCharacterCoordsToDatabase();
   });
 
   it("returns false with wrong position", async () => {
