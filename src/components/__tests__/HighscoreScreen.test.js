@@ -37,6 +37,14 @@ async function clearAndInitializeMazeDatabase(initialsAndScores) {
   );
 }
 
+async function clickUploadScoreAndWaitForUpload() {
+  await act(async () => {
+    userEvent.click(screen.getByText("Upload score"));
+
+    await new Promise((resolve) => setTimeout(resolve, 50));
+  });
+}
+
 test("Highscore screen renders highscores", async () => {
   await clearAndInitializeMazeDatabase([
     ["AB", 1],
@@ -158,9 +166,7 @@ test("Score is added to database after uploading", async () => {
   const initialsTextBox = screen.getByRole("textbox");
   userEvent.type(initialsTextBox, "JS");
 
-  await act(async () => {
-    userEvent.click(screen.getByText("Upload score"));
-  });
+  await clickUploadScoreAndWaitForUpload();
 
   const { getTopTenHighscores } = getFirebaseFunctions();
   const topTenHighscores = await getTopTenHighscores("maze");
@@ -193,11 +199,7 @@ test("Scores are refreshed visually after current player's score is added to dat
 
   const initialsTextBox = screen.getByRole("textbox");
   userEvent.type(initialsTextBox, "JS");
-  await act(async () => {
-    userEvent.click(screen.getByText("Upload score"));
-
-    await new Promise((resolve) => setTimeout(resolve, 100));
-  });
+  await clickUploadScoreAndWaitForUpload();
 
   expect(
     screen.getByTestId("HighscoreScreen__scores-container").firstElementChild
