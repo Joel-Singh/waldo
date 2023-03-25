@@ -22,6 +22,7 @@ export default function getFirebaseFunctions() {
     getTopTenHighscores,
     isCharacterAtPosition,
     clearCharacterCoordsInDatabase,
+    getCharCoordsInDb,
   };
 
   function clearDatabase() {
@@ -88,6 +89,10 @@ export default function getFirebaseFunctions() {
       const { characterCoordinates } = (await get(ref(db))).val();
       return characterCoordinates[`${name}`];
     }
+  }
+
+  async function getCharCoordsInDb() {
+    return (await get(ref(db))).val().characterCoordinates
   }
 }
 
