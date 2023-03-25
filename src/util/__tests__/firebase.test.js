@@ -2,69 +2,57 @@ import { CHOOSING_CHARACTER_TOLERANCE } from "../constants";
 import getFirebaseFunctions from "../firebase";
 
 describe("isCharacterAtPosition", () => {
-  let isCharacterAtPosition;
-  beforeAll(async () => {
-    const firebase = getFirebaseFunctions();
-    const { addFakeCharacterCoordsToDatabase } = firebase;
-
-    isCharacterAtPosition = firebase.isCharacterAtPosition;
-    await addFakeCharacterCoordsToDatabase();
-  });
-
-  it("returns false with wrong position", async () => {
-    expect(await isCharacterAtPosition("beachWaldo", { x: 1000, y: 1000 })).toBe(
-      false
-    );
-  });
-
-  it("returns true with right position", async () => {
-    expect(
-      await isCharacterAtPosition("beachWaldo", {
-        x: 0,
-        y: 0,
-      })
-    ).toBe(true);
-  });
-
-  it("returns false when farther than tolerance", async () => {
-    expect(
-      await isCharacterAtPosition(
-        "beachWaldo",
-        {
-          x: CHOOSING_CHARACTER_TOLERANCE,
-          y: CHOOSING_CHARACTER_TOLERANCE,
-        },
-        30
-      )
-    ).toBe(false);
-  });
-
-  it("returns true when close enough with a tolerance in one axis", async () => {
-    expect(
-      await isCharacterAtPosition(
-        "beachWaldo",
-        {
-          x: CHOOSING_CHARACTER_TOLERANCE,
-          y: 0,
-        },
-        80
-      )
-    ).toBe(true);
-  });
-
-  it("returns true when close enough with a tolerance in two axis", async () => {
+  test.each([
+    {
+      name: "returns false with wrong position",
+      positionToCheck: {x: 1000, y: 1000},
+      expectedValue: false,
+    },
+    {
+      name: "returns true with right position",
+      positionToCheck: {x: 0, y: 0},
+      expectedValue: true,
+    },
+    {
+      name: "returns false when farther than tolerance",
+      positionToCheck: {
+        x: CHOOSING_CHARACTER_TOLERANCE,
+        y: CHOOSING_CHARACTER_TOLERANCE
+      },
+      expectedValue: false,
+    },
+    {
+      name: "returns true when close enough with tolerance in one axis",
+      positionToCheck: {
+        x: CHOOSING_CHARACTER_TOLERANCE,
+        y: 0
+      },
+      expectedValue: true,
+    },
+    {
+      name: "returns true when close enough with a tolerance in two axis",
+      positionToCheck: {
+        x: CHOOSING_CHARACTER_TOLERANCE / 2,
+        y: CHOOSING_CHARACTER_TOLERANCE / 2
+      },
+      expectedValue: true,
+    },
+  ])('$name', async ({ positionToCheck, expectedValue}) => {
+    const { isCharacterAtPosition } = getFirebaseFunctions()
     expect(
       await isCharacterAtPosition(
         "beachWaldo",
         {
-          x: CHOOSING_CHARACTER_TOLERANCE / 2,
-          y: CHOOSING_CHARACTER_TOLERANCE / 2,
+          x: positionToCheck.x,
+          y: positionToCheck.y,
         },
-        80
+        CHOOSING_CHARACTER_TOLERANCE
       )
-    ).toBe(true);
-  });
+    ).toBe(expectedValue);
+  })
 });
+
+
 
 test("addHighscore and getTopTenHighscores", async () => {
   const { clearHighscores, addHighscore, getTopTenHighscores } =
