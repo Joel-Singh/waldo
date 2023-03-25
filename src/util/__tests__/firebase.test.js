@@ -1,39 +1,38 @@
+import { CHOOSING_CHARACTER_TOLERANCE } from "../constants";
 import getFirebaseFunctions from "../firebase";
 
 describe("isCharacterAtPosition", () => {
   let isCharacterAtPosition;
   beforeAll(async () => {
     const firebase = getFirebaseFunctions();
-    const { addRealCharacterCoordsToDatabase } = firebase;
+    const { addFakeCharacterCoordsToDatabase } = firebase;
 
     isCharacterAtPosition = firebase.isCharacterAtPosition;
-    await addRealCharacterCoordsToDatabase();
+    await addFakeCharacterCoordsToDatabase();
   });
 
   it("returns false with wrong position", async () => {
-    expect(await isCharacterAtPosition("beachWaldo", { x: 80, y: 92 })).toBe(
+    expect(await isCharacterAtPosition("beachWaldo", { x: 1000, y: 1000 })).toBe(
       false
     );
   });
 
   it("returns true with right position", async () => {
-    const beachWaldoPos = { x: 1286, y: 1637 };
     expect(
       await isCharacterAtPosition("beachWaldo", {
-        x: beachWaldoPos.x,
-        y: beachWaldoPos.y,
+        x: 0,
+        y: 0,
       })
     ).toBe(true);
   });
 
-  it("returns false when far away with a tolerance", async () => {
-    const beachWaldoPos = { x: 1286, y: 1637 };
+  it("returns false when farther than tolerance", async () => {
     expect(
       await isCharacterAtPosition(
         "beachWaldo",
         {
-          x: beachWaldoPos.x + 80,
-          y: beachWaldoPos.y + 80,
+          x: CHOOSING_CHARACTER_TOLERANCE,
+          y: CHOOSING_CHARACTER_TOLERANCE,
         },
         30
       )
@@ -41,13 +40,12 @@ describe("isCharacterAtPosition", () => {
   });
 
   it("returns true when close enough with a tolerance in one axis", async () => {
-    const beachWaldoPos = { x: 1286, y: 1637 };
     expect(
       await isCharacterAtPosition(
         "beachWaldo",
         {
-          x: beachWaldoPos.x + 80,
-          y: beachWaldoPos.y,
+          x: CHOOSING_CHARACTER_TOLERANCE,
+          y: 0,
         },
         80
       )
@@ -55,13 +53,12 @@ describe("isCharacterAtPosition", () => {
   });
 
   it("returns true when close enough with a tolerance in two axis", async () => {
-    const beachWaldoPos = { x: 1286, y: 1637 };
     expect(
       await isCharacterAtPosition(
         "beachWaldo",
         {
-          x: beachWaldoPos.x + 30,
-          y: beachWaldoPos.y + 28,
+          x: CHOOSING_CHARACTER_TOLERANCE / 2,
+          y: CHOOSING_CHARACTER_TOLERANCE / 2,
         },
         80
       )
