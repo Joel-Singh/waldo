@@ -5,7 +5,11 @@ import getFirebaseFunctions from "../../../util/firebase.js";
 import { getGamescreens } from "../../../util/componentInstantiations";
 import { act } from "react-dom/test-utils";
 
-async function chooseCharacter(displayName, xPos, yPos) {
+async function chooseCharacter(displayName) {
+  await chooseCharacterAtPosition(displayName, 0, 0)
+}
+
+async function chooseCharacterAtPosition(displayName, xPos, yPos) {
   const gamescreen = screen.getByTestId("gamescreen");
   userEvent.click(gamescreen, { screenX: xPos, screenY: yPos });
 
@@ -16,26 +20,14 @@ async function chooseCharacter(displayName, xPos, yPos) {
 }
 
 async function chooseAllCharactersInMaze() {
-    const characters = [
-      {
-        displayName: "Yellow Hair Person",
-        coords: { x: 1929, y: 209 },
-      },
-      {
-        displayName: "Waldo",
-        coords: { x: 1377, y: 653 },
-      },
-      {
-        displayName: "Bird Person",
-        coords: { x: 1435, y: 687 },
-      },
+    const mazeDisplayNames = [
+      "Yellow Hair Person",
+      "Waldo",
+      "Bird Person"
     ];
 
-    for (const {
-      displayName,
-      coords: { x, y },
-    } of characters) {
-      await chooseCharacter(displayName, x, y);
+    for (const displayName of mazeDisplayNames) {
+      await chooseCharacter(displayName);
     }
 }
 
@@ -45,9 +37,9 @@ function isCharacterFound(name) {
 }
 
 beforeAll(async () => {
-  const { addRealCharacterCoordsToDatabase } =
+  const { addFakeCharacterCoordsToDatabase } =
     getFirebaseFunctions();
-  await addRealCharacterCoordsToDatabase();
+  await addFakeCharacterCoordsToDatabase();
 });
 
 describe("Choosing a character", () => {
@@ -56,9 +48,7 @@ describe("Choosing a character", () => {
     render(maze);
 
     const mazeWaldoDisplayName = "Waldo";
-    const mazeWaldoPos = { x: 1377, y: 653 };
-
-    await chooseCharacter(mazeWaldoDisplayName, 89, 36);
+    await chooseCharacterAtPosition(mazeWaldoDisplayName, 100, 100);
 
     expect(isCharacterFound(mazeWaldoDisplayName)).toBe(false);
   });
@@ -68,9 +58,8 @@ describe("Choosing a character", () => {
     render(maze);
 
     const mazeWaldoDisplayName = "Waldo";
-    const mazeWaldoPos = { x: 1377, y: 653 };
 
-    await chooseCharacter(mazeWaldoDisplayName, mazeWaldoPos.x, mazeWaldoPos.y);
+    await chooseCharacter(mazeWaldoDisplayName);
 
     expect(isCharacterFound(mazeWaldoDisplayName)).toBe(true);
   });
@@ -92,7 +81,7 @@ describe("onAllCharactersFound", () => {
       coords: { x, y },
     } = waldo;
 
-    await chooseCharacter(displayName, x, y);
+    await chooseCharacter(displayName);
 
     expect(onAllCharactersFound).not.toBeCalled();
   });
