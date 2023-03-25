@@ -121,3 +121,20 @@ Array [
 ]
 `);
 });
+
+test("addCharacterCoordsToDatabase", async () => {
+  const {
+    addFakeCharacterCoordsToDatabase,
+    addRealCharacterCoordsToDatabase,
+    clearCharacterCoordsInDatabase,
+    getCharCoordsInDb,
+  } = getFirebaseFunctions();
+
+  await clearCharacterCoordsInDatabase();
+  await addRealCharacterCoordsToDatabase();
+  expect(await getCharCoordsInDb()).toMatchSnapshot()
+
+  await clearCharacterCoordsInDatabase();
+  await addFakeCharacterCoordsToDatabase();
+  expect(await getCharCoordsInDb()).toMatchSnapshot()
+});
