@@ -5,19 +5,19 @@ describe("isCharacterAtPosition", () => {
   test.each([
     {
       name: "returns false with wrong position",
-      positionToCheck: {x: 1000, y: 1000},
+      positionToCheck: { x: 1000, y: 1000 },
       expectedValue: false,
     },
     {
       name: "returns true with right position",
-      positionToCheck: {x: 0, y: 0},
+      positionToCheck: { x: 0, y: 0 },
       expectedValue: true,
     },
     {
       name: "returns false when farther than tolerance",
       positionToCheck: {
         x: CHOOSING_CHARACTER_TOLERANCE,
-        y: CHOOSING_CHARACTER_TOLERANCE
+        y: CHOOSING_CHARACTER_TOLERANCE,
       },
       expectedValue: false,
     },
@@ -25,7 +25,7 @@ describe("isCharacterAtPosition", () => {
       name: "returns true when close enough with tolerance in one axis",
       positionToCheck: {
         x: CHOOSING_CHARACTER_TOLERANCE,
-        y: 0
+        y: 0,
       },
       expectedValue: true,
     },
@@ -33,12 +33,12 @@ describe("isCharacterAtPosition", () => {
       name: "returns true when close enough with a tolerance in two axis",
       positionToCheck: {
         x: CHOOSING_CHARACTER_TOLERANCE / 2,
-        y: CHOOSING_CHARACTER_TOLERANCE / 2
+        y: CHOOSING_CHARACTER_TOLERANCE / 2,
       },
       expectedValue: true,
     },
-  ])('$name', async ({ positionToCheck, expectedValue}) => {
-    const { isCharacterAtPosition } = getFirebaseFunctions()
+  ])("$name", async ({ positionToCheck, expectedValue }) => {
+    const { isCharacterAtPosition } = getFirebaseFunctions();
     expect(
       await isCharacterAtPosition(
         "beachWaldo",
@@ -49,35 +49,33 @@ describe("isCharacterAtPosition", () => {
         CHOOSING_CHARACTER_TOLERANCE
       )
     ).toBe(expectedValue);
-  })
+  });
 });
-
-
 
 test("addHighscore and getTopTenHighscores", async () => {
   const { clearHighscores, addHighscore, getTopTenHighscores } =
     getFirebaseFunctions();
 
-   await clearHighscores();
+  await clearHighscores();
 
-   await addHighscore("maze", "NF", 1);
-   await addHighscore("maze", "EA", 2);
-   await addHighscore("maze", "AB", 3);
-   await addHighscore("maze", "EK", 4);
-   await addHighscore("maze", "CD", 5);
-   await addHighscore("maze", "EF", 6);
-   await addHighscore("maze", "GH", 7);
-   await addHighscore("maze", "IJ", 8);
-   await addHighscore("maze", "JS", 9);
-   await addHighscore("maze", "TS", 10);
+  await addHighscore("maze", "NF", 1);
+  await addHighscore("maze", "EA", 2);
+  await addHighscore("maze", "AB", 3);
+  await addHighscore("maze", "EK", 4);
+  await addHighscore("maze", "CD", 5);
+  await addHighscore("maze", "EF", 6);
+  await addHighscore("maze", "GH", 7);
+  await addHighscore("maze", "IJ", 8);
+  await addHighscore("maze", "JS", 9);
+  await addHighscore("maze", "TS", 10);
 
-  const notTopTenScores = [11, 12]
+  const notTopTenScores = [11, 12];
   await addHighscore("maze", "ZS", notTopTenScores[0]);
   await addHighscore("maze", "TZ", notTopTenScores[1]);
 
   const highscores = await getTopTenHighscores("maze");
 
-  expect(highscores.length).toBe(10)
+  expect(highscores.length).toBe(10);
   expect(highscores).toMatchInlineSnapshot(`
 Array [
   Object {

@@ -57,23 +57,28 @@ export default function Gamescreen(props) {
 
       <CursorOverlay isVisible={!characterPickerInfo.visibility} />
 
-      <Stopwatch secondsElapsed={secondsElapsed} incrementDecisecond={() => setSecondsElapsed(prev => prev + 0.1)}/>
+      <Stopwatch
+        secondsElapsed={secondsElapsed}
+        incrementDecisecond={() => setSecondsElapsed((prev) => prev + 0.1)}
+      />
     </div>
   );
 
   function instantiateCharacterPicker() {
-    return (<CharacterPicker
-      isVisible={characterPickerInfo.visibility}
-      location={{ x: characterPickerInfo.xPos, y: characterPickerInfo.yPos }}
-      characterInformation={characters.map(
-        ({ displayName, databaseName, isFound }) => ({
-          displayName,
-          databaseName,
-          isFound,
-        })
-      )}
-      onCharacterClickFunc={updateCharacterIsFound}
-    />);
+    return (
+      <CharacterPicker
+        isVisible={characterPickerInfo.visibility}
+        location={{ x: characterPickerInfo.xPos, y: characterPickerInfo.yPos }}
+        characterInformation={characters.map(
+          ({ displayName, databaseName, isFound }) => ({
+            displayName,
+            databaseName,
+            isFound,
+          })
+        )}
+        onCharacterClickFunc={updateCharacterIsFound}
+      />
+    );
 
     async function updateCharacterIsFound(databaseName, pos) {
       const { isCharacterAtPosition } = getFirebaseFunctions();

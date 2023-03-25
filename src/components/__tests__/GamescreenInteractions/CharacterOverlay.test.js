@@ -43,4 +43,3 @@ describe("Character Overlay", () => {
     expect(character2).not.toBeNull();
   });
 });
-

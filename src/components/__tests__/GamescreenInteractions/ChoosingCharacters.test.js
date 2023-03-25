@@ -6,7 +6,7 @@ import { getGamescreens } from "../../../util/componentInstantiations";
 import { act } from "react-dom/test-utils";
 
 async function chooseCharacter(displayName) {
-  await chooseCharacterAtPosition(displayName, 0, 0)
+  await chooseCharacterAtPosition(displayName, 0, 0);
 }
 
 async function chooseCharacterAtPosition(displayName, xPos, yPos) {
@@ -20,15 +20,11 @@ async function chooseCharacterAtPosition(displayName, xPos, yPos) {
 }
 
 async function chooseAllCharactersInMaze() {
-    const mazeDisplayNames = [
-      "Yellow Hair Person",
-      "Waldo",
-      "Bird Person"
-    ];
+  const mazeDisplayNames = ["Yellow Hair Person", "Waldo", "Bird Person"];
 
-    for (const displayName of mazeDisplayNames) {
-      await chooseCharacter(displayName);
-    }
+  for (const displayName of mazeDisplayNames) {
+    await chooseCharacter(displayName);
+  }
 }
 
 function isCharacterFound(name) {
@@ -37,8 +33,7 @@ function isCharacterFound(name) {
 }
 
 beforeAll(async () => {
-  const { addFakeCharacterCoordsToDatabase } =
-    getFirebaseFunctions();
+  const { addFakeCharacterCoordsToDatabase } = getFirebaseFunctions();
   await addFakeCharacterCoordsToDatabase();
 });
 
@@ -92,7 +87,7 @@ describe("onAllCharactersFound", () => {
     const { maze } = getGamescreens(onAllCharactersFound);
     render(maze);
 
-    await chooseAllCharactersInMaze()
+    await chooseAllCharactersInMaze();
 
     expect(onAllCharactersFound).toBeCalled();
   });
@@ -104,17 +99,20 @@ describe("onAllCharactersFound", () => {
     render(maze);
 
     const SECONDS_ELAPSED = 0.3;
-    await act( async () => {
-      await new Promise(resolve => setTimeout(resolve, SECONDS_ELAPSED * 1000))
-    })
-    await chooseAllCharactersInMaze()
+    await act(async () => {
+      await new Promise((resolve) =>
+        setTimeout(resolve, SECONDS_ELAPSED * 1000)
+      );
+    });
+    await chooseAllCharactersInMaze();
 
     const firstArgumentOfFirstCall = onAllCharactersFound.mock.calls[0][0];
-    const TOLERANCE = 0.2
-    const withinTolerance = Math.abs(firstArgumentOfFirstCall - SECONDS_ELAPSED) < TOLERANCE
+    const TOLERANCE = 0.2;
+    const withinTolerance =
+      Math.abs(firstArgumentOfFirstCall - SECONDS_ELAPSED) < TOLERANCE;
 
-    expect(withinTolerance).toBe(true)
-  })
+    expect(withinTolerance).toBe(true);
+  });
 });
 
-export { chooseAllCharactersInMaze }
+export { chooseAllCharactersInMaze };

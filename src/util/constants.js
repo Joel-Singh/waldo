@@ -41,6 +41,9 @@ export const CHOOSING_CHARACTER_TOLERANCE = 40;
 export const decisecondToMs = 100;
 
 export function exposeCharacterToleranceAsCssVariable() {
-  const root = document.documentElement
-  root.style.setProperty('--choosing-character-tolerance', CHOOSING_CHARACTER_TOLERANCE)
+  const root = document.documentElement;
+  root.style.setProperty(
+    "--choosing-character-tolerance",
+    CHOOSING_CHARACTER_TOLERANCE
+  );
 }

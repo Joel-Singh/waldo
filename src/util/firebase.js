@@ -62,11 +62,11 @@ export default function getFirebaseFunctions() {
   //TODO: Final app won't have this function
   //The character coords will already be in the database
   function addCharacterCoordsToDatabase(useDummyCoords) {
-    const mapActualCoords =
-      ({ name, coords }) => addSingleCharacterCoordToDatabase(name, coords)
+    const mapActualCoords = ({ name, coords }) =>
+      addSingleCharacterCoordToDatabase(name, coords);
 
-    const mapFakeCoords =
-      ({ name }) => addSingleCharacterCoordToDatabase(name, {x: 0, y: 0})
+    const mapFakeCoords = ({ name }) =>
+      addSingleCharacterCoordToDatabase(name, { x: 0, y: 0 });
 
     return Promise.all(
       characterCoords.map(useDummyCoords ? mapFakeCoords : mapActualCoords)

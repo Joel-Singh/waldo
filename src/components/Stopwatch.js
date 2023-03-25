@@ -1,6 +1,6 @@
 import { useEffect } from "react";
 import { decisecondToMs } from "../util/constants";
-import PropTypes from "prop-types"
+import PropTypes from "prop-types";
 
 export default function Stopwatch({ secondsElapsed, incrementDecisecond }) {
   useEffect(() => {
@@ -10,10 +10,10 @@ export default function Stopwatch({ secondsElapsed, incrementDecisecond }) {
       clearInterval(intervalID);
     };
   }, []);
-  return <div className="stopwatch">{(secondsElapsed).toFixed(1)}</div>;
+  return <div className="stopwatch">{secondsElapsed.toFixed(1)}</div>;
 }
 
 Stopwatch.propTypes = {
   secondsElapsed: PropTypes.number.isRequired,
-  incrementDecisecond: PropTypes.func.isRequired
+  incrementDecisecond: PropTypes.func.isRequired,
 };

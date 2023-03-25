@@ -41,8 +41,9 @@ async function clickUploadScoreAndWaitForUpload() {
   await act(async () => {
     userEvent.click(screen.getByText("Upload score"));
 
-    const flushDatabaseRequests = () => new Promise((resolve) => setTimeout(resolve, 200))
-    await flushDatabaseRequests()
+    const flushDatabaseRequests = () =>
+      new Promise((resolve) => setTimeout(resolve, 200));
+    await flushDatabaseRequests();
   });
 }
 

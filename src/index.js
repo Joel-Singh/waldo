@@ -17,4 +17,4 @@ root.render(
 const { addRealCharacterCoordsToDatabase } = getFirebaseFunctions();
 addRealCharacterCoordsToDatabase();
 
-exposeCharacterToleranceAsCssVariable()
+exposeCharacterToleranceAsCssVariable();

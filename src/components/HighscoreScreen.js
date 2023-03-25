@@ -4,7 +4,8 @@ import { Link } from "react-router-dom";
 import getFirebaseFunctions from "../util/firebase";
 
 export default function HighscoreScreen({ map, currentPlayerScore = 99 }) {
-  const { topTenHighscores, updateTopTenHighscores } = useTopTenHighscoresFromDatabase();
+  const { topTenHighscores, updateTopTenHighscores } =
+    useTopTenHighscoresFromDatabase();
 
   return (
     <div data-testid="HighscoreScreen">
@@ -30,20 +31,22 @@ export default function HighscoreScreen({ map, currentPlayerScore = 99 }) {
     const [isHidden, setIsHidden] = useState(false);
 
     const onUploadScoreClick = async () => {
-      const initials = document.getElementById('initials').value
-      if (initials !== '') {
+      const initials = document.getElementById("initials").value;
+      if (initials !== "") {
         setIsHidden(true);
-        const { addHighscore } = getFirebaseFunctions()
-        await addHighscore(map, initials, currentPlayerScore)
-        updateTopTenHighscores()
+        const { addHighscore } = getFirebaseFunctions();
+        await addHighscore(map, initials, currentPlayerScore);
+        updateTopTenHighscores();
       }
     };
 
-    return (isCurrentPlayerScoreInTopTen() && !isHidden) ? (
+    return isCurrentPlayerScoreInTopTen() && !isHidden ? (
       <div>
         <label htmlFor="initials">Enter Initials to upload score</label>
         <input id="initials" type="text" />
-        <button type="button" onClick={onUploadScoreClick}>Upload score</button>
+        <button type="button" onClick={onUploadScoreClick}>
+          Upload score
+        </button>
       </div>
     ) : null;
 
@@ -59,7 +62,8 @@ export default function HighscoreScreen({ map, currentPlayerScore = 99 }) {
 
   function useTopTenHighscoresFromDatabase() {
     const [topTenHighscores, setTopTenHighscores] = useState([]);
-    const [updateTopTenHighscoresState, setUpdateTopTenHighscoresState] = useState(0);
+    const [updateTopTenHighscoresState, setUpdateTopTenHighscoresState] =
+      useState(0);
 
     useEffect(() => {
       setTopTenHighscores([]);
@@ -76,8 +80,9 @@ export default function HighscoreScreen({ map, currentPlayerScore = 99 }) {
       };
     }, [map, updateTopTenHighscoresState]);
 
-    const updateTopTenHighscores = () => setUpdateTopTenHighscoresState(prev => prev + 1)
-    return {topTenHighscores, updateTopTenHighscores};
+    const updateTopTenHighscores = () =>
+      setUpdateTopTenHighscoresState((prev) => prev + 1);
+    return { topTenHighscores, updateTopTenHighscores };
   }
 }
 
