@@ -21,8 +21,11 @@ async function chooseCharacterAtPosition(displayName, xPos, yPos) {
 
 async function chooseAllCharactersInMaze() {
   const mazeDisplayNames = ["Yellow Hair Person", "Waldo", "Bird Person"];
+  await chooseMultipleCharacters(mazeDisplayNames)
+}
 
-  for (const displayName of mazeDisplayNames) {
+async function chooseMultipleCharacters(displayNameArr) {
+  for (const displayName of displayNameArr) {
     await chooseCharacter(displayName);
   }
 }
