@@ -7,7 +7,7 @@ import {
 } from "firebase/database";
 import { distance } from "mathjs";
 import { initializeApp, getApps } from "firebase/app";
-import { flattenedCharacterCoords } from "./constants";
+import { flattenedCharacterInformation } from "./constants";
 
 let db;
 export default function getFirebaseFunctions() {
@@ -63,14 +63,14 @@ export default function getFirebaseFunctions() {
   //TODO: Final app won't have this function
   //The character coords will already be in the database
   function addCharacterCoordsToDatabase(useDummyCoords) {
-    const mapActualCoords = ({ name, coords }) =>
-      addSingleCharacterCoordToDatabase(name, coords);
+    const mapActualCoords = ({ databaseName, coords }) =>
+      addSingleCharacterCoordToDatabase(databaseName, coords);
 
-    const mapFakeCoords = ({ name }) =>
-      addSingleCharacterCoordToDatabase(name, { x: 0, y: 0 });
+    const mapFakeCoords = ({ databaseName }) =>
+      addSingleCharacterCoordToDatabase(databaseName, { x: 0, y: 0 });
 
     return Promise.all(
-      flattenedCharacterCoords.map(
+      flattenedCharacterInformation.map(
         useDummyCoords ? mapFakeCoords : mapActualCoords
       )
     );
