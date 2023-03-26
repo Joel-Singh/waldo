@@ -1,0 +1,409 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Beach Gamescreen 1`] = `
+<div>
+  <div
+    class="gamescreen"
+    data-testid="gamescreen"
+  >
+    <img
+      alt="Map"
+      class="gamescreen__map"
+      src="beach.jpg"
+    />
+    <div
+      class="characters-overlay"
+    >
+      <img
+        alt="Waldo"
+        src="waldo.jpg"
+      />
+      <img
+        alt="Shovel Boy"
+        src="shovel_boy.jpg"
+      />
+      <img
+        alt="Dog"
+        src="dog.jpg"
+      />
+    </div>
+    <div
+      class="character-picker --positioned-with-x-y"
+      data-testid="character-picker"
+      style="--x: 0; --y: 0;"
+    >
+      <button
+        type="button"
+      >
+        Waldo
+      </button>
+      <button
+        type="button"
+      >
+        Shovel Boy
+      </button>
+      <button
+        type="button"
+      >
+        Dog
+      </button>
+    </div>
+    <div
+      class="cursor-overlay cursor-overlay--visible"
+      data-testid="cursor-overlay"
+      style="--x: 0; --y: 0;"
+    />
+    <div
+      class="stopwatch"
+    >
+      0.0
+    </div>
+  </div>
+</div>
+`;
+
+exports[`Beach Map Preview 1`] = `
+<div>
+  <div
+    class="map-preview"
+  >
+    <div
+      aria-label="title"
+      class="map-preview__title"
+    >
+      Beach
+    </div>
+    <img
+      alt="Beach map"
+      class="map-preview__map-image"
+      src="beach.jpg"
+    />
+    <div
+      class="map-preview__character-container"
+      data-testid="previewCharactersContainer"
+    >
+      <div
+        class="preview-character"
+      >
+        <img
+          alt="Waldo"
+          src="waldo.jpg"
+        />
+        <div
+          class="preview-character__name"
+        >
+          Waldo
+        </div>
+      </div>
+      <div
+        class="preview-character"
+      >
+        <img
+          alt="Shovel Boy"
+          src="shovel_boy.jpg"
+        />
+        <div
+          class="preview-character__name"
+        >
+          Shovel Boy
+        </div>
+      </div>
+      <div
+        class="preview-character"
+      >
+        <img
+          alt="Dog"
+          src="dog.jpg"
+        />
+        <div
+          class="preview-character__name"
+        >
+          Dog
+        </div>
+      </div>
+    </div>
+    <a
+      href="/beach"
+    >
+      <button
+        class="map-preview__start-btn"
+        type="buton"
+      >
+        START
+      </button>
+    </a>
+  </div>
+</div>
+`;
+
+exports[`Maze Gamescreen 1`] = `
+<div>
+  <div
+    class="gamescreen"
+    data-testid="gamescreen"
+  >
+    <img
+      alt="Map"
+      class="gamescreen__map"
+      src="maze.jpg"
+    />
+    <div
+      class="characters-overlay"
+    >
+      <img
+        alt="Waldo"
+        src="waldo.jpg"
+      />
+      <img
+        alt="Bird Person"
+        src="bird_person.jpg"
+      />
+      <img
+        alt="Yellow Hair Person"
+        src="yellowed_hair_person.jpg"
+      />
+    </div>
+    <div
+      class="character-picker --positioned-with-x-y"
+      data-testid="character-picker"
+      style="--x: 0; --y: 0;"
+    >
+      <button
+        type="button"
+      >
+        Waldo
+      </button>
+      <button
+        type="button"
+      >
+        Bird Person
+      </button>
+      <button
+        type="button"
+      >
+        Yellow Hair Person
+      </button>
+    </div>
+    <div
+      class="cursor-overlay cursor-overlay--visible"
+      data-testid="cursor-overlay"
+      style="--x: 0; --y: 0;"
+    />
+    <div
+      class="stopwatch"
+    >
+      0.0
+    </div>
+  </div>
+</div>
+`;
+
+exports[`Maze Map Preview 1`] = `
+<div>
+  <div
+    class="map-preview"
+  >
+    <div
+      aria-label="title"
+      class="map-preview__title"
+    >
+      Maze
+    </div>
+    <img
+      alt="Maze map"
+      class="map-preview__map-image"
+      src="maze.jpg"
+    />
+    <div
+      class="map-preview__character-container"
+      data-testid="previewCharactersContainer"
+    >
+      <div
+        class="preview-character"
+      >
+        <img
+          alt="Waldo"
+          src="waldo.jpg"
+        />
+        <div
+          class="preview-character__name"
+        >
+          Waldo
+        </div>
+      </div>
+      <div
+        class="preview-character"
+      >
+        <img
+          alt="Bird Person"
+          src="bird_person.jpg"
+        />
+        <div
+          class="preview-character__name"
+        >
+          Bird Person
+        </div>
+      </div>
+      <div
+        class="preview-character"
+      >
+        <img
+          alt="Yellow Hair Person"
+          src="yellowed_hair_person.jpg"
+        />
+        <div
+          class="preview-character__name"
+        >
+          Yellow Hair Person
+        </div>
+      </div>
+    </div>
+    <a
+      href="/maze"
+    >
+      <button
+        class="map-preview__start-btn"
+        type="buton"
+      >
+        START
+      </button>
+    </a>
+  </div>
+</div>
+`;
+
+exports[`Snow Gamescreen 1`] = `
+<div>
+  <div
+    class="gamescreen"
+    data-testid="gamescreen"
+  >
+    <img
+      alt="Map"
+      class="gamescreen__map"
+      src="snow.jpg"
+    />
+    <div
+      class="characters-overlay"
+    >
+      <img
+        alt="Waldo"
+        src="waldo.jpg"
+      />
+      <img
+        alt="Ouch!"
+        src="shovel_boy.jpg"
+      />
+      <img
+        alt="Monster"
+        src="monster.jpg"
+      />
+    </div>
+    <div
+      class="character-picker --positioned-with-x-y"
+      data-testid="character-picker"
+      style="--x: 0; --y: 0;"
+    >
+      <button
+        type="button"
+      >
+        Waldo
+      </button>
+      <button
+        type="button"
+      >
+        Ouch!
+      </button>
+      <button
+        type="button"
+      >
+        Monster
+      </button>
+    </div>
+    <div
+      class="cursor-overlay cursor-overlay--visible"
+      data-testid="cursor-overlay"
+      style="--x: 0; --y: 0;"
+    />
+    <div
+      class="stopwatch"
+    >
+      0.0
+    </div>
+  </div>
+</div>
+`;
+
+exports[`Snow Map Preview 1`] = `
+<div>
+  <div
+    class="map-preview"
+  >
+    <div
+      aria-label="title"
+      class="map-preview__title"
+    >
+      Snow
+    </div>
+    <img
+      alt="Snow map"
+      class="map-preview__map-image"
+      src="snow.jpg"
+    />
+    <div
+      class="map-preview__character-container"
+      data-testid="previewCharactersContainer"
+    >
+      <div
+        class="preview-character"
+      >
+        <img
+          alt="Waldo"
+          src="waldo.jpg"
+        />
+        <div
+          class="preview-character__name"
+        >
+          Waldo
+        </div>
+      </div>
+      <div
+        class="preview-character"
+      >
+        <img
+          alt="Ouch"
+          src="ouch.jpg"
+        />
+        <div
+          class="preview-character__name"
+        >
+          Ouch
+        </div>
+      </div>
+      <div
+        class="preview-character"
+      >
+        <img
+          alt="Monster"
+          src="monster.jpg"
+        />
+        <div
+          class="preview-character__name"
+        >
+          Monster
+        </div>
+      </div>
+    </div>
+    <a
+      href="/snow"
+    >
+      <button
+        class="map-preview__start-btn"
+        type="buton"
+      >
+        START
+      </button>
+    </a>
+  </div>
+</div>
+`;
