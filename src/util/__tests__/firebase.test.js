@@ -142,9 +142,9 @@ test("addCharacterCoordsToDatabase", async () => {
 
   await clearCharacterCoordsInDatabase();
   await addRealCharacterCoordsToDatabase();
-  expect(await getCharCoordsInDb()).toMatchSnapshot()
+  expect(await getCharCoordsInDb()).toMatchSnapshot();
 
   await clearCharacterCoordsInDatabase();
   await addFakeCharacterCoordsToDatabase();
-  expect(await getCharCoordsInDb()).toMatchSnapshot()
+  expect(await getCharCoordsInDb()).toMatchSnapshot();
 });

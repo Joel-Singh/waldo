@@ -94,7 +94,7 @@ export default function getFirebaseFunctions() {
   }
 
   async function getCharCoordsInDb() {
-    return (await get(ref(db))).val().characterCoordinates
+    return (await get(ref(db))).val().characterCoordinates;
   }
 }
 
