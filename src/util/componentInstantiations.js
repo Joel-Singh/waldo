@@ -2,21 +2,10 @@ import MapPreview from "../components/MapPreview";
 import Gamescreen from "../components/Gamescreen";
 import createCharacter from "./createCharacter";
 
-import mazeWaldo from "../assets/characters/maze/waldo.jpg";
-import birdPerson from "../assets/characters/maze/bird_person.jpg";
-import yellowHairPerson from "../assets/characters/maze/yellowed_hair_person.jpg";
-
-import beachWaldo from "../assets/characters/beach/waldo.jpg";
-import shovelBoy from "../assets/characters/beach/shovel_boy.jpg";
-import dog from "../assets/characters/beach/dog.jpg";
-
-import snowWaldo from "../assets/characters/snow/waldo.jpg";
-import ouch from "../assets/characters/snow/ouch.jpg";
-import monster from "../assets/characters/snow/monster.jpg";
-
 import mazeMap from "../assets/maps/maze.jpg";
 import beachMap from "../assets/maps/beach.jpg";
 import snowMap from "../assets/maps/snow.jpg";
+import { characterInformation } from "./constants";
 
 const getMapPreviews = () => ({
   mazeMapPreview: (
@@ -24,20 +13,7 @@ const getMapPreviews = () => ({
       mapName="Maze"
       mapImage={mazeMap}
       mapPath="maze"
-      previewCharacterInformation={[
-        {
-          name: "Waldo",
-          image: mazeWaldo,
-        },
-        {
-          name: "Bird Person",
-          image: birdPerson,
-        },
-        {
-          name: "Yellow Hair Person",
-          image: yellowHairPerson,
-        },
-      ]}
+      previewCharacterInformation={parsePreviewCharInfoFromCharInfo("maze")}
     />
   ),
   beachMapPreview: (
@@ -45,20 +21,7 @@ const getMapPreviews = () => ({
       mapName="Beach"
       mapImage={beachMap}
       mapPath="beach"
-      previewCharacterInformation={[
-        {
-          name: "Waldo",
-          image: beachWaldo,
-        },
-        {
-          name: "Shovel Boy",
-          image: shovelBoy,
-        },
-        {
-          name: "Dog",
-          image: dog,
-        },
-      ]}
+      previewCharacterInformation={parsePreviewCharInfoFromCharInfo("beach")}
     />
   ),
   snowMapPreview: (
@@ -66,62 +29,46 @@ const getMapPreviews = () => ({
       mapName="Snow"
       mapImage={snowMap}
       mapPath="snow"
-      previewCharacterInformation={[
-        {
-          name: "Waldo",
-          image: snowWaldo,
-        },
-        {
-          name: "Ouch",
-          image: ouch,
-        },
-        {
-          name: "Monster",
-          image: monster,
-        },
-      ]}
+      previewCharacterInformation={parsePreviewCharInfoFromCharInfo("snow")}
     />
   ),
 });
+
+function parsePreviewCharInfoFromCharInfo(map) {
+  return characterInformation[map].map(({ displayName, image }) => ({
+    name: displayName,
+    image,
+  }));
+}
 
 const getGamescreens = (onAllCharactersFound) => ({
   maze: (
     <Gamescreen
       img={mazeMap}
       onAllCharactersFound={onAllCharactersFound}
-      characters={[
-        createCharacter("Waldo", "mazeWaldo", mazeWaldo),
-        createCharacter("Bird Person", "birdPerson", birdPerson),
-        createCharacter(
-          "Yellow Hair Person",
-          "yellowHairPerson",
-          yellowHairPerson
-        ),
-      ]}
+      characters={parseGamescreenCharactersFromCharInfo('maze')}
     />
   ),
   beach: (
     <Gamescreen
       img={beachMap}
       onAllCharactersFound={onAllCharactersFound}
-      characters={[
-        createCharacter("Waldo", "beachWaldo", beachWaldo),
-        createCharacter("Shovel Boy", "shovelBoy", shovelBoy),
-        createCharacter("Dog", "dog", dog),
-      ]}
+      characters={parseGamescreenCharactersFromCharInfo('beach')}
     />
   ),
   snow: (
     <Gamescreen
       img={snowMap}
       onAllCharactersFound={onAllCharactersFound}
-      characters={[
-        createCharacter("Waldo", "snowWaldo", snowWaldo),
-        createCharacter("Ouch!", "ouch", shovelBoy),
-        createCharacter("Monster", "monster", monster),
-      ]}
+      characters={parseGamescreenCharactersFromCharInfo('snow')}
     />
   ),
 });
+
+function parseGamescreenCharactersFromCharInfo(map) {
+  return characterInformation[map].map(({ displayName, databaseName, image }) =>
+    createCharacter(displayName, databaseName, image)
+  );
+}
 
 export { getMapPreviews, getGamescreens };

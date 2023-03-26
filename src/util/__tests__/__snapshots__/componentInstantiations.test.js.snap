@@ -292,7 +292,7 @@ exports[`Snow Gamescreen 1`] = `
       />
       <img
         alt="Ouch!"
-        src="shovel_boy.jpg"
+        src="ouch.jpg"
       />
       <img
         alt="Monster"
@@ -371,13 +371,13 @@ exports[`Snow Map Preview 1`] = `
         class="preview-character"
       >
         <img
-          alt="Ouch"
+          alt="Ouch!"
           src="ouch.jpg"
         />
         <div
           class="preview-character__name"
         >
-          Ouch
+          Ouch!
         </div>
       </div>
       <div
