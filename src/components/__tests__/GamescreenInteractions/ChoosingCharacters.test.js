@@ -4,6 +4,7 @@ import { render, screen } from "@testing-library/react";
 import getFirebaseFunctions from "../../../util/firebase.js";
 import { getGamescreens } from "../../../util/componentInstantiations";
 import { act } from "react-dom/test-utils";
+import { characterInformation } from "../../../util/constants.js";
 
 async function chooseCharacter(displayName) {
   await chooseCharacterAtPosition(displayName, 0, 0);
@@ -19,9 +20,8 @@ async function chooseCharacterAtPosition(displayName, xPos, yPos) {
   });
 }
 
-async function chooseAllCharactersInMaze() {
-  const mazeDisplayNames = ["Yellow Hair Person", "Waldo", "Bird Person"];
-  await chooseMultipleCharacters(mazeDisplayNames);
+async function chooseAllCharactersIn(map) {
+  await chooseMultipleCharacters(characterInformation[map].map(({displayName}) => (displayName)));
 }
 
 async function chooseMultipleCharacters(displayNameArr) {
@@ -90,7 +90,7 @@ describe("onAllCharactersFound", () => {
     const { maze } = getGamescreens(onAllCharactersFound);
     render(maze);
 
-    await chooseAllCharactersInMaze();
+    await chooseAllCharactersIn('maze');
 
     expect(onAllCharactersFound).toBeCalled();
   });
@@ -107,7 +107,7 @@ describe("onAllCharactersFound", () => {
         setTimeout(resolve, SECONDS_ELAPSED * 1000)
       );
     });
-    await chooseAllCharactersInMaze();
+    await chooseAllCharactersIn('maze');
 
     const firstArgumentOfFirstCall = onAllCharactersFound.mock.calls[0][0];
     const TOLERANCE = 0.2;
@@ -118,4 +118,4 @@ describe("onAllCharactersFound", () => {
   });
 });
 
-export { chooseAllCharactersInMaze };
+export { chooseAllCharactersIn };

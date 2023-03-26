@@ -1,7 +1,7 @@
 import { render, screen } from "@testing-library/react";
 import { MemoryRouter, BrowserRouter } from "react-router-dom";
 import App from "./App.js";
-import { chooseAllCharactersInMaze } from "./components/__tests__/GamescreenInteractions/ChoosingCharacters.test.js";
+import { chooseAllCharactersIn } from "./components/__tests__/GamescreenInteractions/ChoosingCharacters.test.js";
 
 jest.mock("./components/HighscoreScreen.js", () => () => {
   return <div data-testid="HighscoreScreen"></div>;
@@ -25,7 +25,7 @@ test("Shows highscore screen and hides gamescreen when all characters are chosen
     </MemoryRouter>
   );
 
-  await chooseAllCharactersInMaze();
+  await chooseAllCharactersIn('maze');
 
   expect(screen.queryByTestId("gamescreen")).toBeNull();
   expect(screen.getByTestId("HighscoreScreen")).toBeDefined();
