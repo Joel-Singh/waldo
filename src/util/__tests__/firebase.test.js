@@ -2,6 +2,16 @@ import { CHOOSING_CHARACTER_TOLERANCE } from "../constants";
 import getFirebaseFunctions from "../firebase";
 
 describe("isCharacterAtPosition", () => {
+  beforeAll(async () => {
+    const { addFakeCharacterCoordsToDatabase } = getFirebaseFunctions();
+    await addFakeCharacterCoordsToDatabase();
+  });
+
+  afterAll(async () => {
+    const { clearCharacterCoordsInDatabase } = getFirebaseFunctions();
+    await clearCharacterCoordsInDatabase();
+  });
+
   test.each([
     {
       name: "returns false with wrong position",
