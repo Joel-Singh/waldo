@@ -7,26 +7,29 @@ jest.mock("./components/HighscoreScreen.js", () => () => {
   return <div data-testid="HighscoreScreen"></div>;
 });
 
-it("initially shows gamescreen and initially hides highscore screen for maze", () => {
-  render(
-    <MemoryRouter initialEntries={["/maze"]}>
-      <App />
-    </MemoryRouter>
-  );
+describe.each(['maze', 'beach', 'snow'])('for %s,', (mapName) => {
+  it("initially Gamescreen is shown and HighscoreScreen is hidden", () => {
+    render(
+      <MemoryRouter initialEntries={[`/${mapName}`]}>
+        <App />
+      </MemoryRouter>
+    );
 
-  expect(screen.getByTestId("gamescreen")).toBeDefined();
-  expect(screen.queryByTestId("HighscoreScreen")).toBeNull();
-});
+    expect(screen.getByTestId("gamescreen")).toBeDefined();
+    expect(screen.queryByTestId("HighscoreScreen")).toBeNull();
+  });
 
-test("Shows highscore screen and hides gamescreen when all characters are chosen for maze", async () => {
-  render(
-    <MemoryRouter initialEntries={["/maze"]}>
-      <App />
-    </MemoryRouter>
-  );
+  test("Shows highscore screen and hides gamescreen when all characters are chosen", async () => {
+    render(
+      <MemoryRouter initialEntries={[`/${mapName}`]}>
+        <App />
+      </MemoryRouter>
+    );
 
-  await chooseAllCharactersIn('maze');
+    await chooseAllCharactersIn(mapName);
 
-  expect(screen.queryByTestId("gamescreen")).toBeNull();
-  expect(screen.getByTestId("HighscoreScreen")).toBeDefined();
-});
+    expect(screen.queryByTestId("gamescreen")).toBeNull();
+    expect(screen.getByTestId("HighscoreScreen")).toBeDefined();
+  });
+})
+

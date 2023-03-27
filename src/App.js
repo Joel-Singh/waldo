@@ -41,8 +41,26 @@ function App() {
             )
           }
         />
-        <Route path="/beach" element={beachGamescreen} />
-        <Route path="/snow" element={snowGamescreen} />
+        <Route
+          path="/beach"
+          element={
+            !showHighscoreScreen ? (
+              beachGamescreen
+            ) : (
+              <HighscoreScreen map="beach" />
+            )
+          }
+        />
+
+        <Route path="/snow"
+          element={
+            !showHighscoreScreen ? (
+              snowGamescreen
+            ) : (
+              <HighscoreScreen map="snow" />
+            )
+          }
+        />
       </Routes>
     </div>
   );
