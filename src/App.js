@@ -14,7 +14,9 @@ function App() {
     maze: mazeGamescreen,
     beach: beachGamescreen,
     snow: snowGamescreen,
-  } = getGamescreens(() => setShowHighscoreScreen(true));
+  } = getGamescreens(() => {
+    setShowHighscoreScreen(true);
+  });
 
   const { mazeMapPreview, beachMapPreview, snowMapPreview } = getMapPreviews();
   return (
