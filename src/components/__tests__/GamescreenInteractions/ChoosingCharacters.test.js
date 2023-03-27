@@ -4,31 +4,8 @@ import { render, screen } from "@testing-library/react";
 import getFirebaseFunctions from "../../../util/firebase.js";
 import { getGamescreens } from "../../../util/componentInstantiations";
 import { act } from "react-dom/test-utils";
-import { characterInformation } from "../../../util/constants.js";
+import { chooseAllCharactersIn, chooseCharacter, chooseCharacterAtPosition } from "../../../util/ChoosingCharacters.js";
 
-async function chooseCharacter(displayName) {
-  await chooseCharacterAtPosition(displayName, 0, 0);
-}
-
-async function chooseCharacterAtPosition(displayName, xPos, yPos) {
-  const gamescreen = screen.getByTestId("Gamescreen");
-  userEvent.click(gamescreen, { screenX: xPos, screenY: yPos });
-
-  const charBtn = screen.getByText(displayName);
-  await act(async () => {
-    userEvent.click(charBtn);
-  });
-}
-
-async function chooseAllCharactersIn(map) {
-  await chooseMultipleCharacters(characterInformation[map].map(({displayName}) => (displayName)));
-}
-
-async function chooseMultipleCharacters(displayNameArr) {
-  for (const displayName of displayNameArr) {
-    await chooseCharacter(displayName);
-  }
-}
 
 function isCharacterFound(name) {
   const characterFromCharacterOverlay = screen.getByAltText(name);
@@ -117,5 +94,3 @@ describe("onAllCharactersFound", () => {
     expect(withinTolerance).toBe(true);
   });
 });
-
-export { chooseAllCharactersIn };

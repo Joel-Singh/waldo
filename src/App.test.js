@@ -1,7 +1,7 @@
 import { render, screen } from "@testing-library/react";
 import { MemoryRouter, BrowserRouter } from "react-router-dom";
 import App from "./App.js";
-import { chooseAllCharactersIn } from "./components/__tests__/GamescreenInteractions/ChoosingCharacters.test.js";
+import { chooseAllCharactersIn } from "./util/ChoosingCharacters.js";
 
 jest.mock("./components/HighscoreScreen.js", () => () => {
   return <div data-testid="HighscoreScreen"></div>;
