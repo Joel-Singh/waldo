@@ -24,6 +24,11 @@ async function chooseCharacterAtPosition(displayName, xPos, yPos) {
   const charBtn = screen.getByText(displayName);
   await act(async () => {
     userEvent.click(charBtn);
+
+    const flushPromises = () =>
+      new Promise((resolve) => setTimeout(resolve, 0));
+
+    await flushPromises()
   });
 }
 
