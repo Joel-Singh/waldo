@@ -17,7 +17,7 @@ describe("Character picker", () => {
     render(<Gamescreen />);
 
     const characterPicker = screen.getByTestId("character-picker");
-    const gamescreen = screen.getByTestId("gamescreen");
+    const gamescreen = screen.getByTestId("Gamescreen");
 
     userEvent.click(gamescreen);
     expect(characterPicker).toHaveClass("character-picker--visible");
@@ -27,7 +27,7 @@ describe("Character picker", () => {
     render(<Gamescreen />);
 
     const characterPicker = screen.getByTestId("character-picker");
-    const gamescreen = screen.getByTestId("gamescreen");
+    const gamescreen = screen.getByTestId("Gamescreen");
 
     userEvent.click(gamescreen);
     expect(characterPicker).toHaveClass("character-picker--visible");
@@ -39,7 +39,7 @@ describe("Character picker", () => {
     render(<Gamescreen />);
 
     const characterPicker = screen.getByTestId("character-picker");
-    const gamescreen = screen.getByTestId("gamescreen");
+    const gamescreen = screen.getByTestId("Gamescreen");
 
     const xClickPos = 103;
     const yClickPos = 56;

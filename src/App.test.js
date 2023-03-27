@@ -15,7 +15,7 @@ describe.each(['maze', 'beach', 'snow'])('for %s,', (mapName) => {
       </MemoryRouter>
     );
 
-    expect(screen.getByTestId("gamescreen")).toBeDefined();
+    expect(screen.getByTestId("Gamescreen")).toBeDefined();
     expect(screen.queryByTestId("HighscoreScreen")).toBeNull();
   });
 
@@ -28,7 +28,7 @@ describe.each(['maze', 'beach', 'snow'])('for %s,', (mapName) => {
 
     await chooseAllCharactersIn(mapName);
 
-    expect(screen.queryByTestId("gamescreen")).toBeNull();
+    expect(screen.queryByTestId("Gamescreen")).toBeNull();
     expect(screen.getByTestId("HighscoreScreen")).toBeDefined();
   });
 })

@@ -40,7 +40,7 @@ export default function Gamescreen(props) {
   return (
     <div
       className="gamescreen"
-      data-testid="gamescreen"
+      data-testid="Gamescreen"
       onClick={updateCharPickerInfo}
     >
       <img className="gamescreen__map" src={img} alt={"Map"} />

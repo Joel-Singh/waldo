@@ -6,7 +6,7 @@ import Gamescreen from "../../Gamescreen.js";
 test("Cursor overlay is hidden when character picker is visible", () => {
   render(<Gamescreen />);
 
-  const gamescreen = screen.getByTestId("gamescreen");
+  const gamescreen = screen.getByTestId("Gamescreen");
   const characterPicker = screen.getByTestId("character-picker");
   const cursorOverlay = screen.getByTestId("cursor-overlay");
 

@@ -4,7 +4,7 @@ exports[`Beach Gamescreen 1`] = `
 <div>
   <div
     class="gamescreen"
-    data-testid="gamescreen"
+    data-testid="Gamescreen"
   >
     <img
       alt="Map"
@@ -140,7 +140,7 @@ exports[`Maze Gamescreen 1`] = `
 <div>
   <div
     class="gamescreen"
-    data-testid="gamescreen"
+    data-testid="Gamescreen"
   >
     <img
       alt="Map"
@@ -276,7 +276,7 @@ exports[`Snow Gamescreen 1`] = `
 <div>
   <div
     class="gamescreen"
-    data-testid="gamescreen"
+    data-testid="Gamescreen"
   >
     <img
       alt="Map"

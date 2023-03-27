@@ -11,7 +11,7 @@ async function chooseCharacter(displayName) {
 }
 
 async function chooseCharacterAtPosition(displayName, xPos, yPos) {
-  const gamescreen = screen.getByTestId("gamescreen");
+  const gamescreen = screen.getByTestId("Gamescreen");
   userEvent.click(gamescreen, { screenX: xPos, screenY: yPos });
 
   const charBtn = screen.getByText(displayName);
