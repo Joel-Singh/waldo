@@ -132,6 +132,14 @@ Array [
 `);
 });
 
+test("getCharCoordsinDb throws error when coords aren't initialized", async () => {
+  const { clearDatabase, getCharCoordsInDb } = getFirebaseFunctions()
+  await clearDatabase()
+  await expect(getCharCoordsInDb())
+    .rejects
+    .toThrow('Character coords never initialized in database');
+})
+
 test("addCharacterCoordsToDatabase", async () => {
   const {
     addFakeCharacterCoordsToDatabase,
