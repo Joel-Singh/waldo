@@ -11,7 +11,6 @@ import { allMaps } from "./util/constants";
 function App() {
   const [showHighscoreScreen, setShowHighscoreScreen] = useState(false);
 
-  const { mazeMapPreview, beachMapPreview, snowMapPreview } = getMapPreviews();
   return (
     <div className="App">
       <Routes>
@@ -20,7 +19,7 @@ function App() {
           path="/"
           element={
             <SelectionScreen
-              mapPreviews={[mazeMapPreview, beachMapPreview, snowMapPreview]}
+              mapPreviews={allMaps.map(map => getMapPreviews()[map + "MapPreview"])}
             />
           }
         />
