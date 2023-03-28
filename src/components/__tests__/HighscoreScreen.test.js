@@ -201,18 +201,26 @@ test("Scores are refreshed visually after current player's score is added to dat
 
   const initialsTextBox = screen.getByRole("textbox");
   userEvent.type(initialsTextBox, "JS");
-  await clickUploadScoreAndWaitForUpload();
 
-  expect(
-    screen.getByTestId("HighscoreScreen__scores-container").firstElementChild
-  ).toMatchInlineSnapshot(`
-<div>
-  <span>
-    JS
-  </span>
-  <span>
-    0.5
-  </span>
-</div>
-`);
+  await clickUploadScoreAndWaitForUpload()
+
+  await new Promise((resolve) => {
+    setTimeout(() => {
+      expect(
+        screen.getByTestId("HighscoreScreen__scores-container")
+          .firstElementChild
+      ).toMatchInlineSnapshot(`
+    <div>
+      <span>
+        JS
+      </span>
+      <span>
+        0.5
+      </span>
+    </div>
+    `);
+
+      resolve();
+    }, 500);
+  });
 });
