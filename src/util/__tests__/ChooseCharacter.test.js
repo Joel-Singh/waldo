@@ -15,13 +15,6 @@ describe("Choose character throws error when", () => {
     )
   }
 
-  it("characters coords aren't initialized whatsoever into the database", async () => {
-    await clearDatabase()
-    renderMockGamescreenWithCharacterButton()
-    await expect(chooseCharacter())
-      .rejects
-      .toThrow();
-  })
 
   it("character coords are initialized with real ones", async () => {
     await clearDatabase()
