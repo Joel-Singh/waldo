@@ -1,0 +1,76 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Selection screen is passed map previews 1`] = `
+Array [
+  Array [
+    Object {
+      "mapPreviews": Array [
+        <MapPreview
+          mapImage="maze.jpg"
+          mapName="Maze"
+          mapPath="maze"
+          previewCharacterInformation={
+            Array [
+              Object {
+                "image": "waldo.jpg",
+                "name": "Waldo",
+              },
+              Object {
+                "image": "bird_person.jpg",
+                "name": "Bird Person",
+              },
+              Object {
+                "image": "yellowed_hair_person.jpg",
+                "name": "Yellow Hair Person",
+              },
+            ]
+          }
+        />,
+        <MapPreview
+          mapImage="beach.jpg"
+          mapName="Beach"
+          mapPath="beach"
+          previewCharacterInformation={
+            Array [
+              Object {
+                "image": "waldo.jpg",
+                "name": "Waldo",
+              },
+              Object {
+                "image": "shovel_boy.jpg",
+                "name": "Shovel Boy",
+              },
+              Object {
+                "image": "dog.jpg",
+                "name": "Dog",
+              },
+            ]
+          }
+        />,
+        <MapPreview
+          mapImage="snow.jpg"
+          mapName="Snow"
+          mapPath="snow"
+          previewCharacterInformation={
+            Array [
+              Object {
+                "image": "waldo.jpg",
+                "name": "Waldo",
+              },
+              Object {
+                "image": "ouch.jpg",
+                "name": "Ouch!",
+              },
+              Object {
+                "image": "monster.jpg",
+                "name": "Monster",
+              },
+            ]
+          }
+        />,
+      ],
+    },
+    Object {},
+  ],
+]
+`;

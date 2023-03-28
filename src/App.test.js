@@ -3,6 +3,7 @@ import { MemoryRouter, BrowserRouter } from "react-router-dom";
 import App from "./App.js";
 import { chooseAllCharactersIn } from "./util/ChoosingCharacters.js";
 import getFirebaseFunctions from "./util/firebase.js";
+import SelectionScreen from "./components/SelectionScreen.js";
 
 jest.mock("./components/HighscoreScreen.js", () => () => {
   return <div data-testid="HighscoreScreen"></div>;
@@ -11,6 +12,8 @@ jest.mock("./components/HighscoreScreen.js", () => () => {
 jest.mock("./components/Stopwatch.js", () => () => {
   return <div></div>;
 });
+
+jest.mock("./components/SelectionScreen.js", () => jest.fn(() => null));
 
 beforeAll(async () => {
   const { addFakeCharacterCoordsToDatabase, clearDatabase } = getFirebaseFunctions()
@@ -44,3 +47,13 @@ describe.each(['maze', 'beach', 'snow'])('for %s,', (mapName) => {
   });
 })
 
+test("Selection screen is passed map previews", () => {
+  render(
+    <MemoryRouter initialEntries={['/']}>
+      <App />
+    </MemoryRouter>
+  );
+
+  const latestCallInformation = SelectionScreen.mock.calls.slice(-1);
+  expect(latestCallInformation).toMatchSnapshot()
+})
