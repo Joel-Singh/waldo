@@ -1,6 +1,6 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`Beach Gamescreen 1`] = `
+exports[`beach Gamescreen 1`] = `
 <div>
   <div
     class="gamescreen"
@@ -62,7 +62,7 @@ exports[`Beach Gamescreen 1`] = `
 </div>
 `;
 
-exports[`Beach Map Preview 1`] = `
+exports[`beach Map Preview 1`] = `
 <div>
   <div
     class="map-preview"
@@ -136,7 +136,7 @@ exports[`Beach Map Preview 1`] = `
 </div>
 `;
 
-exports[`Maze Gamescreen 1`] = `
+exports[`maze Gamescreen 1`] = `
 <div>
   <div
     class="gamescreen"
@@ -198,7 +198,7 @@ exports[`Maze Gamescreen 1`] = `
 </div>
 `;
 
-exports[`Maze Map Preview 1`] = `
+exports[`maze Map Preview 1`] = `
 <div>
   <div
     class="map-preview"
@@ -272,7 +272,7 @@ exports[`Maze Map Preview 1`] = `
 </div>
 `;
 
-exports[`Snow Gamescreen 1`] = `
+exports[`snow Gamescreen 1`] = `
 <div>
   <div
     class="gamescreen"
@@ -334,7 +334,7 @@ exports[`Snow Gamescreen 1`] = `
 </div>
 `;
 
-exports[`Snow Map Preview 1`] = `
+exports[`snow Map Preview 1`] = `
 <div>
   <div
     class="map-preview"

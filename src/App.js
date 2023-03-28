@@ -19,7 +19,7 @@ function App() {
           path="/"
           element={
             <SelectionScreen
-              mapPreviews={allMaps.map(map => getMapPreviews()[map + "MapPreview"])}
+              mapPreviews={allMaps.map(map => getMapPreviews()[map])}
             />
           }
         />

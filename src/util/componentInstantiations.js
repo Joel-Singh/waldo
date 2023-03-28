@@ -8,7 +8,7 @@ import snowMap from "../assets/maps/snow.jpg";
 import { characterInformation } from "./constants";
 
 const getMapPreviews = () => ({
-  mazeMapPreview: (
+  maze: (
     <MapPreview
       mapName="Maze"
       mapImage={mazeMap}
@@ -16,7 +16,7 @@ const getMapPreviews = () => ({
       previewCharacterInformation={parsePreviewCharInfoFromCharInfo("maze")}
     />
   ),
-  beachMapPreview: (
+  beach: (
     <MapPreview
       mapName="Beach"
       mapImage={beachMap}
@@ -24,7 +24,7 @@ const getMapPreviews = () => ({
       previewCharacterInformation={parsePreviewCharInfoFromCharInfo("beach")}
     />
   ),
-  snowMapPreview: (
+  snow: (
     <MapPreview
       mapName="Snow"
       mapImage={snowMap}
