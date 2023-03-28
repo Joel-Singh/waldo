@@ -42,7 +42,7 @@ async function chooseCharacterAtPosition(displayName, xPos, yPos) {
     userEvent.click(charBtn);
 
     const flushPromises = () =>
-      new Promise((resolve) => setTimeout(resolve, 0));
+      new Promise((resolve) => setTimeout(resolve, 200));
 
     await flushPromises()
   });
