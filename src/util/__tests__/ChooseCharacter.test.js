@@ -22,6 +22,6 @@ describe("Choose character throws error when", () => {
     renderMockGamescreenWithCharacterButton()
     await expect(chooseCharacter())
       .rejects
-      .toThrow();
+      .toThrow("No fake coords in database!");
   })
 })

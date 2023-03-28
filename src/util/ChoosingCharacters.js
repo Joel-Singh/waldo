@@ -25,10 +25,11 @@ async function chooseCharacter(displayName) {
     const charCoords = await getCharCoordsInDb()
 
     const coordsAreZero = ({x, y}) => x === 0 && y === 0
-    if (!charCoords.every(coordsAreZero))
+    const allCharCoordsAreZero = !Object.entries(charCoords).every(([, coords]) => coordsAreZero(coords))
+    if (allCharCoordsAreZero)
       return false
 
-    return fakeCoordsInDb
+    return true
   }
 }
 
