@@ -6,17 +6,10 @@ import HighscoreScreen from "./components/HighscoreScreen";
 // eslint-disable-next-line
 import all from "./styles/all.css";
 import { useState } from "react";
+import { allMaps } from "./util/constants";
 
 function App() {
   const [showHighscoreScreen, setShowHighscoreScreen] = useState(false);
-
-  const {
-    maze: mazeGamescreen,
-    beach: beachGamescreen,
-    snow: snowGamescreen,
-  } = getGamescreens(() => {
-    setShowHighscoreScreen(true);
-  });
 
   const { mazeMapPreview, beachMapPreview, snowMapPreview } = getMapPreviews();
   return (
@@ -31,39 +24,30 @@ function App() {
             />
           }
         />
-        <Route
-          path="/maze"
-          element={
-            !showHighscoreScreen ? (
-              mazeGamescreen
-            ) : (
-              <HighscoreScreen map="maze" />
-            )
-          }
-        />
-        <Route
-          path="/beach"
-          element={
-            !showHighscoreScreen ? (
-              beachGamescreen
-            ) : (
-              <HighscoreScreen map="beach" />
-            )
-          }
-        />
-
-        <Route path="/snow"
-          element={
-            !showHighscoreScreen ? (
-              snowGamescreen
-            ) : (
-              <HighscoreScreen map="snow" />
-            )
-          }
-        />
+        {allMaps.map(map => createRouteForMap(map))}
       </Routes>
     </div>
   );
+
+
+  function createRouteForMap(map) {
+    const gamescreen = getGamescreens(() => {
+      setShowHighscoreScreen(true);
+    })[map]
+
+    return (
+      <Route
+        path={`/${map}`}
+        key={map}
+        element={
+          !showHighscoreScreen ? (
+            gamescreen
+          ) : (
+            <HighscoreScreen map={map} />
+          )
+        }
+    />)
+  }
 }
 
 export default App;
