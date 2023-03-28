@@ -12,6 +12,10 @@ function isCharacterFound(name) {
   return characterFromCharacterOverlay.classList.contains("found");
 }
 
+jest.mock("../../../components/Stopwatch.js", () => () => {
+  return <div></div>;
+});
+
 beforeAll(async () => {
   const { addFakeCharacterCoordsToDatabase } = getFirebaseFunctions();
   await addFakeCharacterCoordsToDatabase();
