@@ -51,16 +51,7 @@ describe("onAllCharactersFound", () => {
     const { maze } = getGamescreens(onAllCharactersFound);
     render(maze);
 
-    const waldo = {
-      displayName: "Waldo",
-      coords: { x: 1377, y: 653 },
-    };
-    const {
-      displayName,
-      coords: { x, y },
-    } = waldo;
-
-    await chooseCharacter(displayName);
+    await chooseCharacter('Waldo');
 
     expect(onAllCharactersFound).not.toBeCalled();
   });
