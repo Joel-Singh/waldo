@@ -25,6 +25,10 @@ export default function getFirebaseFunctions() {
     getCharCoordsInDb,
   };
 
+  async function getAllDataFromDatabase() {
+    return (await get(ref(db))).val()
+  }
+
   function clearDatabase() {
     return set(ref(db), null);
   }
@@ -45,7 +49,7 @@ export default function getFirebaseFunctions() {
   }
 
   async function getTopTenHighscores(map) {
-    const highscores = (await get(ref(db))).val().highscores[`${map}`];
+    const highscores = (await getAllDataFromDatabase()).highscores[`${map}`];
 
     const sortedHighscores = Object.entries(highscores).sort(
       (x, y) => x[1] - y[1]
@@ -88,13 +92,13 @@ export default function getFirebaseFunctions() {
     return distance([pos.x, pos.y], [dbPos.x, dbPos.y]) <= withinDistance;
 
     async function getCharPosInDb(name) {
-      const { characterCoordinates } = (await get(ref(db))).val();
+      const { characterCoordinates } = await getAllDataFromDatabase();
       return characterCoordinates[`${name}`];
     }
   }
 
   async function getCharCoordsInDb() {
-    const dataSnapshot = (await get(ref(db))).val();
+    const dataSnapshot = await getAllDataFromDatabase();
     if (
       dataSnapshot === null ||
       !dataSnapshot.hasOwnProperty("characterCoordinates")
