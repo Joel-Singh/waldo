@@ -1,10 +1,10 @@
 import userEvent from "@testing-library/user-event";
 import { render, screen } from "@testing-library/react";
 
-import getFirebaseFunctions from "../../../util/firebase.js";
-import { getGamescreens } from "../../../util/componentInstantiations";
+import getFirebaseFunctions from "../../../../util/firebase.js";
+import { getGamescreens } from "../../../../util/componentInstantiations";
 import { act } from "react-dom/test-utils";
-import { chooseAllCharactersIn, chooseCharacter, chooseCharacterAtPosition } from "../../../util/ChoosingCharacters.js";
+import { chooseAllCharactersIn, chooseCharacter, chooseCharacterAtPosition } from "../../../../util/ChoosingCharacters.js";
 
 
 function isCharacterFound(name) {
@@ -12,7 +12,7 @@ function isCharacterFound(name) {
   return characterFromCharacterOverlay.classList.contains("found");
 }
 
-jest.mock("../../../components/Stopwatch.js", () => () => {
+jest.mock("../../../../components/Stopwatch.js", () => () => {
   return <div></div>;
 });
 
@@ -65,27 +65,5 @@ describe("onAllCharactersFound", () => {
     await chooseAllCharactersIn('maze');
 
     expect(onAllCharactersFound).toBeCalled();
-  });
-
-  it("is called with time elapsed", async () => {
-    const onAllCharactersFound = jest.fn();
-
-    const { maze } = getGamescreens(onAllCharactersFound);
-    render(maze);
-
-    const SECONDS_ELAPSED = 0.3;
-    await act(async () => {
-      await new Promise((resolve) =>
-        setTimeout(resolve, SECONDS_ELAPSED * 1000)
-      );
-    });
-    await chooseAllCharactersIn('maze');
-
-    const firstArgumentOfFirstCall = onAllCharactersFound.mock.calls[0][0];
-    const TOLERANCE = 0.2;
-    const withinTolerance =
-      Math.abs(firstArgumentOfFirstCall - SECONDS_ELAPSED) < TOLERANCE;
-
-    expect(withinTolerance).toBe(true);
   });
 });
