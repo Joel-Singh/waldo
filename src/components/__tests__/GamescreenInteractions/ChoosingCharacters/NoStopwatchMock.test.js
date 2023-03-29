@@ -2,9 +2,15 @@ import { render } from "@testing-library/react";
 import { act } from "react-dom/test-utils";
 import { chooseAllCharactersIn } from "../../../../util/ChoosingCharacters";
 import { getGamescreens } from "../../../../util/componentInstantiations";
+import getFirebaseFunctions from "../../../../util/firebase";
 import wait from "../../../../util/Wait";
 
 it("is called with time elapsed", async () => {
+  const {addFakeCharacterCoordsToDatabase, clearDatabase} = getFirebaseFunctions()
+
+  await clearDatabase()
+  await addFakeCharacterCoordsToDatabase()
+
   const onAllCharactersFound = jest.fn();
 
   const { maze } = getGamescreens(onAllCharactersFound);
