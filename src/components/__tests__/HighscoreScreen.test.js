@@ -9,13 +9,14 @@ import getFirebaseFunctions from "../../util/firebase";
 import { BrowserRouter } from "react-router-dom";
 import HighscoreScreen from "../HighscoreScreen";
 import userEvent from "@testing-library/user-event";
+import wait from "../../util/Wait";
 
 async function renderHighscoreScreen(highscoreScreen) {
   render(<BrowserRouter>{highscoreScreen}</BrowserRouter>);
 
   // need to wait for the initial fetch of the scores
   await act(async () => {
-    await new Promise((resolve) => setTimeout(resolve, 50));
+    await wait(50);
   });
 
   return screen.getByTestId("HighscoreScreen");

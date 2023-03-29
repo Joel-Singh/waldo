@@ -2,6 +2,7 @@ import { render } from "@testing-library/react";
 import { act } from "react-dom/test-utils";
 import { chooseAllCharactersIn } from "../../../../util/ChoosingCharacters";
 import { getGamescreens } from "../../../../util/componentInstantiations";
+import wait from "../../../../util/Wait";
 
 it("is called with time elapsed", async () => {
   const onAllCharactersFound = jest.fn();
@@ -11,7 +12,7 @@ it("is called with time elapsed", async () => {
 
   const SECONDS_ELAPSED = 0.3;
   await act(async () => {
-    await new Promise((resolve) => setTimeout(resolve, SECONDS_ELAPSED * 1000));
+    await wait(SECONDS_ELAPSED * 1000);
   });
   await chooseAllCharactersIn("maze");
 
