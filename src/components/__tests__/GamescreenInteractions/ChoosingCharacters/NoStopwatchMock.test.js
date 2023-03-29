@@ -19,7 +19,5 @@ it("is called with time elapsed", async () => {
 
   const firstArgumentOfFirstCall = onAllCharactersFound.mock.calls[0][0];
 
-  // Greater than, instead of equal b/c the choose all characters method
-  // has a wait in order to properly choose characters
   expect(firstArgumentOfFirstCall).toBeGreaterThan(SECONDS_ELAPSED);
 });
