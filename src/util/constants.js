@@ -10,7 +10,7 @@ import snowWaldo from "../assets/characters/snow/waldo.jpg";
 import ouch from "../assets/characters/snow/ouch.jpg";
 import monster from "../assets/characters/snow/monster.jpg";
 
-export const allMaps = ['maze', 'beach', 'snow'];
+export const allMaps = ["maze", "beach", "snow"];
 
 export const characterInformation = {
   beach: [
@@ -86,7 +86,7 @@ export const flattenedCharacterInformation = (() => {
   }
 
   function cloneObj(obj) {
-    return JSON.parse(JSON.stringify(obj))
+    return JSON.parse(JSON.stringify(obj));
   }
   return flattenedCharacterInformation;
 })();

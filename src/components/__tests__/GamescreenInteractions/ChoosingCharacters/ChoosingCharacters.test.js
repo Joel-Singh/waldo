@@ -4,8 +4,11 @@ import { render, screen } from "@testing-library/react";
 import getFirebaseFunctions from "../../../../util/firebase.js";
 import { getGamescreens } from "../../../../util/componentInstantiations";
 import { act } from "react-dom/test-utils";
-import { chooseAllCharactersIn, chooseCharacter, chooseCharacterAtPosition } from "../../../../util/ChoosingCharacters.js";
-
+import {
+  chooseAllCharactersIn,
+  chooseCharacter,
+  chooseCharacterAtPosition,
+} from "../../../../util/ChoosingCharacters.js";
 
 function isCharacterFound(name) {
   const characterFromCharacterOverlay = screen.getByAltText(name);
@@ -51,7 +54,7 @@ describe("onAllCharactersFound", () => {
     const { maze } = getGamescreens(onAllCharactersFound);
     render(maze);
 
-    await chooseCharacter('Waldo');
+    await chooseCharacter("Waldo");
 
     expect(onAllCharactersFound).not.toBeCalled();
   });
@@ -62,7 +65,7 @@ describe("onAllCharactersFound", () => {
     const { maze } = getGamescreens(onAllCharactersFound);
     render(maze);
 
-    await chooseAllCharactersIn('maze');
+    await chooseAllCharactersIn("maze");
 
     expect(onAllCharactersFound).toBeCalled();
   });

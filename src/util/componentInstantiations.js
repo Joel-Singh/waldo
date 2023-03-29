@@ -46,21 +46,21 @@ const getGamescreens = (onAllCharactersFound) => ({
     <Gamescreen
       img={mazeMap}
       onAllCharactersFound={onAllCharactersFound}
-      characters={parseGamescreenCharactersFromCharInfo('maze')}
+      characters={parseGamescreenCharactersFromCharInfo("maze")}
     />
   ),
   beach: (
     <Gamescreen
       img={beachMap}
       onAllCharactersFound={onAllCharactersFound}
-      characters={parseGamescreenCharactersFromCharInfo('beach')}
+      characters={parseGamescreenCharactersFromCharInfo("beach")}
     />
   ),
   snow: (
     <Gamescreen
       img={snowMap}
       onAllCharactersFound={onAllCharactersFound}
-      characters={parseGamescreenCharactersFromCharInfo('snow')}
+      characters={parseGamescreenCharactersFromCharInfo("snow")}
     />
   ),
 });

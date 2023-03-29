@@ -17,12 +17,13 @@ jest.mock("../components/Stopwatch.js", () => () => {
 jest.mock("../components/SelectionScreen.js", () => jest.fn(() => null));
 
 beforeAll(async () => {
-  const { addFakeCharacterCoordsToDatabase, clearDatabase } = getFirebaseFunctions()
-  await clearDatabase()
-  await addFakeCharacterCoordsToDatabase()
-})
+  const { addFakeCharacterCoordsToDatabase, clearDatabase } =
+    getFirebaseFunctions();
+  await clearDatabase();
+  await addFakeCharacterCoordsToDatabase();
+});
 
-describe.each(allMaps)('for %s,', (mapName) => {
+describe.each(allMaps)("for %s,", (mapName) => {
   it("initially Gamescreen is shown and HighscoreScreen is hidden", () => {
     render(
       <MemoryRouter initialEntries={[`/${mapName}`]}>
@@ -46,15 +47,15 @@ describe.each(allMaps)('for %s,', (mapName) => {
     expect(screen.queryByTestId("Gamescreen")).toBeNull();
     expect(screen.getByTestId("HighscoreScreen")).toBeDefined();
   });
-})
+});
 
 test("Selection screen is passed map previews", () => {
   render(
-    <MemoryRouter initialEntries={['/']}>
+    <MemoryRouter initialEntries={["/"]}>
       <App />
     </MemoryRouter>
   );
 
   const latestCallInformation = SelectionScreen.mock.calls.slice(-1);
-  expect(latestCallInformation).toMatchSnapshot()
-})
+  expect(latestCallInformation).toMatchSnapshot();
+});

@@ -11,11 +11,9 @@ it("is called with time elapsed", async () => {
 
   const SECONDS_ELAPSED = 0.3;
   await act(async () => {
-    await new Promise((resolve) =>
-      setTimeout(resolve, SECONDS_ELAPSED * 1000)
-    );
+    await new Promise((resolve) => setTimeout(resolve, SECONDS_ELAPSED * 1000));
   });
-  await chooseAllCharactersIn('maze');
+  await chooseAllCharactersIn("maze");
 
   const firstArgumentOfFirstCall = onAllCharactersFound.mock.calls[0][0];
 

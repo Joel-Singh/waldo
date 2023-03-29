@@ -20,21 +20,20 @@ function App() {
           path="/"
           element={
             <SelectionScreen
-              mapPreviews={allMaps.map(map => getMapPreviews()[map])}
+              mapPreviews={allMaps.map((map) => getMapPreviews()[map])}
             />
           }
         />
-        {allMaps.map(map => createRouteForMap(map))}
+        {allMaps.map((map) => createRouteForMap(map))}
       </Routes>
     </div>
   );
-
 
   function createRouteForMap(map) {
     const gamescreen = getGamescreens((timeElapsed) => {
       setShowHighscoreScreen(true);
       setCurrentPlayerScore(timeElapsed);
-    })[map]
+    })[map];
 
     return (
       <Route
@@ -50,7 +49,8 @@ function App() {
             />
           )
         }
-    />)
+      />
+    );
   }
 }
 

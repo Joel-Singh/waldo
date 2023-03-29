@@ -94,12 +94,12 @@ export default function getFirebaseFunctions() {
   }
 
   async function getCharCoordsInDb() {
-    const dataSnapshot = (await get(ref(db))).val()
+    const dataSnapshot = (await get(ref(db))).val();
     if (
       dataSnapshot === null ||
-      !dataSnapshot.hasOwnProperty('characterCoordinates')
+      !dataSnapshot.hasOwnProperty("characterCoordinates")
     )
-      throw new Error("Character coords never initialized in database")
+      throw new Error("Character coords never initialized in database");
 
     return dataSnapshot.characterCoordinates;
   }

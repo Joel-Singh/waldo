@@ -202,7 +202,7 @@ test("Scores are refreshed visually after current player's score is added to dat
   const initialsTextBox = screen.getByRole("textbox");
   userEvent.type(initialsTextBox, "JS");
 
-  await clickUploadScoreAndWaitForUpload()
+  await clickUploadScoreAndWaitForUpload();
 
   await new Promise((resolve) => {
     setTimeout(() => {
