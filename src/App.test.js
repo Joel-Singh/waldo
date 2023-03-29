@@ -4,6 +4,7 @@ import App from "./App.js";
 import { chooseAllCharactersIn } from "./util/ChoosingCharacters.js";
 import getFirebaseFunctions from "./util/firebase.js";
 import SelectionScreen from "./components/SelectionScreen.js";
+import { allMaps } from "./util/constants.js";
 
 jest.mock("./components/HighscoreScreen.js", () => () => {
   return <div data-testid="HighscoreScreen"></div>;
@@ -21,7 +22,7 @@ beforeAll(async () => {
   await addFakeCharacterCoordsToDatabase()
 })
 
-describe.each(['maze', 'beach', 'snow'])('for %s,', (mapName) => {
+describe.each(allMaps)('for %s,', (mapName) => {
   it("initially Gamescreen is shown and HighscoreScreen is hidden", () => {
     render(
       <MemoryRouter initialEntries={[`/${mapName}`]}>
