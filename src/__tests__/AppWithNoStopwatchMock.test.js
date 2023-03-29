@@ -13,7 +13,6 @@ jest.mock("../components/HighscoreScreen.js", () => (props) => {
   return <div data-testid="HighscoreScreen"></div>;
 });
 
-jest.setTimeout(30 * 1000);
 test("App passes in props to HighscoreScreen", async () => {
   const { addFakeCharacterCoordsToDatabase, clearDatabase } =
     getFirebaseFunctions();
