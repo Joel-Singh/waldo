@@ -6,6 +6,7 @@ import HighscoreScreen from "../components/HighscoreScreen";
 import { chooseAllCharactersIn } from "../util/ChoosingCharacters";
 import getFirebaseFunctions from "../util/firebase";
 import wait from "../util/Wait";
+import runTestsWithAllMaps from "./runTestsWithAllMaps";
 
 let latestProps = {};
 jest.mock("../components/HighscoreScreen.js", () => (props) => {
@@ -13,26 +14,27 @@ jest.mock("../components/HighscoreScreen.js", () => (props) => {
   return <div data-testid="HighscoreScreen"></div>;
 });
 
-test("App passes in props to HighscoreScreen", async () => {
-  const { addFakeCharacterCoordsToDatabase, clearDatabase } =
-    getFirebaseFunctions();
-  await clearDatabase();
-  await addFakeCharacterCoordsToDatabase();
+runTestsWithAllMaps(mapName => {
+  test("App passes in props to HighscoreScreen", async () => {
+    const { addFakeCharacterCoordsToDatabase, clearDatabase } =
+      getFirebaseFunctions();
+    await clearDatabase();
+    await addFakeCharacterCoordsToDatabase();
 
-  const map = "maze";
-  render(
-    <MemoryRouter initialEntries={[`/${map}`]}>
-      <App />
-    </MemoryRouter>
-  );
+    render(
+      <MemoryRouter initialEntries={[`/${mapName}`]}>
+        <App />
+      </MemoryRouter>
+    );
 
-  await chooseAllCharactersIn(map);
+    await chooseAllCharactersIn(mapName);
 
-  const secondsElapsed = 0.3;
-  await act(async () => {
-    await wait(secondsElapsed * 1000);
+    const secondsElapsed = 0.3;
+    await act(async () => {
+      await wait(secondsElapsed * 1000);
+    });
+
+    expect(latestProps.map).toBe(mapName);
+    expect(latestProps.currentPlayerScore).toBeGreaterThan(secondsElapsed);
   });
-
-  expect(latestProps.map).toBe(map);
-  expect(latestProps.currentPlayerScore).toBeGreaterThan(secondsElapsed);
-});
+})
