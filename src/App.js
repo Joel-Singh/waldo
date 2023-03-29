@@ -10,6 +10,7 @@ import { allMaps } from "./util/constants";
 
 function App() {
   const [showHighscoreScreen, setShowHighscoreScreen] = useState(false);
+  const [currentPlayerScore, setCurrentPlayerScore] = useState(null);
 
   return (
     <div className="App">
@@ -30,8 +31,9 @@ function App() {
 
 
   function createRouteForMap(map) {
-    const gamescreen = getGamescreens(() => {
+    const gamescreen = getGamescreens((timeElapsed) => {
       setShowHighscoreScreen(true);
+      setCurrentPlayerScore(timeElapsed);
     })[map]
 
     return (
@@ -42,7 +44,10 @@ function App() {
           !showHighscoreScreen ? (
             gamescreen
           ) : (
-            <HighscoreScreen map={map} />
+            <HighscoreScreen
+              map={map}
+              currentPlayerScore={currentPlayerScore}
+            />
           )
         }
     />)
