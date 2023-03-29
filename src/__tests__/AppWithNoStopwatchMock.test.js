@@ -6,7 +6,7 @@ import HighscoreScreen from "../components/HighscoreScreen";
 import { chooseAllCharactersIn } from "../util/ChoosingCharacters";
 import getFirebaseFunctions from "../util/firebase";
 import wait from "../util/Wait";
-import runTestsWithAllMaps from "./runTestsWithAllMaps";
+import runTestsWithAllMaps from "../util/runTestsWithAllMaps.js";
 
 let latestProps = {};
 jest.mock("../components/HighscoreScreen.js", () => (props) => {

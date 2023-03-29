@@ -5,7 +5,7 @@ import { chooseAllCharactersIn } from "../util/ChoosingCharacters.js";
 import getFirebaseFunctions from "../util/firebase.js";
 import SelectionScreen from "../components/SelectionScreen.js";
 import { allMaps } from "../util/constants.js";
-import runTestsWithAllMaps from "./runTestsWithAllMaps.js";
+import runTestsWithAllMaps from "../util/runTestsWithAllMaps.js";
 
 jest.mock("../components/HighscoreScreen.js", () => () => {
   return <div data-testid="HighscoreScreen"></div>;
