@@ -32,7 +32,11 @@ export default function HighscoreScreen({
       {<ScoreInput />}
 
       <Link to={"/"}>
-        <button onClick={backToSelectionScreenBtnOnClick} type="button">
+        <button
+          onClick={backToSelectionScreenBtnOnClick}
+          type="button"
+          className="highscoreScreen__back-btn"
+        >
           Go Back to selection screen
         </button>
       </Link>

@@ -100,6 +100,7 @@ exports[`Highscore screen renders highscores 1`] = `
     href="/"
   >
     <button
+      class="highscoreScreen__back-btn"
       type="button"
     >
       Go Back to selection screen
