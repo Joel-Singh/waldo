@@ -23,7 +23,7 @@ export default function HighscoreScreen({
       </div>
       <div>Your score is: {currentPlayerScore.toFixed(1)}</div>
 
-      {renderScoreInput()}
+      {<ScoreInput />}
 
       <Link to={"/"}>
         <button onClick={backToSelectionScreenBtnOnClick} type="button">
@@ -33,7 +33,7 @@ export default function HighscoreScreen({
     </div>
   );
 
-  function renderScoreInput() {
+  function ScoreInput() {
     const [isHidden, setIsHidden] = useState(false);
 
     const onUploadScoreClick = async () => {
