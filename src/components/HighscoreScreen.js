@@ -81,7 +81,7 @@ export default function HighscoreScreen({
       return () => {
         ignore = true;
       };
-    }, [map, updateTopTenHighscoresState]);
+    }, [updateTopTenHighscoresState]);
 
     const updateTopTenHighscores = () =>
       setUpdateTopTenHighscoresState((prev) => prev + 1);
