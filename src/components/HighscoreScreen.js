@@ -31,11 +31,13 @@ export default function HighscoreScreen({
 
       {<ScoreInput />}
 
-      <Link to={"/"}>
+      <Link
+        to={"/"}
+        className="highscoreScreen__back-btn"
+      >
         <button
           onClick={backToSelectionScreenBtnOnClick}
           type="button"
-          className="highscoreScreen__back-btn"
         >
           Go Back to selection screen
         </button>
