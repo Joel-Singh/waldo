@@ -3,7 +3,11 @@ import PropTypes from "prop-types";
 import { Link } from "react-router-dom";
 import { getTopTenHighscores, addHighscore } from "../util/firebase";
 
-export default function HighscoreScreen({ map, currentPlayerScore = 99 }) {
+export default function HighscoreScreen({
+  map,
+  currentPlayerScore = 99,
+  backToSelectionScreenBtnOnClick = () => {},
+}) {
   const { topTenHighscores, updateTopTenHighscores } =
     useTopTenHighscoresFromDatabase();
 
@@ -22,7 +26,9 @@ export default function HighscoreScreen({ map, currentPlayerScore = 99 }) {
       {renderScoreInput()}
 
       <Link to={"/"}>
-        <button type="button">Go Back to selection screen</button>
+        <button onClick={backToSelectionScreenBtnOnClick} type="button">
+          Go Back to selection screen
+        </button>
       </Link>
     </div>
   );

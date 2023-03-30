@@ -220,3 +220,12 @@ test("Scores are refreshed visually after current player's score is added to dat
     }, 500);
   });
 });
+
+test("Go back to selection screen callback is called", () => {
+  const callback = jest.fn()
+  renderHighscoreScreen(<HighscoreScreen map="maze" backToSelectionScreenBtnOnClick={callback} />);
+
+  userEvent.click(screen.getByText('Go Back to selection screen'))
+
+  expect(callback).toBeCalledTimes(1)
+});
