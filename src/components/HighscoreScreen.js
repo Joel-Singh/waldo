@@ -24,7 +24,9 @@ export default function HighscoreScreen({
           </div>
         ))}
       </div>
-      <div className="HighscoreScreen__player-score">Your score is: {currentPlayerScore.toFixed(1)}</div>
+      <div className="HighscoreScreen__player-score">
+        Your score is: {currentPlayerScore.toFixed(1)}
+      </div>
 
       {<ScoreInput />}
 
