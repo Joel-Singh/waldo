@@ -2,6 +2,7 @@ import { useEffect, useState } from "react";
 import PropTypes from "prop-types";
 import { Link } from "react-router-dom";
 import { getTopTenHighscores, addHighscore } from "../util/firebase";
+import highscoreScreenCss from "../styles/highscoreScreen.css"
 
 export default function HighscoreScreen({
   map,
@@ -17,8 +18,8 @@ export default function HighscoreScreen({
         data-testid="HighscoreScreen__scores-container"
         className="HighscoreScreen__scores-container"
       >
-        {topTenHighscores.map(({ initials, timeTaken }) => (
-          <div key={initials}>
+        {topTenHighscores.map(({ initials, timeTaken }, index) => (
+          <div key={index}>
             <span>{initials}</span>
             <span>{timeTaken}</span>
           </div>
