@@ -62,19 +62,6 @@ describe("isCharacterAtPosition", () => {
   });
 });
 
-test("getTopTenHighscores returns empty array when there isn't anything in database", async () => {
-  const { clearDatabase, getTopTenHighscores } = getFirebaseFunctions()
-  await clearDatabase()
-  expect(await getTopTenHighscores('maze')).toStrictEqual([])
-})
-
-test("getTopTenHighscores returns empty array when there is something in database but it ain't highscores", async () => {
-  const { clearDatabase, getTopTenHighscores, addRealCharacterCoordsToDatabase } = getFirebaseFunctions()
-  await clearDatabase()
-  await addRealCharacterCoordsToDatabase()
-  expect(await getTopTenHighscores('maze')).toStrictEqual([])
-})
-
 test("addHighscore and getTopTenHighscores", async () => {
   const { clearHighscores, addHighscore, getTopTenHighscores } =
     getFirebaseFunctions();
@@ -169,3 +156,20 @@ test("addCharacterCoordsToDatabase", async () => {
   await addFakeCharacterCoordsToDatabase();
   expect(await getCharCoordsInDb()).toMatchSnapshot();
 });
+
+describe("Adding dummy highscores", () => {
+  test("completely fills top ten if no scores are present", async () => {
+    const { clearDatabase, getTopTenHighscores } = getFirebaseFunctions()
+    await clearDatabase();
+    expect(await getTopTenHighscores('maze')).toMatchSnapshot()
+  })
+
+  test("partially fills top ten if some scores are present", async () => {
+    const { clearDatabase, getTopTenHighscores, addHighscore } = getFirebaseFunctions()
+    await clearDatabase();
+    await addHighscore('maze', 'JS', 10);
+    await addHighscore('maze', 'AB', 8);
+    await addHighscore('maze', 'CD', 6);
+    expect(await getTopTenHighscores('maze')).toMatchSnapshot()
+  })
+})

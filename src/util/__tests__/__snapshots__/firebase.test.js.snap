@@ -1,5 +1,95 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
+exports[`Adding dummy highscores completely fills top ten if no scores are present 1`] = `
+Array [
+  Object {
+    "initials": "N/A",
+    "timeTaken": 999,
+  },
+  Object {
+    "initials": "N/A",
+    "timeTaken": 999,
+  },
+  Object {
+    "initials": "N/A",
+    "timeTaken": 999,
+  },
+  Object {
+    "initials": "N/A",
+    "timeTaken": 999,
+  },
+  Object {
+    "initials": "N/A",
+    "timeTaken": 999,
+  },
+  Object {
+    "initials": "N/A",
+    "timeTaken": 999,
+  },
+  Object {
+    "initials": "N/A",
+    "timeTaken": 999,
+  },
+  Object {
+    "initials": "N/A",
+    "timeTaken": 999,
+  },
+  Object {
+    "initials": "N/A",
+    "timeTaken": 999,
+  },
+  Object {
+    "initials": "N/A",
+    "timeTaken": 999,
+  },
+]
+`;
+
+exports[`Adding dummy highscores partially fills top ten if some scores are present 1`] = `
+Array [
+  Object {
+    "initials": "CD",
+    "timeTaken": 6,
+  },
+  Object {
+    "initials": "AB",
+    "timeTaken": 8,
+  },
+  Object {
+    "initials": "JS",
+    "timeTaken": 10,
+  },
+  Object {
+    "initials": "N/A",
+    "timeTaken": 999,
+  },
+  Object {
+    "initials": "N/A",
+    "timeTaken": 999,
+  },
+  Object {
+    "initials": "N/A",
+    "timeTaken": 999,
+  },
+  Object {
+    "initials": "N/A",
+    "timeTaken": 999,
+  },
+  Object {
+    "initials": "N/A",
+    "timeTaken": 999,
+  },
+  Object {
+    "initials": "N/A",
+    "timeTaken": 999,
+  },
+  Object {
+    "initials": "N/A",
+    "timeTaken": 999,
+  },
+]
+`;
+
 exports[`addCharacterCoordsToDatabase 1`] = `
 Object {
   "beachWaldo": Object {

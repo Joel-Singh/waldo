@@ -63,7 +63,8 @@ export default function getFirebaseFunctions() {
       if (!(error instanceof TypeError))
         throw error
 
-      return []
+      const dummyScores = new Array(10).fill({initials: "N/A", timeTaken: 999})
+      return dummyScores
     }
 
     const sortedHighscores = Object.entries(highscores).sort(
@@ -71,10 +72,18 @@ export default function getFirebaseFunctions() {
     );
 
     const sortedTopTen = sortedHighscores.slice(0, 10);
+    if (sortedTopTen.length < 10) {
+      const originalLength = sortedTopTen.length
+      sortedTopTen.length = 10
+      sortedTopTen.fill(["N/A", 999], originalLength, 10);
+    }
+
+
     const sortedTopTenAsObjects = sortedTopTen.map((highscore) => ({
       initials: highscore[0],
       timeTaken: highscore[1],
     }));
+
 
     return sortedTopTenAsObjects;
   }
