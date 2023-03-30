@@ -26,6 +26,10 @@ export default function getFirebaseFunctions() {
   };
 
   async function getAllDataFromDatabase() {
+    const allData = (await get(ref(db))).val()
+    if (allData === null) {
+      return {}
+    }
     return (await get(ref(db))).val()
   }
 
@@ -49,7 +53,18 @@ export default function getFirebaseFunctions() {
   }
 
   async function getTopTenHighscores(map) {
-    const highscores = (await getAllDataFromDatabase()).highscores[`${map}`];
+    const allData = await getAllDataFromDatabase()
+
+
+    let highscores;
+    try {
+      highscores = allData.highscores[`${map}`];
+    } catch (error) {
+      if (!(error instanceof TypeError))
+        throw error
+
+      return []
+    }
 
     const sortedHighscores = Object.entries(highscores).sort(
       (x, y) => x[1] - y[1]

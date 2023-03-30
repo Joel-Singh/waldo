@@ -62,6 +62,19 @@ describe("isCharacterAtPosition", () => {
   });
 });
 
+test("getTopTenHighscores returns empty array when there isn't anything in database", async () => {
+  const { clearDatabase, getTopTenHighscores } = getFirebaseFunctions()
+  await clearDatabase()
+  expect(await getTopTenHighscores('maze')).toStrictEqual([])
+})
+
+test("getTopTenHighscores returns empty array when there is something in database but it ain't highscores", async () => {
+  const { clearDatabase, getTopTenHighscores, addRealCharacterCoordsToDatabase } = getFirebaseFunctions()
+  await clearDatabase()
+  await addRealCharacterCoordsToDatabase()
+  expect(await getTopTenHighscores('maze')).toStrictEqual([])
+})
+
 test("addHighscore and getTopTenHighscores", async () => {
   const { clearHighscores, addHighscore, getTopTenHighscores } =
     getFirebaseFunctions();
