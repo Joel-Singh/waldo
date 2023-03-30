@@ -2,7 +2,6 @@ import { render, screen } from "@testing-library/react";
 import { toHaveClass } from "@testing-library/jest-dom/extend-expect";
 import CharacterPicker from "../CharacterPicker";
 import userEvent from "@testing-library/user-event";
-import createCharacter from "../../util/createCharacter";
 
 it("has visible class when isVisible is true", () => {
   const { container } = render(

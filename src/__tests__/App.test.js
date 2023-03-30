@@ -4,7 +4,6 @@ import App from "../App.js";
 import { chooseAllCharactersIn } from "../util/ChoosingCharacters.js";
 import { addFakeCharacterCoordsToDatabase, clearDatabase } from "../util/firebase.js";
 import SelectionScreen from "../components/SelectionScreen.js";
-import { allMaps } from "../util/constants.js";
 import runTestsWithAllMaps from "../util/runTestsWithAllMaps.js";
 
 jest.mock("../components/HighscoreScreen.js", () => () => {

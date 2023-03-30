@@ -1,7 +1,6 @@
-import { fireEvent, render } from "@testing-library/react";
+import { render } from "@testing-library/react";
 import userEvent from "@testing-library/user-event";
 import { toHaveClass } from "@testing-library/jest-dom/extend-expect";
-import { act } from "react-dom/test-utils";
 import CursorOverlay from "../CursorOverlay";
 
 it("is where the mouse is hovered", () => {

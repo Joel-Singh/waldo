@@ -1,9 +1,7 @@
-import userEvent from "@testing-library/user-event";
 import { render, screen } from "@testing-library/react";
 
 import { addFakeCharacterCoordsToDatabase } from "../../../../util/firebase.js";
 import { getGamescreens } from "../../../../util/componentInstantiations";
-import { act } from "react-dom/test-utils";
 import {
   chooseAllCharactersIn,
   chooseCharacter,

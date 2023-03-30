@@ -1,4 +1,4 @@
-import { render, screen } from "@testing-library/react";
+import { render } from "@testing-library/react";
 import { toHaveClass } from "@testing-library/jest-dom/extend-expect";
 import createCharacter from "../../util/createCharacter";
 import CharactersOverlay from "../CharactersOverlay";

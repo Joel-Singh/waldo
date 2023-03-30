@@ -1,9 +1,7 @@
 import {
   act,
-  getByTestId,
   render,
   screen,
-  waitFor,
 } from "@testing-library/react";
 import { addHighscore, clearHighscores, getTopTenHighscores } from "../../util/firebase";
 import { BrowserRouter } from "react-router-dom";

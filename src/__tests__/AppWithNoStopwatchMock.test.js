@@ -2,7 +2,6 @@ import { render } from "@testing-library/react";
 import { act } from "react-dom/test-utils";
 import { MemoryRouter } from "react-router-dom";
 import App from "../App";
-import HighscoreScreen from "../components/HighscoreScreen";
 import { chooseAllCharactersIn } from "../util/ChoosingCharacters";
 import { addFakeCharacterCoordsToDatabase, clearDatabase } from "../util/firebase";
 import wait from "../util/Wait";
