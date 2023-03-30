@@ -46,6 +46,7 @@ function App() {
             <HighscoreScreen
               map={map}
               currentPlayerScore={currentPlayerScore}
+              backToSelectionScreenBtnOnClick={() => setShowHighscoreScreen(false)}
             />
           )
         }
