@@ -3,7 +3,10 @@ import { act } from "react-dom/test-utils";
 import { MemoryRouter } from "react-router-dom";
 import App from "../App";
 import { chooseAllCharactersIn } from "../util/ChoosingCharacters";
-import { addFakeCharacterCoordsToDatabase, clearDatabase } from "../util/firebase";
+import {
+  addFakeCharacterCoordsToDatabase,
+  clearDatabase,
+} from "../util/firebase";
 import wait from "../util/Wait";
 import runTestsWithAllMaps from "../util/runTestsWithAllMaps.js";
 
@@ -13,7 +16,7 @@ jest.mock("../components/HighscoreScreen.js", () => (props) => {
   return <div data-testid="HighscoreScreen"></div>;
 });
 
-runTestsWithAllMaps(mapName => {
+runTestsWithAllMaps((mapName) => {
   test("App passes in props to HighscoreScreen", async () => {
     await clearDatabase();
     await addFakeCharacterCoordsToDatabase();
@@ -34,4 +37,4 @@ runTestsWithAllMaps(mapName => {
     expect(latestProps.map).toBe(mapName);
     expect(latestProps.currentPlayerScore).toBeGreaterThan(secondsElapsed);
   });
-})
+});

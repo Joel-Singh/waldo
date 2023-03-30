@@ -21,11 +21,13 @@ export {
   getTopTenHighscores,
   isCharacterAtPosition,
   clearCharacterCoordsInDatabase,
-  getCharCoordsInDb
-}
+  getCharCoordsInDb,
+};
 
-const addFakeCharacterCoordsToDatabase = () => addCharacterCoordsToDatabase(true)
-const addRealCharacterCoordsToDatabase = () => addCharacterCoordsToDatabase(false)
+const addFakeCharacterCoordsToDatabase = () =>
+  addCharacterCoordsToDatabase(true);
+const addRealCharacterCoordsToDatabase = () =>
+  addCharacterCoordsToDatabase(false);
 
 async function getAllDataFromDatabase() {
   const allData = (await get(ref(db))).val();

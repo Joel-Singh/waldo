@@ -2,7 +2,10 @@ import { render, screen } from "@testing-library/react";
 import { MemoryRouter, BrowserRouter } from "react-router-dom";
 import App from "../App.js";
 import { chooseAllCharactersIn } from "../util/ChoosingCharacters.js";
-import { addFakeCharacterCoordsToDatabase, clearDatabase } from "../util/firebase.js";
+import {
+  addFakeCharacterCoordsToDatabase,
+  clearDatabase,
+} from "../util/firebase.js";
 import SelectionScreen from "../components/SelectionScreen.js";
 import runTestsWithAllMaps from "../util/runTestsWithAllMaps.js";
 

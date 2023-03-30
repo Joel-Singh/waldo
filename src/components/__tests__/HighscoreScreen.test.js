@@ -1,9 +1,9 @@
+import { act, render, screen } from "@testing-library/react";
 import {
-  act,
-  render,
-  screen,
-} from "@testing-library/react";
-import { addHighscore, clearHighscores, getTopTenHighscores } from "../../util/firebase";
+  addHighscore,
+  clearHighscores,
+  getTopTenHighscores,
+} from "../../util/firebase";
 import { BrowserRouter } from "react-router-dom";
 import HighscoreScreen from "../HighscoreScreen";
 import userEvent from "@testing-library/user-event";

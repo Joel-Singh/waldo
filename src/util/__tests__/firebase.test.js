@@ -8,7 +8,7 @@ import {
   addHighscore,
   getTopTenHighscores,
   clearDatabase,
-  getCharCoordsInDb
+  getCharCoordsInDb,
 } from "../firebase";
 
 describe("isCharacterAtPosition", () => {
@@ -156,14 +156,14 @@ test("addCharacterCoordsToDatabase", async () => {
 describe("Adding dummy highscores", () => {
   test("completely fills top ten if no scores are present", async () => {
     await clearDatabase();
-    expect(await getTopTenHighscores('maze')).toMatchSnapshot()
-  })
+    expect(await getTopTenHighscores("maze")).toMatchSnapshot();
+  });
 
   test("partially fills top ten if some scores are present", async () => {
     await clearDatabase();
-    await addHighscore('maze', 'JS', 10);
-    await addHighscore('maze', 'AB', 8);
-    await addHighscore('maze', 'CD', 6);
-    expect(await getTopTenHighscores('maze')).toMatchSnapshot()
-  })
-})
+    await addHighscore("maze", "JS", 10);
+    await addHighscore("maze", "AB", 8);
+    await addHighscore("maze", "CD", 6);
+    expect(await getTopTenHighscores("maze")).toMatchSnapshot();
+  });
+});
