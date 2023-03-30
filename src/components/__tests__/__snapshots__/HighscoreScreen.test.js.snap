@@ -6,7 +6,7 @@ exports[`Highscore screen renders highscores 1`] = `
   data-testid="HighscoreScreen"
 >
   <div
-    class="HighscoreScreen__scores-container"
+    class="highscoreScreen__scores-container"
     data-testid="HighscoreScreen__scores-container"
   >
     <div>

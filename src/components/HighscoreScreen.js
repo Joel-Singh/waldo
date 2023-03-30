@@ -16,7 +16,7 @@ export default function HighscoreScreen({
     <div data-testid="HighscoreScreen" className="highscoreScreen">
       <div
         data-testid="HighscoreScreen__scores-container"
-        className="HighscoreScreen__scores-container"
+        className="highscoreScreen__scores-container"
       >
         {topTenHighscores.map(({ initials, timeTaken }, index) => (
           <div key={index}>
