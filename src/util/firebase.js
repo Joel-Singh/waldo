@@ -53,39 +53,42 @@ export default function getFirebaseFunctions() {
   }
 
   async function getTopTenHighscores(map) {
-    const allData = await getAllDataFromDatabase()
-
-
-    let highscores;
-    try {
-      highscores = allData.highscores[`${map}`];
-    } catch (error) {
-      if (!(error instanceof TypeError))
-        throw error
-
-      const dummyScores = new Array(10).fill({initials: "N/A", timeTaken: 999})
-      return dummyScores
-    }
-
+    let highscores = await getHighscoresFromDatabase()
     const sortedHighscores = Object.entries(highscores).sort(
       (x, y) => x[1] - y[1]
     );
 
     const sortedTopTen = sortedHighscores.slice(0, 10);
-    if (sortedTopTen.length < 10) {
-      const originalLength = sortedTopTen.length
-      sortedTopTen.length = 10
-      sortedTopTen.fill(["N/A", 999], originalLength, 10);
-    }
-
-
-    const sortedTopTenAsObjects = sortedTopTen.map((highscore) => ({
+    let sortedTopTenAsObjects = sortedTopTen.map((highscore) => ({
       initials: highscore[0],
       timeTaken: highscore[1],
     }));
 
+    sortedTopTenAsObjects = fillRestOfTenWithDummyScores(sortedTopTenAsObjects)
 
     return sortedTopTenAsObjects;
+
+    function fillRestOfTenWithDummyScores(sortedTopTenAsObjects) {
+      if (sortedTopTenAsObjects.length < 10) {
+        const originalLength = sortedTopTenAsObjects.length
+        sortedTopTenAsObjects.length = 10
+        sortedTopTenAsObjects.fill({initials: "N/A", timeTaken: 999}, originalLength, 10);
+      }
+      return sortedTopTenAsObjects;
+    }
+
+    async function getHighscoresFromDatabase() {
+      const allData = await getAllDataFromDatabase()
+
+      try {
+        return allData.highscores[`${map}`];
+      } catch (error) {
+        if (!(error instanceof TypeError))
+          throw error
+
+        return []
+      }
+    }
   }
 
   //TODO: Final app won't have this function
