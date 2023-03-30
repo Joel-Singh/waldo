@@ -2,9 +2,11 @@
 
 exports[`Highscore screen renders highscores 1`] = `
 <div
+  class="highscoreScreen"
   data-testid="HighscoreScreen"
 >
   <div
+    class="HighscoreScreen__scores-container"
     data-testid="HighscoreScreen__scores-container"
   >
     <div>
@@ -88,7 +90,9 @@ exports[`Highscore screen renders highscores 1`] = `
       </span>
     </div>
   </div>
-  <div>
+  <div
+    class="HighscoreScreen__player-score"
+  >
     Your score is: 
     99.0
   </div>

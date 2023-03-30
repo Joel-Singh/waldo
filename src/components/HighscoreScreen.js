@@ -12,8 +12,11 @@ export default function HighscoreScreen({
     useTopTenHighscoresFromDatabase();
 
   return (
-    <div data-testid="HighscoreScreen">
-      <div data-testid="HighscoreScreen__scores-container">
+    <div data-testid="HighscoreScreen" className="highscoreScreen">
+      <div
+        data-testid="HighscoreScreen__scores-container"
+        className="HighscoreScreen__scores-container"
+      >
         {topTenHighscores.map(({ initials, timeTaken }) => (
           <div key={initials}>
             <span>{initials}</span>
@@ -21,7 +24,7 @@ export default function HighscoreScreen({
           </div>
         ))}
       </div>
-      <div>Your score is: {currentPlayerScore.toFixed(1)}</div>
+      <div className="HighscoreScreen__player-score">Your score is: {currentPlayerScore.toFixed(1)}</div>
 
       {<ScoreInput />}
 
@@ -46,10 +49,14 @@ export default function HighscoreScreen({
     };
 
     return isCurrentPlayerScoreInTopTen() && !isHidden ? (
-      <div>
+      <div className="highscoreScreen__score-input">
         <label htmlFor="initials">Enter Initials to upload score</label>
         <input id="initials" type="text" />
-        <button type="button" onClick={onUploadScoreClick}>
+        <button
+          type="button"
+          onClick={onUploadScoreClick}
+          className="highscoreScreen__score-input__upload-score-btn"
+        >
           Upload score
         </button>
       </div>
