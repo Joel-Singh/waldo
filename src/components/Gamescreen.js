@@ -7,7 +7,7 @@ import CursorOverlay from "./CursorOverlay.js";
 import Stopwatch from "./Stopwatch.js";
 
 import getPageXandGetPageY from "../util/getPageXandGetPageY.js";
-import getFirebaseFunctions from "../util/firebase.js";
+import { isCharacterAtPosition } from "../util/firebase.js";
 import { CHOOSING_CHARACTER_TOLERANCE } from "../util/constants.js";
 
 // eslint-disable-next-line
@@ -81,7 +81,6 @@ export default function Gamescreen(props) {
     );
 
     async function updateCharacterIsFound(databaseName, pos) {
-      const { isCharacterAtPosition } = getFirebaseFunctions();
       const isAtPosition = await isCharacterAtPosition(
         databaseName,
         pos,

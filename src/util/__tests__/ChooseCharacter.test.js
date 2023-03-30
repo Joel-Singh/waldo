@@ -1,13 +1,10 @@
 import { render } from "@testing-library/react";
 import { chooseCharacter } from "../ChoosingCharacters";
-import getFirebaseFunctions from "../firebase";
+import { clearDatabase, addRealCharacterCoordsToDatabase } from "../firebase";
 
 // The correct function of choose character is
 // implicitly tested when its used in other tests
 describe("Choose character throws error when", () => {
-  const { clearDatabase, addRealCharacterCoordsToDatabase } =
-    getFirebaseFunctions();
-
   function renderMockGamescreenWithCharacterButton() {
     render(
       <div data-testid="Gamescreen">

@@ -1,14 +1,22 @@
 import { CHOOSING_CHARACTER_TOLERANCE } from "../constants";
-import getFirebaseFunctions from "../firebase";
+import {
+  addFakeCharacterCoordsToDatabase,
+  addRealCharacterCoordsToDatabase,
+  clearCharacterCoordsInDatabase,
+  isCharacterAtPosition,
+  clearHighscores,
+  addHighscore,
+  getTopTenHighscores,
+  clearDatabase,
+  getCharCoordsInDb
+} from "../firebase";
 
 describe("isCharacterAtPosition", () => {
   beforeAll(async () => {
-    const { addFakeCharacterCoordsToDatabase } = getFirebaseFunctions();
     await addFakeCharacterCoordsToDatabase();
   });
 
   afterAll(async () => {
-    const { clearCharacterCoordsInDatabase } = getFirebaseFunctions();
     await clearCharacterCoordsInDatabase();
   });
 
@@ -48,7 +56,6 @@ describe("isCharacterAtPosition", () => {
       expectedValue: true,
     },
   ])("$name", async ({ positionToCheck, expectedValue }) => {
-    const { isCharacterAtPosition } = getFirebaseFunctions();
     expect(
       await isCharacterAtPosition(
         "beachWaldo",
@@ -63,9 +70,6 @@ describe("isCharacterAtPosition", () => {
 });
 
 test("addHighscore and getTopTenHighscores", async () => {
-  const { clearHighscores, addHighscore, getTopTenHighscores } =
-    getFirebaseFunctions();
-
   await clearHighscores();
 
   await addHighscore("maze", "NF", 1);
@@ -133,7 +137,6 @@ Array [
 });
 
 test("getCharCoordsinDb throws error when coords aren't initialized", async () => {
-  const { clearDatabase, getCharCoordsInDb } = getFirebaseFunctions();
   await clearDatabase();
   await expect(getCharCoordsInDb()).rejects.toThrow(
     "Character coords never initialized in database"
@@ -141,13 +144,6 @@ test("getCharCoordsinDb throws error when coords aren't initialized", async () =
 });
 
 test("addCharacterCoordsToDatabase", async () => {
-  const {
-    addFakeCharacterCoordsToDatabase,
-    addRealCharacterCoordsToDatabase,
-    clearCharacterCoordsInDatabase,
-    getCharCoordsInDb,
-  } = getFirebaseFunctions();
-
   await clearCharacterCoordsInDatabase();
   await addRealCharacterCoordsToDatabase();
   expect(await getCharCoordsInDb()).toMatchSnapshot();
@@ -159,13 +155,11 @@ test("addCharacterCoordsToDatabase", async () => {
 
 describe("Adding dummy highscores", () => {
   test("completely fills top ten if no scores are present", async () => {
-    const { clearDatabase, getTopTenHighscores } = getFirebaseFunctions()
     await clearDatabase();
     expect(await getTopTenHighscores('maze')).toMatchSnapshot()
   })
 
   test("partially fills top ten if some scores are present", async () => {
-    const { clearDatabase, getTopTenHighscores, addHighscore } = getFirebaseFunctions()
     await clearDatabase();
     await addHighscore('maze', 'JS', 10);
     await addHighscore('maze', 'AB', 8);

@@ -1,7 +1,7 @@
 import userEvent from "@testing-library/user-event";
 import { render, screen } from "@testing-library/react";
 
-import getFirebaseFunctions from "../../../../util/firebase.js";
+import { addFakeCharacterCoordsToDatabase } from "../../../../util/firebase.js";
 import { getGamescreens } from "../../../../util/componentInstantiations";
 import { act } from "react-dom/test-utils";
 import {
@@ -20,7 +20,6 @@ jest.mock("../../../../components/Stopwatch.js", () => () => {
 });
 
 beforeAll(async () => {
-  const { addFakeCharacterCoordsToDatabase } = getFirebaseFunctions();
   await addFakeCharacterCoordsToDatabase();
 });
 

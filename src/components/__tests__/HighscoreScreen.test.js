@@ -5,7 +5,7 @@ import {
   screen,
   waitFor,
 } from "@testing-library/react";
-import getFirebaseFunctions from "../../util/firebase";
+import { addHighscore, clearHighscores, getTopTenHighscores } from "../../util/firebase";
 import { BrowserRouter } from "react-router-dom";
 import HighscoreScreen from "../HighscoreScreen";
 import userEvent from "@testing-library/user-event";
@@ -23,8 +23,6 @@ async function renderHighscoreScreen(highscoreScreen) {
 }
 
 async function clearAndInitializeMazeDatabase(initialsAndScores) {
-  const { addHighscore, clearHighscores } = getFirebaseFunctions();
-
   initialsAndScores = initialsAndScores.map((array) => ({
     initials: array[0],
     timeTaken: array[1],
@@ -171,7 +169,6 @@ test("Score is added to database after uploading", async () => {
 
   await clickUploadScoreAndWaitForUpload();
 
-  const { getTopTenHighscores } = getFirebaseFunctions();
   const topTenHighscores = await getTopTenHighscores("maze");
 
   expect(topTenHighscores[0]).toMatchInlineSnapshot(`

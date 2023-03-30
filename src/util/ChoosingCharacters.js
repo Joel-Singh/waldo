@@ -2,7 +2,7 @@ import { screen } from "@testing-library/react";
 import userEvent from "@testing-library/user-event";
 import { act } from "react-dom/test-utils";
 import { characterInformation } from "./constants";
-import getFirebaseFunctions from "./firebase";
+import { getCharCoordsInDb } from "./firebase";
 
 async function chooseAllCharactersIn(map) {
   await chooseMultipleCharacters(
@@ -23,7 +23,6 @@ async function chooseCharacter(displayName) {
   await chooseCharacterAtPosition(displayName, 0, 0);
 
   async function areFakeCoordsInDatabase() {
-    const { getCharCoordsInDb } = getFirebaseFunctions();
     const charCoords = await getCharCoordsInDb();
 
     const coordsAreZero = ({ x, y }) => x === 0 && y === 0;

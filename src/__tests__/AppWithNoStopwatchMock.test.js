@@ -4,7 +4,7 @@ import { MemoryRouter } from "react-router-dom";
 import App from "../App";
 import HighscoreScreen from "../components/HighscoreScreen";
 import { chooseAllCharactersIn } from "../util/ChoosingCharacters";
-import getFirebaseFunctions from "../util/firebase";
+import { addFakeCharacterCoordsToDatabase, clearDatabase } from "../util/firebase";
 import wait from "../util/Wait";
 import runTestsWithAllMaps from "../util/runTestsWithAllMaps.js";
 
@@ -16,8 +16,6 @@ jest.mock("../components/HighscoreScreen.js", () => (props) => {
 
 runTestsWithAllMaps(mapName => {
   test("App passes in props to HighscoreScreen", async () => {
-    const { addFakeCharacterCoordsToDatabase, clearDatabase } =
-      getFirebaseFunctions();
     await clearDatabase();
     await addFakeCharacterCoordsToDatabase();
 

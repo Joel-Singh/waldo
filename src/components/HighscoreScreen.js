@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 import PropTypes from "prop-types";
 import { Link } from "react-router-dom";
-import getFirebaseFunctions from "../util/firebase";
+import { getTopTenHighscores, addHighscore } from "../util/firebase";
 
 export default function HighscoreScreen({ map, currentPlayerScore = 99 }) {
   const { topTenHighscores, updateTopTenHighscores } =
@@ -34,7 +34,6 @@ export default function HighscoreScreen({ map, currentPlayerScore = 99 }) {
       const initials = document.getElementById("initials").value;
       if (initials !== "") {
         setIsHidden(true);
-        const { addHighscore } = getFirebaseFunctions();
         await addHighscore(map, initials, currentPlayerScore);
         updateTopTenHighscores();
       }
@@ -67,8 +66,6 @@ export default function HighscoreScreen({ map, currentPlayerScore = 99 }) {
 
     useEffect(() => {
       setTopTenHighscores([]);
-      const { getTopTenHighscores } = getFirebaseFunctions();
-
       let ignore = false;
 
       getTopTenHighscores(map).then((topTenHighscores) => {
