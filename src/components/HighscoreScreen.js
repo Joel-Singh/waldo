@@ -22,7 +22,7 @@ export default function HighscoreScreen({
         className="highscoreScreen__scores-container"
       >
         {topTenHighscores.map(({ initials, timeTaken }, index) => (
-          <li key={index}>
+          <li key={index} data-position={index + 1}>
             <span>{initials}</span>
             <span>{timeTaken.toFixed(1)}</span>
           </li>

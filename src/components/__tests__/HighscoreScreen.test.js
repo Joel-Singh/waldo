@@ -213,7 +213,9 @@ test("Scores are refreshed visually after current player's score is added to dat
 screen.getByTestId("HighscoreScreen__scores-container").
 firstElementChild).
 toMatchInlineSnapshot(`
-<li>
+<li
+  data-position="1"
+>
   <span>
     JS
   </span>
