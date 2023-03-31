@@ -24,12 +24,12 @@ export default function HighscoreScreen({
         {topTenHighscores.map(({ initials, timeTaken }, index) => (
           <li key={index}>
             <span>{initials}</span>
-            <span>{timeTaken}</span>
+            <span>{timeTaken.toFixed(1)}</span>
           </li>
         ))}
       </ol>
       <div className="HighscoreScreen__player-score">
-        Your score is: {currentPlayerScore.toFixed(1)}
+        Your score is: {currentPlayerScore.toFixed(1)} seconds
       </div>
 
       <ScoreInput />

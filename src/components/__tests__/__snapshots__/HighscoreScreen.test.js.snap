@@ -14,7 +14,7 @@ exports[`Highscore screen renders highscores 1`] = `
         AB
       </span>
       <span>
-        1
+        1.0
       </span>
     </li>
     <li>
@@ -22,7 +22,7 @@ exports[`Highscore screen renders highscores 1`] = `
         CD
       </span>
       <span>
-        2
+        2.0
       </span>
     </li>
     <li>
@@ -30,7 +30,7 @@ exports[`Highscore screen renders highscores 1`] = `
         EF
       </span>
       <span>
-        3
+        3.0
       </span>
     </li>
     <li>
@@ -38,7 +38,7 @@ exports[`Highscore screen renders highscores 1`] = `
         GH
       </span>
       <span>
-        4
+        4.0
       </span>
     </li>
     <li>
@@ -46,7 +46,7 @@ exports[`Highscore screen renders highscores 1`] = `
         IJ
       </span>
       <span>
-        5
+        5.0
       </span>
     </li>
     <li>
@@ -54,7 +54,7 @@ exports[`Highscore screen renders highscores 1`] = `
         KL
       </span>
       <span>
-        6
+        6.0
       </span>
     </li>
     <li>
@@ -62,7 +62,7 @@ exports[`Highscore screen renders highscores 1`] = `
         MN
       </span>
       <span>
-        7
+        7.0
       </span>
     </li>
     <li>
@@ -70,7 +70,7 @@ exports[`Highscore screen renders highscores 1`] = `
         OP
       </span>
       <span>
-        8
+        8.0
       </span>
     </li>
     <li>
@@ -78,7 +78,7 @@ exports[`Highscore screen renders highscores 1`] = `
         QR
       </span>
       <span>
-        9
+        9.0
       </span>
     </li>
     <li>
@@ -86,7 +86,7 @@ exports[`Highscore screen renders highscores 1`] = `
         ST
       </span>
       <span>
-        10
+        10.0
       </span>
     </li>
   </ol>
@@ -95,6 +95,7 @@ exports[`Highscore screen renders highscores 1`] = `
   >
     Your score is: 
     99.0
+     seconds
   </div>
   <a
     class="highscoreScreen__back-btn"
