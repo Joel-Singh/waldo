@@ -5,91 +5,91 @@ exports[`Highscore screen renders highscores 1`] = `
   class="highscoreScreen"
   data-testid="HighscoreScreen"
 >
-  <div
+  <ol
     class="highscoreScreen__scores-container"
     data-testid="HighscoreScreen__scores-container"
   >
-    <div>
+    <li>
       <span>
         AB
       </span>
       <span>
         1
       </span>
-    </div>
-    <div>
+    </li>
+    <li>
       <span>
         CD
       </span>
       <span>
         2
       </span>
-    </div>
-    <div>
+    </li>
+    <li>
       <span>
         EF
       </span>
       <span>
         3
       </span>
-    </div>
-    <div>
+    </li>
+    <li>
       <span>
         GH
       </span>
       <span>
         4
       </span>
-    </div>
-    <div>
+    </li>
+    <li>
       <span>
         IJ
       </span>
       <span>
         5
       </span>
-    </div>
-    <div>
+    </li>
+    <li>
       <span>
         KL
       </span>
       <span>
         6
       </span>
-    </div>
-    <div>
+    </li>
+    <li>
       <span>
         MN
       </span>
       <span>
         7
       </span>
-    </div>
-    <div>
+    </li>
+    <li>
       <span>
         OP
       </span>
       <span>
         8
       </span>
-    </div>
-    <div>
+    </li>
+    <li>
       <span>
         QR
       </span>
       <span>
         9
       </span>
-    </div>
-    <div>
+    </li>
+    <li>
       <span>
         ST
       </span>
       <span>
         10
       </span>
-    </div>
-  </div>
+    </li>
+  </ol>
   <div
     class="HighscoreScreen__player-score"
   >

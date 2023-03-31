@@ -210,18 +210,18 @@ test("Scores are refreshed visually after current player's score is added to dat
   await new Promise((resolve) => {
     setTimeout(() => {
       expect(
-        screen.getByTestId("HighscoreScreen__scores-container")
-          .firstElementChild
-      ).toMatchInlineSnapshot(`
-    <div>
-      <span>
-        JS
-      </span>
-      <span>
-        0.5
-      </span>
-    </div>
-    `);
+screen.getByTestId("HighscoreScreen__scores-container").
+firstElementChild).
+toMatchInlineSnapshot(`
+<li>
+  <span>
+    JS
+  </span>
+  <span>
+    0.5
+  </span>
+</li>
+`);
 
       resolve();
     }, 500);

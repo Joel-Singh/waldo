@@ -17,17 +17,17 @@ export default function HighscoreScreen({
 
   return (
     <div data-testid="HighscoreScreen" className="highscoreScreen">
-      <div
+      <ol
         data-testid="HighscoreScreen__scores-container"
         className="highscoreScreen__scores-container"
       >
         {topTenHighscores.map(({ initials, timeTaken }, index) => (
-          <div key={index}>
+          <li key={index}>
             <span>{initials}</span>
             <span>{timeTaken}</span>
-          </div>
+          </li>
         ))}
-      </div>
+      </ol>
       <div className="HighscoreScreen__player-score">
         Your score is: {currentPlayerScore.toFixed(1)}
       </div>
