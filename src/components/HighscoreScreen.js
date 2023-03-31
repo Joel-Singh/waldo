@@ -29,7 +29,7 @@ export default function HighscoreScreen({
         Your score is: {currentPlayerScore.toFixed(1)}
       </div>
 
-      {<ScoreInput />}
+      <ScoreInput />
 
       <Link
         to={"/"}
