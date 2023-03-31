@@ -2,6 +2,8 @@ import { useEffect, useState } from "react";
 import PropTypes from "prop-types";
 import { Link } from "react-router-dom";
 import { getTopTenHighscores, addHighscore } from "../util/firebase";
+
+// eslint-disable-next-line
 import highscoreScreenCss from "../styles/highscoreScreen.css";
 
 export default function HighscoreScreen({
