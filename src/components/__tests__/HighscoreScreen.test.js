@@ -139,7 +139,10 @@ describe("hiding score input", () => {
 
   it("does hide score input after clicking upload score if there is something in initials", async () => {
     userEvent.type(screen.getByRole("textbox"), "JS");
-    userEvent.click(screen.getByText("Upload score"));
+    act(() => {
+      userEvent.click(screen.getByText("Upload score"));
+    })
+
     expect(screen.queryByRole("textbox")).toBeNull();
   });
 });
