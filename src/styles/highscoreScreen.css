@@ -13,8 +13,14 @@
   align-items: center;
 }
 
-.highscoreScreen__scores-container > div {
+.highscoreScreen__scores-container > li {
   width: fit-content;
+  display: flex;
+  gap: 10px;
+}
+
+.highscoreScreen__scores-container > li::before {
+  content: attr(data-position) '.';
 }
 
 .highscoreScreen__back-btn {
