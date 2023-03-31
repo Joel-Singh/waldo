@@ -143,6 +143,10 @@ describe("hiding score input", () => {
       userEvent.click(screen.getByText("Upload score"));
     })
 
+    // For an unknown reason, this test will pass
+    // when HighscoreScreen doesn't actually hide the
+    // scoreInput if there isn't a wait
+    await wait(100)
     expect(screen.queryByRole("textbox")).toBeNull();
   });
 });
