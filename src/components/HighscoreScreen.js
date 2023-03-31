@@ -11,6 +11,7 @@ export default function HighscoreScreen({
 }) {
   const { topTenHighscores, updateTopTenHighscores } =
     useTopTenHighscoresFromDatabase();
+  const [scoreInputIsHidden, setScoreInputIsHidden] = useState(false);
 
   return (
     <div data-testid="HighscoreScreen" className="highscoreScreen">
@@ -46,18 +47,16 @@ export default function HighscoreScreen({
   );
 
   function ScoreInput() {
-    const [isHidden, setIsHidden] = useState(false);
-
     const onUploadScoreClick = async () => {
       const initials = document.getElementById("initials").value;
       if (initials !== "") {
-        setIsHidden(true);
+        setScoreInputIsHidden(true);
         await addHighscore(map, initials, currentPlayerScore);
         updateTopTenHighscores();
       }
     };
 
-    return isCurrentPlayerScoreInTopTen() && !isHidden ? (
+    return isCurrentPlayerScoreInTopTen() && !scoreInputIsHidden ? (
       <div className="highscoreScreen__score-input">
         <label htmlFor="initials">Enter Initials to upload score</label>
         <input id="initials" type="text" />
