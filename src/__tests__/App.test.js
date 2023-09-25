@@ -60,3 +60,23 @@ test("Selection screen is passed map previews", () => {
   const latestCallInformation = SelectionScreen.mock.calls.slice(-1);
   expect(latestCallInformation).toMatchSnapshot();
 });
+
+test("App renders message with nonvalid path", () => {
+  const { container } = render(
+    <MemoryRouter initialEntries={["/invalidPath"]}>
+      <App />
+    </MemoryRouter>
+  );
+
+  expect(container).toMatchInlineSnapshot(`
+<div>
+  <div
+    class="App"
+  >
+    <div>
+      Not a valid path
+    </div>
+  </div>
+</div>
+`)
+});
