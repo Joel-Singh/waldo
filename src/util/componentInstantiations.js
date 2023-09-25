@@ -1,5 +1,5 @@
 import MapPreview from "../components/MapPreview";
-import Gamescreen from "../components/Gamescreen";
+import Gamescreen from "../components/Gamescreen.tsx";
 import createCharacter from "./createCharacter";
 
 import mazeMap from "../assets/maps/maze.jpg";
