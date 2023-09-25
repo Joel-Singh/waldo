@@ -3,8 +3,7 @@ import SelectionScreen from "./components/SelectionScreen";
 import { getGamescreens, getMapPreviews } from "./util/componentInstantiations";
 import HighscoreScreen from "./components/HighscoreScreen";
 
-// eslint-disable-next-line
-import all from "./styles/all.css";
+import "./styles/all.css";
 import { useState } from "react";
 import { allMaps } from "./util/constants";
 
