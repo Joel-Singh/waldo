@@ -1,4 +1,5 @@
 import { useEffect, useState } from "react";
+// @ts-ignore
 import PropTypes from "prop-types";
 
 import CharacterPicker from "./CharacterPicker.js";
