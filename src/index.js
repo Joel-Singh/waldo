@@ -1,6 +1,6 @@
 import React from "react";
 import ReactDOM from "react-dom/client";
-import App from "./App.js";
+import App from "./App.tsx";
 import { BrowserRouter } from "react-router-dom";
 import { addRealCharacterCoordsToDatabase } from "./util/firebase.js";
 import { exposeCharacterToleranceAsCssVariable } from "./util/constants.js";

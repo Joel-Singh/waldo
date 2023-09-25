@@ -1,6 +1,6 @@
 import { render, screen } from "@testing-library/react";
 import { MemoryRouter, BrowserRouter } from "react-router-dom";
-import App from "../App.js";
+import App from "../App.tsx";
 import { chooseAllCharactersIn } from "../util/ChoosingCharacters.js";
 import {
   addFakeCharacterCoordsToDatabase,
