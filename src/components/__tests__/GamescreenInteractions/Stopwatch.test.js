@@ -1,7 +1,7 @@
 import { render, screen } from "@testing-library/react";
 import { act } from "react-dom/test-utils";
 import { decisecondToMs } from "../../../util/constants";
-import Gamescreen from "../../Gamescreen";
+import Gamescreen from "../../Gamescreen.tsx";
 
 beforeEach(() => jest.useFakeTimers());
 

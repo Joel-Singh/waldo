@@ -1,7 +1,7 @@
 import { render } from "@testing-library/react";
 import createCharacter from "../../../util/createCharacter.js";
 
-import Gamescreen from "../../Gamescreen.js";
+import Gamescreen from "../../Gamescreen.tsx";
 
 describe("Character Overlay", () => {
   it("renders a single character", () => {
