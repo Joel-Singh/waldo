@@ -10,7 +10,7 @@ import getPageXandGetPageY from "../util/getPageXandGetPageY.js";
 import { isCharacterAtPosition } from "../util/firebase.js";
 import { CHOOSING_CHARACTER_TOLERANCE } from "../util/constants.js";
 
-// eslint-disable-next-line
+// @ts-ignore
 import gamescreenCss from "../styles/gamescreen.css";
 
 export default function Gamescreen(props) {
