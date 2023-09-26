@@ -11,6 +11,16 @@ import ouch from "../assets/characters/snow/ouch.jpg";
 import monster from "../assets/characters/snow/monster.jpg";
 
 export const allMaps = ["maze", "beach", "snow"];
+export const decisecondToMs = 100;
+
+export const CHOOSING_CHARACTER_TOLERANCE = 40;
+export function exposeCharacterToleranceAsCssVariable() {
+  const root = document.documentElement;
+  root.style.setProperty(
+    "--choosing-character-tolerance",
+    CHOOSING_CHARACTER_TOLERANCE
+  );
+}
 
 export const characterInformation = {
   beach: [
@@ -90,14 +100,3 @@ export const flattenedCharacterInformation = (() => {
   }
   return flattenedCharacterInformation;
 })();
-
-export const CHOOSING_CHARACTER_TOLERANCE = 40;
-export const decisecondToMs = 100;
-
-export function exposeCharacterToleranceAsCssVariable() {
-  const root = document.documentElement;
-  root.style.setProperty(
-    "--choosing-character-tolerance",
-    CHOOSING_CHARACTER_TOLERANCE
-  );
-}
