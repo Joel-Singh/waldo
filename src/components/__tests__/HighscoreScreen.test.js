@@ -236,7 +236,7 @@ test("Go back to selection screen callback is called", () => {
     <HighscoreScreen map="maze" backToSelectionScreenBtnOnClick={callback} />
   );
 
-  userEvent.click(screen.getByText("Go Back to selection screen"));
+  userEvent.click(screen.getByText("Go back to selection screen"));
 
   expect(callback).toBeCalledTimes(1);
 });

@@ -42,7 +42,7 @@ export default function HighscoreScreen({
           onClick={backToSelectionScreenBtnOnClick}
           type="button"
         >
-          Go Back to selection screen
+          Go back to selection screen
         </button>
       </Link>
     </div>

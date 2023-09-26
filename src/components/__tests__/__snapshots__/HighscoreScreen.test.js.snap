@@ -124,7 +124,7 @@ exports[`Highscore screen renders highscores 1`] = `
     <button
       type="button"
     >
-      Go Back to selection screen
+      Go back to selection screen
     </button>
   </a>
 </div>

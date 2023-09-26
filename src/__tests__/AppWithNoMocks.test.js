@@ -21,7 +21,7 @@ test("Going to the selection screen and selecting a map after completing a game,
   userEvent.click(getByText("START"));
 
   await chooseAllCharactersIn("maze");
-  userEvent.click(getByText("Go Back to selection screen"));
+  userEvent.click(getByText("Go back to selection screen"));
 
   userEvent.click(getByText("START"));
 
