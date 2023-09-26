@@ -1,14 +1,14 @@
 import { Route, Routes } from "react-router-dom";
 import SelectionScreen from "./components/SelectionScreen";
 import { getGamescreens, getMapPreviews } from "./util/componentInstantiations";
-import HighscoreScreen from "./components/HighscoreScreen";
+import FinalScoreScreen from "./components/FinalScoreScreen";
 
 import "./styles/all.css";
 import { useState } from "react";
 import { allMaps } from "./util/constants";
 
 function App() {
-  const [showHighscoreScreen, setShowHighscoreScreen] = useState(false);
+  const [showFinalScoreScreen, setShowFinalScoreScreen] = useState(false);
   const [currentPlayerScore, setCurrentPlayerScore] = useState(null);
 
   return (
@@ -30,7 +30,7 @@ function App() {
 
   function createRouteForMap(map) {
     const gamescreen = getGamescreens((timeElapsed) => {
-      setShowHighscoreScreen(true);
+      setShowFinalScoreScreen(true);
       setCurrentPlayerScore(timeElapsed);
     })[map];
 
@@ -39,14 +39,13 @@ function App() {
         path={`/${map}`}
         key={map}
         element={
-          !showHighscoreScreen ? (
+          !showFinalScoreScreen ? (
             gamescreen
           ) : (
-            <HighscoreScreen
-              map={map}
-              currentPlayerScore={currentPlayerScore}
+            <FinalScoreScreen
+              finalScore={currentPlayerScore}
               backToSelectionScreenBtnOnClick={() =>
-                setShowHighscoreScreen(false)
+                setShowFinalScoreScreen(false)
               }
             />
           )

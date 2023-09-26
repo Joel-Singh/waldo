@@ -9,15 +9,16 @@ import {
 } from "../util/firebase";
 import wait from "../util/Wait";
 import runTestsWithAllMaps from "../util/runTestsWithAllMaps.js";
+import { FinalScoreScreenProps } from "../components/FinalScoreScreen";
 
-let latestProps = {};
-jest.mock("../components/HighscoreScreen.js", () => (props) => {
+let latestProps: FinalScoreScreenProps = null;
+jest.mock("../components/FinalScoreScreen", () => (props: FinalScoreScreenProps) => {
   latestProps = props;
-  return <div data-testid="HighscoreScreen"></div>;
+  return <div data-testid="FinalScoreScreen"></div>;
 });
 
 runTestsWithAllMaps((mapName) => {
-  test("App passes in props to HighscoreScreen", async () => {
+  test("App passes in props to FinalScoreScreen", async () => {
     await clearDatabase();
     await addFakeCharacterCoordsToDatabase();
 
@@ -34,7 +35,6 @@ runTestsWithAllMaps((mapName) => {
       await wait(secondsElapsed * 1000);
     });
 
-    expect(latestProps.map).toBe(mapName);
-    expect(latestProps.currentPlayerScore).toBeGreaterThan(secondsElapsed);
+    expect(latestProps.finalScore).toBeGreaterThan(secondsElapsed);
   });
 });
