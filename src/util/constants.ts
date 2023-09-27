@@ -10,7 +10,8 @@ import snowWaldo from "../assets/characters/snow/waldo.jpg";
 import ouch from "../assets/characters/snow/ouch.jpg";
 import monster from "../assets/characters/snow/monster.jpg";
 
-export const allMaps = ["maze", "beach", "snow"];
+
+export const allMaps: Array<MapName> = ["maze", "beach", "snow"];
 export const decisecondToMs = 100;
 
 export const CHOOSING_CHARACTER_TOLERANCE = 40;
@@ -18,11 +19,23 @@ export function exposeCharacterToleranceAsCssVariable() {
   const root = document.documentElement;
   root.style.setProperty(
     "--choosing-character-tolerance",
-    CHOOSING_CHARACTER_TOLERANCE
+    String(CHOOSING_CHARACTER_TOLERANCE)
   );
 }
 
-export const characterInformation = {
+type MapName = "beach" | "maze" | "snow"
+
+interface Character {
+  databaseName: string;
+  image: string;
+  displayName: string;
+  coords: {
+    x: number;
+    y: number;
+  };
+}
+
+export const characterInformation: Record<MapName, Character[]> = {
   beach: [
     {
       databaseName: "beachWaldo",
@@ -88,15 +101,15 @@ export const characterInformation = {
 };
 
 export const flattenedCharacterInformation = (() => {
-  const flattenedCharacterInformation = [];
+  let flattenedCharacterInformation: Array<Character> = [];
   for (const map in characterInformation) {
-    characterInformation[map].forEach((characterInfo) => {
-      flattenedCharacterInformation.push(cloneObj(characterInfo));
+    characterInformation[map].forEach((characterInfo: Character) => {
+      flattenedCharacterInformation.push(cloneObj(characterInfo) as Character);
     });
   }
 
-  function cloneObj(obj) {
-    return JSON.parse(JSON.stringify(obj));
+  function cloneObj(obj: Object) {
+    return JSON.parse(JSON.stringify(obj)) as Object;
   }
   return flattenedCharacterInformation;
 })();

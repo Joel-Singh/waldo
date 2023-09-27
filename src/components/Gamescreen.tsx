@@ -9,7 +9,7 @@ import Stopwatch from "./Stopwatch.js";
 
 import getPageXandGetPageY from "../util/getPageXandGetPageY.js";
 import { isCharacterAtPosition } from "../util/firebase.js";
-import { CHOOSING_CHARACTER_TOLERANCE } from "../util/constants.js";
+import { CHOOSING_CHARACTER_TOLERANCE } from "../util/constants";
 
 import "../styles/gamescreen.css";
 
