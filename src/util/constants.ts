@@ -23,7 +23,7 @@ export function exposeCharacterToleranceAsCssVariable() {
   );
 }
 
-type MapName = "beach" | "maze" | "snow"
+export type MapName = "beach" | "maze" | "snow"
 
 interface Character {
   databaseName: string;
