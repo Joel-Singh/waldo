@@ -66,8 +66,8 @@ const getGamescreens = (onAllCharactersFound) => ({
 });
 
 function parseGamescreenCharactersFromCharInfo(map) {
-  return characterInformation[map].map(({ displayName, databaseName, image }) =>
-    createCharacter(displayName, databaseName, image)
+  return characterInformation[map].map(({ displayName, uniqueIdentifier, image }) =>
+    createCharacter(displayName, uniqueIdentifier, image)
   );
 }
 

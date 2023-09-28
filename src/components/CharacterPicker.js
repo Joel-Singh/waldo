@@ -24,19 +24,19 @@ function CharacterPicker(props) {
 
   function buttonsFromCharacterInformation(characterInformation) {
     return characterInformation.map(
-      ({ displayName, databaseName, isFound }) => {
+      ({ displayName, uniqueIdentifier, isFound }) => {
         if (isFound) return null;
 
         return (
           <button
             onClick={() =>
-              onCharacterClickFunc(databaseName, {
+              onCharacterClickFunc(uniqueIdentifier, {
                 x: location.x,
                 y: location.y,
               })
             }
             type="button"
-            key={databaseName}
+            key={uniqueIdentifier}
           >
             {displayName}
           </button>
@@ -50,7 +50,7 @@ CharacterPicker.propTypes = {
   characterInformation: PropTypes.arrayOf(
     PropTypes.shape({
       displayName: PropTypes.string.isRequired,
-      databaseName: PropTypes.string.isRequired,
+      uniqueIdentifier: PropTypes.string.isRequired,
       isFound: PropTypes.bool.isRequired,
     })
   ).isRequired,

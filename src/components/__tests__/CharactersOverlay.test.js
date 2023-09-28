@@ -7,7 +7,7 @@ it("renders the image of a single character", () => {
   const characters = [
     createCharacter(
       "displayName placeholder",
-      "databaseName placeholder",
+      "uniqueIdentifier placeholder",
       "image placeholder"
     ),
   ];
@@ -30,7 +30,7 @@ test("single character DOESN'T have found class when isFound is false", () => {
   const characters = [
     createCharacter(
       "displayName placeholder",
-      "databaseName placeholder",
+      "uniqueIdentifier placeholder",
       "image placeholder"
     ),
   ];
@@ -47,7 +47,7 @@ test("single character DOES have found class when isFound is true", () => {
   const characters = [
     createCharacter(
       "displayName placeholder",
-      "databaseName placeholder",
+      "uniqueIdentifier placeholder",
       "image placeholder"
     ),
   ];
@@ -65,17 +65,17 @@ it("renders the image of multiple characters", () => {
   const characters = [
     createCharacter(
       "displayName placeholder 1",
-      "databaseName placeholder 1",
+      "uniqueIdentifier placeholder 1",
       "image placeholder 1"
     ),
     createCharacter(
       "displayName placeholder 2",
-      "databaseName placeholder 2",
+      "uniqueIdentifier placeholder 2",
       "image placeholder 2"
     ),
     createCharacter(
       "displayName placeholder 3",
-      "databaseName placeholder 3",
+      "uniqueIdentifier placeholder 3",
       "image placeholder 3"
     ),
   ];
@@ -106,17 +106,17 @@ it("assigns found class to characters who's isFound is true", () => {
   const characters = [
     createCharacter(
       "name placeholder 1 displayName",
-      "name placeholder 1 databaseName",
+      "name placeholder 1 uniqueIdentifier",
       "image placeholder 1"
     ),
     createCharacter(
       "name placeholder 2 displayName",
-      "name placeholder 2 databaseName",
+      "name placeholder 2 uniqueIdentifier",
       "image placeholder 2"
     ),
     createCharacter(
       "name placeholder 3 displayName",
-      "name placeholder 3 databaseName",
+      "name placeholder 3 uniqueIdentifier",
       "image placeholder 3"
     ),
   ];

@@ -70,9 +70,9 @@ export default function Gamescreen(props) {
         isVisible={characterPickerInfo.visibility}
         location={{ x: characterPickerInfo.xPos, y: characterPickerInfo.yPos }}
         characterInformation={characters.map(
-          ({ displayName, databaseName, isFound }) => ({
+          ({ displayName, uniqueIdentifier, isFound }) => ({
             displayName,
-            databaseName,
+            uniqueIdentifier,
             isFound,
           })
         )}
@@ -80,16 +80,16 @@ export default function Gamescreen(props) {
       />
     );
 
-    async function updateCharacterIsFound(databaseName, pos) {
+    async function updateCharacterIsFound(uniqueIdentifier, pos) {
       const isAtPosition = await isCharacterAtPosition(
-        databaseName,
+        uniqueIdentifier,
         pos,
         CHOOSING_CHARACTER_TOLERANCE
       );
 
       setCharacters((characters) => {
         return characters.map((character) => {
-          if (character.databaseName === databaseName && isAtPosition)
+          if (character.uniqueIdentifier === uniqueIdentifier && isAtPosition)
             return { ...character, isFound: true };
           else return { ...character };
         });
@@ -113,7 +113,7 @@ Gamescreen.propTypes = {
     PropTypes.shape({
       img: PropTypes.string.isRequired,
       displayName: PropTypes.string.isRequired,
-      databaseName: PropTypes.string.isRequired,
+      uniqueIdentifier: PropTypes.string.isRequired,
     })
   ),
 };

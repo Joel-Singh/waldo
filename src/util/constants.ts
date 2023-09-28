@@ -26,7 +26,7 @@ export function exposeCharacterToleranceAsCssVariable() {
 export type MapName = "beach" | "maze" | "snow"
 
 interface Character {
-  databaseName: string;
+  uniqueIdentifier: string;
   image: string;
   displayName: string;
   coords: {
@@ -38,19 +38,19 @@ interface Character {
 export const characterInformation: Record<MapName, Character[]> = {
   beach: [
     {
-      databaseName: "beachWaldo",
+      uniqueIdentifier: "beachWaldo",
       image: beachWaldo,
       displayName: "Waldo",
       coords: { x: 1286, y: 1637 },
     },
     {
-      databaseName: "shovelBoy",
+      uniqueIdentifier: "shovelBoy",
       image: shovelBoy,
       displayName: "Shovel Boy",
       coords: { x: 2725, y: 1090 },
     },
     {
-      databaseName: "dog",
+      uniqueIdentifier: "dog",
       image: dog,
       displayName: "Dog",
       coords: { x: 2153, y: 576 },
@@ -59,19 +59,19 @@ export const characterInformation: Record<MapName, Character[]> = {
 
   maze: [
     {
-      databaseName: "mazeWaldo",
+      uniqueIdentifier: "mazeWaldo",
       image: mazeWaldo,
       displayName: "Waldo",
       coords: { x: 1377, y: 653 },
     },
     {
-      databaseName: "birdPerson",
+      uniqueIdentifier: "birdPerson",
       image: birdPerson,
       displayName: "Bird Person",
       coords: { x: 1435, y: 687 },
     },
     {
-      databaseName: "yellowHairPerson",
+      uniqueIdentifier: "yellowHairPerson",
       image: yellowHairPerson,
       displayName: "Yellow Hair Person",
       coords: { x: 1929, y: 209 },
@@ -80,19 +80,19 @@ export const characterInformation: Record<MapName, Character[]> = {
 
   snow: [
     {
-      databaseName: "snowWaldo",
+      uniqueIdentifier: "snowWaldo",
       image: snowWaldo,
       displayName: "Waldo",
       coords: { x: 2561, y: 1419 },
     },
     {
-      databaseName: "ouch",
+      uniqueIdentifier: "ouch",
       image: ouch,
       displayName: "Ouch!",
       coords: { x: 2313, y: 1087 },
     },
     {
-      databaseName: "monster",
+      uniqueIdentifier: "monster",
       image: monster,
       displayName: "Monster",
       coords: { x: 2798, y: 224 },

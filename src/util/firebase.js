@@ -101,11 +101,11 @@ async function getTopTenHighscores(map) {
 //TODO: Final app won't have this function
 //The character coords will already be in the database
 function addCharacterCoordsToDatabase(useDummyCoords) {
-  const mapActualCoords = ({ databaseName, coords }) =>
-    addSingleCharacterCoordToDatabase(databaseName, coords);
+  const mapActualCoords = ({ uniqueIdentifier, coords }) =>
+    addSingleCharacterCoordToDatabase(uniqueIdentifier, coords);
 
-  const mapFakeCoords = ({ databaseName }) =>
-    addSingleCharacterCoordToDatabase(databaseName, { x: 0, y: 0 });
+  const mapFakeCoords = ({ uniqueIdentifier }) =>
+    addSingleCharacterCoordToDatabase(uniqueIdentifier, { x: 0, y: 0 });
 
   return Promise.all(
     flattenedCharacterInformation.map(

@@ -8,7 +8,7 @@ describe("Character Overlay", () => {
     const characters = [
       createCharacter(
         "placeholder displayName",
-        "placeholder databaseName",
+        "placeholder uniqueIdentifier",
         "placeholder img"
       ),
     ];
@@ -21,12 +21,12 @@ describe("Character Overlay", () => {
     const characters = [
       createCharacter(
         "placeholder 1 displayName",
-        "placeholder 1 databaseName",
+        "placeholder 1 uniqueIdentifier",
         "placeholder img 1"
       ),
       createCharacter(
         "placeholder 2 displayName",
-        "placeholder 2 databaseName",
+        "placeholder 2 uniqueIdentifier",
         "placeholder img 2"
       ),
     ];

@@ -59,9 +59,9 @@ describe("Character picker", () => {
 
   test("is rendered in Gamescreen", () => {
     const characters = [
-      createCharacter("Jane displayName", "Jane databaseName", "placeholder1"),
-      createCharacter("Doe displayName", "Doe databaseName", "placeholder2"),
-      createCharacter("Jeff displayName", "Jeff databaseName", "placeholder3"),
+      createCharacter("Jane displayName", "Jane uniqueIdentifier", "placeholder1"),
+      createCharacter("Doe displayName", "Doe uniqueIdentifier", "placeholder2"),
+      createCharacter("Jeff displayName", "Jeff uniqueIdentifier", "placeholder3"),
     ];
 
     render(<Gamescreen characters={characters} />);

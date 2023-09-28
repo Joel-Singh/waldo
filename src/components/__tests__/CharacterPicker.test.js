@@ -25,17 +25,17 @@ it("properly renders character names as divs", () => {
   const characterInformation = [
     {
       displayName: "Jane",
-      databaseName: "Jane databaseName",
+      uniqueIdentifier: "Jane uniqueIdentifier",
       isFound: false,
     },
     {
       displayName: "Bob",
-      databaseName: "Bob databaseName",
+      uniqueIdentifier: "Bob uniqueIdentifier",
       isFound: false,
     },
     {
       displayName: "Doe",
-      databaseName: "Doe databaseName",
+      uniqueIdentifier: "Doe uniqueIdentifier",
       isFound: false,
     },
   ];
@@ -71,17 +71,17 @@ it("doesn't render character names which have been found", () => {
   const characterInformation = [
     {
       displayName: "Jane",
-      databaseName: "Jane databaseName",
+      uniqueIdentifier: "Jane uniqueIdentifier",
       isFound: true,
     },
     {
       displayName: "Bob",
-      databaseName: "Bob databaseName",
+      uniqueIdentifier: "Bob uniqueIdentifier",
       isFound: false,
     },
     {
       displayName: "Doe",
-      databaseName: "Doe databaseName",
+      uniqueIdentifier: "Doe uniqueIdentifier",
       isFound: false,
     },
   ];
@@ -97,17 +97,17 @@ it("calls function with database name when character name is clicked", () => {
   const characterInformation = [
     {
       displayName: "Jane displayName",
-      databaseName: "Jane databaseName",
+      uniqueIdentifier: "Jane uniqueIdentifier",
       isFound: false,
     },
     {
       displayName: "Bob displayName",
-      databaseName: "Bob databaseName",
+      uniqueIdentifier: "Bob uniqueIdentifier",
       isFound: false,
     },
     {
       displayName: "Doe displayName",
-      databaseName: "Doe databaseName",
+      uniqueIdentifier: "Doe uniqueIdentifier",
       isFound: false,
     },
   ];
@@ -124,7 +124,7 @@ it("calls function with database name when character name is clicked", () => {
   userEvent.click(bob);
 
   expect(onCharacterClickFunc).toBeCalledWith(
-    "Bob databaseName",
+    "Bob uniqueIdentifier",
     expect.anything()
   );
 });
@@ -140,7 +140,7 @@ it("calls function with correct position when character name is clicked", () => 
       characterInformation={[
         {
           displayName: "displayName",
-          databaseName: "databaseName",
+          uniqueIdentifier: "uniqueIdentifier",
           isFound: false,
         },
       ]}
