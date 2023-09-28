@@ -25,7 +25,7 @@ export function exposeCharacterToleranceAsCssVariable() {
 
 export type MapName = "beach" | "maze" | "snow"
 
-interface Character {
+export interface Character {
   uniqueIdentifier: string;
   image: string;
   displayName: string;
