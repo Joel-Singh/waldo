@@ -1,12 +1,12 @@
 import { render, screen } from "@testing-library/react";
 
-import { addFakeCharacterCoordsToDatabase } from "../../../../util/firebase.js";
+import { addRealCharacterCoordsToDatabase } from "../../../../util/firebase.js";
 import { getGamescreens } from "../../../../util/componentInstantiations";
 import {
   chooseAllCharactersIn,
   chooseCharacter,
   chooseCharacterAtPosition,
-} from "../../../../util/ChoosingCharacters.js";
+} from "../../../../util/ChoosingCharacters";
 
 function isCharacterFound(name) {
   const characterFromCharacterOverlay = screen.getByAltText(name);
@@ -18,7 +18,7 @@ jest.mock("../../../../components/Stopwatch.js", () => () => {
 });
 
 beforeAll(async () => {
-  await addFakeCharacterCoordsToDatabase();
+  await addRealCharacterCoordsToDatabase();
 });
 
 describe("Choosing a character", () => {
@@ -38,7 +38,7 @@ describe("Choosing a character", () => {
 
     const mazeWaldoDisplayName = "Waldo";
 
-    await chooseCharacter(mazeWaldoDisplayName);
+    await chooseCharacter(mazeWaldoDisplayName, "maze");
 
     expect(isCharacterFound(mazeWaldoDisplayName)).toBe(true);
   });
@@ -51,7 +51,7 @@ describe("onAllCharactersFound", () => {
     const { maze } = getGamescreens(onAllCharactersFound);
     render(maze);
 
-    await chooseCharacter("Waldo");
+    await chooseCharacter("Waldo", "maze");
 
     expect(onAllCharactersFound).not.toBeCalled();
   });

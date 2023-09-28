@@ -2,37 +2,28 @@ import { screen } from "@testing-library/react";
 import userEvent from "@testing-library/user-event";
 import { act } from "react-dom/test-utils";
 import { characterInformation } from "./constants";
-import { getCharCoordsInDb } from "./firebase";
+import { MapName } from "./constants";
 
-async function chooseAllCharactersIn(map) {
+async function chooseAllCharactersIn(map: MapName) {
   await chooseMultipleCharacters(
-    characterInformation[map].map(({ displayName }) => displayName)
+    characterInformation[map].map(({ displayName }) => displayName), map
   );
 }
 
-async function chooseMultipleCharacters(displayNameArr) {
+async function chooseMultipleCharacters(displayNameArr, map: MapName) {
   for (const displayName of displayNameArr) {
-    await chooseCharacter(displayName);
+    await chooseCharacter(displayName, map);
   }
 }
 
-async function chooseCharacter(displayName) {
-  if (!(await areFakeCoordsInDatabase()))
-    throw new Error("No fake coords in database!");
+async function chooseCharacter(displayName, map: MapName) {
+  const characterToChoose =
+    characterInformation[map].find(
+      charInfo => charInfo.displayName === displayName
+    )
 
-  await chooseCharacterAtPosition(displayName, 0, 0);
-
-  async function areFakeCoordsInDatabase() {
-    const charCoords = await getCharCoordsInDb();
-
-    const coordsAreZero = ({ x, y }) => x === 0 && y === 0;
-    const allCharCoordsAreZero = !Object.entries(charCoords).every(
-      ([, coords]) => coordsAreZero(coords)
-    );
-    if (allCharCoordsAreZero) return false;
-
-    return true;
-  }
+  const { x, y } = characterToChoose.coords
+  await chooseCharacterAtPosition(displayName, x, y);
 }
 
 async function chooseCharacterAtPosition(displayName, xPos, yPos) {

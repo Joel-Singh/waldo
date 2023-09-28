@@ -3,14 +3,14 @@ import { act } from "react-dom/test-utils";
 import { chooseAllCharactersIn } from "../../../../util/ChoosingCharacters";
 import { getGamescreens } from "../../../../util/componentInstantiations";
 import {
-  addFakeCharacterCoordsToDatabase,
+  addRealCharacterCoordsToDatabase,
   clearDatabase,
 } from "../../../../util/firebase";
 import wait from "../../../../util/Wait";
 
 it("is called with time elapsed", async () => {
   await clearDatabase();
-  await addFakeCharacterCoordsToDatabase();
+  await addRealCharacterCoordsToDatabase();
 
   const onAllCharactersFound = jest.fn();
 

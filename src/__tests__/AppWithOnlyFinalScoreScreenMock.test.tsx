@@ -4,7 +4,7 @@ import { MemoryRouter } from "react-router-dom";
 import App from "../App.tsx";
 import { chooseAllCharactersIn } from "../util/ChoosingCharacters";
 import {
-  addFakeCharacterCoordsToDatabase,
+  addRealCharacterCoordsToDatabase,
   clearDatabase,
 } from "../util/firebase";
 import wait from "../util/Wait";
@@ -20,7 +20,7 @@ jest.mock("../components/FinalScoreScreen", () => (props: FinalScoreScreenProps)
 runTestsWithAllMaps((mapName) => {
   test("App passes in props to FinalScoreScreen", async () => {
     await clearDatabase();
-    await addFakeCharacterCoordsToDatabase();
+    await addRealCharacterCoordsToDatabase();
 
     render(
       <MemoryRouter initialEntries={[`/${mapName}`]}>

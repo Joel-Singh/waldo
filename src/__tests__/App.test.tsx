@@ -1,9 +1,9 @@
 import { render, screen } from "@testing-library/react";
 import { MemoryRouter, BrowserRouter } from "react-router-dom";
 import App from "../App";
-import { chooseAllCharactersIn } from "../util/ChoosingCharacters.js";
+import { chooseAllCharactersIn } from "../util/ChoosingCharacters";
 import {
-  addFakeCharacterCoordsToDatabase,
+  addRealCharacterCoordsToDatabase,
   clearDatabase,
 } from "../util/firebase.js";
 import SelectionScreen from "../components/SelectionScreen.js";
@@ -17,7 +17,7 @@ jest.mock("../components/SelectionScreen.js", () => jest.fn(() => null));
 
 beforeAll(async () => {
   await clearDatabase();
-  await addFakeCharacterCoordsToDatabase();
+  await addRealCharacterCoordsToDatabase();
 });
 
 runTestsWithAllMaps((mapName) => {
