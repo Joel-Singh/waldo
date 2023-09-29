@@ -6,7 +6,8 @@ import { MapName } from "./constants";
 
 async function chooseAllCharactersIn(map: MapName) {
   await chooseMultipleCharacters(
-    characterInformation[map].map(({ displayName }) => displayName), map
+    characterInformation[map].map(({ displayName }) => displayName),
+    map,
   );
 }
 
@@ -17,12 +18,11 @@ async function chooseMultipleCharacters(displayNameArr, map: MapName) {
 }
 
 async function chooseCharacter(displayName, map: MapName) {
-  const characterToChoose =
-    characterInformation[map].find(
-      charInfo => charInfo.displayName === displayName
-    )
+  const characterToChoose = characterInformation[map].find(
+    (charInfo) => charInfo.displayName === displayName,
+  );
 
-  const { x, y } = characterToChoose.coords
+  const { x, y } = characterToChoose.coords;
   await chooseCharacterAtPosition(displayName, x, y);
 }
 

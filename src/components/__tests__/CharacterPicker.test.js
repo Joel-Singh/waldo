@@ -5,7 +5,7 @@ import userEvent from "@testing-library/user-event";
 
 it("has visible class when isVisible is true", () => {
   const { container } = render(
-    <CharacterPicker characterInformation={[]} isVisible={true} />
+    <CharacterPicker characterInformation={[]} isVisible={true} />,
   );
   const characterPicker = container.firstChild;
 
@@ -14,7 +14,7 @@ it("has visible class when isVisible is true", () => {
 
 it("does not have visible class when isVisible is false", () => {
   const { container } = render(
-    <CharacterPicker characterInformation={[]} isVisible={false} />
+    <CharacterPicker characterInformation={[]} isVisible={false} />,
   );
   const characterPicker = container.firstChild;
 
@@ -41,7 +41,7 @@ it("properly renders character names as divs", () => {
   ];
 
   const { container } = render(
-    <CharacterPicker characterInformation={characterInformation} />
+    <CharacterPicker characterInformation={characterInformation} />,
   );
   const characterPicker = container.firstChild;
   const characterDivs = characterPicker.querySelectorAll(":scope > *");
@@ -116,7 +116,7 @@ it("calls function with database name when character name is clicked", () => {
     <CharacterPicker
       characterInformation={characterInformation}
       onCharacterClickFunc={onCharacterClickFunc}
-    />
+    />,
   );
 
   const bob = screen.getByText("Bob displayName");
@@ -125,7 +125,7 @@ it("calls function with database name when character name is clicked", () => {
 
   expect(onCharacterClickFunc).toBeCalledWith(
     "Bob uniqueIdentifier",
-    expect.anything()
+    expect.anything(),
   );
 });
 
@@ -144,7 +144,7 @@ it("calls function with correct position when character name is clicked", () => 
           isFound: false,
         },
       ]}
-    />
+    />,
   );
 
   const character = screen.getByText("displayName");
@@ -163,7 +163,7 @@ it("has correct css variables depending on location", () => {
     <CharacterPicker
       location={{ x: pos.x, y: pos.y }}
       characterInformation={[]}
-    />
+    />,
   );
 
   const characterPicker = screen.getByTestId("character-picker");

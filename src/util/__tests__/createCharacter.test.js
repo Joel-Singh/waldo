@@ -5,17 +5,17 @@ test("Character creator utility function", () => {
     createCharacter(
       "Jeff displayName",
       "Jeff uniqueIdentifier",
-      "placeholder image 1"
+      "placeholder image 1",
     ),
     createCharacter(
       "Jane displayName",
       "Jane uniqueIdentifier",
-      "placeholder image 2"
+      "placeholder image 2",
     ),
     createCharacter(
       "Jeffrey displayName",
       "Jeffrey uniqueIdentifier",
-      "placeholder image 3"
+      "placeholder image 3",
     ),
   ];
 

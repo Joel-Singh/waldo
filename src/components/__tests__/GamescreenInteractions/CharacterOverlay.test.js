@@ -9,7 +9,7 @@ describe("Character Overlay", () => {
       createCharacter(
         "placeholder displayName",
         "placeholder uniqueIdentifier",
-        "placeholder img"
+        "placeholder img",
       ),
     ];
     const { container } = render(<Gamescreen characters={characters} />);
@@ -22,21 +22,21 @@ describe("Character Overlay", () => {
       createCharacter(
         "placeholder 1 displayName",
         "placeholder 1 uniqueIdentifier",
-        "placeholder img 1"
+        "placeholder img 1",
       ),
       createCharacter(
         "placeholder 2 displayName",
         "placeholder 2 uniqueIdentifier",
-        "placeholder img 2"
+        "placeholder img 2",
       ),
     ];
 
     const { container } = render(<Gamescreen characters={characters} />);
     const character1 = container.querySelectorAll(
-      "img[src='placeholder img 1']"
+      "img[src='placeholder img 1']",
     );
     const character2 = container.querySelectorAll(
-      "img[src='placeholder img 2']"
+      "img[src='placeholder img 2']",
     );
 
     expect(character1).not.toBeNull();

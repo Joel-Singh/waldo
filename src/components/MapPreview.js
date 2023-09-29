@@ -18,7 +18,7 @@ function MapPreview(props) {
         className="map-preview__character-container"
       >
         {previewCharacterInformation.map((previewCharacter) =>
-          createPreviewCharacterHTML(previewCharacter)
+          createPreviewCharacterHTML(previewCharacter),
         )}
       </div>
       <Link to={"/" + mapPath}>

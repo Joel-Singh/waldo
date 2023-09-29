@@ -27,7 +27,7 @@ export default function Gamescreen(props) {
   });
 
   const [characters, setCharacters] = useState(
-    initialCharactersState.map((char) => ({ ...char, isFound: false }))
+    initialCharactersState.map((char) => ({ ...char, isFound: false })),
   );
 
   const [secondsElapsed, setSecondsElapsed] = useState(0);
@@ -74,7 +74,7 @@ export default function Gamescreen(props) {
             displayName,
             uniqueIdentifier,
             isFound,
-          })
+          }),
         )}
         onCharacterClickFunc={updateCharacterIsFound}
       />
@@ -84,7 +84,7 @@ export default function Gamescreen(props) {
       const isAtPosition = await isCharacterAtPosition(
         uniqueIdentifier,
         pos,
-        CHOOSING_CHARACTER_TOLERANCE
+        CHOOSING_CHARACTER_TOLERANCE,
       );
 
       setCharacters((characters) => {
@@ -114,6 +114,6 @@ Gamescreen.propTypes = {
       img: PropTypes.string.isRequired,
       displayName: PropTypes.string.isRequired,
       uniqueIdentifier: PropTypes.string.isRequired,
-    })
+    }),
   ),
 };

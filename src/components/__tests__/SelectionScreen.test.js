@@ -45,7 +45,7 @@ it("renders a single MapPreview", () => {
   render(
     <BrowserRouter>
       <SelectionScreen mapPreviews={[spaceMap]} />
-    </BrowserRouter>
+    </BrowserRouter>,
   );
 
   const mapDisplayed = screen.getByLabelText("title").textContent;
@@ -59,7 +59,7 @@ test("next button switches map", () => {
   render(
     <BrowserRouter>
       <SelectionScreen mapPreviews={[spaceMap, forestMap]} />
-    </BrowserRouter>
+    </BrowserRouter>,
   );
 
   const nextButton = screen.getByLabelText("next map");
@@ -75,7 +75,7 @@ test("next button switches map multiple times", () => {
   render(
     <BrowserRouter>
       <SelectionScreen mapPreviews={[spaceMap, forestMap, shipMap]} />
-    </BrowserRouter>
+    </BrowserRouter>,
   );
 
   const nextButton = screen.getByLabelText("next map");
@@ -99,7 +99,7 @@ test("next button wraps to first map", () => {
   render(
     <BrowserRouter>
       <SelectionScreen mapPreviews={[spaceMap, forestMap, shipMap]} />
-    </BrowserRouter>
+    </BrowserRouter>,
   );
 
   const nextButton = screen.getByLabelText("next map");
@@ -118,7 +118,7 @@ test("previous button switches map", () => {
   render(
     <BrowserRouter>
       <SelectionScreen mapPreviews={[spaceMap, forestMap]} />
-    </BrowserRouter>
+    </BrowserRouter>,
   );
 
   const previousButton = screen.getByLabelText("previous map");
@@ -134,7 +134,7 @@ test("previous button switches map multiple times", () => {
   render(
     <BrowserRouter>
       <SelectionScreen mapPreviews={[spaceMap, forestMap, shipMap]} />
-    </BrowserRouter>
+    </BrowserRouter>,
   );
 
   const previousButton = screen.getByLabelText("previous map");
@@ -158,7 +158,7 @@ test("previous button wraps around", () => {
   render(
     <BrowserRouter>
       <SelectionScreen mapPreviews={[spaceMap, forestMap, shipMap]} />
-    </BrowserRouter>
+    </BrowserRouter>,
   );
 
   const previousButton = screen.getByLabelText("previous map");

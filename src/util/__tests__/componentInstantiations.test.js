@@ -11,7 +11,7 @@ function snapshotTestComponent(component, testName) {
 }
 
 getComponentsToSnapshotTest().forEach(({ component, name }) =>
-  snapshotTestComponent(component, name)
+  snapshotTestComponent(component, name),
 );
 
 function getComponentsToSnapshotTest() {

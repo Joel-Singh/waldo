@@ -10,7 +10,6 @@ import snowWaldo from "../assets/characters/snow/waldo.jpg";
 import ouch from "../assets/characters/snow/ouch.jpg";
 import monster from "../assets/characters/snow/monster.jpg";
 
-
 export const allMaps: Array<MapName> = ["maze", "beach", "snow"];
 export const decisecondToMs = 100;
 
@@ -19,11 +18,11 @@ export function exposeCharacterToleranceAsCssVariable() {
   const root = document.documentElement;
   root.style.setProperty(
     "--choosing-character-tolerance",
-    String(CHOOSING_CHARACTER_TOLERANCE)
+    String(CHOOSING_CHARACTER_TOLERANCE),
   );
 }
 
-export type MapName = "beach" | "maze" | "snow"
+export type MapName = "beach" | "maze" | "snow";
 
 export interface Character {
   uniqueIdentifier: string;

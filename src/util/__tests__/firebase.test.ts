@@ -1,4 +1,4 @@
-import { Character } from "../constants"
+import { Character } from "../constants";
 import { CHOOSING_CHARACTER_TOLERANCE } from "../constants";
 import {
   addFakeCharacterCoordsToDatabase,
@@ -16,19 +16,18 @@ const dummyCharacter: Character = {
   uniqueIdentifier: "dummyCharacter",
   image: "image",
   displayName: "dummyCharacter",
-  coords: {x: 0, y: 0}
-}
-jest.mock('../constants', () => {
-  const originalConstants = jest.requireActual('../constants')
-  return ({
+  coords: { x: 0, y: 0 },
+};
+jest.mock("../constants", () => {
+  const originalConstants = jest.requireActual("../constants");
+  return {
     ...originalConstants,
     flattenedCharacterInformation: [
       ...originalConstants.flattenedCharacterInformation,
-      dummyCharacter
-    ]
-  });
+      dummyCharacter,
+    ],
+  };
 });
-
 
 describe("isCharacterAtPosition", () => {
   beforeAll(async () => {
@@ -82,8 +81,8 @@ describe("isCharacterAtPosition", () => {
           x: positionToCheck.x,
           y: positionToCheck.y,
         },
-        CHOOSING_CHARACTER_TOLERANCE
-      )
+        CHOOSING_CHARACTER_TOLERANCE,
+      ),
     ).toBe(expectedValue);
   });
 });
@@ -158,7 +157,7 @@ Array [
 test("getCharCoordsinDb throws error when coords aren't initialized", async () => {
   await clearDatabase();
   await expect(getCharCoordsInDb()).rejects.toThrow(
-    "Character coords never initialized in database"
+    "Character coords never initialized in database",
   );
 });
 

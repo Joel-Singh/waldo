@@ -25,7 +25,7 @@ runTestsWithAllMaps((mapName) => {
     render(
       <MemoryRouter initialEntries={[`/${mapName}`]}>
         <App />
-      </MemoryRouter>
+      </MemoryRouter>,
     );
 
     expect(screen.getByTestId("Gamescreen")).toBeDefined();
@@ -36,7 +36,7 @@ runTestsWithAllMaps((mapName) => {
     render(
       <MemoryRouter initialEntries={[`/${mapName}`]}>
         <App />
-      </MemoryRouter>
+      </MemoryRouter>,
     );
 
     await chooseAllCharactersIn(mapName);
@@ -50,7 +50,7 @@ test("Selection screen is passed map previews", () => {
   render(
     <MemoryRouter initialEntries={["/"]}>
       <App />
-    </MemoryRouter>
+    </MemoryRouter>,
   );
 
   const latestCallInformation = SelectionScreen.mock.calls.slice(-1);
@@ -61,7 +61,7 @@ test("App renders message with nonvalid path", () => {
   const { container } = render(
     <MemoryRouter initialEntries={["/invalidPath"]}>
       <App />
-    </MemoryRouter>
+    </MemoryRouter>,
   );
 
   expect(container).toMatchInlineSnapshot(`
@@ -74,5 +74,5 @@ test("App renders message with nonvalid path", () => {
     </div>
   </div>
 </div>
-`)
+`);
 });

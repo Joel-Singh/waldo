@@ -12,10 +12,13 @@ import runTestsWithAllMaps from "../util/runTestsWithAllMaps.js";
 import { FinalScoreScreenProps } from "../components/FinalScoreScreen";
 
 let latestProps: FinalScoreScreenProps = null;
-jest.mock("../components/FinalScoreScreen", () => (props: FinalScoreScreenProps) => {
-  latestProps = props;
-  return <div data-testid="FinalScoreScreen"></div>;
-});
+jest.mock(
+  "../components/FinalScoreScreen",
+  () => (props: FinalScoreScreenProps) => {
+    latestProps = props;
+    return <div data-testid="FinalScoreScreen"></div>;
+  },
+);
 
 runTestsWithAllMaps((mapName) => {
   test("App passes in props to FinalScoreScreen", async () => {
@@ -25,7 +28,7 @@ runTestsWithAllMaps((mapName) => {
     render(
       <MemoryRouter initialEntries={[`/${mapName}`]}>
         <App />
-      </MemoryRouter>
+      </MemoryRouter>,
     );
 
     await chooseAllCharactersIn(mapName);

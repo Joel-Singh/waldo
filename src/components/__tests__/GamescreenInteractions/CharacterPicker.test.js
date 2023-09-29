@@ -47,21 +47,33 @@ describe("Character picker", () => {
     userEvent.click(gamescreen, { screenX: xClickPos, screenY: yClickPos });
 
     const characterPickerXPos = parseInt(
-      getComputedStyle(characterPicker).getPropertyValue("--x")
+      getComputedStyle(characterPicker).getPropertyValue("--x"),
     );
     expect(characterPickerXPos).toBe(xClickPos);
 
     const characterPickerYPos = parseInt(
-      getComputedStyle(characterPicker).getPropertyValue("--y")
+      getComputedStyle(characterPicker).getPropertyValue("--y"),
     );
     expect(characterPickerYPos).toBe(yClickPos);
   });
 
   test("is rendered in Gamescreen", () => {
     const characters = [
-      createCharacter("Jane displayName", "Jane uniqueIdentifier", "placeholder1"),
-      createCharacter("Doe displayName", "Doe uniqueIdentifier", "placeholder2"),
-      createCharacter("Jeff displayName", "Jeff uniqueIdentifier", "placeholder3"),
+      createCharacter(
+        "Jane displayName",
+        "Jane uniqueIdentifier",
+        "placeholder1",
+      ),
+      createCharacter(
+        "Doe displayName",
+        "Doe uniqueIdentifier",
+        "placeholder2",
+      ),
+      createCharacter(
+        "Jeff displayName",
+        "Jeff uniqueIdentifier",
+        "placeholder3",
+      ),
     ];
 
     render(<Gamescreen characters={characters} />);

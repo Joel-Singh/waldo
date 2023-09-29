@@ -5,7 +5,10 @@ import Stopwatch from "../Stopwatch";
 it("renders seconds elapsed", () => {
   const secondsElapsed = 32.5;
   render(
-    <Stopwatch secondsElapsed={secondsElapsed} incrementDecisecond={() => {}} />
+    <Stopwatch
+      secondsElapsed={secondsElapsed}
+      incrementDecisecond={() => {}}
+    />,
   );
 
   expect(screen.queryByText("32.5")).not.toBeNull();
@@ -13,7 +16,7 @@ it("renders seconds elapsed", () => {
 
 it("renders with a trailing zero", () => {
   const { rerender } = render(
-    <Stopwatch secondsElapsed={0} incrementDecisecond={() => {}} />
+    <Stopwatch secondsElapsed={0} incrementDecisecond={() => {}} />,
   );
 
   expect(screen.queryByText("0.0")).not.toBeNull();
@@ -29,7 +32,7 @@ it("calls incrementDecisecond after a decisecond", () => {
   const incrementDecisecond = jest.fn();
 
   render(
-    <Stopwatch incrementDecisecond={incrementDecisecond} secondsElapsed={0} />
+    <Stopwatch incrementDecisecond={incrementDecisecond} secondsElapsed={0} />,
   );
 
   jest.advanceTimersByTime(decisecondToMs);
@@ -43,7 +46,7 @@ it("continually calls incrementDecisecond", () => {
   const incrementDecisecond = jest.fn();
 
   render(
-    <Stopwatch incrementDecisecond={incrementDecisecond} secondsElapsed={0} />
+    <Stopwatch incrementDecisecond={incrementDecisecond} secondsElapsed={0} />,
   );
 
   jest.advanceTimersByTime(decisecondToMs * 5);

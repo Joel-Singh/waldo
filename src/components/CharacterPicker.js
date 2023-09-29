@@ -41,7 +41,7 @@ function CharacterPicker(props) {
             {displayName}
           </button>
         );
-      }
+      },
     );
   }
 }
@@ -52,7 +52,7 @@ CharacterPicker.propTypes = {
       displayName: PropTypes.string.isRequired,
       uniqueIdentifier: PropTypes.string.isRequired,
       isFound: PropTypes.bool.isRequired,
-    })
+    }),
   ).isRequired,
 };
 

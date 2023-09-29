@@ -15,7 +15,7 @@ test("Going to the selection screen and selecting a map after completing a game,
   const { getByText, getByTestId } = render(
     <MemoryRouter initialEntries={[`/`]}>
       <App />
-    </MemoryRouter>
+    </MemoryRouter>,
   );
 
   userEvent.click(getByText("START"));

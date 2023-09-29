@@ -52,14 +52,14 @@ async function clearHighscores() {
 async function addHighscore(map, initials, scoreAsSecondsElapsed) {
   await set(
     ref(db, `highscores/${map}/${initials}`),
-    scoreAsSecondsElapsed
+    scoreAsSecondsElapsed,
   ).catch(() => console.error("Couldn't add highscore"));
 }
 
 async function getTopTenHighscores(map) {
   let highscores = await getHighscoresFromDatabase();
   const sortedHighscores = Object.entries(highscores).sort(
-    (x, y) => x[1] - y[1]
+    (x, y) => x[1] - y[1],
   );
 
   const sortedTopTen = sortedHighscores.slice(0, 10);
@@ -79,7 +79,7 @@ async function getTopTenHighscores(map) {
       sortedTopTenAsObjects.fill(
         { initials: "N/A", timeTaken: 999 },
         originalLength,
-        10
+        10,
       );
     }
     return sortedTopTenAsObjects;
@@ -109,24 +109,26 @@ function addCharacterCoordsToDatabase(useDummyCoords) {
 
   return Promise.all(
     flattenedCharacterInformation.map(
-      useDummyCoords ? mapFakeCoords : mapActualCoords
-    )
+      useDummyCoords ? mapFakeCoords : mapActualCoords,
+    ),
   );
 
   async function addSingleCharacterCoordToDatabase(name, coords) {
     await set(ref(db, `characterCoordinates/${name}`), coords).catch(() =>
-      console.error("Couldn't add single character coordinate")
+      console.error("Couldn't add single character coordinate"),
     );
   }
 }
 
 function isCharacterAtPosition(uniqueIdentifier, pos, withinDistance = 0) {
-  const charPos =
-    flattenedCharacterInformation.find(
-      character => character.uniqueIdentifier === uniqueIdentifier
-    );
+  const charPos = flattenedCharacterInformation.find(
+    (character) => character.uniqueIdentifier === uniqueIdentifier,
+  );
 
-  return distance([pos.x, pos.y], [charPos.coords.x, charPos.coords.y]) <= withinDistance;
+  return (
+    distance([pos.x, pos.y], [charPos.coords.x, charPos.coords.y]) <=
+    withinDistance
+  );
 }
 
 async function getCharCoordsInDb() {

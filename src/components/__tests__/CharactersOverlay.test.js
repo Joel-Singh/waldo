@@ -8,7 +8,7 @@ it("renders the image of a single character", () => {
     createCharacter(
       "displayName placeholder",
       "uniqueIdentifier placeholder",
-      "image placeholder"
+      "image placeholder",
     ),
   ];
   const { container } = render(<CharactersOverlay characters={characters} />);
@@ -31,7 +31,7 @@ test("single character DOESN'T have found class when isFound is false", () => {
     createCharacter(
       "displayName placeholder",
       "uniqueIdentifier placeholder",
-      "image placeholder"
+      "image placeholder",
     ),
   ];
   characters[0].isFound = false;
@@ -48,7 +48,7 @@ test("single character DOES have found class when isFound is true", () => {
     createCharacter(
       "displayName placeholder",
       "uniqueIdentifier placeholder",
-      "image placeholder"
+      "image placeholder",
     ),
   ];
 
@@ -66,17 +66,17 @@ it("renders the image of multiple characters", () => {
     createCharacter(
       "displayName placeholder 1",
       "uniqueIdentifier placeholder 1",
-      "image placeholder 1"
+      "image placeholder 1",
     ),
     createCharacter(
       "displayName placeholder 2",
       "uniqueIdentifier placeholder 2",
-      "image placeholder 2"
+      "image placeholder 2",
     ),
     createCharacter(
       "displayName placeholder 3",
       "uniqueIdentifier placeholder 3",
-      "image placeholder 3"
+      "image placeholder 3",
     ),
   ];
   const { container } = render(<CharactersOverlay characters={characters} />);
@@ -107,17 +107,17 @@ it("assigns found class to characters who's isFound is true", () => {
     createCharacter(
       "name placeholder 1 displayName",
       "name placeholder 1 uniqueIdentifier",
-      "image placeholder 1"
+      "image placeholder 1",
     ),
     createCharacter(
       "name placeholder 2 displayName",
       "name placeholder 2 uniqueIdentifier",
-      "image placeholder 2"
+      "image placeholder 2",
     ),
     createCharacter(
       "name placeholder 3 displayName",
       "name placeholder 3 uniqueIdentifier",
-      "image placeholder 3"
+      "image placeholder 3",
     ),
   ];
 
@@ -129,13 +129,13 @@ it("assigns found class to characters who's isFound is true", () => {
   const charactersOverlay = container.firstChild;
 
   const firstCharacter = charactersOverlay.querySelector(
-    "img[src='image placeholder 1']"
+    "img[src='image placeholder 1']",
   );
   const secondCharacter = charactersOverlay.querySelector(
-    "img[src='image placeholder 2']"
+    "img[src='image placeholder 2']",
   );
   const thirdCharacter = charactersOverlay.querySelector(
-    "img[src='image placeholder 3']"
+    "img[src='image placeholder 3']",
   );
 
   expect(firstCharacter).toHaveClass("found");
