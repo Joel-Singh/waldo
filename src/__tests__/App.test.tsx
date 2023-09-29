@@ -5,7 +5,7 @@ import { chooseAllCharactersIn } from "../util/ChoosingCharacters";
 import {
   addRealCharacterCoordsToDatabase,
   clearDatabase,
-} from "../util/firebase.js";
+} from "../util/firebase";
 import SelectionScreen from "../components/SelectionScreen.js";
 import runTestsWithAllMaps from "../util/runTestsWithAllMaps.js";
 

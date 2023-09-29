@@ -104,6 +104,10 @@ Object {
     "x": 2153,
     "y": 576,
   },
+  "dummyCharacter": Object {
+    "x": 0,
+    "y": 0,
+  },
   "mazeWaldo": Object {
     "x": 1377,
     "y": 653,
@@ -142,6 +146,10 @@ Object {
     "y": 0,
   },
   "dog": Object {
+    "x": 0,
+    "y": 0,
+  },
+  "dummyCharacter": Object {
     "x": 0,
     "y": 0,
   },

@@ -8,7 +8,7 @@ import CursorOverlay from "./CursorOverlay.js";
 import Stopwatch from "./Stopwatch.js";
 
 import getPageXandGetPageY from "../util/getPageXandGetPageY.js";
-import { isCharacterAtPosition } from "../util/firebase.js";
+import { isCharacterAtPosition } from "../util/firebase";
 import { CHOOSING_CHARACTER_TOLERANCE } from "../util/constants";
 
 import "../styles/gamescreen.css";

@@ -120,15 +120,13 @@ function addCharacterCoordsToDatabase(useDummyCoords) {
   }
 }
 
-async function isCharacterAtPosition(name, pos, withinDistance = 0) {
-  const dbPos = await getCharPosInDb(name);
+function isCharacterAtPosition(uniqueIdentifier, pos, withinDistance = 0) {
+  const charPos =
+    flattenedCharacterInformation.find(
+      character => character.uniqueIdentifier === uniqueIdentifier
+    );
 
-  return distance([pos.x, pos.y], [dbPos.x, dbPos.y]) <= withinDistance;
-
-  async function getCharPosInDb(name) {
-    const { characterCoordinates } = await getAllDataFromDatabase();
-    return characterCoordinates[`${name}`];
-  }
+  return distance([pos.x, pos.y], [charPos.coords.x, charPos.coords.y]) <= withinDistance;
 }
 
 async function getCharCoordsInDb() {

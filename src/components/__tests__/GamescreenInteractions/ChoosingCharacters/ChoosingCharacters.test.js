@@ -1,6 +1,6 @@
 import { render, screen } from "@testing-library/react";
 
-import { addRealCharacterCoordsToDatabase } from "../../../../util/firebase.js";
+import { addRealCharacterCoordsToDatabase } from "../../../../util/firebase";
 import { getGamescreens } from "../../../../util/componentInstantiations";
 import {
   chooseAllCharactersIn,

@@ -1,3 +1,4 @@
+import { Character } from "../constants"
 import { CHOOSING_CHARACTER_TOLERANCE } from "../constants";
 import {
   addFakeCharacterCoordsToDatabase,
@@ -10,6 +11,24 @@ import {
   clearDatabase,
   getCharCoordsInDb,
 } from "../firebase";
+
+const dummyCharacter: Character = {
+  uniqueIdentifier: "dummyCharacter",
+  image: "image",
+  displayName: "dummyCharacter",
+  coords: {x: 0, y: 0}
+}
+jest.mock('../constants', () => {
+  const originalConstants = jest.requireActual('../constants')
+  return ({
+    ...originalConstants,
+    flattenedCharacterInformation: [
+      ...originalConstants.flattenedCharacterInformation,
+      dummyCharacter
+    ]
+  });
+});
+
 
 describe("isCharacterAtPosition", () => {
   beforeAll(async () => {
@@ -57,8 +76,8 @@ describe("isCharacterAtPosition", () => {
     },
   ])("$name", async ({ positionToCheck, expectedValue }) => {
     expect(
-      await isCharacterAtPosition(
-        "beachWaldo",
+      isCharacterAtPosition(
+        dummyCharacter.uniqueIdentifier,
         {
           x: positionToCheck.x,
           y: positionToCheck.y,
