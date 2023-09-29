@@ -30,30 +30,23 @@ jest.mock("../constants", () => {
 });
 
 describe("isCharacterAtPosition", () => {
-  beforeAll(async () => {
-    await addFakeCharacterCoordsToDatabase();
-  });
-
-  afterAll(async () => {
-    await clearCharacterCoordsInDatabase();
-  });
-
+  const { x: dummyX, y: dummyY } = dummyCharacter.coords
   test.each([
     {
       name: "returns false with wrong position",
-      positionToCheck: { x: 1000, y: 1000 },
+      positionToCheck: { x: dummyX + 1000, y: dummyY + 1000 },
       expectedValue: false,
     },
     {
       name: "returns true with right position",
-      positionToCheck: { x: 0, y: 0 },
+      positionToCheck: { x: dummyX, y: dummyY },
       expectedValue: true,
     },
     {
       name: "returns false when farther than tolerance",
       positionToCheck: {
-        x: CHOOSING_CHARACTER_TOLERANCE,
-        y: CHOOSING_CHARACTER_TOLERANCE,
+        x: dummyX + CHOOSING_CHARACTER_TOLERANCE,
+        y: dummyY + CHOOSING_CHARACTER_TOLERANCE,
       },
       expectedValue: false,
     },
@@ -68,8 +61,8 @@ describe("isCharacterAtPosition", () => {
     {
       name: "returns true when close enough with a tolerance in two axis",
       positionToCheck: {
-        x: CHOOSING_CHARACTER_TOLERANCE / 2,
-        y: CHOOSING_CHARACTER_TOLERANCE / 2,
+        x: dummyX + (CHOOSING_CHARACTER_TOLERANCE / 2),
+        y: dummyY + (CHOOSING_CHARACTER_TOLERANCE / 2),
       },
       expectedValue: true,
     },
