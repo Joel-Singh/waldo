@@ -2,10 +2,6 @@ import { render, screen } from "@testing-library/react";
 import { MemoryRouter, BrowserRouter } from "react-router-dom";
 import App from "../App";
 import { chooseAllCharactersIn } from "../util/ChoosingCharacters";
-import {
-  addRealCharacterCoordsToDatabase,
-  clearDatabase,
-} from "../util/firebase";
 import SelectionScreen from "../components/SelectionScreen.js";
 import runTestsWithAllMaps from "../util/runTestsWithAllMaps.js";
 
@@ -14,11 +10,6 @@ jest.mock("../components/Stopwatch.js", () => () => {
 });
 
 jest.mock("../components/SelectionScreen.js", () => jest.fn(() => null));
-
-beforeAll(async () => {
-  await clearDatabase();
-  await addRealCharacterCoordsToDatabase();
-});
 
 runTestsWithAllMaps((mapName) => {
   it("initially Gamescreen is shown and FinalScoreScreen is hidden", () => {

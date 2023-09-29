@@ -1,6 +1,4 @@
 import { render, screen } from "@testing-library/react";
-
-import { addRealCharacterCoordsToDatabase } from "../../../../util/firebase";
 import { getGamescreens } from "../../../../util/componentInstantiations";
 import {
   chooseAllCharactersIn,
@@ -15,10 +13,6 @@ function isCharacterFound(name) {
 
 jest.mock("../../../../components/Stopwatch.js", () => () => {
   return <div></div>;
-});
-
-beforeAll(async () => {
-  await addRealCharacterCoordsToDatabase();
 });
 
 describe("Choosing a character", () => {
