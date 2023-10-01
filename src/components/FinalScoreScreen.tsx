@@ -1,5 +1,6 @@
 import { MouseEventHandler } from "react";
 import { Link } from "react-router-dom";
+import "../styles/finalScoreScreen.css";
 
 export type FinalScoreScreenProps = {
   finalScore: number;
@@ -9,7 +10,7 @@ export type FinalScoreScreenProps = {
 export default function FinalScoreScreen(props: FinalScoreScreenProps) {
   const { finalScore, backToSelectionScreenBtnOnClick = (e) => {} } = props;
   return (
-    <div data-testid="FinalScoreScreen">
+    <div data-testid="FinalScoreScreen" className="final-score-screen">
       <h1>Final Score</h1>
       <p>{finalScore.toFixed(2)} seconds!</p>
 
