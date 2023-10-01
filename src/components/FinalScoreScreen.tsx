@@ -14,7 +14,7 @@ export default function FinalScoreScreen(props: FinalScoreScreenProps) {
       <h1>Final Score</h1>
       <p>{finalScore.toFixed(2)} seconds!</p>
 
-      <Link to={"/"} className="highscoreScreen__back-btn">
+      <Link to={"/"} className="finalScoreScreen__back-btn">
         <button onClick={backToSelectionScreenBtnOnClick}>
           Go back to selection screen
         </button>
