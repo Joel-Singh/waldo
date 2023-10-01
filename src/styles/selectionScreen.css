@@ -2,7 +2,7 @@
   display: grid;
   grid-template-columns: 1fr 4fr 1fr;
   align-items: center;
-  margin-top: 7vh;
+  padding-top: 7vh;
 }
 
 .selection-screen > button {
