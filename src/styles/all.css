@@ -1,7 +1,43 @@
+@import url('https://fonts.googleapis.com/css2?family=Bangers&display=swap');
+
+:root {
+  --white: #ffffff;
+  --red: #FF4757;
+
+}
+
 body {
   margin: 0px;
 }
 
 .App {
   height: 100vh;
+}
+
+button {
+  font-family: 'Bangers', cursive;
+  font-size: 20px;
+  background-color: var(--red);
+  color: var(--white);
+  border: none;
+  padding: 10px 20px;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  border-radius: 5px;
+  box-shadow: 5px 5px 0px #2D2D2D;
+  transition: all 0.2s ease-in-out;
+  cursor: pointer;
+  outline: none;
+  position: relative;
+}
+
+button:hover {
+  background-color: #FF6B81;
+  transform: translate(2px, 2px);
+  box-shadow: 3px 3px 0px #2D2D2D;
+}
+
+button:active {
+  transform: translate(4px, 4px);
+  box-shadow: 1px 1px 0px #2D2D2D;
 }
