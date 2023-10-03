@@ -3,6 +3,39 @@
 }
 
 .map-preview {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
   width: min-content;
   margin: 0 auto;
+}
+
+.map-preview__character-container {
+  display: flex;
+  justify-content: center;
+  gap: 50px;
+  margin-top: 15px;
+}
+
+.map-preview__map-image {
+  height: 50vh;
+}
+
+.map-preview__title {
+  font-size: 2rem;
+}
+
+.preview-character {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 130px;
+}
+
+.preview-character__name {
+  text-align: center;
+}
+
+.preview-character > img {
+  height: 50px;
 }
