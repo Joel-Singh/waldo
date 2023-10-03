@@ -1,3 +1,8 @@
 .map-preview__start-btn {
   margin-top: 15px;
 }
+
+.map-preview {
+  width: min-content;
+  margin: 0 auto;
+}

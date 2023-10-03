@@ -1,5 +1,9 @@
 import { Link } from "react-router-dom";
+
+// @ts-ignore
 import PropTypes from "prop-types";
+
+import "../styles/mapPreview.css"
 function MapPreview(props) {
   const { mapName, previewCharacterInformation, mapImage, mapPath } = props;
 
