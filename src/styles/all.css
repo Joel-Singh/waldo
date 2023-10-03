@@ -5,6 +5,7 @@
   --red: #FF4757;
   --light-blue: #7CC9C8;
   --dark-blue: #41837F;
+  --super-dark-blue: #2D3C3A;
   font-family: 'Bangers', cursive;
 }
 
@@ -23,6 +24,7 @@ body {
   background-position: 0 0, 0.65rem 0.65rem;
 
   background-color: var(--light-blue);
+  color: var(--super-dark-blue);
 }
 
 button {
