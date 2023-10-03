@@ -9,7 +9,7 @@ function MapPreview(props) {
 
   return (
     <div className="map-preview">
-      <div aria-label="title" className="map-preview__title">
+      <div aria-label="title" className="map-preview__title white-glow-highlight">
         {mapName}
       </div>
       <img
@@ -38,7 +38,7 @@ function MapPreview(props) {
     return (
       <div key={name} className="preview-character">
         <img src={image} alt={name} />
-        <div className="preview-character__name">{name}</div>
+        <div className="preview-character__name white-glow-highlight">{name}</div>
       </div>
     );
   }

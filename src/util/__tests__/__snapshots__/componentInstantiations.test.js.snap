@@ -69,7 +69,7 @@ exports[`beach Map Preview 1`] = `
   >
     <div
       aria-label="title"
-      class="map-preview__title"
+      class="map-preview__title white-glow-highlight"
     >
       Beach
     </div>
@@ -90,7 +90,7 @@ exports[`beach Map Preview 1`] = `
           src="waldo.jpg"
         />
         <div
-          class="preview-character__name"
+          class="preview-character__name white-glow-highlight"
         >
           Waldo
         </div>
@@ -103,7 +103,7 @@ exports[`beach Map Preview 1`] = `
           src="shovel_boy.jpg"
         />
         <div
-          class="preview-character__name"
+          class="preview-character__name white-glow-highlight"
         >
           Shovel Boy
         </div>
@@ -116,7 +116,7 @@ exports[`beach Map Preview 1`] = `
           src="dog.jpg"
         />
         <div
-          class="preview-character__name"
+          class="preview-character__name white-glow-highlight"
         >
           Dog
         </div>
@@ -205,7 +205,7 @@ exports[`maze Map Preview 1`] = `
   >
     <div
       aria-label="title"
-      class="map-preview__title"
+      class="map-preview__title white-glow-highlight"
     >
       Maze
     </div>
@@ -226,7 +226,7 @@ exports[`maze Map Preview 1`] = `
           src="waldo.jpg"
         />
         <div
-          class="preview-character__name"
+          class="preview-character__name white-glow-highlight"
         >
           Waldo
         </div>
@@ -239,7 +239,7 @@ exports[`maze Map Preview 1`] = `
           src="bird_person.jpg"
         />
         <div
-          class="preview-character__name"
+          class="preview-character__name white-glow-highlight"
         >
           Bird Person
         </div>
@@ -252,7 +252,7 @@ exports[`maze Map Preview 1`] = `
           src="yellowed_hair_person.jpg"
         />
         <div
-          class="preview-character__name"
+          class="preview-character__name white-glow-highlight"
         >
           Yellow Hair Person
         </div>
@@ -341,7 +341,7 @@ exports[`snow Map Preview 1`] = `
   >
     <div
       aria-label="title"
-      class="map-preview__title"
+      class="map-preview__title white-glow-highlight"
     >
       Snow
     </div>
@@ -362,7 +362,7 @@ exports[`snow Map Preview 1`] = `
           src="waldo.jpg"
         />
         <div
-          class="preview-character__name"
+          class="preview-character__name white-glow-highlight"
         >
           Waldo
         </div>
@@ -375,7 +375,7 @@ exports[`snow Map Preview 1`] = `
           src="ouch.jpg"
         />
         <div
-          class="preview-character__name"
+          class="preview-character__name white-glow-highlight"
         >
           Ouch!
         </div>
@@ -388,7 +388,7 @@ exports[`snow Map Preview 1`] = `
           src="monster.jpg"
         />
         <div
-          class="preview-character__name"
+          class="preview-character__name white-glow-highlight"
         >
           Monster
         </div>

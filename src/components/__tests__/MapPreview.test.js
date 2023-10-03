@@ -37,7 +37,7 @@ it("properly renders preview characters", () => {
       src="JoelPlaceholder"
     />
     <div
-      class="preview-character__name"
+      class="preview-character__name white-glow-highlight"
     >
       Joel
     </div>
@@ -50,7 +50,7 @@ it("properly renders preview characters", () => {
       src="JanePlaceholder"
     />
     <div
-      class="preview-character__name"
+      class="preview-character__name white-glow-highlight"
     >
       Jane
     </div>
@@ -63,7 +63,7 @@ it("properly renders preview characters", () => {
       src="BobPlaceholder"
     />
     <div
-      class="preview-character__name"
+      class="preview-character__name white-glow-highlight"
     >
       Bob
     </div>
