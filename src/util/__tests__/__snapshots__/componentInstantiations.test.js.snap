@@ -127,7 +127,7 @@ exports[`beach Map Preview 1`] = `
     >
       <button
         class="map-preview__start-btn"
-        type="buton"
+        type="button"
       >
         START
       </button>
@@ -263,7 +263,7 @@ exports[`maze Map Preview 1`] = `
     >
       <button
         class="map-preview__start-btn"
-        type="buton"
+        type="button"
       >
         START
       </button>
@@ -399,7 +399,7 @@ exports[`snow Map Preview 1`] = `
     >
       <button
         class="map-preview__start-btn"
-        type="buton"
+        type="button"
       >
         START
       </button>

@@ -22,7 +22,7 @@ function MapPreview(props) {
         )}
       </div>
       <Link to={"/" + mapPath}>
-        <button type="buton" className="map-preview__start-btn">
+        <button type="button" className="map-preview__start-btn">
           START
         </button>
       </Link>
