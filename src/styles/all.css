@@ -3,6 +3,8 @@
 :root {
   --white: #ffffff;
   --red: #FF4757;
+  --light-blue: #7CC9C8;
+  --dark-blue: #41837F;
   font-family: 'Bangers', cursive;
 }
 
@@ -14,11 +16,13 @@ body {
   height: 100vh;
   background-image: radial-gradient(
     circle at center,
-    black 0.25rem,
+    var(--dark-blue) 0.25rem,
     transparent 0
-  ), radial-gradient(circle at center, black 0.25rem, transparent 0);
+  ), radial-gradient(circle at center, var(--dark-blue) 0.25rem, transparent 0);
   background-size: 1.3rem 1.3rem;
   background-position: 0 0, 0.65rem 0.65rem;
+
+  background-color: var(--light-blue);
 }
 
 button {
