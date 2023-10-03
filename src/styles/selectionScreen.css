@@ -1,12 +1,14 @@
 .selection-screen {
   display: grid;
-  grid-template-columns: 1fr 4fr 1fr;
+  grid-template-columns: 1fr min-content 1fr;
   align-items: center;
   padding-top: 7vh;
+  justify-items: center;
 }
 
 .selection-screen > button {
   height: 50px;
+  width: 150px;
   margin: 15px;
 }
 
