@@ -3,3 +3,8 @@
   flex-direction: column;
   align-items: center;
 }
+
+.final-score-screen__header, .final-score-screen__final-score {
+  font-size: 4em;
+  letter-spacing: 10px;
+}
