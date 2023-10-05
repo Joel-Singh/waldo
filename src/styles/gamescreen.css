@@ -4,7 +4,9 @@
 }
 
 .character-picker--visible {
-  display: block;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
 }
 
 .character-picker:not(.character-picker--visible) {
