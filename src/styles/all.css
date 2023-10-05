@@ -28,7 +28,8 @@ body {
 }
 
 .white-glow-highlight {
-  background-color: rgba(255, 255, 255, 0.2);
+  --size: 2px;
+  text-shadow: calc(var(--size) * -1) 0 var(--white), 0 var(--size) var(--white), var(--size) 0 var(--white), 0 calc(var(--size) * -1) var(--white);
 }
 
 button {
