@@ -1,3 +1,0 @@
-- When the user uploads score
-  - It has to upload the score to the database
-  - Update the scoreboard to the left (rerun the effect?)
