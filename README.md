@@ -6,4 +6,7 @@ The project is a [Create React App](https://create-react-app.dev/) with plain cs
 
 You can see the code with firebase under the with-firebase branch
 
+## Live demo on Github pages
+https://joel-singh.github.io/waldo/
+
 ![](./project-screenshot.png)
