@@ -1,23 +1,23 @@
 {
   "files": {
-    "main.css": "/static/css/main.786f6e64.css",
-    "main.js": "/static/js/main.e98863bc.js",
-    "static/media/maze.jpg": "/static/media/maze.8e5728d3a723207cc522.jpg",
-    "static/media/snow.jpg": "/static/media/snow.9736162ac89c68ce67a0.jpg",
-    "static/media/beach.jpg": "/static/media/beach.a0e0289ef358bd1a3745.jpg",
-    "static/media/bird_person.jpg": "/static/media/bird_person.2891c808573e715f6c48.jpg",
-    "static/media/waldo.jpg": "/static/media/waldo.38a8dd1a0f88b079db82.jpg",
-    "static/media/shovel_boy.jpg": "/static/media/shovel_boy.f7196c1e6a11e76de78c.jpg",
-    "static/media/yellowed_hair_person.jpg": "/static/media/yellowed_hair_person.777e953215a791f92880.jpg",
-    "static/media/monster.jpg": "/static/media/monster.a78587934ff87984c958.jpg",
-    "static/media/ouch.jpg": "/static/media/ouch.69497029d9041c72f01b.jpg",
-    "static/media/dog.jpg": "/static/media/dog.3a9cfdefa3a603b165c4.jpg",
-    "index.html": "/index.html",
-    "main.786f6e64.css.map": "/static/css/main.786f6e64.css.map",
-    "main.e98863bc.js.map": "/static/js/main.e98863bc.js.map"
+    "main.css": "/waldo/static/css/main.786f6e64.css",
+    "main.js": "/waldo/static/js/main.d1921c3f.js",
+    "static/media/maze.jpg": "/waldo/static/media/maze.8e5728d3a723207cc522.jpg",
+    "static/media/snow.jpg": "/waldo/static/media/snow.9736162ac89c68ce67a0.jpg",
+    "static/media/beach.jpg": "/waldo/static/media/beach.a0e0289ef358bd1a3745.jpg",
+    "static/media/bird_person.jpg": "/waldo/static/media/bird_person.2891c808573e715f6c48.jpg",
+    "static/media/waldo.jpg": "/waldo/static/media/waldo.38a8dd1a0f88b079db82.jpg",
+    "static/media/shovel_boy.jpg": "/waldo/static/media/shovel_boy.f7196c1e6a11e76de78c.jpg",
+    "static/media/yellowed_hair_person.jpg": "/waldo/static/media/yellowed_hair_person.777e953215a791f92880.jpg",
+    "static/media/monster.jpg": "/waldo/static/media/monster.a78587934ff87984c958.jpg",
+    "static/media/ouch.jpg": "/waldo/static/media/ouch.69497029d9041c72f01b.jpg",
+    "static/media/dog.jpg": "/waldo/static/media/dog.3a9cfdefa3a603b165c4.jpg",
+    "index.html": "/waldo/index.html",
+    "main.786f6e64.css.map": "/waldo/static/css/main.786f6e64.css.map",
+    "main.d1921c3f.js.map": "/waldo/static/js/main.d1921c3f.js.map"
   },
   "entrypoints": [
     "static/css/main.786f6e64.css",
-    "static/js/main.e98863bc.js"
+    "static/js/main.d1921c3f.js"
   ]
 }
