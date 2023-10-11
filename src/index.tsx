@@ -7,7 +7,7 @@ import { exposeCharacterToleranceAsCssVariable } from "./util/constants";
 const root = createRoot(document.getElementById("root"));
 root.render(
   <StrictMode>
-    <BrowserRouter>
+    <BrowserRouter basename="waldo">
       <App />
     </BrowserRouter>
   </StrictMode>,
