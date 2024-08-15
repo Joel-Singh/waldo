@@ -1,9 +1,9 @@
 # Waldo
-This is my Where's Waldo game created as part of The Odin Project (https://www.theodinproject.com/lessons/nodejs-where-s-waldo-a-photo-tagging-app).
+Where's Waldo game in glorious React form as part of The Odin Project (https://www.theodinproject.com/lessons/nodejs-where-s-waldo-a-photo-tagging-app).
 
 ## Technologies
 - Create React App
-- Plan css
+- Plain css
 - Jest for testing
 - Javascript, however Typescript is used in places after coming back to the project
 
